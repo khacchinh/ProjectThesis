@@ -1,0 +1,20 @@
+{
+  "name": "mean2project",
+  "version": "1.0.0",
+  "description": "Setup MongoDB + Express + NodeJs + Angular2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Mean2"
+  ],
+  "author": "KhacChinhDev",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "ejs": "^2.5.5",
+    "express": "^4.14.1",
+    "mongojs": "^2.4.0"
+  }
+}
