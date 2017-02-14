@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var index_1 = require("../_service/index");
+var index_1 = require("../_services/index");
 var RegisterComponent = (function () {
     function RegisterComponent(router, userService, alertService) {
         this.router = router;

@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var index_1 = require("../_service/index");
+var index_1 = require("../_services/index");
 var LoginComponent = (function () {
     function LoginComponent(route, router, authenticationService, alertService) {
         this.route = route;
@@ -24,7 +24,7 @@ var LoginComponent = (function () {
         // reset login status
         this.authenticationService.logout();
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/admin';
     };
     LoginComponent.prototype.login = function () {
         var _this = this;

@@ -1,14 +1,20 @@
+﻿import { NgModule }             from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeAdminComponent } from './admin/home/index';
-import { TasksComponent } from './tasks/index';
+import { HomeComponent } from './admin/home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { AuthGuard } from './_guards/index';
+import { TasksComponent } from './home/home.component';
+
+import { WordSegmentComponent } from './wordsegment/index';
+import { DemoComponent } from './demo/index';
 
 const appRoutes: Routes = [
-	{ path: '', component: TasksComponent },
-    { path: 'admin', component: HomeAdminComponent, canActivate: [AuthGuard] },
+    { path: '', component: TasksComponent },
+    { path: 'wordsegment', component: WordSegmentComponent },
+    { path: 'clawer_news', component: DemoComponent },
+    { path: 'admin', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
 
@@ -16,4 +22,10 @@ const appRoutes: Routes = [
     { path: '**', redirectTo: '' }
 ];
 
-export const routing = RouterModule.forRoot(appRoutes);
+@NgModule({
+    imports: [RouterModule.forRoot(appRoutes, {useHash: true})],
+    exports: [RouterModule]
+})
+
+export class AppRoutingModule {}
+//export const routing = RouterModule.forRoot(appRoutes, { useHash: true });

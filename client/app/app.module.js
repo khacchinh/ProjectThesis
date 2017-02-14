@@ -17,11 +17,13 @@ var app_component_1 = require("./app.component");
 var app_routing_1 = require("./app.routing");
 var index_2 = require("./_directives/index");
 var index_3 = require("./_guards/index");
-var index_4 = require("./_service/index");
+var index_4 = require("./_services/index");
 var index_5 = require("./admin/home/index");
 var index_6 = require("./login/index");
 var index_7 = require("./register/index");
-var index_8 = require("./tasks/index");
+var index_8 = require("./home/index");
+var index_9 = require("./wordsegment/index");
+var demo_component_1 = require("./demo/demo.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -33,15 +35,17 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            app_routing_1.routing
+            app_routing_1.AppRoutingModule
         ],
         declarations: [
             app_component_1.AppComponent,
             index_2.AlertComponent,
-            index_5.HomeAdminComponent,
+            index_5.HomeComponent,
             index_6.LoginComponent,
             index_7.RegisterComponent,
-            index_8.TasksComponent
+            index_8.TasksComponent,
+            demo_component_1.DemoComponent,
+            index_9.WordSegmentComponent
         ],
         providers: [
             index_3.AuthGuard,

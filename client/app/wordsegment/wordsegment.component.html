@@ -1,0 +1,9 @@
+Thời gian chạy : <input type = "text" [(ngModel)]="timerun" size = "80"/> <br> <br>
+  <p>Chọn dữ liệu cần tách từ !!</p>
+  <input multiple type='file' name='file[]' (change) = "onChange($event)" /> <br>
+  <p>Thông tin dữ liệu: </p>
+  <textarea rows="20" cols="100" [(ngModel)]="textValue"
+    style="resize: none;"></textarea>
+  <p>Kết quả phân từ: </p>
+  <textarea rows="20" cols="100" [(ngModel)]="output"
+    style="resize: none;"></textarea> <br><br>

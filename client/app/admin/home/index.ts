@@ -1,1 +1,1 @@
-﻿export * from './homeadmin.component';
+﻿export * from './home.component';
