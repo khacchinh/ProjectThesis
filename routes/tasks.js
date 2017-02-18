@@ -2,12 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 //setup db
+/*
 var mongojs = require('mongojs');
 var db = mongojs('mongodb://khacchinhdev:123@ds151068.mlab.com:51068/mymean2_khacchinhdev', ['tasks']);
+*/
+
+var Tasks = require('../model/Tasks');
 
 //get all tasks
 router.get('/tasks', function(req, res, next){
-    db.tasks.find(function(err, tasks){
+    Tasks.find(function(err, tasks){
         if (err){
             res.send(err);
         }
@@ -17,13 +21,14 @@ router.get('/tasks', function(req, res, next){
 
 //get single tasks
 router.get('/task/:id', function(req, res, next){
-    db.tasks.findOne({_id:mongojs.ObjectId(req.params.id)},function(err, task){
+    Tasks.findOne({_id: req.params.id},function(err, task){
         if (err){
             res.send(err);
         }
         res.json(task);
     });
 });
+
 
 //save task
 router.post('/task', function(req, res, next){
@@ -34,7 +39,11 @@ router.post('/task', function(req, res, next){
             "error" : "Bad Data"
         });
     } else {
-        db.tasks.save(task,function(err, task){
+        var newTask = Tasks({
+            title: task.title,
+            isDone: task.isDone
+        });
+        newTask.save(function(err, task){
             if (err){
                 res.send(err);
             }
@@ -43,9 +52,10 @@ router.post('/task', function(req, res, next){
     }
 });
 
+
 //delete task
 router.delete('/task/:id', function(req, res, next){
-    db.tasks.remove({_id:mongojs.ObjectId(req.params.id)},function(err, task){
+    Tasks.remove({_id: req.params.id},function(err, task){
         if (err){
             res.send(err);
         }
@@ -56,30 +66,25 @@ router.delete('/task/:id', function(req, res, next){
 //update tasks
 router.put('/task/:id', function(req, res, next){
     var task = req.body;
-    var updTask = {};
+    Tasks.findById(req.params.id, function(err, uptask){
+        if (err){
+            res.status(400);
+            res.json({
+                "error" : "Bad Data"
+            });
+        } else{
+            uptask.title = task.title;
+            if (task.isDone) uptask.isDone = task.isDone;
+            uptask.save(function(err, task){
+                if (err){
+                    res.send(err);
+                }
+                res.json(task);
+            });
+        }
 
-    if (task.isDone){
-        updTask.isDone = task.isDone;
-    }
-
-    if (task.title){
-        updTask.title = task.title;
-    }
-
-    if (!updTask){
-        res.status(400);
-        res.json({
-            "error" : "Bad Data"
-        });
-    } else {
-         db.tasks.update({_id:mongojs.ObjectId(req.params.id)}, updTask, {},function(err, task){
-            if (err){
-                res.send(err);
-            }
-            res.json(task);
-        });
-    }
-
+    });
 });
+
 
 module.exports = router;

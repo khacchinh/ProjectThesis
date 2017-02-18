@@ -1,0 +1,11 @@
+'http://vnexpress.net/tin-tuc/thoi-su',
+'http://vnexpress.net/tin-tuc/the-gioi', 
+'http://giaitri.vnexpress.net/',
+'http://vnexpress.net/tin-tuc/phap-luat',
+'http://vnexpress.net/tin-tuc/giao-duc',
+'http://dulich.vnexpress.net/',
+'http://vnexpress.net/tin-tuc/khoa-hoc',
+'http://sohoa.vnexpress.net/',
+'http://vnexpress.net/tin-tuc/oto-xe-may/',
+'http://vnexpress.net/tin-tuc/cong-dong',
+'http://dantri.com.vn/the-gioi.htm'

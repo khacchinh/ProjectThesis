@@ -20,7 +20,7 @@ import { RegisterComponent } from './register/index';
 import { TasksComponent } from './home/index';
 
 import { WordSegmentComponent } from './wordsegment/index';
-import { DemoComponent } from './demo/demo.component';
+import { TestCrawlerComponent } from './testcrawler/index';
 
 @NgModule({
     imports: [
@@ -36,7 +36,7 @@ import { DemoComponent } from './demo/demo.component';
         LoginComponent,
         RegisterComponent,
         TasksComponent,
-        DemoComponent,
+        TestCrawlerComponent,
         WordSegmentComponent
     ],
     providers: [

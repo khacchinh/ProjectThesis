@@ -8,12 +8,12 @@ import { AuthGuard } from './_guards/index';
 import { TasksComponent } from './home/home.component';
 
 import { WordSegmentComponent } from './wordsegment/index';
-import { DemoComponent } from './demo/index';
+import { TestCrawlerComponent } from './testcrawler/index';
 
 const appRoutes: Routes = [
     { path: '', component: TasksComponent },
     { path: 'wordsegment', component: WordSegmentComponent },
-    { path: 'clawer_news', component: DemoComponent },
+    { path: 'clawer_news', component: TestCrawlerComponent },
     { path: 'admin', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },

@@ -23,7 +23,7 @@ var index_6 = require("./login/index");
 var index_7 = require("./register/index");
 var index_8 = require("./home/index");
 var index_9 = require("./wordsegment/index");
-var demo_component_1 = require("./demo/demo.component");
+var index_10 = require("./testcrawler/index");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -44,7 +44,7 @@ AppModule = __decorate([
             index_6.LoginComponent,
             index_7.RegisterComponent,
             index_8.TasksComponent,
-            demo_component_1.DemoComponent,
+            index_10.TestCrawlerComponent,
             index_9.WordSegmentComponent
         ],
         providers: [
