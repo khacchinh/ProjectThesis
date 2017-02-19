@@ -1,65 +1,41 @@
-var express = require('express');
-var path = require('path');
-var bodyParser = require('body-parser');
-
+"use strict";
+var express = require("express");
+var path = require("path");
+var bodyParser = require("body-parser");
+//use compression
 var compression = require("compression");
-
-var index = require('./routes/index');
-var tasks = require('./routes/tasks');
-
-
-//clawer
-var crawlerData = require('./routes/crawlerData');
-
-//dictionary
-var getDictionary = require('./routes/getDictionary');
-
+//import routes for app
+var index = require("./routes/index");
+var tasks = require("./routes/tasks");
+//send dictionary to client
+var getDictionary = require("./routes/getDictionary");
+var CrawlerNewsClass_1 = require("./crawler/CrawlerNewsClass");
 //mongo db
-var mongoose = require('mongoose');
-
-//import class crawler
-var TestCrawler = require('./crawler/testcrawler.js');
-
+var mongoose = require("mongoose");
 var app = express();
-
-var port = process.env.port || 3000;
-
-/*
-//View Engine
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
-*/
-
 app.use(compression());
+//set port
+app.set('port', (process.env.PORT || 3000));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // Set Static folder
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(express.static(path.join(__dirname, 'asset')));
-
-//Body Parser
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended : false}));
-
+//set routes
 app.use('/', index);
 app.use('/api/', tasks);
-
-//use clawer
-app.use('/', crawlerData);
-
+//call function send dictionary
 app.use('/', getDictionary);
-
-
 //call class crawler
-new TestCrawler();
-
+new CrawlerNewsClass_1.CrawlerNewsClass();
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/my_database', function(err){
-    if (err) 
+mongoose.connect('mongodb://localhost/my_database', function (err) {
+    if (err)
         console.log("Can\'t connect to db!!");
-    else{
+    else {
         console.log("Connect to db:  mongodb://localhost/my_database");
-        app.listen(port, function(){
-            console.log('Server started on port ' + port);
+        app.listen(app.get('port'), function () {
+            console.log('Server started on port ' + app.get('port'));
         });
     }
 });
