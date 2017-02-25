@@ -12,19 +12,12 @@ router.get('/getClawer', function(req, response, next){
                 console.log(error);
             else {
                 var $ = res.$;
-                var title_link = $("title").text();
-                /*
-                $("#left_calculator").each(function() {
-                    //if ($(this).attr('title').length > 50)
-                    title_link += $(this).html();
-                });
-                */
-                response.send(title_link);
+                response.send($('#left_calculator').children().first().html());
             }
             done();
         }
     });
-    c.queue(["http://vnexpress.vn", "https://www.google.com.vn"]);
+    c.queue('http://vnexpress.net/tin-tuc/the-gioi/tu-lieu/chi-phi-phuc-vu-dai-gia-dinh-tong-thong-trump-gay-lo-ngai-3543194.html');
 });
 
 module.exports = router;

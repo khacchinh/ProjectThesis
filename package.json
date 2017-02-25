@@ -15,10 +15,12 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.16.1",
+    "child-process-promise": "^2.2.0",
     "ejs": "^2.5.5",
     "express": "^4.14.1",
     "mongojs": "^2.4.0",
     "mongoose": "^4.8.2",
+    "superspawn": "^0.1.0",
     "typescript": "^2.1.6",
     "typescript-collections": "^1.2.3",
     "typings": "^2.1.0"
