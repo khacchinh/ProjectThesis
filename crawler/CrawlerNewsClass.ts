@@ -4,20 +4,20 @@ import * as fs from 'fs';
 
 import { News } from './News';
 
-import { ProcessReduplicateNew } from './processreduplicatenew';
+import { ProcessNews } from './processnews';
 
 //var bmm = new BMMWordSegment();
 
 export class CrawlerNewsClass{
-    //private processReduplicateNew : ProcessReduplicateNew = new ProcessReduplicateNew();
+    //private processnews : processnews = new processnews();
     constructor(){
         //this.getCralweData();
     }
-    getCralweData() : Promise<boolean> {
+    getCrawlerData() : Promise<boolean> {
        let p = new Promise<boolean> (function(resolve, reject){
             var title = '';
             var count = 0;
-            var processReduplicateNew : ProcessReduplicateNew = new ProcessReduplicateNew();
+            var processNews : ProcessNews = new ProcessNews();
             var c = new Crawler({
                 maxConnections: 27,
                 callback: (error, res, done) => {
@@ -41,7 +41,7 @@ export class CrawlerNewsClass{
                             news.url = $(".box_hot_news").children("h1").children("a").attr('href');
                             news.img = $(".box_hot_news").children().first().children().children().attr('src');
                             news.sumary = $(".box_hot_news").children("h4").text().trim();
-                            processReduplicateNew.importNew(news);
+                            processNews.importNew(news);
                             $(".list_news ").children().each(function(i, element){
                                 var data = $(this);
                                 news  = new News();
@@ -51,7 +51,7 @@ export class CrawlerNewsClass{
                                 news.url = data.children().children('.thumb').children().attr('href'); 
                                 news.img = data.children().children('.thumb').children().children().attr('src');
                                 news.sumary = data.children().children('.news_lead').text().trim(); 
-                            processReduplicateNew.importNew(news);
+                                processNews.importNew(news);
                             });
                             
                         }
@@ -72,7 +72,7 @@ export class CrawlerNewsClass{
                             news.img = $('.fl.wid470').children().children().first().children().attr('src');
                             $('.fl.wid470').children().children(".mr1").children("div").children("a").empty();
                             news.sumary = $('.fl.wid470').children().children(".mr1").children("div").text().trim();
-                            processReduplicateNew.importNew(news);
+                            processNews.importNew(news);
 
                             $("#listcheckepl").children().each(function(i, element){
                                 var data = $(this);
@@ -88,7 +88,7 @@ export class CrawlerNewsClass{
                                     news.img = data.children().first().children().attr('src');
                                     data.children().last().children("div").children("a").empty();
                                     news.sumary = data.children().last().children("div").text().trim();
-                                    processReduplicateNew.importNew(news);
+                                    processNews.importNew(news);
                                 }
                             });
                         }
@@ -106,7 +106,7 @@ export class CrawlerNewsClass{
                             news.url = 'http://vietnamnet.vn' +$('.TopArticle').children().first().children().attr('href');
                             news.img = $('.TopArticle').children().first().children().children().attr('src');
                             news.sumary = $('.TopArticle').children().last().text().trim();
-                            processReduplicateNew.importNew(news);
+                            processNews.importNew(news);
 
                             //new hot
                             $('.ListHeight.m-t-10').children().each(function(i, element){
@@ -120,7 +120,7 @@ export class CrawlerNewsClass{
                                 news.url = 'http://vietnamnet.vn' + data.children().first().attr('href');
                                 news.img = data.children().first().children().attr('src');
                                 news.sumary = data.children().first().attr('title');
-                                processReduplicateNew.importNew(news);
+                                processNews.importNew(news);
                             });
 
                             $('.ListArticle').children().each(function(i, element){
@@ -134,7 +134,7 @@ export class CrawlerNewsClass{
                                 news.url = 'http://vietnamnet.vn' + data.children().first().attr('href');
                                 news.img = data.children().first().children().attr('src');
                                 news.sumary = data.children().last().text().trim();
-                                processReduplicateNew.importNew(news);
+                                processNews.importNew(news);
                             });
                         }
                         //crawler news ThanhNien
@@ -151,7 +151,7 @@ export class CrawlerNewsClass{
                             news.url = 'http://thanhnien.vn' + $('.subcate-highlight-ctn.clearfix').children().children().first().children().attr('href');
                             news.img = $('.subcate-highlight-ctn.clearfix').children().children().first().children().children().attr('src');
                             news.sumary = $('.subcate-highlight-ctn.clearfix').children().children().first().children().attr('title');
-                            processReduplicateNew.importNew(news);;
+                            processNews.importNew(news);;
 
                             //new hot
                             $('.subcate-highlight.clearfix').children('article').each(function(i, element){
@@ -165,7 +165,7 @@ export class CrawlerNewsClass{
                                 news.url = 'http://thanhnien.vn' +data.children().first().children().attr('href');
                                 news.img = data.children().first().children().children().attr('src');
                                 news.sumary = data.children().last().text().trim();
-                                processReduplicateNew.importNew(news);
+                                processNews.importNew(news);
                             });
 
                             $('.cate-list').children().each(function(i, element){
@@ -179,14 +179,18 @@ export class CrawlerNewsClass{
                                 news.url = 'http://thanhnien.vn' +data.children("figure").children().attr('href');
                                 news.img = data.children("figure").children().children().attr('src');
                                 news.sumary = data.children().last().text().trim();
-                                processReduplicateNew.importNew(news);
+                                processNews.importNew(news);
                             });
                         }               
                     }
-                    
+                    /*
                     if (count == 27){
-                       // this.processReduplicateNew.exportFile();
-                       processReduplicateNew.exportFile();
+                       processNews.exportFile();
+                        resolve(true);
+                    }
+                    */
+                    if (count == 2){
+                       processNews.exportFile();
                         resolve(true);
                     }
                 }
@@ -195,10 +199,10 @@ export class CrawlerNewsClass{
                 //thế giới
                 'http://vnexpress.net/tin-tuc/the-gioi', 
                 'http://dantri.com.vn/the-gioi.htm',
-                'http://vietnamnet.vn/vn/the-gioi/',
-                'http://thanhnien.vn/the-gioi/',
+                //'http://vietnamnet.vn/vn/the-gioi/',
+                //'http://thanhnien.vn/the-gioi/',
+                /*
                 //kinh doanh
-                
                 'http://kinhdoanh.vnexpress.net/',
                 'http://dantri.com.vn/kinh-doanh.htm',
                 'http://vietnamnet.vn/vn/kinh-doanh/',
@@ -228,7 +232,7 @@ export class CrawlerNewsClass{
                 'http://dantri.com.vn/su-kien.htm',
                 'http://vietnamnet.vn/vn/thoi-su/',
                 'http://thanhnien.vn/thoi-su/'
-                
+                */
             ]);
        });
        return p;

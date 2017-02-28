@@ -26,7 +26,6 @@ chưa
 chuyện
 có
 cô
-có thể
 có_thể
 còn
 cứ
@@ -50,7 +49,7 @@ dưới
 em
 gì
 giữa
-hầu hết
+hầu_hết
 hay
 họ
 hỏi
@@ -93,7 +92,7 @@ nói
 nơi
 nữa
 ở
-ở trên
+ở_trên
 ông
 phải
 qua
@@ -109,14 +108,14 @@ so
 số
 sự
 tại
-tất cả
+tất_cả
 tháng
 thấy
 theo
 thì
 thím
-thời gian
-thực sự
+thời_gian
+thực_sự
 thường
 tớ
 tôi

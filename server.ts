@@ -17,8 +17,8 @@ import * as getDictionary from './routes/getDictionary';
 
 //import class crawler
 import { CrawlerNewsClass  } from './crawler/crawlernewsclass';
-
-import { ProcessReduplicateNew } from './crawler/processreduplicatenew';
+//import class similar cosine
+import { ProcessSimilarNew } from './crawler/processsimilarnew';
 
 //mongo db
 import * as mongoose from 'mongoose';
@@ -49,53 +49,36 @@ app.use('/', getDictionary);
 app.use('/', crawlerData);
 
 //call class crawler
-new CrawlerNewsClass().getCralweData().then(
+console.log('Crawler dữ liệu tin tức')
+new CrawlerNewsClass().getCrawlerData().then(
     function(msg: boolean){
-        console.log(msg);
+        console.log('- tách từ dùng vntokenier')
         var child = require('child_process').spawn(
             'java', ['-jar', 'WordSegment.jar']
         );
         child.stdout.on('data', function(data) {
             if (data.toString().trim() == "ok"){
-                var dataTitle = fs.readFileSync(__dirname + '/crawler/tokenizer/data/output.txt');
-                var arrDataTitle = dataTitle.toString().split("\n");
-                for (var i = 0; i < arrDataTitle.length; i++){
-                    if (arrDataTitle[i].trim() != ''){
-                        console.log(ProcessReduplicateNew.thoisunews[i].author);
-                        console.log(ProcessReduplicateNew.thoisunews[i].category);
-                        console.log(ProcessReduplicateNew.thoisunews[i].title);
-                        console.log(arrDataTitle[i]);
-                        console.log(ProcessReduplicateNew.thoisunews[i].url);
-                        console.log(ProcessReduplicateNew.thoisunews[i].img);
-                        console.log(ProcessReduplicateNew.thoisunews[i].sumary);
-                        console.log("-----");
-                    }
-                }
                 /*
-                *
-                *
-
+                * cacular cosine here
                 */
-
-
-
+                new ProcessSimilarNew();
             }
-            
         });
 
         child.stderr.on("data", function (data) {
             console.log(data.toString());
         });
+        
     }
 )
 
 //run server test crawler
-/*
+
 app.listen(app.get('port'), function(){
     console.log('Server started on port ' + app.get('port'));
 });
-*/
 
+/*
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/my_database', function(err){
     if (err) 
@@ -107,4 +90,5 @@ mongoose.connect('mongodb://localhost/my_database', function(err){
         });
     }
 });
+*/
 

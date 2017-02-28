@@ -4,7 +4,6 @@ var path = require("path");
 var bodyParser = require("body-parser");
 //use compression
 var compression = require("compression");
-var fs = require("fs");
 //import routes for app
 var index = require("./routes/index");
 var tasks = require("./routes/tasks");
@@ -12,9 +11,8 @@ var tasks = require("./routes/tasks");
 var getDictionary = require("./routes/getDictionary");
 //import class crawler
 var crawlernewsclass_1 = require("./crawler/crawlernewsclass");
-var processreduplicatenew_1 = require("./crawler/processreduplicatenew");
-//mongo db
-var mongoose = require("mongoose");
+//import class similar cosine
+var processsimilarnew_1 = require("./crawler/processsimilarnew");
 var crawlerData = require("./routes/crawlerData");
 var app = express();
 app.use(compression());
@@ -33,25 +31,16 @@ app.use('/', getDictionary);
 //use clawer
 app.use('/', crawlerData);
 //call class crawler
-new crawlernewsclass_1.CrawlerNewsClass().getCralweData().then(function (msg) {
-    console.log(msg);
+console.log('Crawler dữ liệu tin tức');
+new crawlernewsclass_1.CrawlerNewsClass().getCrawlerData().then(function (msg) {
+    console.log('- tách từ dùng vntokenier');
     var child = require('child_process').spawn('java', ['-jar', 'WordSegment.jar']);
     child.stdout.on('data', function (data) {
         if (data.toString().trim() == "ok") {
-            var dataTitle = fs.readFileSync(__dirname + '/crawler/tokenizer/data/output.txt');
-            var arrDataTitle = dataTitle.toString().split("\n");
-            for (var i = 0; i < arrDataTitle.length; i++) {
-                if (arrDataTitle[i].trim() != '') {
-                    console.log(processreduplicatenew_1.ProcessReduplicateNew.thoisunews[i].author);
-                    console.log(processreduplicatenew_1.ProcessReduplicateNew.thoisunews[i].category);
-                    console.log(processreduplicatenew_1.ProcessReduplicateNew.thoisunews[i].title);
-                    console.log(arrDataTitle[i]);
-                    console.log(processreduplicatenew_1.ProcessReduplicateNew.thoisunews[i].url);
-                    console.log(processreduplicatenew_1.ProcessReduplicateNew.thoisunews[i].img);
-                    console.log(processreduplicatenew_1.ProcessReduplicateNew.thoisunews[i].sumary);
-                    console.log("-----");
-                }
-            }
+            /*
+            * cacular cosine here
+            */
+            new processsimilarnew_1.ProcessSimilarNew();
         }
     });
     child.stderr.on("data", function (data) {
@@ -59,19 +48,19 @@ new crawlernewsclass_1.CrawlerNewsClass().getCralweData().then(function (msg) {
     });
 });
 //run server test crawler
-/*
-app.listen(app.get('port'), function(){
+app.listen(app.get('port'), function () {
     console.log('Server started on port ' + app.get('port'));
 });
-*/
+/*
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/my_database', function (err) {
+mongoose.connect('mongodb://localhost/my_database', function(err){
     if (err)
         console.log("Can\'t connect to db!!");
-    else {
+    else{
         console.log("Connect to db:  mongodb://localhost/my_database");
-        app.listen(app.get('port'), function () {
+        app.listen(app.get('port'), function(){
             console.log('Server started on port ' + app.get('port'));
         });
     }
 });
+*/
