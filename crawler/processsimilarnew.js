@@ -25,10 +25,12 @@ var ProcessSimilarNew = (function () {
         //process
         console.log('- remove stop word and save title segment');
         for (var i = 0; i < processnews_1.ProcessNews.arrNews.length; i++) {
+            //console.log(arrDataTitle[i]);
             this.funcDivideNews(processnews_1.ProcessNews.arrNews[i], arrDataTitle[i]);
         }
     };
     ProcessSimilarNew.prototype.funcDivideNews = function (news, title_segment) {
+        title_segment = title_segment.toLowerCase();
         if (news.category.toLowerCase() == 'thế giới') {
             this.funcImportNewByCategory(news, this.thoigioinews, title_segment);
         }
@@ -99,30 +101,33 @@ var ProcessSimilarNew = (function () {
         //create vector of item new
         var arr_vector_item_new = Array();
         arr_union_unique.forEach(function (element) {
-            var tf_idf_word = _this.funcTfWord(arr_title_segment_new, element) *
+            var tf_idf_word_new = _this.funcTfWord(arr_title_segment_new, element) *
                 _this.funcIdfWord(arr_title_segment_new, arr_title_segment_old, element);
-            arr_vector_item_new.push(tf_idf_word);
+            arr_vector_item_new.push(tf_idf_word_new);
         });
         //create vector of item old
         var arr_vector_item_old = Array();
         arr_union_unique.forEach(function (element) {
-            var tf_idf_word = _this.funcTfWord(arr_title_segment_old, element) *
+            var tf_idf_word_old = _this.funcTfWord(arr_title_segment_old, element) *
                 _this.funcIdfWord(arr_title_segment_new, arr_title_segment_old, element);
-            arr_vector_item_old.push(tf_idf_word);
+            arr_vector_item_old.push(tf_idf_word_old);
         });
         var value_cosine = this.funcCosineSimilar(arr_vector_item_new, arr_vector_item_old);
-         if (value_cosine > 0) {
-        console.log(arr_title_segment_new.join(" "));
-        console.log(arr_title_segment_old.join(" "));
-        console.log(arr_union_unique.join(" "));
-        console.log('-');
-        console.log(arr_vector_item_new.join("/"));
-        console.log('-');
-        console.log(arr_vector_item_old.join("/"));
-        console.log("Cosine: " + value_cosine);
-        console.log('-----------');
-         }
-        return value_cosine;
+        if (value_cosine > 0.3) {
+            console.log(arr_title_segment_new.join(" "));
+            console.log('-');
+            console.log(arr_title_segment_old.join(" "));
+            console.log('-');
+            console.log(arr_union_unique.join(" "));
+            console.log('-');
+            console.log(arr_vector_item_new.join("/"));
+            console.log('-');
+            console.log(arr_vector_item_old.join("/"));
+            console.log("Cosine: " + value_cosine);
+            console.log('-----------');
+        }
+        //
+        return 0;
     };
     /*
     * cacular cosine
@@ -136,7 +141,7 @@ var ProcessSimilarNew = (function () {
             value_new += vector_new[i] * vector_new[i];
             value_old += vector_old[i] * vector_old[i];
         }
-        return value_new_old / (Math.sqrt(value_new) + Math.sqrt(value_old));
+        return value_new_old / (Math.sqrt(value_new) * Math.sqrt(value_old));
     };
     /*
     * cacular tf word

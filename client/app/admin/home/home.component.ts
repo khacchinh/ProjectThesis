@@ -8,7 +8,7 @@ import { UserService } from '../../_services/index';
     templateUrl: 'home.component.html'
 })
 
-export class HomeComponent implements OnInit {
+export class AdminHomeComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
 

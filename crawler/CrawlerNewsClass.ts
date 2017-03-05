@@ -189,7 +189,7 @@ export class CrawlerNewsClass{
                         resolve(true);
                     }
                     */
-                    if (count == 2){
+                    if (count == 27){
                        processNews.exportFile();
                         resolve(true);
                     }
@@ -197,42 +197,56 @@ export class CrawlerNewsClass{
             });
             c.queue([
                 //thế giới
+                
                 'http://vnexpress.net/tin-tuc/the-gioi', 
                 'http://dantri.com.vn/the-gioi.htm',
-                //'http://vietnamnet.vn/vn/the-gioi/',
-                //'http://thanhnien.vn/the-gioi/',
-                /*
+                'http://vietnamnet.vn/vn/the-gioi/',
+                'http://thanhnien.vn/the-gioi/',
+                
+                
                 //kinh doanh
+                
                 'http://kinhdoanh.vnexpress.net/',
                 'http://dantri.com.vn/kinh-doanh.htm',
                 'http://vietnamnet.vn/vn/kinh-doanh/',
                 'http://thanhnien.vn/kinh-doanh/',
+                
                 //thể thao
+                
                 'http://thethao.vnexpress.net/',
                 'http://dantri.com.vn/the-thao.htm',
                 'http://vietnamnet.vn/vn/the-thao/',
                 'http://thethao.thanhnien.vn/',
+                
+                
                 //công nghệ
+                
                 'http://sohoa.vnexpress.net/',
                 'http://dantri.com.vn/suc-manh-so.htm',
                 'http://vietnamnet.vn/vn/cong-nghe/',
                 'http://thanhnien.vn/cong-nghe/',
+                
                 //sức khỏe
+                
                 'http://suckhoe.vnexpress.net/',
                 'http://dantri.com.vn/suc-khoe.htm',
                 'http://vietnamnet.vn/vn/suc-khoe/',
                 'http://thanhnien.vn/suc-khoe/',
+                
+                
                 //pháp luật
                 'http://vnexpress.net/tin-tuc/phap-luat',
                 'http://dantri.com.vn/phap-luat.htm',
                 'http://vietnamnet.vn/vn/phap-luat/',
-                '',
+                
+                
                 //thời sự
+                
                 'http://vnexpress.net/tin-tuc/thoi-su',
                 'http://dantri.com.vn/su-kien.htm',
                 'http://vietnamnet.vn/vn/thoi-su/',
                 'http://thanhnien.vn/thoi-su/'
-                */
+                
             ]);
        });
        return p;

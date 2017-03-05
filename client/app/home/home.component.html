@@ -1,20 +1,263 @@
-<form action="" class="well" (submit)="addTask($event)">
-    <div class="form-group">
-        <input type="text" [(ngModel)] = "title" name="title" class="form-control" placeholder="Add Tasks...">
-    </div>
-</form>
 
-<div class="task-list">
-    <div *ngFor = "let task of tasks">
-        <div class="col-md-1">
-            <input type="checkbox" [checked] = "task.isDone" (click) = updateStatus(task)>
-        </div>
-        <div class="col-md-7">
-            {{task.title}}
-        </div>
-        <div class="col-md-4">
-            <input type="button" (click) = "deleteTask(task._id)" value="Delete" class="btn btn-danger">
-        </div>
-        <br><br>
-    </div>
-</div>
+                <!-- Start Main Content -->
+                <div class="col-md-8">
+        
+                    <carousel>
+                        <slide>
+                            <img src="img/1.jpg" alt="First slide">
+                            <div class="carousel-caption">
+                            <h3>First slide label</h3>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            </div>
+                        </slide>
+                        <slide>
+                            <img src="img/2.jpg" alt="Second slide">
+                            <div class="carousel-caption">
+                            <h3>Second slide label</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </slide>
+                        <slide>
+                            <img src="img/3.jpg" alt="Third slide">
+                            <div class="carousel-caption">
+                            <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            </div>
+                        </slide>
+                    </carousel>
+
+                    <hr/>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="widget-title">
+                                <h3>Thời sự</h3>
+                            </div>
+
+                            <div class="featured-news">
+                                <img alt="" src="img/politics.jpg" class="img-thumbnail"/>
+                                <a href="single.html"><h4>Up nominated one of the best movies to be created by disney</h4></a>
+                                <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis</p>
+                            </div>
+
+                            <div class="recent-news">
+                                <div class="row item-news">
+                                    <div class="col-sm-4">
+                                        <a href="single.html" ><img alt="" src="img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                    </div>
+                                </div> 
+                                <div class="clear-fix"></div>
+
+                                
+                            </div>
+                        </div>
+
+                       <div class="col-md-6">
+                            <div class="widget-title">
+                                <h3>Thế giới</h3>
+                            </div>
+
+                            <div class="featured-news">
+                                <img alt="" src="img/politics.jpg" class="img-thumbnail"/>
+                                <a href="single.html"><h4>Up nominated one of the best movies to be created by disney</h4></a>
+                                <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis</p>
+                            </div>
+
+                            <div class="recent-news">
+                                <div class="row item-news">
+                                    <div class="col-sm-4">
+                                        <a href="single.html" ><img alt="" src="img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                    </div>
+                                </div> 
+                                <div class="clear-fix"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="widget-title">
+                                <h3>Phát luật</h3>
+                            </div>
+
+                            <div class="featured-news">
+                                <img alt="" src="img/politics.jpg" class="img-thumbnail"/>
+                                <a href="single.html"><h4>Up nominated one of the best movies to be created by disney</h4></a>
+                                <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis</p>
+                            </div>
+
+                            <div class="recent-news">
+                                <div class="row item-news">
+                                    <div class="col-sm-4">
+                                        <a href="single.html" ><img alt="" src="img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                    </div>
+                                </div> 
+                                <div class="clear-fix"></div>
+
+                                
+                            </div>
+                        </div>
+
+                       <div class="col-md-6">
+                            <div class="widget-title">
+                                <h3>Kinh doanh</h3>
+                            </div>
+
+                            <div class="featured-news">
+                                <img alt="" src="img/politics.jpg" class="img-thumbnail"/>
+                                <a href="single.html"><h4>Up nominated one of the best movies to be created by disney</h4></a>
+                                <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis</p>
+                            </div>
+
+                            <div class="recent-news">
+                                <div class="row item-news">
+                                    <div class="col-sm-4">
+                                        <a href="single.html" ><img alt="" src="img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                    </div>
+                                </div> 
+                                <div class="clear-fix"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="widget-title">
+                            <h3>Công nghệ</h3>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="col-md-6 img-thumbnail">
+                                <img src="img/370x255-1.jpg" class="img-responsive"/>
+                                <div class="caption">
+                                    <h2><a href="single.html">Sport Title</a></h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit integer id nibh ac est.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row item-news">
+                                    <div class="col-sm-4">
+                                        <a href="single.html" ><img alt="" src="img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                    </div>
+                                </div> 
+                                <div class="clear-fix"></div>
+
+                                <div class="row item-news">
+                                    <div class="col-sm-4">
+                                        <a href="single.html" ><img alt="" src="img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                    </div>
+                                </div> 
+                                <div class="clear-fix"></div>   
+
+                                <div class="row item-news">
+                                    <div class="col-sm-4">
+                                        <a href="single.html" ><img alt="" src="img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                    </div>
+                                </div> 
+                                <div class="clear-fix"></div>
+
+                                
+
+                            </div>
+                         </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="widget-title">
+                                <h3>Thể thao</h3>
+                            </div>
+
+                            <div class="featured-news">
+                                <img alt="" src="img/politics.jpg" class="img-thumbnail"/>
+                                <a href="single.html"><h4>Up nominated one of the best movies to be created by disney</h4></a>
+                                <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis</p>
+                            </div>
+
+                            <div class="recent-news">
+                                <div class="row item-news">
+                                    <div class="col-sm-4">
+                                        <a href="single.html" ><img alt="" src="img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                    </div>
+                                </div> 
+                                <div class="clear-fix"></div>
+
+                                
+                            </div>
+                        </div>
+
+                       <div class="col-md-6">
+                            <div class="widget-title">
+                                <h3>Sức khỏe</h3>
+                            </div>
+
+                            <div class="featured-news">
+                                <img alt="" src="img/politics.jpg" class="img-thumbnail"/>
+                                <a href="single.html"><h4>Up nominated one of the best movies to be created by disney</h4></a>
+                                <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis</p>
+                            </div>
+
+                            <div class="recent-news">
+                                <div class="row item-news">
+                                    <div class="col-sm-4">
+                                        <a href="single.html" ><img alt="" src="img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                    </div>
+                                </div> 
+                                <div class="clear-fix"></div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+                <br/>
+                </div>

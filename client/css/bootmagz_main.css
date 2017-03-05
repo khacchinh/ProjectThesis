@@ -1,0 +1,500 @@
+/* 
+    Document   : main
+    Created on : Jun 24, 2012, 1:02:18 AM
+    Author     : gieart
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body{
+    background: none repeat scroll 0 0 #EDEEEF;
+    /*    background-image: url("../img/bg-body.png");*/
+
+}
+
+.main{
+    background-color: #FFF;
+    border: 1px solid #E0E0E0;
+    padding: 15px;
+}
+
+.top-menu{
+    border-bottom: #E0E0E0 dotted 1px;
+    margin-top: -10px;
+    height: 40px;
+}
+
+.header{
+    margin-top: 20px;
+    height: 90px;
+}
+
+.logo{
+
+    margin-left: 0;
+
+}
+.logo h1{
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #99BB00;
+}
+
+.slogan{
+    margin-left: 2px;
+    color: #999;
+}
+
+.ads-top{
+    width:610px;
+    margin-right: 0;
+}
+
+.socmed-box{
+    width:450px;
+}
+
+ul.social_media { position:relative; overflow:hidden; margin:0px 0px 5px; padding:0px; list-style:none }
+ul.social_media li { margin:0px 3px 3px 0px; width:32px; height:32px; float: left }
+ul.social_media li a { width:32px; height:32px; display:block; padding:0px; background:url(../img/social_media_icon.png) 0px 0px no-repeat; opacity: 0.3 }
+ul.social_media li a:hover { width:32px; height:32px; display:block; padding:0px; background:url(../img/social_media_icon.png) 0px 0px no-repeat; opacity: 1}
+ul.social_media li a.twitter { background-position: 0px 0px }
+ul.social_media li a.facebook { background-position: -40px 0px }
+ul.social_media li a.in { background-position: -80px 0px }
+ul.social_media li a.gplus { background-position: -120px 0px }
+ul.social_media li a.dribble { background-position: -160px 0px }
+ul.social_media li a.forrst { background-position: -200px 0px }
+ul.social_media li a.flickr { background-position: -240px 0px }
+ul.social_media li a.deviant { background-position: -280px 0px }
+ul.social_media li a.blogger { background-position: -320px 0px }
+ul.social_media li a.del { background-position: -360px 0px }
+ul.social_media li a.vimeo { background-position: -400px 0px }
+ul.social_media li a.utube { background-position: -440px 0px }
+ul.social_media li a.rss { background-position: -480px 0px }
+ul.social_media li a.pint { background-position: -520px 0px }
+ul.social_media li a.skype { background-position: -560px 0px }
+ul.social_media li a.yahoo { background-position: -600px 0px }
+ul.social_media li a.netvibes { background-position: -640px 0px }
+
+/* Content */
+.left-content{
+    width:290px;
+    float: left;
+}
+
+.right-content{
+    width:290px;
+    float: right;
+}
+
+.big-image-content img{
+    margin-top:12px;
+    height:255px;
+
+}
+
+.big-image-content{
+    position: relative;
+}
+
+
+.inner-news-title {
+    background: url("../img/bg-slider.png") repeat scroll left top transparent;
+    color: #FFFFFF;
+    height: 75px;
+    left: 0;
+    overflow: hidden;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    margin-top: 170px;
+}
+
+.inner-news-title a{
+    color: #99AA00;
+}
+
+.inner-news-title a:hover{
+    color: #99CC33;
+}
+
+.fixed {
+    min-height: 1%;
+}
+
+.fixed {
+    display: block;
+}
+
+.fixed:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/*-----------------------*/
+
+/* Right Sidebar*/
+.right-sidebar, .box-widget{
+    width:290px;
+}
+
+.sidebar-left{
+    width: 120px;
+    float: left;
+    margin-left:0;
+}
+
+.sidebar-right{
+    width: 120px;
+    float: right;
+    margin-left:0;
+    margin-right:30px;
+}
+
+.sidebar-left ul, .sidebar-right ul{
+    margin-left : 10px;
+}
+
+.sidebar-left li, .sidebar-right li{
+    height : 25px;
+    border-bottom : #999 1px dotted;
+    margin-bottom: 5px;
+}
+
+.search-form{
+    width:230px;
+}
+
+.fb-like-box{
+    margin-left:5px;
+}
+
+
+
+
+.tab-box{
+    width: 290px;
+}
+
+.tags{
+    list-style: none outside;
+}
+
+.tags li{
+    margin-left: 5px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.tags a:hover{
+    text-decoration: underline;
+}
+
+.popular .comments{
+    width: 290px;
+}
+.latest-photos {
+    margin-left:-40px;
+}
+.latest-photos img{
+    opacity: 0.5;
+    border: #ccc 5px solid;
+}
+
+.latest-photos img:hover{
+    opacity: 1;
+    border: #99AA00 5px solid;
+}
+/*---------------*/
+
+/* Widget */
+
+.widget {
+    float:left;
+    margin:0 20px 25px 0;
+}
+.widget-title {
+    background:url('../img/widget_title_bg3.png') repeat-x left bottom;
+    height:17px;
+    margin-bottom:20px;
+}
+.widget-title h3 {
+    /*    font-family:'BebasNeueRegular', Arial, sans-serif;*/
+    color:#99AA00;
+    font-size:16px;
+    font-weight:400;
+    text-transform:uppercase;
+    margin-left:0;
+    margin-bottom:0;
+    padding:0 7px;
+    background-color:#fff;
+    display:inline-block;
+    line-height:23px;
+    zoom:1; /* IE7 fix */
+
+}
+.widget-title h3 a {
+    color:#666;
+}
+.widget-more {
+    margin-top:5px;
+}
+
+/*----------------*/
+
+/* List News */
+
+.recent-news{
+    margin-left: 0;
+}
+
+.item-news{
+    border-bottom: #999 1px dotted;
+    height: 80px;
+    margin-top: 12px;
+}
+
+.item-news img{
+    float: left;
+    margin-right: 5px;
+    border: #ccc 4px solid;
+    opacity: 0.5;
+}
+
+.item-news img:hover{
+    opacity: 1;
+}
+
+.date{
+    color: #999;
+    font-size: 11px;
+}
+
+.featured-news{
+    margin-left: 0;
+}
+
+.featured-news img{
+
+    border: #ccc 1px solid;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+
+.post-count{
+    color: #999;
+}
+
+.rounded {
+    border-radius: 3px 3px 3px 3px;
+}
+
+.featured-category{
+    background: none repeat scroll 0 0 #1F481F;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    padding: 10px;
+    color: #ccc;
+}
+
+.featured-category img{
+    float: left;
+    margin-right: 10px;
+}
+
+.featured-category img:hover{
+    opacity: 0.5;
+}
+
+.featured-category a{
+    color: #DDD;
+}
+
+.featured-category a:hover{
+    color: #99CC00;
+}
+
+
+.category-item img{
+    float: left;
+    margin-right: 10px;
+    margin-top: 3px;
+    border: #ccc 4px solid;
+    opacity: 0.5;    
+}
+
+.category-item img:hover{
+    opacity: 1;    
+}
+
+.single img{
+    float: left;
+    margin-right: 10px;
+    border: #ccc 1px solid;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+
+.related_posts ul {
+    list-style: none;
+    margin: 0;
+}
+.related_posts > ul > li {
+    padding: 8px 8px 8px 0px;
+}
+.related_posts > ul > li + li {
+    border-top: 1px solid #EEEEEE;
+}
+.related_posts > ul > li > a {
+    text-decoration: none;
+}
+.related_posts > ul > li > a:hover{
+    text-decoration: none;
+    background: none;
+}
+.related_posts > ul > li ul {
+    display: none;
+}
+.related_posts > ul > li a.active {
+    font-weight: bold;
+}
+.related_posts > ul > li a.active + ul {
+    display: block;
+}
+.related_posts > ul > li ul > li {
+    padding: 5px 5px 0px 10px;
+}
+.related_posts > ul > li ul > li > a {
+    text-decoration: none;
+    display: block;
+}
+.related_posts > ul > li ul > li > a.active {
+    font-weight: bold;
+}
+
+.author{
+    width:290px;
+}
+
+.author img{
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.blog img{
+    border: #ccc 3px solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    opacity: 0.75;
+}
+
+.blog  img:hover{
+    opacity: 1;
+    border: #999 3px solid;
+}
+/*-------------*/
+
+/* Page */
+
+/*---------------*/
+
+/*Galleries*/
+.galleries img{
+    opacity: 0.6;
+}
+.galleries img:hover{
+    opacity: 1;
+}
+
+.photo-desc{
+    margin-top: 10px;
+    text-align: left;
+    
+}
+
+.gallery-item{
+    width:295px;
+}
+/*--------------*/
+
+/* Footer */
+
+.latest-tweets{
+    margin-left: 20px;
+
+}
+
+.item-tweet{
+    border-bottom: #999 1px dotted;
+    margin-bottom: 10px;
+}
+
+
+.blogroll{
+    width: 220px;
+    margin-left: 20px;
+}
+
+.tweet-date{
+    font-size: 11px;
+}
+
+.contact{
+
+    width: 220px;
+    margin-left:10px;
+}
+
+.contact h1{
+    color: #99AA00;
+}
+
+.about{
+
+    margin-left:35px;
+
+}
+
+#footer{
+    background-color: #333;
+    margin-right:-15px;
+    margin-left:-15px;
+    margin-bottom:-25px;
+    padding: 10px 0 10px 10px;
+    color: #BBB;
+}
+
+#footer a{
+    color: #99BB00;
+}
+.footer-photos{
+    width: 220px;
+}
+
+.footer-photos img{
+    opacity: 0.5;
+    border: #ccc 5px solid;
+}
+
+.footer-photos img:hover{
+    opacity: 1;
+    border: #99AA00 5px solid;
+}
+
+
+.copyright-box{
+    margin-top: 30px;
+    margin-right: -25px;
+    text-align: right;
+   
+}
+
+.powered-by{
+    font-size: 11px;
+
+}

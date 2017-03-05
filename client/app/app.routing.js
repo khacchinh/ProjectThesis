@@ -13,12 +13,14 @@ var index_3 = require("./register/index");
 var index_4 = require("./_guards/index");
 var home_component_1 = require("./home/home.component");
 var index_5 = require("./wordsegment/index");
-var index_6 = require("./testcrawler/index");
+var index_6 = require("./category/index");
+var index_7 = require("./singlepage/index");
 var appRoutes = [
-    { path: '', component: home_component_1.TasksComponent },
+    { path: '', component: home_component_1.HomeComponent },
     { path: 'wordsegment', component: index_5.WordSegmentComponent },
-    { path: 'clawer_news', component: index_6.TestCrawlerComponent },
-    { path: 'admin', component: index_1.HomeComponent, canActivate: [index_4.AuthGuard] },
+    { path: 'category', component: index_6.CategoryComponent },
+    { path: 'single', component: index_7.SingleComponent },
+    { path: 'admin', component: index_1.AdminHomeComponent, canActivate: [index_4.AuthGuard] },
     { path: 'login', component: index_2.LoginComponent },
     { path: 'register', component: index_3.RegisterComponent },
     // otherwise redirect to home

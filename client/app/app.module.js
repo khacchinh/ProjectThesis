@@ -15,6 +15,8 @@ var testing_1 = require("@angular/http/testing");
 var http_2 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var app_routing_1 = require("./app.routing");
+//bootstrap
+var ng2_bootstrap_1 = require("ng2-bootstrap");
 var index_2 = require("./_directives/index");
 var index_3 = require("./_guards/index");
 var index_4 = require("./_services/index");
@@ -22,8 +24,17 @@ var index_5 = require("./admin/home/index");
 var index_6 = require("./login/index");
 var index_7 = require("./register/index");
 var index_8 = require("./home/index");
-var index_9 = require("./wordsegment/index");
-var index_10 = require("./testcrawler/index");
+//demo TaskS
+var index_9 = require("./tasks_demo/index");
+var index_10 = require("./wordsegment/index");
+//category news
+var index_11 = require("./category/index");
+//single page item news
+var index_12 = require("./singlepage/index");
+//header and footer
+var index_13 = require("./header/index");
+var index_14 = require("./footer/index");
+var index_15 = require("./rightbar/index");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -35,17 +46,27 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            app_routing_1.AppRoutingModule
+            app_routing_1.AppRoutingModule,
+            ng2_bootstrap_1.CarouselModule.forRoot(),
+            ng2_bootstrap_1.TabsModule.forRoot(),
+            ng2_bootstrap_1.PaginationModule.forRoot()
         ],
         declarations: [
             app_component_1.AppComponent,
             index_2.AlertComponent,
-            index_5.HomeComponent,
+            index_8.HomeComponent,
             index_6.LoginComponent,
             index_7.RegisterComponent,
-            index_8.TasksComponent,
-            index_10.TestCrawlerComponent,
-            index_9.WordSegmentComponent
+            index_8.HomeComponent,
+            index_11.CategoryComponent,
+            index_12.SingleComponent,
+            index_10.WordSegmentComponent,
+            index_13.HeaderComponent,
+            index_14.FooterComponent,
+            index_15.RightBarComponent,
+            index_9.TasksComponent,
+            // admin
+            index_5.AdminHomeComponent
         ],
         providers: [
             index_3.AuthGuard,

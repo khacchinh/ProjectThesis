@@ -49,18 +49,18 @@ app.use('/', getDictionary);
 app.use('/', crawlerData);
 
 //call class crawler
+/*
 console.log('Crawler dữ liệu tin tức')
 new CrawlerNewsClass().getCrawlerData().then(
     function(msg: boolean){
         console.log('- tách từ dùng vntokenier')
+        
         var child = require('child_process').spawn(
             'java', ['-jar', 'WordSegment.jar']
         );
         child.stdout.on('data', function(data) {
             if (data.toString().trim() == "ok"){
-                /*
-                * cacular cosine here
-                */
+            
                 new ProcessSimilarNew();
             }
         });
@@ -69,16 +69,34 @@ new CrawlerNewsClass().getCrawlerData().then(
             console.log(data.toString());
         });
         
+        /*
+        var child = require('child_process').spawn(
+            'java', ['-jar', 'uetsegmenter.jar', '-r', 'seg', '-m', 'demo', '-i', 'crawler/tokenizer/data/input.txt', '-o','crawler/tokenizer/data/output.txt' ]
+        );
+        child.stdout.on('data', function(data) {
+            console.log(data.toString());
+            if (data.toString().length > 30){
+                new ProcessSimilarNew();
+            }
+        });
+
+        child.stderr.on("data", function (data) {
+            console.log(data.toString());
+        });
+        
+        //run server test crawler
+
+        app.listen(app.get('port'), function(){
+            console.log('Server started on port ' + app.get('port'));
+        });
+        
     }
 )
+*/
 
-//run server test crawler
 
-app.listen(app.get('port'), function(){
-    console.log('Server started on port ' + app.get('port'));
-});
 
-/*
+
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/my_database', function(err){
     if (err) 
@@ -90,5 +108,5 @@ mongoose.connect('mongodb://localhost/my_database', function(err){
         });
     }
 });
-*/
+
 

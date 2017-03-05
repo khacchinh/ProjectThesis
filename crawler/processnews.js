@@ -49,7 +49,7 @@ var ProcessNews = (function () {
         var dataTitle = '';
         console.log('- loại bỏ dấu câu');
         ProcessNews.arrNews.forEach(function (element) {
-            dataTitle += element.title.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'?‘’“”"…]/g, "") + "\n";
+            dataTitle += element.title.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'?‘’“”"…\n\r]/g, " ") + "\n";
         });
         fs.writeFileSync(path.join(__dirname + '/tokenizer/data/input.txt'), dataTitle);
         /*

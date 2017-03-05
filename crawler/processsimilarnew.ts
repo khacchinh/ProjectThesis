@@ -31,11 +31,13 @@ export class ProcessSimilarNew{
         //process
         console.log('- remove stop word and save title segment');
         for (var i = 0; i < ProcessNews.arrNews.length; i++){
+            //console.log(arrDataTitle[i]);
             this.funcDivideNews(ProcessNews.arrNews[i], arrDataTitle[i]);
         }
     }
 
     funcDivideNews(news: News, title_segment: string){
+        title_segment = title_segment.toLowerCase();
         if (news.category.toLowerCase() == 'thế giới'){
             this.funcImportNewByCategory(news, this.thoigioinews, title_segment);
         }
@@ -108,22 +110,24 @@ export class ProcessSimilarNew{
         //create vector of item new
         var arr_vector_item_new = Array<number>();
         arr_union_unique.forEach(element => {
-            var tf_idf_word = this.funcTfWord(arr_title_segment_new, element) * 
+            var tf_idf_word_new = this.funcTfWord(arr_title_segment_new, element) * 
                               this.funcIdfWord(arr_title_segment_new, arr_title_segment_old, element);
-            arr_vector_item_new.push(tf_idf_word);
+            arr_vector_item_new.push(tf_idf_word_new);
         });
 
         //create vector of item old
         var arr_vector_item_old = Array<number>();
         arr_union_unique.forEach(element => {
-            var tf_idf_word = this.funcTfWord(arr_title_segment_old, element) * 
+            var tf_idf_word_old = this.funcTfWord(arr_title_segment_old, element) * 
                               this.funcIdfWord(arr_title_segment_new, arr_title_segment_old, element);
-            arr_vector_item_old.push(tf_idf_word);
+            arr_vector_item_old.push(tf_idf_word_old);
         });
         var value_cosine = this.funcCosineSimilar(arr_vector_item_new, arr_vector_item_old);
-       // if (value_cosine > 0) {
+        if (value_cosine > 0.3) {
         console.log(arr_title_segment_new.join(" "));
+        console.log('-');
         console.log(arr_title_segment_old.join(" "));
+        console.log('-');
         console.log(arr_union_unique.join(" "));
         console.log('-');
         console.log(arr_vector_item_new.join("/"));
@@ -131,7 +135,7 @@ export class ProcessSimilarNew{
         console.log(arr_vector_item_old.join("/"));
         console.log("Cosine: " + value_cosine);
         console.log('-----------');
-        
+        }
         //
         return 0;
     }
@@ -150,7 +154,7 @@ export class ProcessSimilarNew{
             value_old += vector_old[i]*vector_old[i];
         }
 
-        return value_new_old / (Math.sqrt(value_new) + Math.sqrt(value_old));
+        return value_new_old / (Math.sqrt(value_new) * Math.sqrt(value_old));
     }
 
     /*

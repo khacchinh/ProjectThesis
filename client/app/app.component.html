@@ -1,26 +1,11 @@
-﻿<!-- main app container -->
-<div class="jumbotron">
-    <div class="container">
-        <div class="col-sm-8 col-sm-offset-2">
-            <h1>{{title}}</h1>
-            <nav>
-                <a routerLink="/" routerLinkActive="active" class="btn btn-success">Home</a>
-                <a routerLink="/wordsegment" routerLinkActive="active" class="btn btn-success">Word Segment</a>
-                <a routerLink="/clawer_news" routerLinkActive="active" class="btn btn-success">Clawer News</a>
-            </nav>
-            <br><br><br>
-            <router-outlet></router-outlet>
-        </div>
+﻿<div class="container main">
+    <!-- Header -->
+    <app-header></app-header>
+
+    <div class="row">
+        <router-outlet></router-outlet>
+        <app-rightbar></app-rightbar>
     </div>
-</div>
-
-
-<!-- credits -->
-<div class="text-center">
-    <p>
-        <a href="http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial" target="_top">Angular 2 User Registration and Login Example & Tutorial</a>
-    </p>
-    <p>
-        <a href="http://jasonwatmore.com" target="_top">JasonWatmore.com</a>
-    </p>
+    
+    <app-footer></app-footer>
 </div>
