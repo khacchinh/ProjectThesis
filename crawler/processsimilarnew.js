@@ -1,6 +1,7 @@
 "use strict";
 var fs = require("fs");
 var processnews_1 = require("./processnews");
+var NewItem_1 = require("../model/NewItem");
 var ProcessSimilarNew = (function () {
     function ProcessSimilarNew() {
         this.thoigioinews = new Array();
@@ -65,6 +66,7 @@ var ProcessSimilarNew = (function () {
         if (arrNew.length == 0) {
             news.arr_title_segment = this.funcArrayNonStopWord(title_segment);
             arrNew.push(news);
+            this.funcSaveNew(news);
             return;
         }
         else {
@@ -76,7 +78,7 @@ var ProcessSimilarNew = (function () {
                     // call function cacular similar cosinse here
                     similar = _this.funcProcessCacularSimilar(title_segment, old_news.arr_title_segment);
                     //
-                    if (similar > 0.7)
+                    if (similar > 0.25)
                         return;
                     count_same_author++;
                 }
@@ -84,8 +86,23 @@ var ProcessSimilarNew = (function () {
             if (count_same_author == arrNew.length) {
                 news.arr_title_segment = this.funcArrayNonStopWord(title_segment);
                 arrNew.push(news);
+                /*
+                *
+                * save to db
+                */
+                this.funcSaveNew(news);
             }
         }
+    };
+    /*
+    * save new to db
+    * author: KhacChinhDev
+    *
+    */
+    ProcessSimilarNew.prototype.funcSaveNew = function (news) {
+        NewItem_1.NewItem.saveNewItem(news).then(function (msg) {
+            //  console.log(msg);
+        });
     };
     /*
     * cacular similar between two string
@@ -126,8 +143,8 @@ var ProcessSimilarNew = (function () {
             console.log("Cosine: " + value_cosine);
             console.log('-----------');
         }
-        //
-        return 0;
+        //  
+        return value_cosine;
     };
     /*
     * cacular cosine

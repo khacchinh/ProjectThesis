@@ -7,6 +7,7 @@ var compression = require("compression");
 //import routes for app
 var index = require("./routes/index");
 var tasks = require("./routes/tasks");
+var news = require("./routes/news");
 //send dictionary to client
 var getDictionary = require("./routes/getDictionary");
 //mongo db
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'asset')));
 //set routes
 app.use('/', index);
 app.use('/api/', tasks);
+app.use('/api/', news);
 //call function send dictionary
 app.use('/', getDictionary);
 //use clawer
@@ -72,6 +74,7 @@ new CrawlerNewsClass().getCrawlerData().then(
         
     }
 )
+
 */
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/my_database', function (err) {

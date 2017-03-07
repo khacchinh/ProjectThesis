@@ -34,6 +34,7 @@ var CrawlerNewsClass = (function () {
                             news.title = $(".box_hot_news").children("h1").text().trim();
                             news.url = $(".box_hot_news").children("h1").children("a").attr('href');
                             news.img = $(".box_hot_news").children().first().children().children().attr('src');
+                            news.type_img = true;
                             news.sumary = $(".box_hot_news").children("h4").text().trim();
                             processNews.importNew(news);
                             $(".list_news ").children().each(function (i, element) {
@@ -152,12 +153,6 @@ var CrawlerNewsClass = (function () {
                             });
                         }
                     }
-                    /*
-                    if (count == 27){
-                       processNews.exportFile();
-                        resolve(true);
-                    }
-                    */
                     if (count == 27) {
                         processNews.exportFile();
                         resolve(true);

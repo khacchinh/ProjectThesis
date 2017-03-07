@@ -14,7 +14,7 @@ import { SingleComponent } from './singlepage/index';
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'wordsegment', component: WordSegmentComponent },
-    { path: 'category', component: CategoryComponent },
+    { path: 'category/:cate', component: CategoryComponent },
     { path: 'single', component: SingleComponent },
     { path: 'admin', component: AdminHomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },

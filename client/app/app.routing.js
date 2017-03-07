@@ -18,7 +18,7 @@ var index_7 = require("./singlepage/index");
 var appRoutes = [
     { path: '', component: home_component_1.HomeComponent },
     { path: 'wordsegment', component: index_5.WordSegmentComponent },
-    { path: 'category', component: index_6.CategoryComponent },
+    { path: 'category/:cate', component: index_6.CategoryComponent },
     { path: 'single', component: index_7.SingleComponent },
     { path: 'admin', component: index_1.AdminHomeComponent, canActivate: [index_4.AuthGuard] },
     { path: 'login', component: index_2.LoginComponent },

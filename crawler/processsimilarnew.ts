@@ -2,6 +2,8 @@
 import * as fs from 'fs';
 import { ProcessNews } from './processnews';
 import { News } from './News';
+import { NewItem }  from '../model/NewItem';
+
 export class ProcessSimilarNew{
 
     private thoigioinews = new Array<News>();
@@ -72,6 +74,7 @@ export class ProcessSimilarNew{
         if (arrNew.length == 0){
             news.arr_title_segment = this.funcArrayNonStopWord(title_segment);
             arrNew.push(news);
+            this.funcSaveNew(news);
             return;
         }
         else{
@@ -84,7 +87,7 @@ export class ProcessSimilarNew{
                     // call function cacular similar cosinse here
                     similar = this.funcProcessCacularSimilar(title_segment, old_news.arr_title_segment);
                     //
-                    if (similar > 0.7)   //delete new of new is reduplicate
+                    if (similar > 0.25)   //delete new of new is reduplicate
                         return; 
                     count_same_author++;
                 }
@@ -92,9 +95,30 @@ export class ProcessSimilarNew{
             if (count_same_author == arrNew.length){
                 news.arr_title_segment = this.funcArrayNonStopWord(title_segment);
                 arrNew.push(news);
+                /*
+                *
+                * save to db
+                */
+                this.funcSaveNew(news);
+                
             }
         }
     }
+
+    /*
+    * save new to db
+    * author: KhacChinhDev
+    * 
+    */
+    funcSaveNew(news : News){
+        NewItem.saveNewItem(news).then(
+            (msg : News) => {
+              //  console.log(msg);
+            }
+        );
+        
+    }
+
     
     /*
     * cacular similar between two string
@@ -136,8 +160,8 @@ export class ProcessSimilarNew{
         console.log("Cosine: " + value_cosine);
         console.log('-----------');
         }
-        //
-        return 0;
+        //  
+        return value_cosine;
     }
 
     /*

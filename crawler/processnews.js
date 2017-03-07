@@ -39,12 +39,15 @@ var ProcessNews = (function () {
             this.importNewByCategory(news, this.thoisunews);
         }
         */
+        news.category = news.category.trim().toLowerCase();
+        news.author = news.author.trim().toLowerCase();
         ProcessNews.arrNews.push(news);
     };
     ProcessNews.prototype.importNewByCategory = function (news, arrNew) {
         arrNew.push(news);
     };
     ProcessNews.prototype.exportFile = function () {
+        console.log(ProcessNews.arrNews.length);
         console.log('Tiền xử lý: ');
         var dataTitle = '';
         console.log('- loại bỏ dấu câu');

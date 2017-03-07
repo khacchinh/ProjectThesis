@@ -74,6 +74,7 @@ AppModule = __decorate([
             index_4.AuthenticationService,
             index_4.UserService,
             index_4.TaskService,
+            index_4.NewsService,
             // providers used to create fake backend
             index_1.fakeBackendProvider,
             testing_1.MockBackend,

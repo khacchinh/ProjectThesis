@@ -40,6 +40,7 @@ export class CrawlerNewsClass{
                             news.title = $(".box_hot_news").children("h1").text().trim();
                             news.url = $(".box_hot_news").children("h1").children("a").attr('href');
                             news.img = $(".box_hot_news").children().first().children().children().attr('src');
+                            news.type_img = true;
                             news.sumary = $(".box_hot_news").children("h4").text().trim();
                             processNews.importNew(news);
                             $(".list_news ").children().each(function(i, element){
@@ -183,12 +184,6 @@ export class CrawlerNewsClass{
                             });
                         }               
                     }
-                    /*
-                    if (count == 27){
-                       processNews.exportFile();
-                        resolve(true);
-                    }
-                    */
                     if (count == 27){
                        processNews.exportFile();
                         resolve(true);
@@ -198,7 +193,7 @@ export class CrawlerNewsClass{
             c.queue([
                 //thế giới
                 
-                'http://vnexpress.net/tin-tuc/the-gioi', 
+                'http://vnexpress.net/tin-tuc/the-gioi',
                 'http://dantri.com.vn/the-gioi.htm',
                 'http://vietnamnet.vn/vn/the-gioi/',
                 'http://thanhnien.vn/the-gioi/',

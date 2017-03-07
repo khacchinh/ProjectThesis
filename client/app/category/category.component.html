@@ -23,133 +23,23 @@
                         </div>
                     </div>
 
-                    <div class="row" style="margin-top: 10px">
+                    <div class="row" style="margin-top: 10px" *ngFor = "let newitem of news">
                         <div class="row category-item">
                             <div class="col-sm-2 category-item-img">
-                                <a [routerLink]="['../single']"><img alt="" src="img/80x60-1.jpg" class="img-thumbnail"/></a>
+                                <a [routerLink]="['../single']"><img alt="" src="{{newitem.img}}" class="img-thumbnail"/></a>
                             </div>
                             <div class="col-sm-9">
-                                <a [routerLink]="['../single']"><h4>Toy Story 3 One of the best movies (Video)</h4></a>
-                                <span class="date">Posted on July 02, 2011 | 0 comments</span>
+                                <a [routerLink]="['../single']"><h4>{{newitem.title}}</h4></a>
+                                <span class="date">Posted on July 02, 2011 | {{newitem.author}}</span>
                                 <p>
-                                    Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scripta patrioque scribentur, at pro fugit verterem molestiae, sed et vivendo alienum maluisset. Veri equidem liberavisse vim et, erat delenit nostrum ut sed. Cum harum audire signiferumque ex, …
+                                    {{newitem.sumary}}
                                 </p>
                             </div>
                         </div> 
                         <div class="clear-fix col-sm-11"></div>
                     </div>
 
-                    <div class="row" style="margin-top: 10px">
-                        <div class="row category-item">
-                            <div class="col-sm-2 category-item-img">
-                                <a [routerLink]="['../single']"><img alt="" src="img/80x60-1.jpg" class="img-thumbnail"/></a>
-                            </div>
-                            <div class="col-sm-9">
-                                <a [routerLink]="['../single']"><h4>Toy Story 3 One of the best movies (Video)</h4></a>
-                                <span class="date">Posted on July 02, 2011 | 0 comments</span>
-                                <p>
-                                    Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scripta patrioque scribentur, at pro fugit verterem molestiae, sed et vivendo alienum maluisset. Veri equidem liberavisse vim et, erat delenit nostrum ut sed. Cum harum audire signiferumque ex, …
-                                </p>
-                            </div>
-                        </div> 
-                        <div class="clear-fix col-sm-11"></div>
-                    </div>
-
-                    <div class="row" style="margin-top: 10px">
-                        <div class="row category-item">
-                            <div class="col-sm-2 category-item-img">
-                                <a [routerLink]="['../single']"><img alt="" src="img/80x60-1.jpg" class="img-thumbnail"/></a>
-                            </div>
-                            <div class="col-sm-9">
-                                <a [routerLink]="['../single']"><h4>Toy Story 3 One of the best movies (Video)</h4></a>
-                                <span class="date">Posted on July 02, 2011 | 0 comments</span>
-                                <p>
-                                    Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scripta patrioque scribentur, at pro fugit verterem molestiae, sed et vivendo alienum maluisset. Veri equidem liberavisse vim et, erat delenit nostrum ut sed. Cum harum audire signiferumque ex, …
-                                </p>
-                            </div>
-                        </div> 
-                        <div class="clear-fix col-sm-11"></div>
-                    </div>
-
-                    <div class="row" style="margin-top: 10px">
-                        <div class="row category-item">
-                            <div class="col-sm-2 category-item-img">
-                                <a [routerLink]="['../single']"><img alt="" src="img/80x60-1.jpg" class="img-thumbnail"/></a>
-                            </div>
-                            <div class="col-sm-9">
-                                <a [routerLink]="['../single']"><h4>Toy Story 3 One of the best movies (Video)</h4></a>
-                                <span class="date">Posted on July 02, 2011 | 0 comments</span>
-                                <p>
-                                    Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scripta patrioque scribentur, at pro fugit verterem molestiae, sed et vivendo alienum maluisset. Veri equidem liberavisse vim et, erat delenit nostrum ut sed. Cum harum audire signiferumque ex, …
-                                </p>
-                            </div>
-                        </div> 
-                        <div class="clear-fix col-sm-11"></div>
-                    </div>
-
-                    <div class="row" style="margin-top: 10px">
-                        <div class="row category-item">
-                            <div class="col-sm-2 category-item-img">
-                                <a [routerLink]="['../single']"><img alt="" src="img/80x60-1.jpg" class="img-thumbnail"/></a>
-                            </div>
-                            <div class="col-sm-9">
-                                <a [routerLink]="['../single']"><h4>Toy Story 3 One of the best movies (Video)</h4></a>
-                                <span class="date">Posted on July 02, 2011 | 0 comments</span>
-                                <p>
-                                    Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scripta patrioque scribentur, at pro fugit verterem molestiae, sed et vivendo alienum maluisset. Veri equidem liberavisse vim et, erat delenit nostrum ut sed. Cum harum audire signiferumque ex, …
-                                </p>
-                            </div>
-                        </div> 
-                        <div class="clear-fix col-sm-11"></div>
-                    </div>
-
-                    <div class="row" style="margin-top: 10px">
-                        <div class="row category-item">
-                            <div class="col-sm-2 category-item-img">
-                                <a [routerLink]="['../single']"><img alt="" src="img/80x60-1.jpg" class="img-thumbnail"/></a>
-                            </div>
-                            <div class="col-sm-9">
-                                <a [routerLink]="['../single']"><h4>Toy Story 3 One of the best movies (Video)</h4></a>
-                                <span class="date">Posted on July 02, 2011 | 0 comments</span>
-                                <p>
-                                    Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scripta patrioque scribentur, at pro fugit verterem molestiae, sed et vivendo alienum maluisset. Veri equidem liberavisse vim et, erat delenit nostrum ut sed. Cum harum audire signiferumque ex, …
-                                </p>
-                            </div>
-                        </div> 
-                        <div class="clear-fix col-sm-11"></div>
-                    </div>
-
-                    <div class="row" style="margin-top: 10px">
-                        <div class="row category-item">
-                            <div class="col-sm-2 category-item-img">
-                                <a [routerLink]="['../single']"><img alt="" src="img/80x60-1.jpg" class="img-thumbnail"/></a>
-                            </div>
-                            <div class="col-sm-9">
-                                <a [routerLink]="['../single']"><h4>Toy Story 3 One of the best movies (Video)</h4></a>
-                                <span class="date">Posted on July 02, 2011 | 0 comments</span>
-                                <p>
-                                    Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scripta patrioque scribentur, at pro fugit verterem molestiae, sed et vivendo alienum maluisset. Veri equidem liberavisse vim et, erat delenit nostrum ut sed. Cum harum audire signiferumque ex, …
-                                </p>
-                            </div>
-                        </div> 
-                        <div class="clear-fix col-sm-11"></div>
-                    </div>
-
-                    <div class="row" style="margin-top: 10px">
-                        <div class="row category-item">
-                            <div class="col-sm-2 category-item-img">
-                                <a [routerLink]="['../single']"><img alt="" src="img/80x60-1.jpg" class="img-thumbnail"/></a>
-                            </div>
-                            <div class="col-sm-9">
-                                <a [routerLink]="['../single']"><h4>Toy Story 3 One of the best movies (Video)</h4></a>
-                                <span class="date">Posted on July 02, 2011 | 0 comments</span>
-                                <p>
-                                    Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scripta patrioque scribentur, at pro fugit verterem molestiae, sed et vivendo alienum maluisset. Veri equidem liberavisse vim et, erat delenit nostrum ut sed. Cum harum audire signiferumque ex, …
-                                </p>
-                            </div>
-                        </div> 
-                        <div class="clear-fix col-sm-11"></div>
-                    </div>
+                    
 
                     <hr/>
                     <div class="row">

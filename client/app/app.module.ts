@@ -16,7 +16,7 @@ import { CarouselModule, TabsModule, PaginationModule  } from 'ng2-bootstrap';
 
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService, TaskService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, TaskService, NewsService } from './_services/index';
 import { AdminHomeComponent } from './admin/home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -72,7 +72,7 @@ import { RightBarComponent } from './rightbar/index';
         AuthenticationService,
         UserService,
         TaskService,
-
+        NewsService,
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,

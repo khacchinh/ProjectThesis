@@ -11,6 +11,7 @@ import * as fs  from 'fs';
 //import routes for app
 import * as index from './routes/index';
 import * as tasks from './routes/tasks';
+import * as news from './routes/news';
 
 //send dictionary to client
 import * as getDictionary from './routes/getDictionary';
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'asset')));
 //set routes
 app.use('/', index);
 app.use('/api/', tasks);
+app.use('/api/', news);
 
 //call function send dictionary
 app.use('/', getDictionary);
@@ -92,8 +94,8 @@ new CrawlerNewsClass().getCrawlerData().then(
         
     }
 )
-*/
 
+*/
 
 
 
