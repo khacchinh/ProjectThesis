@@ -8,6 +8,7 @@ var compression = require("compression");
 var index = require("./routes/index");
 var tasks = require("./routes/tasks");
 var news = require("./routes/news");
+var users = require("./routes/users");
 //send dictionary to client
 var getDictionary = require("./routes/getDictionary");
 //mongo db
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'asset')));
 app.use('/', index);
 app.use('/api/', tasks);
 app.use('/api/', news);
+app.use('/api/', users);
 //call function send dictionary
 app.use('/', getDictionary);
 //use clawer
@@ -71,6 +73,7 @@ new CrawlerNewsClass().getCrawlerData().then(
         app.listen(app.get('port'), function(){
             console.log('Server started on port ' + app.get('port'));
         });
+        
         
     }
 )

@@ -2,7 +2,7 @@
 import * as fs from 'fs';
 import { ProcessNews } from './processnews';
 import { News } from './News';
-import { NewItem }  from '../model/NewItem';
+import { NewItem }  from '../model/NewsItem';
 
 export class ProcessSimilarNew{
 

@@ -46,3 +46,4 @@ data: {
     return JSON.stringify(data);
   }
 }
+//https://mothereff.in/html-entities

@@ -1,32 +1,37 @@
 ﻿import { NgModule }             from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AdminHomeComponent } from './admin/home/index';
-import { LoginComponent } from './login/index';
-import { RegisterComponent } from './register/index';
-import { AuthGuard } from './_guards/index';
-import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent }    from './not-found.component';
+import { AuthGuard }                from './_guards/auth.guard';
+import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
 
-import { WordSegmentComponent } from './wordsegment/index';
-import { CategoryComponent } from './category/index';
-import { SingleComponent } from './singlepage/index';
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'wordsegment', component: WordSegmentComponent },
-    { path: 'category/:cate', component: CategoryComponent },
-    { path: 'single', component: SingleComponent },
-    { path: 'admin', component: AdminHomeComponent, canActivate: [AuthGuard] },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-
-    // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+  {
+    path: 'admin',
+    loadChildren: 'app/admin/admin.module#AdminModule',
+    canLoad: [AuthGuard]
+  },
+  {
+    path: 'site',
+    loadChildren: 'app/site/site.module#SiteModule',
+    data: { preload: true }
+  },
+  { path: '',   redirectTo: '/site', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
+
+
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes, {useHash: true})],
-    exports: [RouterModule]
+    imports: [
+        RouterModule.forRoot(appRoutes, 
+            {useHash: true, preloadingStrategy: SelectivePreloadingStrategy})
+    ],
+    exports: [RouterModule],
+    providers:[
+        SelectivePreloadingStrategy
+    ]
 })
 
 export class AppRoutingModule {}

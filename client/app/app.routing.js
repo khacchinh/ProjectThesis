@@ -7,24 +7,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var index_1 = require("./admin/home/index");
-var index_2 = require("./login/index");
-var index_3 = require("./register/index");
-var index_4 = require("./_guards/index");
-var home_component_1 = require("./home/home.component");
-var index_5 = require("./wordsegment/index");
-var index_6 = require("./category/index");
-var index_7 = require("./singlepage/index");
+var not_found_component_1 = require("./not-found.component");
+var auth_guard_1 = require("./_guards/auth.guard");
+var selective_preloading_strategy_1 = require("./selective-preloading-strategy");
 var appRoutes = [
-    { path: '', component: home_component_1.HomeComponent },
-    { path: 'wordsegment', component: index_5.WordSegmentComponent },
-    { path: 'category/:cate', component: index_6.CategoryComponent },
-    { path: 'single', component: index_7.SingleComponent },
-    { path: 'admin', component: index_1.AdminHomeComponent, canActivate: [index_4.AuthGuard] },
-    { path: 'login', component: index_2.LoginComponent },
-    { path: 'register', component: index_3.RegisterComponent },
-    // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    {
+        path: 'admin',
+        loadChildren: 'app/admin/admin.module#AdminModule',
+        canLoad: [auth_guard_1.AuthGuard]
+    },
+    {
+        path: 'site',
+        loadChildren: 'app/site/site.module#SiteModule',
+        data: { preload: true }
+    },
+    { path: '', redirectTo: '/site', pathMatch: 'full' },
+    { path: '**', component: not_found_component_1.PageNotFoundComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
@@ -33,8 +31,13 @@ var AppRoutingModule = (function () {
 }());
 AppRoutingModule = __decorate([
     core_1.NgModule({
-        imports: [router_1.RouterModule.forRoot(appRoutes, { useHash: true })],
-        exports: [router_1.RouterModule]
+        imports: [
+            router_1.RouterModule.forRoot(appRoutes, { useHash: true, preloadingStrategy: selective_preloading_strategy_1.SelectivePreloadingStrategy })
+        ],
+        exports: [router_1.RouterModule],
+        providers: [
+            selective_preloading_strategy_1.SelectivePreloadingStrategy
+        ]
     })
 ], AppRoutingModule);
 exports.AppRoutingModule = AppRoutingModule;

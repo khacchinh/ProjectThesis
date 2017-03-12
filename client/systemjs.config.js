@@ -27,7 +27,8 @@
             // other libraries
             'rxjs': 'npm:rxjs',
             'typescript-collections': 'npm:typescript-collections',
-            'ng2-bootstrap': 'node_modules/ng2-bootstrap'
+            'ng2-bootstrap': 'node_modules/ng2-bootstrap',
+            'underscore': 'npm:underscore/underscore.js'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -47,6 +48,7 @@
                 main: 'bundles/ng2-bootstrap.umd.js', 
                 defaultExtension: 'js' 
             }
+            
         }
     });
 })(this);

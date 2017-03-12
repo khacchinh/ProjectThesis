@@ -1,0 +1,66 @@
+                <div class="col-md-8">
+                    <div class="row">
+                        <ul class="breadcrumb col-md-11">
+                            <li><a href="#">Home</a> <span>/</span></li>
+                            <li class="active">{{itemHot?.category}}</li>
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5 img-thumbnail">
+                            <a [routerLink]="['../../single']"><img style="width: 305px; height: 250px;" alt="" src="{{itemHot?.img}}" /></a>
+                        </div>
+                        <div class="col-md-7">
+                            <a [routerLink]="['../../single']" style="font-size: 2em;">{{itemHot?.title}}</a><br>
+                            <span class="date">Posted on July 02, 2011 | 0 comments</span>
+                            <p>
+                               {{itemHot?.sumary}}
+                            </p>
+                            <a [routerLink]="['../../single']">Continue reading</a>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 10px" *ngFor = "let newitem of pagedItems">
+                        <div class="row category-item">
+                            <div class="col-sm-2 category-item-img">
+                                <a [routerLink]="['../../single', newitem._id]"><img alt="" src="{{newitem.img}}" class="img-thumbnail"/></a>
+                            </div>
+                            <div class="col-sm-9">
+                                <a [routerLink]="['../../single', newitem._id]"><h4>{{newitem.title}}</h4></a>
+                                <span class="date">Posted on July 02, 2011 | {{newitem.author}}</span>
+                                <p>
+                                    {{newitem.sumary}}
+                                </p>
+                            </div>
+                        </div> 
+                        <div class="clear-fix col-sm-11"></div>
+                    </div>
+
+                    
+
+                    <hr/>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- pager -->
+                            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                    <a (click)="setPage(1)">First</a>
+                                </li>
+                                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                    <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                                </li>
+                                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                                    <a (click)="setPage(page)">{{page}}</a>
+                                </li>
+                                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                    <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                                </li>
+                                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                    <a (click)="setPage(pager.totalPages)">Last</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <pre class="card card-block card-header">Page: {{bigCurrentPage}} / {{numPages}}</pre>
+                    </div>
+
+                </div>

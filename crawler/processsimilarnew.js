@@ -1,7 +1,7 @@
 "use strict";
 var fs = require("fs");
 var processnews_1 = require("./processnews");
-var NewItem_1 = require("../model/NewItem");
+var NewsItem_1 = require("../model/NewsItem");
 var ProcessSimilarNew = (function () {
     function ProcessSimilarNew() {
         this.thoigioinews = new Array();
@@ -100,7 +100,7 @@ var ProcessSimilarNew = (function () {
     *
     */
     ProcessSimilarNew.prototype.funcSaveNew = function (news) {
-        NewItem_1.NewItem.saveNewItem(news).then(function (msg) {
+        NewsItem_1.NewItem.saveNewItem(news).then(function (msg) {
             //  console.log(msg);
         });
     };

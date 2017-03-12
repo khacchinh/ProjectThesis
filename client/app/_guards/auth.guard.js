@@ -20,7 +20,15 @@ var AuthGuard = (function () {
             return true;
         }
         // not logged in so redirect to login page with the return url
-        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+        this.router.navigate(['/'], { queryParams: { returnUrl: state.url } });
+        return false;
+    };
+    AuthGuard.prototype.canLoad = function (route) {
+        if (localStorage.getItem('currentUser')) {
+            // logged in so return true
+            return true;
+        }
+        this.router.navigate(['/**']);
         return false;
     };
     return AuthGuard;

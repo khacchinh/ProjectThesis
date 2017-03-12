@@ -3,15 +3,15 @@ import { Http, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class NewsService{
+export class SingleItemService{
     constructor(private http:Http){
         console.log('News Services Initialized....');
     }
 
-    getNewsByCategory(category_name:string){
+    getSingleNewById(id:string){
         let options = new RequestOptions({
-            search: new URLSearchParams('category='+category_name)
+            search: new URLSearchParams('id='+id)
         });
-        return this.http.get('/api/news', options).map(res => res.json());
+        return this.http.get('/api/new_item', options).map(res => res.json());
     }
 }
