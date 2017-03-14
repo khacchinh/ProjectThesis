@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var not_found_component_1 = require("./not-found.component");
+var index_1 = require("./loginadmin/index");
 var auth_guard_1 = require("./_guards/auth.guard");
 var selective_preloading_strategy_1 = require("./selective-preloading-strategy");
 var appRoutes = [
@@ -22,6 +23,7 @@ var appRoutes = [
         data: { preload: true }
     },
     { path: '', redirectTo: '/site', pathMatch: 'full' },
+    { path: 'login', component: index_1.LoginComponent },
     { path: '**', component: not_found_component_1.PageNotFoundComponent }
 ];
 var AppRoutingModule = (function () {

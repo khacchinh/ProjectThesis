@@ -9,6 +9,7 @@ var index = require("./routes/index");
 var tasks = require("./routes/tasks");
 var news = require("./routes/news");
 var users = require("./routes/users");
+var category = require("./routes/category");
 //send dictionary to client
 var getDictionary = require("./routes/getDictionary");
 //mongo db
@@ -28,6 +29,7 @@ app.use('/', index);
 app.use('/api/', tasks);
 app.use('/api/', news);
 app.use('/api/', users);
+app.use('/api/', category);
 //call function send dictionary
 app.use('/', getDictionary);
 //use clawer

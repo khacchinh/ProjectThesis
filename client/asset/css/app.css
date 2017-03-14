@@ -1,0 +1,31 @@
+﻿.date{
+    margin-left: 2px;
+}
+
+.item-news{
+    margin-top: 5px;
+}
+
+.clear-fix{
+    margin: 3px 0 3px 0;
+    border-bottom: 1px dotted black;
+}
+
+.caption {
+        width:90%;
+        bottom: .3rem;
+        position: absolute;
+}
+
+.caption p {
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+}
+
+.category-item-img{
+    margin-left: 10px;
+}
+
+textarea{
+    resize: none;
+}

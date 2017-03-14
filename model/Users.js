@@ -21,6 +21,10 @@ var _schema = new mongoose.Schema({
     email: {
         type: String,
         require: true
+    },
+    access: {
+        type: Number,
+        "default": 0
     }
 });
 var UserModel = mongoose.model('users', _schema);
@@ -29,10 +33,24 @@ var Users = (function () {
     }
     Users.findUserLogin = function (user) {
         return new Promise(function (resolve, reject) {
-            UserModel.findOne({ username: user.username, password: user.password }, function (err, result) {
+            var arFilter;
+            if (user.access == 1)
+                arFilter = { username: user.username, password: user.password, access: user.access };
+            else
+                arFilter = { username: user.username, password: user.password };
+            UserModel.findOne(arFilter, function (err, result) {
                 if (err)
                     reject(err);
                 resolve(result);
+            });
+        });
+    };
+    Users.getAllUser = function () {
+        return new Promise(function (resolve, reject) {
+            UserModel.find(function (err, users) {
+                if (err)
+                    reject(err);
+                resolve(users);
             });
         });
     };

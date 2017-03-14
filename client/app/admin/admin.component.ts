@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  template:  `
-    <h3>ADMIN</h3>
-    <router-outlet></router-outlet>
-  `
+  moduleId: module.id,
+  templateUrl: 'admin.component.html'
 })
 export class AdminComponent {
 }

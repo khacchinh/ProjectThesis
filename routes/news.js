@@ -19,4 +19,11 @@ router.get('/new_item', function (req, res, next) {
         res.json(msg);
     });
 });
+router.put('/new_item/:id', function (req, res, next) {
+    var id = req.params.id;
+    var comments = req.body;
+    NewsItem_1.NewItem.saveComentForNewItem(id, comments).then(function (msg) {
+        res.json(msg);
+    });
+});
 module.exports = router;

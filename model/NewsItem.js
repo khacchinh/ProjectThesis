@@ -6,6 +6,22 @@ var Crawler = require("crawler");
  * @type {"mongoose".Schema}
  * @private
  */
+var _schemaComment = new mongoose.Schema({
+    content: {
+        type: String,
+        require: true
+    },
+    userid: {
+        //type: mongoose.Schema.Types.ObjectId,
+        //ref: 'Users'
+        type: String,
+        require: true
+    },
+    commentdate: {
+        type: Date,
+        "default": Date.now
+    }
+});
 var _schema = new mongoose.Schema({
     author: {
         type: String,
@@ -38,13 +54,10 @@ var _schema = new mongoose.Schema({
     content: {
         type: String
     },
-    comment: {
-        userID: {
-            type: String
-        },
-        content: {
-            type: String
-        }
+    comment: [_schemaComment],
+    active: {
+        type: Number,
+        "default": 1
     },
     created: {
         type: Date,
@@ -71,8 +84,6 @@ var NewItem = (function () {
             news_item.url = news.url;
             news_item.img = news.img;
             news_item.type_img = news.type_img;
-            news_item.comment.userID = "KhacChinhDev";
-            news_item.comment.content = "This is demo comment";
             news_item.sumary = news.sumary;
             news_item.save(function (err, newitem) {
                 if (err)
@@ -130,6 +141,20 @@ var NewItem = (function () {
                 c.queue([
                     result.url
                 ]);
+            });
+        });
+    };
+    NewItem.saveComentForNewItem = function (id, comments) {
+        return new Promise(function (resolve, reject) {
+            NewItemModel.findById(id, function (err, upnewitem) {
+                if (err)
+                    reject(err);
+                upnewitem.comment.push(comments);
+                upnewitem.save(function (err, newitem) {
+                    if (err)
+                        reject(err);
+                    resolve(newitem);
+                });
             });
         });
     };

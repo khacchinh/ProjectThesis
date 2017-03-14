@@ -27,5 +27,15 @@ router.get('/new_item', function(req, res, next){
     )
 });
 
+router.put('/new_item/:id', (req, res, next) => {
+    var id = req.params.id;
+    var comments = req.body;
+    NewItem.saveComentForNewItem(id, comments).then(
+        (msg) => {
+            res.json(msg);
+        }
+    )
+});
+
 
 module.exports = router;

@@ -10,8 +10,11 @@ import { BaseRequestOptions } from '@angular/http';
 import { AuthGuard } from './_guards/index';
 
 import { AppComponent }  from './app.component';
+import { LoginComponent, AlerLogintComponent } from './loginadmin/index';
 import { PageNotFoundComponent }   from './not-found.component';
 import { AppRoutingModule }        from './app.routing';
+
+import { AlertService, AuthenticationService } from './_services/index';
 
 
 
@@ -25,10 +28,14 @@ import { AppRoutingModule }        from './app.routing';
     ],
     declarations: [
         AppComponent,
+        LoginComponent,
+        AlerLogintComponent,
         PageNotFoundComponent
     ],
     providers: [
         AuthGuard,
+        AlertService,
+        AuthenticationService,
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,

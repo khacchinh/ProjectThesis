@@ -14,6 +14,7 @@ interface INewItem extends mongoose.Document {
     sumary:string;
     content: string;
     comment: Object;
+    active: number;
     created: Date;
 }
 
@@ -22,6 +23,25 @@ interface INewItem extends mongoose.Document {
  * @type {"mongoose".Schema}
  * @private
  */
+var _schemaComment : mongoose.Schema = new mongoose.Schema({
+    content : {
+        type: String,
+        require: true
+    },
+    userid : {
+        //type: mongoose.Schema.Types.ObjectId,
+        //ref: 'Users'
+        type: String,
+        require: true
+    },
+    commentdate : {
+        type: Date,
+        default: Date.now
+    }
+});
+
+
+
 var _schema : mongoose.Schema = new mongoose.Schema({
     author:{
         type: String,
@@ -54,13 +74,10 @@ var _schema : mongoose.Schema = new mongoose.Schema({
     content:{
         type: String
     },
-    comment:{
-        userID: {
-            type: String
-        },
-        content:{
-            type: String
-        }
+    comment:[_schemaComment],
+    active : {
+        type: Number,
+        default: 1
     },
     created:{
         type: Date,
@@ -89,8 +106,6 @@ export class NewItem{
             news_item.url = news.url;
             news_item.img = news.img;
             news_item.type_img = news.type_img;
-            news_item.comment.userID = "KhacChinhDev";
-            news_item.comment.content = "This is demo comment";
             news_item.sumary = news.sumary;
             news_item.save((err, newitem) =>{
                 if (err) reject(err)
@@ -145,6 +160,19 @@ export class NewItem{
                 c.queue([
                     result.url
                 ]);
+            })
+        })
+    }
+
+    static saveComentForNewItem(id: string, comments : any) : Promise<NewItem> {
+        return new Promise<INewItem> ((resolve, reject) => {
+            NewItemModel.findById(id, (err, upnewitem) => {
+                if (err) reject(err);
+                upnewitem.comment.push(comments);
+                upnewitem.save((err, newitem) => {
+                    if (err) reject(err);
+                    resolve(newitem);
+                })
             })
         })
     }

@@ -5,3 +5,4 @@ export * from './tasks.services';
 export * from './news.service';
 export * from './page.service';
 export * from './singleitem.service';
+export * from './category.service';

@@ -13,6 +13,7 @@ import * as index from './routes/index';
 import * as tasks from './routes/tasks';
 import * as news from './routes/news';
 import * as users from './routes/users';
+import * as category from './routes/category';
 
 //send dictionary to client
 import * as getDictionary from './routes/getDictionary';
@@ -45,6 +46,7 @@ app.use('/', index);
 app.use('/api/', tasks);
 app.use('/api/', news);
 app.use('/api/', users);
+app.use('/api/', category);
 
 //call function send dictionary
 app.use('/', getDictionary);

@@ -15,8 +15,10 @@ var testing_1 = require("@angular/http/testing");
 var http_2 = require("@angular/http");
 var index_2 = require("./_guards/index");
 var app_component_1 = require("./app.component");
+var index_3 = require("./loginadmin/index");
 var not_found_component_1 = require("./not-found.component");
 var app_routing_1 = require("./app.routing");
+var index_4 = require("./_services/index");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -32,10 +34,14 @@ AppModule = __decorate([
         ],
         declarations: [
             app_component_1.AppComponent,
+            index_3.LoginComponent,
+            index_3.AlerLogintComponent,
             not_found_component_1.PageNotFoundComponent
         ],
         providers: [
             index_2.AuthGuard,
+            index_4.AlertService,
+            index_4.AuthenticationService,
             // providers used to create fake backend
             index_1.fakeBackendProvider,
             testing_1.MockBackend,

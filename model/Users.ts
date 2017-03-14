@@ -5,6 +5,7 @@ interface IUser extends mongoose.Document {
     password: string;
     name: string;
     email: string;
+    access: number;
 }
 
 /**
@@ -29,6 +30,10 @@ var _schema : mongoose.Schema = new mongoose.Schema({
         type: String,
         require: true
     },
+    access : {
+        type: Number,
+        default: 0
+    }
 });
 
 var UserModel = mongoose.model<IUser>('users', _schema);
@@ -38,9 +43,22 @@ export class Users{
 
     static findUserLogin(user: any) : Promise<Users>{
         return new Promise<Users> ((resolve, reject) => {
-            UserModel.findOne({username: user.username, password: user.password}, (err, result) => {
+            var arFilter;
+            if (user.access == 1)
+                arFilter = {username: user.username, password: user.password, access: user.access}
+            else arFilter = {username: user.username, password: user.password}
+            UserModel.findOne(arFilter, (err, result) => {
                 if (err) reject(err);
                 resolve(result);
+            })
+        });
+    }
+
+    static getAllUser() : Promise<Users>{
+        return new Promise<Users> ((resolve, reject) => {
+            UserModel.find((err, users) => {
+                if (err) reject(err);
+                resolve(users);
             })
         });
     }

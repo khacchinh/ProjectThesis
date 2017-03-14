@@ -46,38 +46,35 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <h4>Leave a Comment</h4>
-                            <form class="form-horizontal">
+                            <form name="form" (ngSubmit)="f.form.valid && comment()" #f="ngForm" method="#" novalidate>
                                 <fieldset>
-
-                                    <div class="control-group">
-                                        <label for="focusedInput" class="control-label">Name:</label>
-                                        <div class="controls">
-                                            <input type="text" placeholder="your name" id="focusedInput" class="focused span4">
-                                        </div>
+                                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" readonly required />
+                                        <div *ngIf="f.submitted && !name.valid" class="help-block">Login for comment</div>
                                     </div>
-                                    <div class="control-group">
-                                        <label class="control-label">E-Mail:</label>
-                                        <div class="controls">
-                                            <input type="text" placeholder="your email" class="span4">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="textarea">Comment</label>
+                                        <textarea rows="3" class="form-control" name = "comments" [(ngModel)]="model.comments" #comments="ngModel" required  placeholder="your message" ></textarea>
+                                        <div *ngIf="f.submitted && !comments.valid" class="help-block">Comment is required</div>
                                     </div>
-                                    <div class="control-group">
-                                        <label for="textarea" class="control-label">Message</label>
-                                        <div class="controls">
-                                            <textarea rows="3" id="textarea"  placeholder="your message" class="span4"></textarea>
-                                        </div>
+                                   <div class="form-group">
+                                        <button [disabled]="loading" class="btn btn-primary">Submit</button>
+                                        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                                     </div>
-                                    <div class="control-group">
-                                        <label for="textarea" class="control-label">&nbsp;</label>
-                                        <div class="controls">
-                                            <button class="btn btn-primary pull-left"  type="submit">Submit</button>
-                                        </div>
-                                    </div>
-
                                 </fieldset>
                             </form>
                         </div>
                     </div>
 
-
+                    <div class="row">
+                        <h4>List comment</h4>
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <div style="margin:  3px 5px; border: 1px solid slategrey; padding: 5px;" *ngFor = "let item of comments_new">
+                                <h5><strong>{{item.userid}} <small>   Date comment: {{item.commentdate}}</small></strong></h5>
+                                <br>
+                                <p>{{item.content}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>

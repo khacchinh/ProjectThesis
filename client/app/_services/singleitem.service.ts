@@ -14,4 +14,11 @@ export class SingleItemService{
         });
         return this.http.get('/api/new_item', options).map(res => res.json());
     }
+
+    saveCommentForNewItem(id: string, comment:any){
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put('/api/new_item/'+id, JSON.stringify(comment), {headers : headers})
+            .map(res => res.json());
+    }
 }

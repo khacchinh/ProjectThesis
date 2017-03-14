@@ -2,6 +2,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { PageNotFoundComponent }    from './not-found.component';
+import { LoginComponent } from './loginadmin/index';
 import { AuthGuard }                from './_guards/auth.guard';
 import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
 
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
     data: { preload: true }
   },
   { path: '',   redirectTo: '/site', pathMatch: 'full' },
+  { path: 'login',   component:  LoginComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
