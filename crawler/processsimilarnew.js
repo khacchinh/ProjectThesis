@@ -14,6 +14,7 @@ var ProcessSimilarNew = (function () {
         this.arrstopword = new Array();
         this.funcMainCacularSimilar();
     }
+    //.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'?‘’“”"…\n\r\t]/g," ")
     ProcessSimilarNew.prototype.funcMainCacularSimilar = function () {
         //load stop word
         console.log('- load stop word');
@@ -27,7 +28,9 @@ var ProcessSimilarNew = (function () {
         console.log('- remove stop word and save title segment');
         for (var i = 0; i < processnews_1.ProcessNews.arrNews.length; i++) {
             //console.log(arrDataTitle[i]);
-            this.funcDivideNews(processnews_1.ProcessNews.arrNews[i], arrDataTitle[i]);
+            var str_segment = arrDataTitle[i].replace(/[.,\/#!$%\^&\*;:{}=\-`~()'?‘’“”"…]/g, " ");
+            str_segment = str_segment.replace(/  +/g, ' ');
+            this.funcDivideNews(processnews_1.ProcessNews.arrNews[i], str_segment);
         }
     };
     ProcessSimilarNew.prototype.funcDivideNews = function (news, title_segment) {
@@ -74,23 +77,29 @@ var ProcessSimilarNew = (function () {
                 if (news.author == old_news.author)
                     count_same_author++;
                 else {
-                    //
-                    // call function cacular similar cosinse here
+                    //                    // call function cacular similar cosinse here
                     similar = _this.funcProcessCacularSimilar(title_segment, old_news.arr_title_segment);
                     //
-                    if (similar > 0.25)
+                    if (similar > 0.4) {
+                        //delete new of new is reduplicate
+                        console.log("Tên báo: " + news.author);
+                        console.log("Thể loại: " + news.category);
+                        console.log("Tiêu đề: " + news.title);
+                        console.log("---------------");
+                        console.log("Tên báo: " + old_news.author);
+                        console.log("Thể loại: " + old_news.category);
+                        console.log("Tiêu đề: " + old_news.title);
+                        console.log("----");
+                        console.log("Cosine value: " + similar);
+                        console.log("\n\n");
                         return;
+                    }
                     count_same_author++;
                 }
             });
             if (count_same_author == arrNew.length) {
                 news.arr_title_segment = this.funcArrayNonStopWord(title_segment);
                 arrNew.push(news);
-                /*
-                *
-                * save to db
-                */
-                this.funcSaveNew(news);
             }
         }
     };
@@ -116,35 +125,64 @@ var ProcessSimilarNew = (function () {
         var arr_union = arr_title_segment_new.concat(arr_title_segment_old);
         var arr_union_unique = arr_union.filter(function (element, index) { return arr_union.indexOf(element) === index; });
         //create vector of item new
-        var arr_vector_item_new = Array();
+        var arr_vector_tfidf_item_new = Array();
+        var arr_vector_orderword_item_new = Array();
         arr_union_unique.forEach(function (element) {
+            //tf-idf
             var tf_idf_word_new = _this.funcTfWord(arr_title_segment_new, element) *
                 _this.funcIdfWord(arr_title_segment_new, arr_title_segment_old, element);
-            arr_vector_item_new.push(tf_idf_word_new);
+            arr_vector_tfidf_item_new.push(tf_idf_word_new);
+            //order word
+            var order_word_new = arr_title_segment_new.indexOf(element) >= 0 ? arr_title_segment_new.indexOf(element) + 1 : 0;
+            arr_vector_orderword_item_new.push(order_word_new);
         });
         //create vector of item old
-        var arr_vector_item_old = Array();
+        var arr_vector_tfidf_item_old = Array();
+        var arr_vector_orderword_item_old = Array();
         arr_union_unique.forEach(function (element) {
+            //tf-idf
             var tf_idf_word_old = _this.funcTfWord(arr_title_segment_old, element) *
                 _this.funcIdfWord(arr_title_segment_new, arr_title_segment_old, element);
-            arr_vector_item_old.push(tf_idf_word_old);
+            arr_vector_tfidf_item_old.push(tf_idf_word_old);
+            //order word
+            var order_word_old = arr_title_segment_old.indexOf(element) >= 0 ? arr_title_segment_old.indexOf(element) + 1 : 0;
+            arr_vector_orderword_item_old.push(order_word_old);
         });
-        var value_cosine = this.funcCosineSimilar(arr_vector_item_new, arr_vector_item_old);
-        if (value_cosine > 0.3) {
+        //value cosine
+        var value_cosine = this.funcCosineSimilar(arr_vector_tfidf_item_new, arr_vector_tfidf_item_old);
+        //value orderword
+        var value_orderword = this.funcOrderWord(arr_vector_orderword_item_new, arr_vector_orderword_item_old);
+        /*
+        if (value_cosine > 0.5) {
             console.log(arr_title_segment_new.join(" "));
-            console.log('-');
+            console.log(arr_vector_tfidf_item_new.join("/"));
+            console.log("\n");
             console.log(arr_title_segment_old.join(" "));
-            console.log('-');
+            console.log(arr_vector_tfidf_item_old.join("/"));
+            console.log("\n");
             console.log(arr_union_unique.join(" "));
-            console.log('-');
-            console.log(arr_vector_item_new.join("/"));
-            console.log('-');
-            console.log(arr_vector_item_old.join("/"));
-            console.log("Cosine: " + value_cosine);
-            console.log('-----------');
+            console.log(value_cosine);
+            console.log("\n-------------------------------------");
+            
         }
-        //  
-        return value_cosine;
+        //
+        */
+        return value_cosine * 0.8 + value_orderword * 0.2;
+    };
+    /*
+    * cacular order word
+    * author: KhacChinhDev
+    * return value of order word
+    */
+    ProcessSimilarNew.prototype.funcOrderWord = function (vector_new, vector_old) {
+        var value_numerator = 0, value_denominator = 0;
+        for (var i = 0; i < vector_new.length; i++) {
+            value_numerator += Math.pow((vector_new[i] - vector_old[i]), 2);
+            value_denominator += Math.pow((vector_new[i] + vector_old[i]), 2);
+        }
+        value_numerator = Math.sqrt(value_numerator);
+        value_denominator = Math.sqrt(value_denominator);
+        return 1 - (value_numerator / value_denominator);
     };
     /*
     * cacular cosine
@@ -184,6 +222,7 @@ var ProcessSimilarNew = (function () {
             count++;
         if (arr_2.indexOf(word) > -1)
             count++;
+        count++;
         return 1 + Math.log(2 / count);
     };
     /*

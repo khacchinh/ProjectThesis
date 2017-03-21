@@ -1,6 +1,7 @@
 import { Component, OnInit }    from '@angular/core';
 import { UserService, AlertService } from '../../_services/index';
 
+declare var $ : any;
 @Component({
   moduleId: module.id,
   templateUrl: 'admin-user.component.html'
@@ -16,8 +17,18 @@ export class AdminUserComponent {
       });
   }
 
-  delActive(value){
-    alert(value);
-    this.alertService.success("Deactive success");
+  delActive(user){
+    this.userService.deActiveUsers(user._id)
+        .subscribe(data=>{
+          $("."+user._id).text("0");
+          $("#"+user._id).attr('disabled',true);
+          this.alertService.success("Deactive success");
+        })
+  }
+
+  btnDisabled(active){
+    if (active == 0)
+      return true;
+    return false;
   }
 }

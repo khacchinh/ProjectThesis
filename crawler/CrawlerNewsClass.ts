@@ -185,9 +185,17 @@ export class CrawlerNewsClass{
                         }               
                     }
                     if (count == 27){
-                       processNews.exportFile();
+                        /*
+                        processNews.getContent().then(
+                            (msg) => {
+                                processNews.exportFile();
+                                resolve(true);
+                            }
+                        )
+                        */
                         resolve(true);
                     }
+                    
                 }
             });
             c.queue([

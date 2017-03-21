@@ -20,4 +20,30 @@ router.get('/accounts', function (req, res, next) {
         res.json(msg);
     });
 });
+//get single user
+router.get('/accounts/:id', function (req, res, next) {
+    Users_1.Users.getUserById(req.params.id).then(function (msg) {
+        res.json(msg);
+    });
+});
+//update user
+router.put('/accounts/:id', function (req, res, next) {
+    var user = req.body;
+    Users_1.Users.updateUser(req.params.id, user).then(function (msg) {
+        res.json(msg);
+    });
+});
+//update user
+router.post('/account', function (req, res, next) {
+    var user = req.body;
+    Users_1.Users.addUser(user).then(function (msg) {
+        res.json(msg);
+    });
+});
+//deactive user
+router.put('/accountdeactive/:id', function (req, res, next) {
+    Users_1.Users.deActiveUser(req.params.id).then(function (msg) {
+        res.json(msg);
+    });
+});
 module.exports = router;

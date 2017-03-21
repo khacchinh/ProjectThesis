@@ -12,6 +12,11 @@ var users = require("./routes/users");
 var category = require("./routes/category");
 //send dictionary to client
 var getDictionary = require("./routes/getDictionary");
+//import class crawler
+var crawlernewsclass_1 = require("./crawler/crawlernewsclass");
+//import class similar cosine
+var processsimilarnew_1 = require("./crawler/processsimilarnew");
+var processnews_1 = require("./crawler/processnews");
 //mongo db
 var mongoose = require("mongoose");
 var crawlerData = require("./routes/crawlerData");
@@ -35,52 +40,37 @@ app.use('/', getDictionary);
 //use clawer
 app.use('/', crawlerData);
 //call class crawler
-/*
-console.log('Crawler dữ liệu tin tức')
-new CrawlerNewsClass().getCrawlerData().then(
-    function(msg: boolean){
-        console.log('- tách từ dùng vntokenier')
-        
-        var child = require('child_process').spawn(
-            'java', ['-jar', 'WordSegment.jar']
-        );
-        child.stdout.on('data', function(data) {
-            if (data.toString().trim() == "ok"){
-            
-                new ProcessSimilarNew();
+console.log('Crawler dữ liệu tin tức');
+new crawlernewsclass_1.CrawlerNewsClass().getCrawlerData().then(function (msg) {
+    processnews_1.ProcessNews.getContent().then(function (msg) {
+        processnews_1.ProcessNews.exportFile();
+        console.log('-tách từ.....');
+        var child = require('child_process').spawn('java', ['-jar', 'WordSegment.jar']);
+        child.stdout.on('data', function (data) {
+            if (data.toString().trim() == "ok") {
+                new processsimilarnew_1.ProcessSimilarNew();
             }
         });
-
         child.stderr.on("data", function (data) {
             console.log(data.toString());
         });
+    });
+    /*
+    var child = require('child_process').spawn(
+        'java', ['-jar', 'WordSegment.jar']
+    );
+    child.stdout.on('data', function(data) {
+        if (data.toString().trim() == "ok"){
         
-        /*
-        var child = require('child_process').spawn(
-            'java', ['-jar', 'uetsegmenter.jar', '-r', 'seg', '-m', 'demo', '-i', 'crawler/tokenizer/data/input.txt', '-o','crawler/tokenizer/data/output.txt' ]
-        );
-        child.stdout.on('data', function(data) {
-            console.log(data.toString());
-            if (data.toString().length > 30){
-                new ProcessSimilarNew();
-            }
-        });
+            new ProcessSimilarNew();
+        }
+    });
 
-        child.stderr.on("data", function (data) {
-            console.log(data.toString());
-        });
-        
-        //run server test crawler
-
-        app.listen(app.get('port'), function(){
-            console.log('Server started on port ' + app.get('port'));
-        });
-        
-        
-    }
-)
-
-*/
+    child.stderr.on("data", function (data) {
+        console.log(data.toString());
+    });
+    */
+});
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/my_database', function (err) {
     if (err)

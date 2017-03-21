@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { User } from '../_models/index';
 
@@ -14,16 +14,28 @@ export class UserService {
             .map(res => res.json());
     }
 
-    getById(id: number) {
-       // return this.http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
+    getUserById(id: string) {
+       return this.http.get('/api/accounts/' + id)
+            .map(res => res.json());
     }
 
-    create(user: User) {
-      //  return this.http.post('/api/users', user, this.jwt()).map((response: Response) => response.json());
+    addUsers(user: User) {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/account', JSON.stringify(user), {headers : headers})
+            .map(res => res.json());
     }
 
-    update(user: User) {
-       // return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
+    updateUsers(user: any) {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put('/api/accounts/' + user._id, JSON.stringify(user), {headers : headers})
+            .map(res => res.json());
+    }
+
+    deActiveUsers(id : string){
+        return this.http.put('/api/accountdeactive/' + id, JSON.stringify({}))
+            .map(res => res.json());
     }
 
     delete(id: number) {

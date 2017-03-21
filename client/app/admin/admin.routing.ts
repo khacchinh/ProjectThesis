@@ -2,9 +2,9 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AdminComponent }           from './admin.component';
-import { AdminDashboardComponent }  from './admin-dashboard/admin-dashboard.component';
-import { AdminUserComponent } from './admin-user/admin-user.component';
-import { AdminCategoryComponent } from './admin-category/admin-category.component';
+import { AdminDashboardComponent }  from './admin-dashboard/index';
+import { AdminUserComponent, AdminUserEditComponent, AdminUserAddComponent } from './admin-user/index';
+import { AdminCategoryComponent } from './admin-category/index';
 
 import { AuthGuard }                from '../_guards/auth.guard';
 
@@ -16,6 +16,8 @@ const adminRoutes: Routes = [
     children: [
       { path: '', component: AdminDashboardComponent },
       { path: 'account', component: AdminUserComponent},
+      { path: 'account/:id', component: AdminUserEditComponent},
+      { path: 'accountadd', component: AdminUserAddComponent},
       { path: 'categorys', component: AdminCategoryComponent}
     ]
   }

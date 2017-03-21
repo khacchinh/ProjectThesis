@@ -28,5 +28,44 @@ router.get('/accounts', (req, res, next) => {
     )
 });
 
+//get single user
+router.get('/accounts/:id', function(req, res, next){
+    Users.getUserById(req.params.id).then(
+        (msg) => {
+            res.json(msg);
+        }
+    )
+});
+
+//update user
+router.put('/accounts/:id', function(req, res, next){
+    var user = req.body;
+    Users.updateUser(req.params.id, user).then(
+        (msg) => {
+            res.json(msg);
+        }
+    )      
+});
+
+//update user
+router.post('/account', function(req, res, next){
+    var user = req.body;
+    Users.addUser(user).then(
+        (msg) => {
+            res.json(msg);
+        }
+    )      
+});
+
+//deactive user
+router.put('/accountdeactive/:id', function(req, res, next){
+    Users.deActiveUser(req.params.id).then(
+        (msg) => {
+            res.json(msg);
+        }
+    )      
+});
+
+
 
 module.exports = router;

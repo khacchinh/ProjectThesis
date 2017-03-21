@@ -16,7 +16,7 @@ export class AuthenticationService {
             .map((response: Response) => {
                 let user = response.json();
                 if (user.username == username && user.password == password) {
-                    if (user.username == "admin" && access == 1)
+                    if (user.access == 1 && access == 1)
                         localStorage.setItem('currentAdmin', JSON.stringify(user));
                     else localStorage.setItem('currentUser', JSON.stringify(user));
                 }

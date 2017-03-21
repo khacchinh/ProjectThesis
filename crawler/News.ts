@@ -7,5 +7,7 @@ export class News{
     img: string;
     type_img: boolean;
     comment: Object;
-    sumary: string
+    sumary: string;
+    date_public: Date;
+    content: string;
 }

@@ -36,10 +36,10 @@
                                             <td>{{item.name}}</td>
                                             <td>{{item.email}}</td>
                                             <td>{{item.access}}</td>
-                                            <td>{{item.active}}</td>
+                                            <td class="{{item._id}}">{{item.active}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary"><i class="fa fa-gear fa-fw"></i></button>
-                                                <button type="button" class="btn btn-danger" (click)="delActive(item._id)"><i class="fa fa-times fa-fw"></i></button>
+                                                <a type="button" class="btn btn-primary" [routerLink] = "['./', item._id]"><i class="fa fa-gear fa-fw"></i></a>
+                                                <button type="button" class="btn btn-danger" (click)="delActive(item)" id = "{{item._id}}" [disabled] = "btnDisabled(item.active)"><i class="fa fa-times fa-fw "></i></button>
                                             </td>
                                         </tr>
                                     </tbody>
