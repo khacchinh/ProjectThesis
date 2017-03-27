@@ -62,6 +62,9 @@ var _schema = new mongoose.Schema({
     created: {
         type: Date,
         "default": Date.now
+    },
+    date_public: {
+        type: Date
     }
 });
 //paginate
@@ -76,6 +79,8 @@ var NewItem = (function () {
     * @returns {Promise<NewItems>}
     */
     NewItem.saveNewItem = function (news) {
+        if (news.date_public + '' === "Invalid Date")
+            news.date_public = new Date();
         return new Promise(function (resolve, reject) {
             var news_item = new NewItemModel;
             news_item.author = news.author;
@@ -85,6 +90,8 @@ var NewItem = (function () {
             news_item.img = news.img;
             news_item.type_img = news.type_img;
             news_item.sumary = news.sumary;
+            news_item.date_public = news.date_public;
+            news_item.content = news.content;
             news_item.save(function (err, newitem) {
                 if (err)
                     reject(err);
@@ -155,6 +162,32 @@ var NewItem = (function () {
                         reject(err);
                     resolve(newitem);
                 });
+            });
+        });
+    };
+    NewItem.getNearestNew = function (author_name, category_name) {
+        NewItemModel.find({ author: author_name, category: category_name }).sort('-date_public').limit(1).exec(function (err, item) {
+            if (err)
+                return "null";
+            if (item.length > 0) {
+                console.log(item[0].title);
+                return item[0].title;
+            }
+            else
+                return "null";
+        });
+    };
+    NewItem.getNewsAfterDay = function (duration) {
+        return new Promise(function (resolve, reject) {
+            var date = new Date();
+            date.setDate(date.getDate() - duration);
+            NewItemModel.find({ date_public: { $gte: date } }, function (err, news) {
+                if (err)
+                    reject(err);
+                if (news.length > 0)
+                    resolve(news);
+                else
+                    resolve("empty");
             });
         });
     };

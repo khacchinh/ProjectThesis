@@ -70,3 +70,8 @@ data: {
             console.log('Server started on port ' + app.get('port'));
         });
         */
+
+
+get all item before 2 day
+db.newitems.find({"date_public" : {$gte: new Date("date before 2 day")}});
+db.newitems.find({""}).sort({date_public: -1}).limit(1)

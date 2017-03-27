@@ -30,6 +30,10 @@ import * as mongoose from 'mongoose';
 
 import * as crawlerData from './routes/crawlerData';
 
+import { NewItem }  from './model/NewsItem';
+
+
+
 var app : express.Application = express();
 app.use(compression());
 
@@ -56,8 +60,85 @@ app.use('/', getDictionary);
 //use clawer
 app.use('/', crawlerData);
 
-//call class crawler
+//
+var is_loop_process = true;
+function doProcessNews(){
+    NewItem.getNewsAfterDay(2).then(
+        (msg) => {
+            if (msg != "empty"){
+                ProcessNews.arOldNews = msg;
+            }
+            console.log('Crawler dữ liệu tin tức')
+            new CrawlerNewsClass().getCrawlerData().then(
+                function(msg: boolean){
+                    ProcessNews.getContent().then(
+                        (msg) => {
+                            ProcessNews.exportFile();
+                            console.log('- tách từ.....');
+                            var child = require('child_process').spawn(
+                                'java', ['-jar', 'WordSegment.jar']
+                            );
+                            child.stdout.on('data', function(data) {
+                                if (data.toString().trim() == "ok"){
+                                    new ProcessSimilarNew();
+                                    console.log("- done!!");
+                                    if (is_loop_process){
+                                        setInterval(doProcessNews, 1000*60*7);
+                                        is_loop_process = false;
+                                    }
 
+                                }
+                            });
+
+                            child.stderr.on("data", function (data) {
+                                console.log(data.toString());
+                            });
+                        }
+                    )
+                }
+            )
+        }
+    )
+}
+
+//call class crawler
+doProcessNews();
+/*
+setInterval(function(){
+    NewItem.getNewsAfterDay(2).then(
+        (msg) => {
+            if (msg != "empty"){
+                ProcessNews.arOldNews = msg;
+            }
+            console.log('Crawler dữ liệu tin tức')
+            new CrawlerNewsClass().getCrawlerData().then(
+                function(msg: boolean){
+                    ProcessNews.getContent().then(
+                        (msg) => {
+                            ProcessNews.exportFile();
+                            console.log('- tách từ.....');
+                            var child = require('child_process').spawn(
+                                'java', ['-jar', 'WordSegment.jar']
+                            );
+                            child.stdout.on('data', function(data) {
+                                if (data.toString().trim() == "ok"){
+                                    new ProcessSimilarNew();
+                                    console.log("- done!!");
+                                }
+                            });
+
+                            child.stderr.on("data", function (data) {
+                                console.log(data.toString());
+                            });
+                        }
+                    )
+                }
+            )
+        }
+    )
+}, 1000*60*15);
+*/
+/*
 console.log('Crawler dữ liệu tin tức')
 new CrawlerNewsClass().getCrawlerData().then(
     function(msg: boolean){
@@ -65,13 +146,15 @@ new CrawlerNewsClass().getCrawlerData().then(
             (msg) => {
                 
                 ProcessNews.exportFile();
-                console.log('-tách từ.....');
+                console.log('- tách từ.....');
                 var child = require('child_process').spawn(
                     'java', ['-jar', 'WordSegment.jar']
                 );
                 child.stdout.on('data', function(data) {
                     if (data.toString().trim() == "ok"){
                         new ProcessSimilarNew();
+                        console.log("- done!!");
+                        NewItem.getNearestNew("vnexpress", "thế giới");
                     }
                 });
 
@@ -80,25 +163,9 @@ new CrawlerNewsClass().getCrawlerData().then(
                 });
             }
         )
-
-        
-        /*
-        var child = require('child_process').spawn(
-            'java', ['-jar', 'WordSegment.jar']
-        );
-        child.stdout.on('data', function(data) {
-            if (data.toString().trim() == "ok"){
-            
-                new ProcessSimilarNew();
-            }
-        });
-
-        child.stderr.on("data", function (data) {
-            console.log(data.toString());
-        });
-        */
     }
 )
+*/
 
                         
 

@@ -4,9 +4,9 @@ var News_1 = require("./News");
 var processnews_1 = require("./processnews");
 //var bmm = new BMMWordSegment();
 var CrawlerNewsClass = (function () {
-    //private processnews : processnews = new processnews();
     function CrawlerNewsClass() {
         //this.getCralweData();
+        //NewItem.getNearestNew("vnexpress", "thế giới");
     }
     CrawlerNewsClass.prototype.getCrawlerData = function () {
         var p = new Promise(function (resolve, reject) {
@@ -154,14 +154,6 @@ var CrawlerNewsClass = (function () {
                         }
                     }
                     if (count == 27) {
-                        /*
-                        processNews.getContent().then(
-                            (msg) => {
-                                processNews.exportFile();
-                                resolve(true);
-                            }
-                        )
-                        */
                         resolve(true);
                     }
                 }

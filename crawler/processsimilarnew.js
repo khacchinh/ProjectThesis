@@ -27,10 +27,14 @@ var ProcessSimilarNew = (function () {
         //process
         console.log('- remove stop word and save title segment');
         for (var i = 0; i < processnews_1.ProcessNews.arrNews.length; i++) {
-            //console.log(arrDataTitle[i]);
             var str_segment = arrDataTitle[i].replace(/[.,\/#!$%\^&\*;:{}=\-`~()'?‘’“”"…]/g, " ");
             str_segment = str_segment.replace(/  +/g, ' ');
             this.funcDivideNews(processnews_1.ProcessNews.arrNews[i], str_segment);
+            if (i == processnews_1.ProcessNews.arrNews.length - 1) {
+                processnews_1.ProcessNews.arrNews.length = 0;
+                processnews_1.ProcessNews.tempArrNews.length = 0;
+                processnews_1.ProcessNews.arOldNews.length = 0;
+            }
         }
     };
     ProcessSimilarNew.prototype.funcDivideNews = function (news, title_segment) {
@@ -80,8 +84,8 @@ var ProcessSimilarNew = (function () {
                     //                    // call function cacular similar cosinse here
                     similar = _this.funcProcessCacularSimilar(title_segment, old_news.arr_title_segment);
                     //
-                    if (similar > 0.4) {
-                        //delete new of new is reduplicate
+                    if (similar > 0.45) {
+                        //delete new of news is reduplicate
                         console.log("Tên báo: " + news.author);
                         console.log("Thể loại: " + news.category);
                         console.log("Tiêu đề: " + news.title);
@@ -99,7 +103,24 @@ var ProcessSimilarNew = (function () {
             });
             if (count_same_author == arrNew.length) {
                 news.arr_title_segment = this.funcArrayNonStopWord(title_segment);
+                //check database if similar
+                if (processnews_1.ProcessNews.arOldNews.length > 0) {
+                    for (var i = 0; i < processnews_1.ProcessNews.arOldNews.length; i++) {
+                        if (processnews_1.ProcessNews.arOldNews[i].author != news.author && processnews_1.ProcessNews.arOldNews[i].category == news.category) {
+                            processnews_1.ProcessNews.arOldNews[i].arr_title_segment = this.funcArrayNonStopWord(processnews_1.ProcessNews.arOldNews[i].content);
+                            similar = this.funcProcessCacularSimilar(title_segment, processnews_1.ProcessNews.arOldNews[i].arr_title_segment);
+                            if (similar > 0.45)
+                                return;
+                        }
+                    }
+                }
+                /*
+                *
+                * save to db
+                */
+                console.log(news.title + "\n\n");
                 arrNew.push(news);
+                this.funcSaveNew(news);
             }
         }
     };

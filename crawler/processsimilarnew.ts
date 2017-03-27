@@ -33,10 +33,15 @@ export class ProcessSimilarNew{
         //process
         console.log('- remove stop word and save title segment');
         for (var i = 0; i < ProcessNews.arrNews.length; i++){
-            //console.log(arrDataTitle[i]);
             var str_segment = arrDataTitle[i].replace(/[.,\/#!$%\^&\*;:{}=\-`~()'?‘’“”"…]/g," ");
             str_segment = str_segment.replace( /  +/g, ' ' );
             this.funcDivideNews(ProcessNews.arrNews[i], str_segment);
+
+            if (i == ProcessNews.arrNews.length - 1){
+                ProcessNews.arrNews.length = 0;
+                ProcessNews.tempArrNews.length = 0;
+                ProcessNews.arOldNews.length = 0;
+            }
         }
     }
 
@@ -88,9 +93,8 @@ export class ProcessSimilarNew{
                     //                    // call function cacular similar cosinse here
                     similar = this.funcProcessCacularSimilar(title_segment, old_news.arr_title_segment);
                     //
-                    if (similar > 0.4){  
-                        
-                         //delete new of new is reduplicate
+                    if (similar > 0.45){  
+                         //delete new of news is reduplicate
                         console.log("Tên báo: " + news.author);
                         console.log("Thể loại: " + news.category);
                         console.log("Tiêu đề: " + news.title);
@@ -109,13 +113,26 @@ export class ProcessSimilarNew{
             });
             if (count_same_author == arrNew.length){
                 news.arr_title_segment = this.funcArrayNonStopWord(title_segment);
-                arrNew.push(news);
+                
+
+                //check database if similar
+                if (ProcessNews.arOldNews.length > 0) {
+                    for (var i = 0; i < ProcessNews.arOldNews.length; i++){
+                        if (ProcessNews.arOldNews[i].author != news.author && ProcessNews.arOldNews[i].category == news.category){
+                            ProcessNews.arOldNews[i].arr_title_segment = this.funcArrayNonStopWord(ProcessNews.arOldNews[i].content);
+                            similar = this.funcProcessCacularSimilar(title_segment, ProcessNews.arOldNews[i].arr_title_segment);
+                            if (similar > 0.45)
+                                 return;
+                        }
+                    }
+                }
                 /*
                 *
                 * save to db
                 */
-                //this.funcSaveNew(news);
-                
+                console.log(news.title + "\n\n");
+                arrNew.push(news);
+                this.funcSaveNew(news);
             }
         }
     }

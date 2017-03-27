@@ -8,9 +8,22 @@ var ProcessNews = (function () {
     ProcessNews.prototype.importNew = function (news) {
         if (news.title + '' == "undefined" || news.img + '' == "undefined" || news.url + '' == "undefined" || news.sumary + '' == "undefined" || news.category + '' == "undefined")
             return;
+        if (this.checkExistNews(news.title))
+            return;
+        //console.log(this.checkExistNews(news.title));
         news.category = news.category.trim().toLowerCase();
         news.author = news.author.trim().toLowerCase();
         ProcessNews.tempArrNews.push(news);
+    };
+    ProcessNews.prototype.checkExistNews = function (title) {
+        var is_title = false;
+        ProcessNews.arOldNews.forEach(function (element) {
+            if (element.title.trim().toLowerCase() === title.trim().toLowerCase()) {
+                is_title = true;
+                return true;
+            }
+        });
+        return is_title;
     };
     ProcessNews.getContent = function () {
         var count = 0;
@@ -28,6 +41,8 @@ var ProcessNews = (function () {
                             $(".fck_detail").children().last().remove();
                             $(".fck_detail").children('.Normal[style*="text-align:right;"]').remove();
                             var content = $(".fck_detail").text() + '';
+                            var date = $(".block_timer_share").children().first().text();
+                            element.date_public = ProcessNews.getDate(date, element.author);
                             element.content = content.toString().trim();
                         }
                         else if (element.author == "vccorp.vn") {
@@ -36,6 +51,8 @@ var ProcessNews = (function () {
                             $("#divNewsContent").children('p[style*="text-align: right;"]').remove();
                             var content = $("#divNewsContent").text() + '';
                             element.content = content.toString().trim();
+                            var date = $(".box26").children("span").text();
+                            element.date_public = ProcessNews.getDate(date, element.author);
                         }
                         else if (element.author == "thanhnien") {
                             $("table").remove();
@@ -43,6 +60,9 @@ var ProcessNews = (function () {
                             $("#abody").children().last().remove();
                             var content = $("#abody").text() + '';
                             element.content = content.toString().trim();
+                            $("time").children("span").remove();
+                            var date = $("time").text();
+                            element.date_public = ProcessNews.getDate(date, element.author);
                         }
                         else if (element.author == "vietnamnet news") {
                             $("table").remove();
@@ -53,6 +73,8 @@ var ProcessNews = (function () {
                             $("#ArticleContent").children().first().remove();
                             var content = $("#ArticleContent").text() + '';
                             element.content = content.toString().trim();
+                            var date = $(".ArticleDateTime").children("span").text();
+                            element.date_public = ProcessNews.getDate(date, element.author);
                         }
                         if (count == ProcessNews.tempArrNews.length)
                             resolve(true);
@@ -79,8 +101,45 @@ var ProcessNews = (function () {
     ProcessNews.prototype.clearPunctuation = function (txt) {
         return txt.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'?‘’“”]/g, "");
     };
+    ProcessNews.getDate = function (date, author) {
+        date = date.trim().replace(/\xA0/g, ' ');
+        if (date == "")
+            return new Date();
+        var arrTime = date.split(" ");
+        var dateneed = '';
+        switch (author) {
+            case "vnexpress":
+            case "vccorp.vn":
+                dateneed = arrTime[2].split("/").reverse().join("-") + " " + arrTime[4] + ":00";
+                break;
+            case "thanhnien":
+                dateneed = arrTime[3].split("/").reverse().join("-") + " " + ProcessNews.convertTime12to24(arrTime[0] + " " + arrTime[1]);
+                break;
+            case "vietnamnet news":
+                dateneed = arrTime[0].split("/").reverse().join("-") + " " + arrTime[2];
+                break;
+        }
+        //date.trim().split(" ")[2].split("/").reverse().join("-") + " " + date.trim().split(" ")[4] + ":00"
+        //dan tri  : Thứ Bảy, 25/03/2017 - 21:12
+        //vnexpress: Thứ bảy, 25/3/2017 | 23:10 GMT+7
+        //thanhnien: 06:27 AM - 25/03/2017 
+        //vietnamnet: 25/03/2017  15:40 GMT+7
+        return new Date(dateneed);
+    };
+    ProcessNews.convertTime12to24 = function (time12h) {
+        var _a = time12h.split(' '), time = _a[0], modifier = _a[1];
+        var _b = time.split(':'), hours = _b[0], minutes = _b[1];
+        if (hours === '12') {
+            hours = '00';
+        }
+        if (modifier === 'PM') {
+            hours = parseInt(hours, 10) + 12;
+        }
+        return hours + ':' + minutes;
+    };
     return ProcessNews;
 }());
 ProcessNews.tempArrNews = new Array();
 ProcessNews.arrNews = new Array();
+ProcessNews.arOldNews = new Array();
 exports.ProcessNews = ProcessNews;

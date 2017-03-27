@@ -5,13 +5,14 @@ import * as fs from 'fs';
 import { News } from './News';
 
 import { ProcessNews } from './processnews';
-
+import { NewItem }  from '../model/NewsItem';
 //var bmm = new BMMWordSegment();
 
 export class CrawlerNewsClass{
-    //private processnews : processnews = new processnews();
+
     constructor(){
         //this.getCralweData();
+         //NewItem.getNearestNew("vnexpress", "thế giới");
     }
     getCrawlerData() : Promise<boolean> {
        let p = new Promise<boolean> (function(resolve, reject){
@@ -35,7 +36,6 @@ export class CrawlerNewsClass{
                             var category= $('.timer_header').text().trim();
                             news.author = author;
                             news.category = category;
-
                             //new hot
                             news.title = $(".box_hot_news").children("h1").text().trim();
                             news.url = $(".box_hot_news").children("h1").children("a").attr('href');
@@ -185,14 +185,6 @@ export class CrawlerNewsClass{
                         }               
                     }
                     if (count == 27){
-                        /*
-                        processNews.getContent().then(
-                            (msg) => {
-                                processNews.exportFile();
-                                resolve(true);
-                            }
-                        )
-                        */
                         resolve(true);
                     }
                     
@@ -202,6 +194,7 @@ export class CrawlerNewsClass{
                 //thế giới
                 
                 'http://vnexpress.net/tin-tuc/the-gioi',
+                
                 'http://dantri.com.vn/the-gioi.htm',
                 'http://vietnamnet.vn/vn/the-gioi/',
                 'http://thanhnien.vn/the-gioi/',
@@ -249,6 +242,7 @@ export class CrawlerNewsClass{
                 'http://dantri.com.vn/su-kien.htm',
                 'http://vietnamnet.vn/vn/thoi-su/',
                 'http://thanhnien.vn/thoi-su/'
+                
                 
             ]);
        });
