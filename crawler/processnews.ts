@@ -28,7 +28,7 @@ export class ProcessNews{
     checkExistNews(title: string) : Boolean {
         var is_title = false;
         ProcessNews.arOldNews.forEach(element => {
-            if (element.title.trim().toLowerCase() === title.trim().toLowerCase()){
+            if (element.title.toString().trim().toLowerCase() == title.toString().trim().toLowerCase()){
                 is_title = true;
                 return true;
             }

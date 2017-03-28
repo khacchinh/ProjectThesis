@@ -43,7 +43,7 @@ app.use('/', crawlerData);
 //
 var is_loop_process = true;
 function doProcessNews() {
-    NewsItem_1.NewItem.getNewsAfterDay(2).then(function (msg) {
+    NewsItem_1.NewItem.getNewsAfterDay(10).then(function (msg) {
         if (msg != "empty") {
             processnews_1.ProcessNews.arOldNews = msg;
         }
@@ -58,7 +58,7 @@ function doProcessNews() {
                         new processsimilarnew_1.ProcessSimilarNew();
                         console.log("- done!!");
                         if (is_loop_process) {
-                            setInterval(doProcessNews, 1000 * 60 * 7);
+                            setInterval(doProcessNews, 1000 * 60 * 15);
                             is_loop_process = false;
                         }
                     }

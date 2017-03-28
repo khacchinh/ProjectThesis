@@ -13,6 +13,7 @@ export class CrawlerNewsClass{
     constructor(){
         //this.getCralweData();
          //NewItem.getNearestNew("vnexpress", "thế giới");
+        console.log("Length old: " + ProcessNews.arOldNews.length);
     }
     getCrawlerData() : Promise<boolean> {
        let p = new Promise<boolean> (function(resolve, reject){
@@ -184,7 +185,7 @@ export class CrawlerNewsClass{
                             });
                         }               
                     }
-                    if (count == 27){
+                    if (count == 2){
                         resolve(true);
                     }
                     
@@ -192,28 +193,26 @@ export class CrawlerNewsClass{
             });
             c.queue([
                 //thế giới
-                
+                /*
                 'http://vnexpress.net/tin-tuc/the-gioi',
-                
                 'http://dantri.com.vn/the-gioi.htm',
                 'http://vietnamnet.vn/vn/the-gioi/',
                 'http://thanhnien.vn/the-gioi/',
-                
+                */
                 
                 //kinh doanh
                 
                 'http://kinhdoanh.vnexpress.net/',
-                'http://dantri.com.vn/kinh-doanh.htm',
-                'http://vietnamnet.vn/vn/kinh-doanh/',
+                //'http://dantri.com.vn/kinh-doanh.htm',
+                //'http://vietnamnet.vn/vn/kinh-doanh/',
                 'http://thanhnien.vn/kinh-doanh/',
-                
+                /*
                 //thể thao
                 
                 'http://thethao.vnexpress.net/',
                 'http://dantri.com.vn/the-thao.htm',
                 'http://vietnamnet.vn/vn/the-thao/',
                 'http://thethao.thanhnien.vn/',
-                
                 
                 //công nghệ
                 
@@ -242,7 +241,7 @@ export class CrawlerNewsClass{
                 'http://dantri.com.vn/su-kien.htm',
                 'http://vietnamnet.vn/vn/thoi-su/',
                 'http://thanhnien.vn/thoi-su/'
-                
+                */
                 
             ]);
        });

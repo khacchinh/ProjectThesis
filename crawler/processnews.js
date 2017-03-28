@@ -18,7 +18,7 @@ var ProcessNews = (function () {
     ProcessNews.prototype.checkExistNews = function (title) {
         var is_title = false;
         ProcessNews.arOldNews.forEach(function (element) {
-            if (element.title.trim().toLowerCase() === title.trim().toLowerCase()) {
+            if (element.title.toString().trim().toLowerCase() == title.toString().trim().toLowerCase()) {
                 is_title = true;
                 return true;
             }
