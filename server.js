@@ -43,7 +43,7 @@ app.use('/', crawlerData);
 //
 var is_loop_process = true;
 function doProcessNews() {
-    NewsItem_1.NewItem.getNewsAfterDay(10).then(function (msg) {
+    NewsItem_1.NewItem.getNewsAfterDay(2).then(function (msg) {
         if (msg != "empty") {
             processnews_1.ProcessNews.arOldNews = msg;
         }

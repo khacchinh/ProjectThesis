@@ -29,25 +29,27 @@ var ProcessSimilarNew = (function () {
         console.log('- remove stop word and save title segment');
         for (var i = 0; i < processnews_1.ProcessNews.arrNews.length; i++) {
             var str_segment = arrDataTitle[i].replace(/[.,\/#!$%\^&\*;:{}=\-`~()'?‘’“”"…]/g, " ");
-            str_segment = str_segment.replace(/  +/g, ' ');
-            processnews_1.ProcessNews.arrNews[i].content = str_segment.toLowerCase();
+            str_segment = str_segment.replace(/  +/g, ' ').toLowerCase();
+            processnews_1.ProcessNews.arrNews[i].content = str_segment;
             this.funcDivideNews(processnews_1.ProcessNews.arrNews[i], str_segment);
             if (i == processnews_1.ProcessNews.arrNews.length - 1) {
                 processnews_1.ProcessNews.arrNews.length = 0;
                 processnews_1.ProcessNews.tempArrNews.length = 0;
                 processnews_1.ProcessNews.arOldNews.length = 0;
+                processnews_1.ProcessNews.arFlagTitle.forEach(function (key, value) {
+                    console.log(key + "   " + value);
+                });
             }
         }
     };
     ProcessSimilarNew.prototype.funcDivideNews = function (news, title_segment) {
-        title_segment = title_segment.toLowerCase();
-        if (news.category.toLowerCase() == 'thế giới') {
+        if (news.category == 'thế giới') {
             this.funcImportNewByCategory(news, this.thoigioinews, title_segment);
         }
-        else if (news.category.toLowerCase() == 'kinh doanh' || news.category.toLowerCase() == 'tài chính') {
+        else if (news.category == 'kinh doanh' || news.category == 'tài chính') {
             this.funcImportNewByCategory(news, this.kinhdoanhnews, title_segment);
         }
-        else if (news.category.toLowerCase() == 'thể thao' || news.category.toLowerCase() == 'bóng đá') {
+        else if (news.category == 'thể thao' || news.category == 'bóng đá') {
             this.funcImportNewByCategory(news, this.thethaonews, title_segment);
         }
         else if (news.category.toLowerCase() == 'số hóa' || news.category.toLowerCase() == 'công nghệ' || news.category.toLowerCase() == 'dân trí') {

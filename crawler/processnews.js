@@ -2,6 +2,7 @@
 var fs = require("fs");
 var path = require("path");
 var Crawler = require("crawler");
+var Collections = require("typescript-collections");
 var ProcessNews = (function () {
     function ProcessNews() {
     }
@@ -10,7 +11,6 @@ var ProcessNews = (function () {
             return;
         if (this.checkExistNews(news.title))
             return;
-        //console.log(this.checkExistNews(news.title));
         news.category = news.category.trim().toLowerCase();
         news.author = news.author.trim().toLowerCase();
         ProcessNews.tempArrNews.push(news);
@@ -44,6 +44,7 @@ var ProcessNews = (function () {
                             var date = $(".block_timer_share").children().first().text();
                             element.date_public = ProcessNews.getDate(date, element.author);
                             element.content = content.toString().trim();
+                            ProcessNews.saveFalgNewsItem(element.author, element.category, element.title, element.date_public);
                         }
                         else if (element.author == "vccorp.vn") {
                             $("#divNewsContent").children('div').remove();
@@ -53,6 +54,7 @@ var ProcessNews = (function () {
                             element.content = content.toString().trim();
                             var date = $(".box26").children("span").text();
                             element.date_public = ProcessNews.getDate(date, element.author);
+                            ProcessNews.saveFalgNewsItem(element.author, element.category, element.title, element.date_public);
                         }
                         else if (element.author == "thanhnien") {
                             $("table").remove();
@@ -63,6 +65,7 @@ var ProcessNews = (function () {
                             $("time").children("span").remove();
                             var date = $("time").text();
                             element.date_public = ProcessNews.getDate(date, element.author);
+                            ProcessNews.saveFalgNewsItem(element.author, element.category, element.title, element.date_public);
                         }
                         else if (element.author == "vietnamnet news") {
                             $("table").remove();
@@ -75,6 +78,7 @@ var ProcessNews = (function () {
                             element.content = content.toString().trim();
                             var date = $(".ArticleDateTime").children("span").text();
                             element.date_public = ProcessNews.getDate(date, element.author);
+                            ProcessNews.saveFalgNewsItem(element.author, element.category, element.title, element.date_public);
                         }
                         if (count == ProcessNews.tempArrNews.length)
                             resolve(true);
@@ -88,14 +92,16 @@ var ProcessNews = (function () {
     //.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'?‘’“”"…\n\r\t]/g," ")
     ProcessNews.exportFile = function () {
         console.log('Tiền xử lý: ');
-        var dataTitle = '';
         console.log('- loại bỏ dấu câu');
+        console.log(ProcessNews.tempArrNews.length);
+        var dataTitle = '';
         ProcessNews.tempArrNews.forEach(function (element, index) {
-            if (element.content || element.content != "" || element.content.length != 0) {
+            if (element.content.trim().length != 0 && element.date_public != null) {
                 ProcessNews.arrNews.push(element);
                 dataTitle += element.content.replace(/[\n\t\r]/g, " ") + "\n";
             }
         });
+        ProcessNews.tempArrNews.length = 0; //clear all element array
         fs.writeFileSync(path.join(__dirname + '/tokenizer/data/input.txt'), dataTitle);
     };
     ProcessNews.prototype.clearPunctuation = function (txt) {
@@ -104,7 +110,7 @@ var ProcessNews = (function () {
     ProcessNews.getDate = function (date, author) {
         date = date.trim().replace(/\xA0/g, ' ');
         if (date == "")
-            return new Date();
+            return null;
         var arrTime = date.split(" ");
         var dateneed = '';
         switch (author) {
@@ -137,9 +143,27 @@ var ProcessNews = (function () {
         }
         return hours + ':' + minutes;
     };
+    ProcessNews.saveFalgNewsItem = function (author, category, title, date) {
+        var key = author + "-" + category;
+        if (date != null) {
+            if (ProcessNews.arFlagTime.getValue(key)) {
+                var flagDate = ProcessNews.arFlagTime.getValue(key).getTime() < date.getTime() ? date : ProcessNews.arFlagTime.getValue(key);
+                if (flagDate == date) {
+                    ProcessNews.arFlagTitle.setValue(key, title);
+                    ProcessNews.arFlagTime.setValue(key, date);
+                }
+            }
+            else {
+                ProcessNews.arFlagTime.setValue(key, date);
+                ProcessNews.arFlagTitle.setValue(key, title);
+            }
+        }
+    };
     return ProcessNews;
 }());
 ProcessNews.tempArrNews = new Array();
 ProcessNews.arrNews = new Array();
 ProcessNews.arOldNews = new Array();
+ProcessNews.arFlagTime = new Collections.Dictionary();
+ProcessNews.arFlagTitle = new Collections.Dictionary();
 exports.ProcessNews = ProcessNews;

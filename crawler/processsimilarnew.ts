@@ -35,27 +35,30 @@ export class ProcessSimilarNew{
         console.log('- remove stop word and save title segment');
         for (var i = 0; i < ProcessNews.arrNews.length; i++){
             var str_segment = arrDataTitle[i].replace(/[.,\/#!$%\^&\*;:{}=\-`~()'?‘’“”"…]/g," ");
-            str_segment = str_segment.replace( /  +/g, ' ' );
-            ProcessNews.arrNews[i].content = str_segment.toLowerCase();
+            str_segment = str_segment.replace( /  +/g, ' ' ).toLowerCase();
+            ProcessNews.arrNews[i].content = str_segment;
             this.funcDivideNews(ProcessNews.arrNews[i], str_segment);
             
             if (i == ProcessNews.arrNews.length - 1){
                 ProcessNews.arrNews.length = 0;
                 ProcessNews.tempArrNews.length = 0;
                 ProcessNews.arOldNews.length = 0;
+
+                ProcessNews.arFlagTitle.forEach((key, value) => {
+                    console.log(key + "   " + value);
+                });
             }
         }
     }
 
     funcDivideNews(news: News, title_segment: string){
-        title_segment = title_segment.toLowerCase();
-        if (news.category.toLowerCase() == 'thế giới'){
+        if (news.category == 'thế giới'){
             this.funcImportNewByCategory(news, this.thoigioinews, title_segment);
         }
-        else if (news.category.toLowerCase() == 'kinh doanh' || news.category.toLowerCase() == 'tài chính'){
+        else if (news.category == 'kinh doanh' || news.category == 'tài chính'){
             this.funcImportNewByCategory(news, this.kinhdoanhnews, title_segment);
         }
-        else if (news.category.toLowerCase() == 'thể thao' || news.category.toLowerCase() == 'bóng đá'){
+        else if (news.category == 'thể thao' || news.category == 'bóng đá'){
             this.funcImportNewByCategory(news, this.thethaonews, title_segment);
         }
         else if (news.category.toLowerCase() == 'số hóa' || news.category.toLowerCase() == 'công nghệ' || news.category.toLowerCase() == 'dân trí'){

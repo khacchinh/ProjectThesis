@@ -63,7 +63,7 @@ app.use('/', crawlerData);
 //
 var is_loop_process = true;
 function doProcessNews(){
-    NewItem.getNewsAfterDay(10).then(
+    NewItem.getNewsAfterDay(2).then(
         (msg) => {
             if (msg != "empty"){
                 ProcessNews.arOldNews = msg;
