@@ -18,6 +18,15 @@ router.get('/news', function(req, res, next){
     )
 });
 
+//search
+router.get('/news_search', function(req, res, next){
+    NewItem.getAllNewItemBySearch(req.param('search_title')).then(
+        (msg) =>{
+            res.json(msg);
+        }
+    )
+});
+
 //get all tasks
 router.get('/new_item', function(req, res, next){
     NewItem.getSingleItembyID(req.param('id')).then(

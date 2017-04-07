@@ -13,6 +13,12 @@ router.get('/news', function (req, res, next) {
         res.json(msg);
     });
 });
+//search
+router.get('/news_search', function (req, res, next) {
+    NewsItem_1.NewItem.getAllNewItemBySearch(req.param('search_title')).then(function (msg) {
+        res.json(msg);
+    });
+});
 //get all tasks
 router.get('/new_item', function (req, res, next) {
     NewsItem_1.NewItem.getSingleItembyID(req.param('id')).then(function (msg) {

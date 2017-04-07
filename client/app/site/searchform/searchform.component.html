@@ -1,25 +1,11 @@
                 <div class="col-md-8">
                     <div class="row">
                         <ul class="breadcrumb col-md-11">
-                            <li><a href="#">Home</a> <span>/</span></li>
-                            <li class="active">{{itemHot?.category}}</li>
+                            <li><a href="#">Kết quả tìm kiếm</a> <span>/</span></li>
+                            <li class="active">{{paramsSearch}}</li>
                         </ul>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-5 img-thumbnail">
-                            <a [routerLink]="['../../single']"><img style="width: 305px; height: 250px;" alt="" src="{{itemHot?.img}}" /></a>
-                        </div>
-                        <div class="col-md-7">
-                            <a [routerLink]="['../../single']" style="font-size: 2em;">{{itemHot?.title}}</a><br>
-                            <span class="date">{{convertDate(itemHot?.date_public)}} | {{itemHot?.author}} | 0 comments</span>
-                            <p>
-                               {{itemHot?.sumary}}
-                            </p>
-                            <a [routerLink]="['../../single']">Continue reading</a>
-                        </div>
-                    </div>
-
+                    
                     <div class="row" style="margin-top: 10px" *ngFor = "let newitem of pagedItems">
                         <div class="row category-item">
                             <div class="col-sm-2 category-item-img">
@@ -27,7 +13,7 @@
                             </div>
                             <div class="col-sm-9">
                                 <a [routerLink]="['../../single', newitem._id]"><h4>{{newitem.title}}</h4></a>
-                                <span class="date">{{convertDate(newitem.date_public)}} | {{newitem.author}}</span>
+                                <span class="date">{{convertDate(newitem.date_public)}} | {{newitem.category}} | {{newitem.author}}</span>
                                 <p>
                                     {{newitem.sumary}}
                                 </p>

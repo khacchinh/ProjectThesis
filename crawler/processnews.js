@@ -40,32 +40,32 @@ var ProcessNews = (function () {
                             $("table").remove();
                             $(".fck_detail").children().last().remove();
                             $(".fck_detail").children('.Normal[style*="text-align:right;"]').remove();
-                            var content = $(".fck_detail").text() + '';
+                            var content = $(".fck_detail").text();
                             var date = $(".block_timer_share").children().first().text();
-                            element.date_public = ProcessNews.getDate(date, element.author);
+                            element.date_public = ProcessNews.getDate(date, element.author, element.category);
                             element.content = content.toString().trim();
-                            ProcessNews.saveFalgNewsItem(element.author, element.category, element.title, element.date_public);
+                            ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
                         }
-                        else if (element.author == "vccorp.vn") {
+                        else if (element.author == "dantri") {
                             $("#divNewsContent").children('div').remove();
                             $("#divNewsContent").children().last().remove();
                             $("#divNewsContent").children('p[style*="text-align: right;"]').remove();
-                            var content = $("#divNewsContent").text() + '';
+                            var content = $("#divNewsContent").text();
                             element.content = content.toString().trim();
                             var date = $(".box26").children("span").text();
-                            element.date_public = ProcessNews.getDate(date, element.author);
-                            ProcessNews.saveFalgNewsItem(element.author, element.category, element.title, element.date_public);
+                            element.date_public = ProcessNews.getDate(date, element.author, element.category);
+                            ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
                         }
                         else if (element.author == "thanhnien") {
                             $("table").remove();
                             $("#abody").children('div').children('article').remove();
                             $("#abody").children().last().remove();
-                            var content = $("#abody").text() + '';
+                            var content = $("#abody").text();
                             element.content = content.toString().trim();
                             $("time").children("span").remove();
                             var date = $("time").text();
-                            element.date_public = ProcessNews.getDate(date, element.author);
-                            ProcessNews.saveFalgNewsItem(element.author, element.category, element.title, element.date_public);
+                            element.date_public = ProcessNews.getDate(date, element.author, element.category);
+                            ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
                         }
                         else if (element.author == "vietnamnet news") {
                             $("table").remove();
@@ -74,12 +74,35 @@ var ProcessNews = (function () {
                             $("#ArticleContent").children('div').remove();
                             $("#ArticleContent").children().last().remove();
                             $("#ArticleContent").children().first().remove();
-                            var content = $("#ArticleContent").text() + '';
+                            var content = $("#ArticleContent").text();
                             element.content = content.toString().trim();
                             var date = $(".ArticleDateTime").children("span").text();
-                            element.date_public = ProcessNews.getDate(date, element.author);
-                            ProcessNews.saveFalgNewsItem(element.author, element.category, element.title, element.date_public);
+                            element.date_public = ProcessNews.getDate(date, element.author, element.category);
+                            ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
                         }
+                        else if (element.author == "zing") {
+                            var content = $(".the-article-body").text();
+                            element.content = content;
+                            var date = $('.the-article-publish').text();
+                            element.date_public = ProcessNews.getDate(date, element.author, element.category);
+                            ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                        }
+                        /*
+                        else if (element.author == "tuoitre"){
+                            let content = "";
+                            try{
+                                content = $('div.fck').text();
+                                element.content = content.trim();
+                                let date = $('meta[name=pubdate]').attr("content").text();
+                                element.date_public = ProcessNews.getDate(date, element.author, element.category);
+                            }
+                            catch(e){
+                                element.content = "";
+                            }
+                            console.log(element.date_public);
+                            ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                        }
+                        */
                         if (count == ProcessNews.tempArrNews.length)
                             resolve(true);
                     }
@@ -89,13 +112,13 @@ var ProcessNews = (function () {
         });
         return p;
     };
-    //.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'?‘’“”"…\n\r\t]/g," ")
     ProcessNews.exportFile = function () {
         console.log('Tiền xử lý: ');
         console.log('- loại bỏ dấu câu');
         console.log(ProcessNews.tempArrNews.length);
         var dataTitle = '';
         ProcessNews.tempArrNews.forEach(function (element, index) {
+            element.content = element.content + '';
             if (element.content.trim().length != 0 && element.date_public != null) {
                 ProcessNews.arrNews.push(element);
                 dataTitle += element.content.replace(/[\n\t\r]/g, " ") + "\n";
@@ -107,15 +130,16 @@ var ProcessNews = (function () {
     ProcessNews.prototype.clearPunctuation = function (txt) {
         return txt.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'?‘’“”]/g, "");
     };
-    ProcessNews.getDate = function (date, author) {
+    ProcessNews.getDate = function (date, author, category) {
+        var key = author + "-" + category;
         date = date.trim().replace(/\xA0/g, ' ');
         if (date == "")
             return null;
         var arrTime = date.split(" ");
-        var dateneed = '';
+        var dateneed;
         switch (author) {
             case "vnexpress":
-            case "vccorp.vn":
+            case "dantri":
                 dateneed = arrTime[2].split("/").reverse().join("-") + " " + arrTime[4] + ":00";
                 break;
             case "thanhnien":
@@ -124,13 +148,16 @@ var ProcessNews = (function () {
             case "vietnamnet news":
                 dateneed = arrTime[0].split("/").reverse().join("-") + " " + arrTime[2];
                 break;
+            case "zing":
+                dateneed = arrTime[1].split("/").reverse().join("-") + " " + arrTime[0];
+                break;
         }
-        //date.trim().split(" ")[2].split("/").reverse().join("-") + " " + date.trim().split(" ")[4] + ":00"
-        //dan tri  : Thứ Bảy, 25/03/2017 - 21:12
-        //vnexpress: Thứ bảy, 25/3/2017 | 23:10 GMT+7
-        //thanhnien: 06:27 AM - 25/03/2017 
-        //vietnamnet: 25/03/2017  15:40 GMT+7
-        return new Date(dateneed);
+        dateneed = new Date(dateneed);
+        if (ProcessNews.saveFlagTime.getValue(key)) {
+            if (ProcessNews.saveFlagTime.getValue(key).getTime() > dateneed.getTime())
+                return null;
+        }
+        return dateneed;
     };
     ProcessNews.convertTime12to24 = function (time12h) {
         var _a = time12h.split(' '), time = _a[0], modifier = _a[1];
@@ -143,7 +170,7 @@ var ProcessNews = (function () {
         }
         return hours + ':' + minutes;
     };
-    ProcessNews.saveFalgNewsItem = function (author, category, title, date) {
+    ProcessNews.saveFlagNewsItem = function (author, category, title, date) {
         var key = author + "-" + category;
         if (date != null) {
             if (ProcessNews.arFlagTime.getValue(key)) {
@@ -166,4 +193,5 @@ ProcessNews.arrNews = new Array();
 ProcessNews.arOldNews = new Array();
 ProcessNews.arFlagTime = new Collections.Dictionary();
 ProcessNews.arFlagTitle = new Collections.Dictionary();
+ProcessNews.saveFlagTime = new Collections.Dictionary();
 exports.ProcessNews = ProcessNews;

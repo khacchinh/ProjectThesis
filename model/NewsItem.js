@@ -110,7 +110,17 @@ var NewItem = (function () {
     };
     NewItem.getAllNewItembyCategory = function (category_name) {
         return new Promise(function (resolve, reject) {
-            NewItemModel.find({ category: category_name }, function (err, result) {
+            NewItemModel.find({ category: category_name }, null, { sort: '-date_public' }, function (err, result) {
+                if (err)
+                    reject(err);
+                resolve(result);
+            });
+        });
+    };
+    ;
+    NewItem.getAllNewItemBySearch = function (search_title) {
+        return new Promise(function (resolve, reject) {
+            NewItemModel.find({ title: new RegExp(search_title, "i") }, null, { sort: '-date_public' }, function (err, result) {
                 if (err)
                     reject(err);
                 resolve(result);

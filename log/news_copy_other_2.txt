@@ -1,0 +1,69 @@
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Quốc lộ 1 lại tắc vì dân đưa tiền lẻ mua vé qua Trạm thu phí Bến Thủy
+
+URL: http://news.zing.vn/quoc-lo-1-lai-tac-vi-dan-dua-tien-le-mua-ve-qua-tram-thu-phi-ben-thuy-post735080.html
+Date public: 4/6/2017
+---------------
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Giảm 50% giá vé cho người dân hai đầu cầu Bến Thủy
+
+URL: http://news.zing.vn/giam-50-gia-ve-cho-nguoi-dan-hai-dau-cau-ben-thuy-post734197.html
+Date public: 4/4/2017
+----
+Cosine value: 0.6848589947535817
+
+
+Tên báo: vietnamnet news
+Thể loại: thể thao
+Tiêu đề: Kết quả bóng đá hôm nay 6/4
+URL: http://vietnamnet.vn/vn/the-thao/bong-da-quoc-te/ket-qua-truc-tuyen-ket-qua-bong-da-truc-tuyen-365213.html
+Date public: 4/6/2017
+---------------
+Tên báo: vietnamnet news
+Thể loại: thể thao
+Tiêu đề: Kết quả bóng đá hôm nay 4/4
+URL: http://vietnamnet.vn/vn/the-thao/bong-da-quoc-te/ket-qua-truc-tuyen-ket-qua-bong-da-truc-tuyen-364799.html
+Date public: 4/4/2017
+----
+Cosine value: 0.6842373209092798
+
+
+
+Tên báo: zing
+Thể loại: thể thao
+Tiêu đề: 
+U20 Việt Nam thắng đậm đàn em U19
+
+URL: http://news.zing.vn/u20-viet-nam-thang-dam-dan-em-u19-post735101.html
+Date public: 4/6/2017
+---------------
+Tên báo: zing
+Thể loại: thể thao
+Tiêu đề: 
+Hai cầu thủ U20 Việt Nam có một cán bộ hỗ trợ
+
+URL: http://news.zing.vn/lich-thi-dau-u20-viet-nam-tai-u20-world-cup-post734728.html
+Date public: 4/5/2017
+----
+Cosine value: 0.638989531473479
+
+
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Nữ hành khách gây rối trên máy bay bị phạt 4 triệu đồng
+
+URL: http://news.zing.vn/nu-hanh-khach-gay-roi-tren-may-bay-bi-phat-4-trieu-dong-post734335.html
+Date public: 4/4/2017
+---------------
+Tên báo: thanhnien
+Thể loại: thời sự
+Tiêu đề: La hét gây gổ trên máy bay, nữ hành khách bị phạt 4 triệu
+URL: http://thanhnien.vn/thoi-su/la-het-gay-go-tren-may-bay-nu-hanh-khach-bi-phat-4-trieu-822358.html
+Date public: 4/4/2017
+----
+Cosine value: 0.6615416728003438

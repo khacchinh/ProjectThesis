@@ -9,6 +9,9 @@ import { CategoryComponent } from './category/index';
 //single page item news
 import { SingleComponent } from './singlepage/index';
 
+//search
+import { SearchComponent } from './searchform/index';
+
 //login page
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -25,6 +28,7 @@ const siteRoutes: Routes = [
             { path: 'single/:id', component: SingleComponent },
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
+            { path: 'search/:input', component: SearchComponent },
             { path: '', component: HomeComponent }
           ]
       }

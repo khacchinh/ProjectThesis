@@ -6,19 +6,18 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'category.component.html'
+    templateUrl: 'searchform.component.html'
 })
 
-export class CategoryComponent implements OnInit {
+export class SearchComponent implements OnInit {
 
     // pager object
     private pager: any = {};
     // paged items
     private pagedItems: any[];
-    private category:string;
+    private paramsSearch:string;
 
     private news : any[];
-    private itemHot : News;
 
     constructor(private newsService: NewsService, private route: ActivatedRoute, private pagerService : PagerService){
   
@@ -26,16 +25,11 @@ export class CategoryComponent implements OnInit {
 
     ngOnInit(){
         this.route.params.subscribe(params => {
-            this.category = params['cate'];
-            this.newsService.getNewsByCategory(this.category)
+            this.paramsSearch = params['input'];
+            this.newsService.getNewsBySearch(this.paramsSearch)
                 .subscribe(news => {
-                    for (var i = 0; i< news.length; i++){
-                        if (news[i].type_img){
-                            this.itemHot = news[i];
-                            break;
-                        }
-                    }
                     this.news = news;
+                    console.log(news);
                     this.setPage(1);
             });
         })  

@@ -1,20 +1,43 @@
 "use strict";
 var Crawler = require("crawler");
+var fs = require("fs");
 var News_1 = require("./News");
 var processnews_1 = require("./processnews");
 //var bmm = new BMMWordSegment();
 var CrawlerNewsClass = (function () {
     function CrawlerNewsClass() {
-        //this.getCralweData();
-        //NewItem.getNearestNew("vnexpress", "thế giới");
         console.log("Length old: " + processnews_1.ProcessNews.arOldNews.length);
+        //get flag title and date into variable
+        // if (ProcessNews.arFlagTitle.size() > 0){
+        processnews_1.ProcessNews.arFlagTitle.clear();
+        processnews_1.ProcessNews.arFlagTime.clear();
+        var flagTitle = fs.readFileSync(__dirname + '/tokenizer/data/flagTitle.txt');
+        var flagTime = fs.readFileSync(__dirname + '/tokenizer/data/flagTime.txt');
+        var arFlagTitle = flagTitle.toString().split(".");
+        var arFlagTime = flagTime.toString().split(".");
+        for (var i = 0; i < arFlagTitle.length; i++) {
+            if (arFlagTitle[i].trim() != "") {
+                var key = arFlagTitle[i].split("/")[0];
+                var valueTitle = arFlagTitle[i].split("/")[1];
+                var valueTime = arFlagTime[i].split("/")[1];
+                processnews_1.ProcessNews.arFlagTitle.setValue(key, valueTitle);
+                processnews_1.ProcessNews.arFlagTime.setValue(key, new Date(valueTime));
+                processnews_1.ProcessNews.saveFlagTime.setValue(key, new Date(valueTime));
+            }
+        }
+        //  }
     }
     CrawlerNewsClass.prototype.checkExistTitle = function (author, category, title) {
+        if (title + '' == "undefined")
+            return false;
         var key = author.toLowerCase() + "-" + category.toLowerCase();
-        if (processnews_1.ProcessNews.arFlagTitle.getValue(key) == title) {
+        if (processnews_1.ProcessNews.arFlagTitle.getValue(key) && processnews_1.ProcessNews.arFlagTitle.getValue(key).trim().toLowerCase() == title.trim().toLowerCase()) {
             return true;
         }
         return false;
+    };
+    CrawlerNewsClass.prototype.utf8_from_str = function (s) {
+        return unescape(encodeURIComponent(s));
     };
     CrawlerNewsClass.prototype.getCrawlerData = function () {
         var __this = this;
@@ -23,7 +46,7 @@ var CrawlerNewsClass = (function () {
             var count = 0;
             var processNews = new processnews_1.ProcessNews();
             var c = new Crawler({
-                maxConnections: 27,
+                maxConnections: 50,
                 callback: function (error, res, done) {
                     count++;
                     if (error) {
@@ -64,15 +87,16 @@ var CrawlerNewsClass = (function () {
                         }
                         else if ($('meta[name=author]').attr("content") == 'VCCorp.vn') {
                             var news = new News_1.News();
-                            var author = $('meta[name=author]').attr("content");
+                            var author_1 = "dantri";
                             var categorys = $('meta[name=keywords]').attr("content");
-                            news.author = author;
+                            news.author = author_1;
                             var category = categorys.toString().split(",")[0];
                             news.category = category;
                             //new hot
                             news.title = $('.fl.wid470').children().children().first().attr('title');
                             if (__this.checkExistTitle(news.author, news.category, news.title))
                                 return false;
+                            news.type_img = true;
                             news.url = 'http://dantri.com.vn/' + $('.fl.wid470').children().children().first().attr('href');
                             news.img = $('.fl.wid470').children().children().first().children().attr('src');
                             $('.fl.wid470').children().children(".mr1").children("div").children("a").empty();
@@ -83,7 +107,7 @@ var CrawlerNewsClass = (function () {
                                 var temp = data.children().first().attr('title') + '';
                                 if (temp != 'undefined') {
                                     news = new News_1.News();
-                                    news.author = author;
+                                    news.author = author_1;
                                     news.category = category;
                                     news.title = temp;
                                     if (__this.checkExistTitle(news.author, news.category, news.title))
@@ -106,6 +130,7 @@ var CrawlerNewsClass = (function () {
                             news.title = $('.TopArticle').children().first().children().attr('title');
                             if (__this.checkExistTitle(news.author, news.category, news.title))
                                 return false;
+                            news.type_img = true;
                             news.url = 'http://vietnamnet.vn' + $('.TopArticle').children().first().children().attr('href');
                             news.img = $('.TopArticle').children().first().children().children().attr('src');
                             news.sumary = $('.TopArticle').children().last().text().trim();
@@ -138,7 +163,7 @@ var CrawlerNewsClass = (function () {
                                 processNews.importNew(news);
                             });
                         }
-                        else {
+                        else if ($(".logo").first().text() == "Thanh Niên") {
                             var news = new News_1.News();
                             var author = "ThanhNien";
                             var category = $('.drt-cate').text();
@@ -148,11 +173,11 @@ var CrawlerNewsClass = (function () {
                             news.title = $('.subcate-highlight-ctn.clearfix').children().children().first().children().attr('title');
                             if (__this.checkExistTitle(news.author, news.category, news.title))
                                 return false;
+                            news.type_img = true;
                             news.url = 'http://thanhnien.vn' + $('.subcate-highlight-ctn.clearfix').children().children().first().children().attr('href');
                             news.img = $('.subcate-highlight-ctn.clearfix').children().children().first().children().children().attr('src');
                             news.sumary = $('.subcate-highlight-ctn.clearfix').children().children().first().children().attr('title');
                             processNews.importNew(news);
-                            ;
                             //new hot
                             $('.subcate-highlight.clearfix').children('article').each(function (i, element) {
                                 var data = $(this);
@@ -181,8 +206,39 @@ var CrawlerNewsClass = (function () {
                                 processNews.importNew(news);
                             });
                         }
+                        else if ($('meta[name=author]').attr("content") == 'ZING.VN') {
+                            var author = "zing";
+                            var category = $('#mainContent_ctl00_Breadcumb1_hlTitle').text().trim();
+                            //hot new
+                            $("section.featured").children().each(function (i, element) {
+                                var data = $(this);
+                                var news = new News_1.News();
+                                news.author = author;
+                                news.category = category;
+                                news.title = data.children("header").children(".title").children("a").text();
+                                news.url = "http://news.zing.vn" + data.children("header").children(".title").children("a").attr('href');
+                                news.sumary = data.children("header").children(".sumary").text();
+                                news.img = data.children(".cover").children().children().attr('src');
+                                if (i == 0)
+                                    news.type_img = true;
+                                processNews.importNew(news);
+                            });
+                            $('section.cate_content').children('article').each(function (i, element) {
+                                var data = $(this);
+                                var news = new News_1.News();
+                                news.author = author;
+                                news.category = category;
+                                news.title = data.children("header").children(".title").children("a").text();
+                                if (__this.checkExistTitle(news.author, news.category, news.title))
+                                    return false;
+                                news.url = "http://news.zing.vn" + data.children("header").children(".title").children("a").attr('href');
+                                news.sumary = data.children("header").children(".sumary").text();
+                                news.img = data.children(".cover").children().children().attr('src');
+                                processNews.importNew(news);
+                            });
+                        }
                     }
-                    if (count == 27) {
+                    if (count == 34) {
                         resolve(true);
                     }
                 }
@@ -193,35 +249,48 @@ var CrawlerNewsClass = (function () {
                 'http://dantri.com.vn/the-gioi.htm',
                 'http://vietnamnet.vn/vn/the-gioi/',
                 'http://thanhnien.vn/the-gioi/',
+                'http://news.zing.vn/the-gioi.html',
+                //'http://tuoitre.vn/tin/the-gioi',   
                 //kinh doanh
                 'http://kinhdoanh.vnexpress.net/',
                 'http://dantri.com.vn/kinh-doanh.htm',
                 'http://vietnamnet.vn/vn/kinh-doanh/',
                 'http://thanhnien.vn/kinh-doanh/',
+                'http://news.zing.vn/kinh-doanh-tai-chinh.html',
+                //'http://tuoitre.vn/tin/kinh-te',
                 //thể thao
                 'http://thethao.vnexpress.net/',
                 'http://dantri.com.vn/the-thao.htm',
                 'http://vietnamnet.vn/vn/the-thao/',
                 'http://thethao.thanhnien.vn/',
+                'http://news.zing.vn/the-thao.html',
+                //'http://thethao.tuoitre.vn/tin/bong-da',
                 //công nghệ
                 'http://sohoa.vnexpress.net/',
                 'http://dantri.com.vn/suc-manh-so.htm',
                 'http://vietnamnet.vn/vn/cong-nghe/',
                 'http://thanhnien.vn/cong-nghe/',
+                'http://news.zing.vn/cong-nghe.html',
+                //'http://nhipsongso.tuoitre.vn/',
                 //sức khỏe
                 'http://suckhoe.vnexpress.net/',
                 'http://dantri.com.vn/suc-khoe.htm',
                 'http://vietnamnet.vn/vn/suc-khoe/',
                 'http://thanhnien.vn/suc-khoe/',
+                'http://news.zing.vn/suc-khoe.html',
+                //'http://tuoitre.vn/tin/song-khoe',
                 //pháp luật
                 'http://vnexpress.net/tin-tuc/phap-luat',
                 'http://dantri.com.vn/phap-luat.htm',
                 'http://vietnamnet.vn/vn/phap-luat/',
+                'http://news.zing.vn/phap-luat.html',
+                //'http://tuoitre.vn/tin/phap-luat',
                 //thời sự
                 'http://vnexpress.net/tin-tuc/thoi-su',
                 'http://dantri.com.vn/su-kien.htm',
                 'http://vietnamnet.vn/vn/thoi-su/',
-                'http://thanhnien.vn/thoi-su/'
+                'http://thanhnien.vn/thoi-su/',
+                'http://news.zing.vn/thoi-su.html',
             ]);
         });
         return p;

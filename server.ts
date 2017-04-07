@@ -60,10 +60,11 @@ app.use('/', getDictionary);
 //use clawer
 app.use('/', crawlerData);
 
+/*
 //
 var is_loop_process = true;
 function doProcessNews(){
-    NewItem.getNewsAfterDay(2).then(
+    NewItem.getNewsAfterDay(20).then(
         (msg) => {
             if (msg != "empty"){
                 ProcessNews.arOldNews = msg;
@@ -71,6 +72,7 @@ function doProcessNews(){
             console.log('Crawler dữ liệu tin tức')
             new CrawlerNewsClass().getCrawlerData().then(
                 function(msg: boolean){
+                    
                     ProcessNews.getContent().then(
                         (msg) => {
                             ProcessNews.exportFile();
@@ -103,71 +105,7 @@ function doProcessNews(){
 
 //call class crawler
 doProcessNews();
-/*
-setInterval(function(){
-    NewItem.getNewsAfterDay(2).then(
-        (msg) => {
-            if (msg != "empty"){
-                ProcessNews.arOldNews = msg;
-            }
-            console.log('Crawler dữ liệu tin tức')
-            new CrawlerNewsClass().getCrawlerData().then(
-                function(msg: boolean){
-                    ProcessNews.getContent().then(
-                        (msg) => {
-                            ProcessNews.exportFile();
-                            console.log('- tách từ.....');
-                            var child = require('child_process').spawn(
-                                'java', ['-jar', 'WordSegment.jar']
-                            );
-                            child.stdout.on('data', function(data) {
-                                if (data.toString().trim() == "ok"){
-                                    new ProcessSimilarNew();
-                                    console.log("- done!!");
-                                }
-                            });
-
-                            child.stderr.on("data", function (data) {
-                                console.log(data.toString());
-                            });
-                        }
-                    )
-                }
-            )
-        }
-    )
-}, 1000*60*15);
-*/
-/*
-console.log('Crawler dữ liệu tin tức')
-new CrawlerNewsClass().getCrawlerData().then(
-    function(msg: boolean){
-        ProcessNews.getContent().then(
-            (msg) => {
-                
-                ProcessNews.exportFile();
-                console.log('- tách từ.....');
-                var child = require('child_process').spawn(
-                    'java', ['-jar', 'WordSegment.jar']
-                );
-                child.stdout.on('data', function(data) {
-                    if (data.toString().trim() == "ok"){
-                        new ProcessSimilarNew();
-                        console.log("- done!!");
-                        NewItem.getNearestNew("vnexpress", "thế giới");
-                    }
-                });
-
-                child.stderr.on("data", function (data) {
-                    console.log(data.toString());
-                });
-            }
-        )
-    }
-)
-*/
-
-                        
+*/             
 
 
 

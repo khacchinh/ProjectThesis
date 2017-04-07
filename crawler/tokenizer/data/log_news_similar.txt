@@ -1,0 +1,971 @@
+=================================
+Wed Apr 05 2017 07:02:06 GMT+0700 (SE Asia Standard Time)
+=================================
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Ô tô Ấn Độ giá chỉ hơn 80 triệu đồng, vì sao?
+URL: http://vietnamnet.vn/vn/kinh-doanh/thi-truong/o-to-an-do-gia-chi-hon-80-trieu-dong-vi-sao-365024.html
+Date public: 4/4/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Ô tô Ấn Độ giá chỉ hơn 80 triệu đồng, vì sao?
+URL: http://dantri.com.vn//kinh-doanh/o-to-an-do-gia-chi-hon-80-trieu-dong-vi-sao-20170404201856828.htm
+Date public: 4/4/2017
+----
+Cosine value: 0.957036777642059
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Thuế xăng dầu cao nhất 8.000 đồng/lít: Diễn biến mới từ Bộ Tài chính
+URL: http://vietnamnet.vn/vn/kinh-doanh/tai-chinh/thue-bao-ve-moi-truong-xang-dau-lo-trinh-trien-khai-364705.html
+Date public: 4/4/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Thuế xăng dầu cao nhất 8.000 đồng/lít: Diễn biến mới từ Bộ Tài chính
+URL: http://dantri.com.vn//kinh-doanh/thue-xang-dau-cao-nhat-8000-dong-lit-dien-bien-moi-tu-bo-tai-chinh-20170404160924846.htm
+Date public: 4/4/2017
+----
+Cosine value: 0.9829550157384026
+
+
+Tên báo: zing
+Thể loại: kinh doanh
+Tiêu đề: 
+Kinh doanh qua Facebook: Bán nồi cá kho, lo bị thu thuế?
+
+URL: http://news.zing.vn/kinh-doanh-qua-facebook-ban-noi-ca-kho-lo-bi-thu-thue-post734172.html
+Date public: 4/4/2017
+---------------
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Bán nồi cá kho, lo bị thu thuế?
+URL: http://vietnamnet.vn/vn/kinh-doanh/tai-chinh/ban-hang-qua-facebook-ban-them-noi-ca-kho-nom-nop-lo-bi-thu-thue-364795.html
+Date public: 4/4/2017
+----
+Cosine value: 0.926765480184081
+
+
+Tên báo: zing
+Thể loại: kinh doanh
+Tiêu đề: 
+Nhà phố cổ Hà Nội giá 5 triệu đồng/m2, bán không ai mua
+
+URL: http://news.zing.vn/nha-pho-co-ha-noi-gia-5-trieu-dongm2-ban-khong-ai-mua-post733937.html
+Date public: 4/3/2017
+---------------
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Khó tin: Nhà phố cổ Hà Nội 5 triệu/m2, bán không ai mua
+URL: http://vietnamnet.vn/vn/kinh-doanh/dau-tu/soc-nha-pho-co-ha-noi-gia-5-trieu-dong-m2-ban-khong-ai-mua-364678.html
+Date public: 4/3/2017
+----
+Cosine value: 0.822367121018107
+
+
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Nữ hành khách gây rối trên máy bay bị phạt 4 triệu đồng
+
+URL: http://news.zing.vn/nu-hanh-khach-gay-roi-tren-may-bay-bi-phat-4-trieu-dong-post734335.html
+Date public: 4/4/2017
+---------------
+Tên báo: thanhnien
+Thể loại: thời sự
+Tiêu đề: La hét gây gổ trên máy bay, nữ hành khách bị phạt 4 triệu
+URL: http://thanhnien.vn/thoi-su/la-het-gay-go-tren-may-bay-nu-hanh-khach-bi-phat-4-trieu-822358.html
+Date public: 4/4/2017
+----
+Cosine value: 0.6615416728003438
+
+
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Chính phủ mở kênh tương tác với người dân trên mạng
+
+URL: http://news.zing.vn/chinh-phu-mo-kenh-tuong-tac-voi-nguoi-dan-tren-mang-post734103.html
+Date public: 4/3/2017
+---------------
+Tên báo: thanhnien
+Thể loại: thời sự
+Tiêu đề: Ra mắt cổng thông tin Chính phủ tiếp nhận kiến nghị của người dân
+URL: http://thanhnien.vn/thoi-su/ra-mat-cong-thong-tin-chinh-phu-tiep-nhan-kien-nghi-cua-nguoi-dan-822234.html
+Date public: 4/4/2017
+----
+Cosine value: 0.77856499534309
+
+
+Tên báo: vietnamnet news
+Thể loại: pháp luật
+Tiêu đề: Sự thật về cái chết của tài xế taxi và chiêu độc từ 'nữ quái gây mê'
+URL: http://vietnamnet.vn/vn/phap-luat/ho-so-vu-an/tin-moi-nhat-su-that-ve-cai-chet-cua-tai-xe-taxi-va-chieu-doc-tu-nu-quai-gay-me-364876.html
+Date public: 4/4/2017
+---------------
+Tên báo: zing
+Thể loại: pháp luật
+Tiêu đề: 
+Sự thật về cái chết của tài xế taxi và chiêu độc từ 'nữ quái gây mê'
+
+URL: http://news.zing.vn/su-that-ve-cai-chet-cua-tai-xe-taxi-va-chieu-doc-tu-nu-quai-gay-me-post734132.html
+Date public: 4/4/2017
+----
+Cosine value: 0.6289353451789104
+
+
+Tên báo: vietnamnet news
+Thể loại: sức khỏe
+Tiêu đề: Xác minh vụ tử vong sau mổ u ruột ở BV Việt Đức
+URL: http://vietnamnet.vn/vn/suc-khoe/suc-khoe-24h/xac-minh-vu-tu-vong-sau-mo-u-ruot-o-benh-vien-viet-duc-364864.html
+Date public: 4/4/2017
+---------------
+Tên báo: zing
+Thể loại: sức khỏe
+Tiêu đề: 
+Bệnh nhân tử vong ở Bệnh viện Việt Đức sau ca phẫu thuật u ruột
+
+URL: http://news.zing.vn/benh-nhan-tu-vong-o-benh-vien-viet-duc-sau-ca-phau-thuat-u-ruot-post734179.html
+Date public: 4/4/2017
+----
+Cosine value: 0.6192895468398661
+
+
+Tên báo: vietnamnet news
+Thể loại: sức khỏe
+Tiêu đề: Bí quyết giữ sức khỏe cho mùa thi
+URL: http://vietnamnet.vn/vn/suc-khoe/bi-quyet-giu-suc-khoe-cho-mua-thi-364401.html
+Date public: 3/31/2017
+---------------
+Tên báo: zing
+Thể loại: sức khỏe
+Tiêu đề: 
+Bí quyết giúp sĩ tử có sức khỏe tốt trong kỳ thi đại học
+
+URL: http://news.zing.vn/bi-quyet-giup-si-tu-co-suc-khoe-tot-trong-ky-thi-dai-hoc-post732984.html
+Date public: 4/1/2017
+----
+Cosine value: 0.7656354706983147
+
+
+Tên báo: vietnamnet news
+Thể loại: thời sự
+Tiêu đề: Nữ hành khách mắng tiếp viên trên máy bay bị phạt 4 triệu
+URL: http://vietnamnet.vn/vn/thoi-su/an-toan-giao-thong/nu-hanh-khach-mang-tiep-vien-tren-may-bay-bi-phat-4-trieu-365038.html
+Date public: 4/4/2017
+---------------
+Tên báo: thanhnien
+Thể loại: thời sự
+Tiêu đề: La hét gây gổ trên máy bay, nữ hành khách bị phạt 4 triệu
+URL: http://thanhnien.vn/thoi-su/la-het-gay-go-tren-may-bay-nu-hanh-khach-bi-phat-4-trieu-822358.html
+Date public: 4/4/2017
+----
+Cosine value: 0.641265353036376
+
+
+Tên báo: vietnamnet news
+Thể loại: thời sự
+Tiêu đề: Thủ tướng yêu cầu Đà Nẵng báo cáo dự án du lịch tại Sơn Trà
+URL: http://vietnamnet.vn/vn/thoi-su/thu-tuong-yeu-cau-da-nang-bao-cao-du-an-du-lich-tai-son-tra-364989.html
+Date public: 4/4/2017
+---------------
+Tên báo: thanhnien
+Thể loại: thời sự
+Tiêu đề: Thủ tướng yêu cầu Đà Nẵng báo cáo vụ 'bạt núi Sơn Trà' trước 15.4
+URL: http://thanhnien.vn/thoi-su/thu-tuong-yeu-cau-da-nang-bao-cao-vu-bat-nui-son-tra-truoc-154-822344.html
+Date public: 4/4/2017
+----
+Cosine value: 0.6253313410186746
+
+
+Tên báo: vietnamnet news
+Thể loại: thời sự
+Tiêu đề: Đề xuất cấm cơ quan nhà nước nhận quà xe sang
+URL: http://vietnamnet.vn/vn/thoi-su/quoc-hoi/cam-co-quan-nha-nuoc-nhan-qua-xe-sang-365051.html
+Date public: 4/4/2017
+---------------
+Tên báo: thanhnien
+Thể loại: thời sự
+Tiêu đề: Đề xuất nghiêm cấm cơ quan nhà nước nhận quà tặng, biếu là ô tô
+URL: http://thanhnien.vn/thoi-su/de-xuat-nghiem-cam-co-quan-nha-nuoc-nhan-qua-tang-bieu-la-o-to-822315.html
+Date public: 4/4/2017
+----
+Cosine value: 0.6641824325216613
+
+
+Tên báo: vietnamnet news
+Thể loại: thời sự
+Tiêu đề: Thủ tướng yêu cầu khẩn trương điều tra vụ chìm tàu Hải Thành 26
+URL: http://vietnamnet.vn/vn/thoi-su/chinh-tri/thu-tuong-yeu-cau-khan-truong-dieu-tra-vu-chim-tau-hai-thanh-26-364891.html
+Date public: 4/4/2017
+---------------
+Tên báo: thanhnien
+Thể loại: thời sự
+Tiêu đề: Thủ tướng yêu cầu điều tra nguyên nhân chìm tàu Hải Thành 26
+URL: http://thanhnien.vn/thoi-su/thu-tuong-yeu-cau-dieu-tra-nguyen-nhan-chim-tau-hai-thanh-26-822227.html
+Date public: 4/4/2017
+----
+Cosine value: 0.69673942002008
+
+
+Tên báo: vnexpress
+Thể loại: thời sự
+Tiêu đề: 5 tàu hút trộm hơn 4.000m3 cát ở Cửa Đại bán ra Đà Nẵng
+URL: http://vnexpress.net/tin-tuc/thoi-su/5-tau-hut-trom-hon-4-000m3-cat-o-cua-dai-ban-ra-da-nang-3565388.html
+Date public: 4/4/2017
+---------------
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Kế hoạch 'hốt ổ' tàu trộm cát Cửa Đại đổ vỡ phút chót
+
+URL: http://news.zing.vn/ke-hoach-hot-o-tau-trom-cat-cua-dai-do-vo-phut-chot-post734224.html
+Date public: 4/4/2017
+----
+Cosine value: 0.6729511352534395
+
+
+Tên báo: vnexpress
+Thể loại: thời sự
+Tiêu đề: Hành khách la hét, gây gổ trên máy bay bị phạt 4 triệu đồng
+URL: http://vnexpress.net/tin-tuc/thoi-su/giao-thong/hanh-khach-la-het-gay-go-tren-may-bay-bi-phat-4-trieu-dong-3565304.html
+Date public: 4/4/2017
+---------------
+Tên báo: thanhnien
+Thể loại: thời sự
+Tiêu đề: La hét gây gổ trên máy bay, nữ hành khách bị phạt 4 triệu
+URL: http://thanhnien.vn/thoi-su/la-het-gay-go-tren-may-bay-nu-hanh-khach-bi-phat-4-trieu-822358.html
+Date public: 4/4/2017
+----
+Cosine value: 0.8312011416043388
+
+
+=================================
+Wed Apr 05 2017 19:51:23 GMT+0700 (SE Asia Standard Time)
+=================================
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Đùi gà Mỹ 15 ngàn/kg: Người Mỹ chê, người Việt ăn
+URL: http://vietnamnet.vn/vn/kinh-doanh/thi-truong/thit-ga-my-15-ngan-kg-thit-ga-brazil-un-un-nhap-ve-viet-nam-365264.html
+Date public: 4/5/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Ba năm dân Việt ăn hơn 400.000 tấn thịt gà ngoại nhập giá rẻ
+URL: http://dantri.com.vn//kinh-doanh/ba-nam-dan-viet-an-hon-400000-tan-thit-ga-ngoai-nhap-gia-re-2017040507474859.htm
+Date public: 4/5/2017
+----
+Cosine value: 0.7877379101821934
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Mất chức tại Sabeco, Vũ Quang Hải hụt thu hơn 2 tỷ đồng
+URL: http://vietnamnet.vn/vn/kinh-doanh/doanh-nhan/mat-chuc-tai-sabeco-vu-quang-hai-hut-thu-hon-2-ty-dong-365116.html
+Date public: 4/5/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Mất chức tại Sabeco, Vũ Quang Hải "hụt" thu nhập hơn 2 tỷ đồng năm 2017
+URL: http://dantri.com.vn//kinh-doanh/mat-chuc-tai-sabeco-vu-quang-hai-hut-thu-nhap-hon-2-ty-dong-nam-2017-20170405062455922.htm
+Date public: 4/5/2017
+----
+Cosine value: 0.9814037498141794
+
+
+Tên báo: dantri
+Thể loại: pháp luật
+Tiêu đề: Công an Phú Quốc giáo dục trước dân nhóm thiếu niên trộm cắp, xin tiền du khách…
+URL: http://dantri.com.vn//phap-luat/cong-an-phu-quoc-giao-duc-truoc-dan-nhom-thieu-nien-trom-cap-xin-tien-du-khach-20170405072923753.htm
+Date public: 4/5/2017
+---------------
+Tên báo: zing
+Thể loại: pháp luật
+Tiêu đề: 
+Nhóm thiếu niên trộm cắp du khách ở Phú Quốc
+
+URL: http://news.zing.vn/nhom-thieu-nien-trom-cap-du-khach-o-phu-quoc-post734418.html
+Date public: 4/4/2017
+----
+Cosine value: 0.6515369435868108
+
+
+Tên báo: thanhnien
+Thể loại: kinh doanh
+Tiêu đề: Giá vàng tiếp tục tăng
+URL: http://thanhnien.vn/kinh-doanh/gia-vang-tiep-tuc-tang-822655.html
+Date public: 4/5/2017
+---------------
+Tên báo: thanhnien
+Thể loại: kinh doanh
+Tiêu đề: Giá vàng tăng, USD giảm
+URL: http://thanhnien.vn/kinh-doanh/gia-vang-tang-usd-giam-822303.html
+Date public: 4/4/2017
+----
+Cosine value: 0.660205531474148
+
+
+Tên báo: zing
+Thể loại: kinh doanh
+Tiêu đề: 
+Giá xăng giảm lần thứ 3 liên tiếp, mức giảm chưa đến 100 đồng
+
+URL: http://news.zing.vn/gia-xang-giam-lan-thu-3-lien-tiep-muc-giam-chua-den-100-dong-post734670.html
+Date public: 4/5/2017
+---------------
+Tên báo: zing
+Thể loại: kinh doanh
+Tiêu đề: 
+Giá xăng sẽ tiếp đà giảm vào ngày mai?
+
+URL: http://news.zing.vn/gia-xang-se-tiep-da-giam-vao-ngay-mai-post734254.html
+Date public: 4/4/2017
+----
+Cosine value: 0.7127147175965363
+
+
+Tên báo: zing
+Thể loại: kinh doanh
+Tiêu đề: 
+Đã trình đề xuất tăng thuế môi trường với xăng lên 8.000 đồng một lít
+
+URL: http://news.zing.vn/da-trinh-de-xuat-tang-thue-moi-truong-voi-xang-len-8000-dong-mot-lit-post734471.html
+Date public: 4/5/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Thuế xăng dầu cao nhất 8.000 đồng/lít: Diễn biến mới từ Bộ Tài chính
+URL: http://dantri.com.vn//kinh-doanh/thue-xang-dau-cao-nhat-8000-dong-lit-dien-bien-moi-tu-bo-tai-chinh-20170404160924846.htm
+Date public: 4/4/2017
+----
+Cosine value: 0.6244571373326632
+
+
+Tên báo: zing
+Thể loại: kinh doanh
+Tiêu đề: 
+3 tháng lên sàn, cổ phiếu Novaland đạt quy mô vốn hóa 2 tỷ USD
+
+URL: http://news.zing.vn/3-thang-len-san-co-phieu-novaland-dat-quy-mo-von-hoa-2-ty-usd-post734404.html
+Date public: 4/5/2017
+---------------
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Novaland - Top 10 cổ phiếu có vốn hóa lớn nhất
+URL: http://vietnamnet.vn/vn/kinh-doanh/novaland-top-10-co-phieu-co-von-hoa-lon-nhat-364968.html
+Date public: 4/4/2017
+----
+Cosine value: 0.7382065679748264
+
+
+Tên báo: zing
+Thể loại: công nghệ
+Tiêu đề: 
+Galaxy S8+ RAM 6 GB có giá trên 1.000 USD
+
+URL: http://news.zing.vn/galaxy-s8-ram-6-gb-co-gia-tren-1000-usd-post734451.html
+Date public: 4/5/2017
+---------------
+Tên báo: vietnamnet news
+Thể loại: công nghệ
+Tiêu đề: Galaxy S8 Plus RAM 6 GB có giá trên 1.000 USD
+URL: http://vietnamnet.vn/vn/cong-nghe/san-pham/galaxy-s8-plus-ram-6-gb-co-gia-tren-1-000-usd-365134.html
+Date public: 4/5/2017
+----
+Cosine value: 0.8662218076380757
+
+
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Phó thủ tướng phê bình việc xử lý chậm vụ cầu Bến Thủy
+
+URL: http://news.zing.vn/pho-thu-tuong-phe-binh-viec-xu-ly-cham-vu-cau-ben-thuy-post734675.html
+Date public: 4/5/2017
+---------------
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Giảm 50% giá vé cho người dân hai đầu cầu Bến Thủy
+
+URL: http://news.zing.vn/giam-50-gia-ve-cho-nguoi-dan-hai-dau-cau-ben-thuy-post734197.html
+Date public: 4/4/2017
+----
+Cosine value: 0.7667897477077747
+
+
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Cục Hàng hải nói về nghi vấn tàu Petrolimex 14 bỏ chạy khi gây tai nạn
+
+URL: http://news.zing.vn/cuc-hang-hai-noi-ve-nghi-van-tau-petrolimex-14-bo-chay-khi-gay-tai-nan-post734701.html
+Date public: 4/5/2017
+---------------
+Tên báo: dantri
+Thể loại: thời sự
+Tiêu đề: Vụ 9 thuyền viên tử nạn: Tàu Petrolimex 14 chậm trễ cứu nạn?
+URL: http://dantri.com.vn//su-kien/vu-9-thuyen-vien-tu-nan-tau-petrolimex-14-cham-tre-cuu-nan-20170405161526891.htm
+Date public: 4/5/2017
+----
+Cosine value: 0.7244731070647284
+
+
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Ủy ban Kiểm tra Thanh Hóa làm rõ vi phạm việc bổ nhiệm bà Quỳnh Anh
+
+URL: http://news.zing.vn/uy-ban-kiem-tra-thanh-hoa-lam-ro-vi-pham-viec-bo-nhiem-ba-quynh-anh-post734633.html
+Date public: 4/5/2017
+---------------
+Tên báo: dantri
+Thể loại: thời sự
+Tiêu đề: Thanh Hóa dành 3 tháng kiểm tra vụ bổ nhiệm thần tốc ở Sở Xây dựng
+URL: http://dantri.com.vn//su-kien/thanh-hoa-danh-3-thang-kiem-tra-vu-bo-nhiem-than-toc-o-so-xay-dung-20170405152559905.htm
+Date public: 4/5/2017
+----
+Cosine value: 0.6584406257359378
+
+
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Bị bắn xối xả trên biển, một ngư dân Quảng Ngãi thiệt mạng
+
+URL: http://news.zing.vn/bi-ban-xoi-xa-tren-bien-mot-ngu-dan-quang-ngai-thiet-mang-post734517.html
+Date public: 4/5/2017
+---------------
+Tên báo: vietnamnet news
+Thể loại: thời sự
+Tiêu đề: Tàu lạ nổ súng xối xả vào tàu cá Việt Nam, 1 ngư dân thiệt mạng
+URL: http://vietnamnet.vn/vn/thoi-su/tau-la-no-sung-xoi-xa-vao-tau-ca-viet-nam-1-ngu-dan-thiet-mang-365124.html
+Date public: 4/5/2017
+----
+Cosine value: 0.7599561872673131
+
+
+Tên báo: zing
+Thể loại: thế giới
+Tiêu đề: 
+Triều Tiên phóng tên lửa trước cuộc gặp Trump - Tập
+
+URL: http://news.zing.vn/trieu-tien-phong-ten-lua-truoc-cuoc-gap-trump-tap-post734510.html
+Date public: 4/5/2017
+---------------
+Tên báo: zing
+Thể loại: thế giới
+Tiêu đề: 
+Triều Tiên phóng vật thể ra biển trước cuộc gặp Trump - Tập
+
+URL: http://news.zing.vn/trieu-tien-phong-vat-the-ra-bien-truoc-cuoc-gap-trump-tap-post734510.html
+Date public: 4/5/2017
+----
+Cosine value: 0.9055898870570012
+
+
+Tên báo: vnexpress
+Thể loại: thời sự
+Tiêu đề: Cá trên sông Âm tiếp tục chết hàng loạt
+URL: http://vnexpress.net/tin-tuc/thoi-su/ca-tren-song-am-tiep-tuc-chet-hang-loat-3565758.html
+Date public: 4/5/2017
+---------------
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Cá lại chết hàng loạt trên sông Âm ở Thanh Hóa
+
+URL: http://news.zing.vn/ca-lai-chet-hang-loat-tren-song-am-o-thanh-hoa-post734588.html
+Date public: 4/5/2017
+----
+Cosine value: 0.7976357977474614
+
+
+=================================
+Wed Apr 05 2017 21:19:40 GMT+0700 (SE Asia Standard Time)
+=================================
+Tên báo: dantri
+Thể loại: pháp luật
+Tiêu đề: Vụ lật tàu trên sông Hàn: Nguyên giám đốc Cảng vụ nhận 3,5 năm tù
+URL: http://dantri.com.vn//phap-luat/vu-lat-tau-tren-song-han-nguyen-giam-doc-cang-vu-nhan-35-nam-tu-2017040520332341.htm
+Date public: 4/5/2017
+---------------
+Tên báo: vnexpress
+Thể loại: pháp luật
+Tiêu đề: Nguyên giám đốc Cảng vụ Đà Nẵng lĩnh án hơn 3 năm tù
+URL: http://vnexpress.net/tin-tuc/phap-luat/nguyen-giam-doc-cang-vu-da-nang-linh-an-hon-3-nam-tu-3566149.html
+Date public: 4/5/2017
+----
+Cosine value: 0.702888892635483
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Đùi gà Mỹ 15 ngàn/kg: Người Mỹ chê, người Việt ăn
+URL: http://vietnamnet.vn/vn/kinh-doanh/thi-truong/thit-ga-my-15-ngan-kg-thit-ga-brazil-un-un-nhap-ve-viet-nam-365264.html
+Date public: 4/5/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Ba năm dân Việt ăn hơn 400.000 tấn thịt gà ngoại nhập giá rẻ
+URL: http://dantri.com.vn//kinh-doanh/ba-nam-dan-viet-an-hon-400000-tan-thit-ga-ngoai-nhap-gia-re-2017040507474859.htm
+Date public: 4/5/2017
+----
+Cosine value: 0.7877379101821934
+
+
+Tên báo: zing
+Thể loại: pháp luật
+Tiêu đề: 
+Gia đình nạn nhân vụ chìm tàu trên sông Hàn xin giảm án cho lái tàu
+
+URL: http://news.zing.vn/gia-dinh-nan-nhan-vu-chim-tau-tren-song-han-xin-giam-an-cho-lai-tau-post734774.html
+Date public: 4/5/2017
+---------------
+Tên báo: zing
+Thể loại: pháp luật
+Tiêu đề: 
+Tàu chở 54 người lật trên sông Hàn vì quá tải
+
+URL: http://news.zing.vn/tau-cho-54-nguoi-lat-tren-song-han-vi-qua-tai-post733900.html
+Date public: 4/3/2017
+----
+Cosine value: 0.6789661855583402
+
+
+Tên báo: vietnamnet news
+Thể loại: pháp luật
+Tiêu đề: Chồng chém vợ vỡ sọ não rồi cứa cổ tự vẫn
+URL: http://vietnamnet.vn/vn/phap-luat/ho-so-vu-an/chong-chem-vo-vo-so-nao-roi-cua-co-tu-van-365315.html
+Date public: 4/5/2017
+---------------
+Tên báo: dantri
+Thể loại: pháp luật
+Tiêu đề: Chồng chém vợ vỡ sọ rồi cứa cổ tự tử
+URL: http://dantri.com.vn//phap-luat/chong-chem-vo-vo-so-roi-cua-co-tu-tu-20170405200144672.htm
+Date public: 4/5/2017
+----
+Cosine value: 0.6504748259299572
+
+
+=================================
+Wed Apr 05 2017 21:49:39 GMT+0700 (SE Asia Standard Time)
+=================================
+Tên báo: zing
+Thể loại: pháp luật
+Tiêu đề: 
+Gia đình nạn nhân vụ chìm tàu trên sông Hàn xin giảm án cho lái tàu
+
+URL: http://news.zing.vn/gia-dinh-nan-nhan-vu-chim-tau-tren-song-han-xin-giam-an-cho-lai-tau-post734774.html
+Date public: 4/5/2017
+---------------
+Tên báo: zing
+Thể loại: pháp luật
+Tiêu đề: 
+Tàu chở 54 người lật trên sông Hàn vì quá tải
+
+URL: http://news.zing.vn/tau-cho-54-nguoi-lat-tren-song-han-vi-qua-tai-post733900.html
+Date public: 4/3/2017
+----
+Cosine value: 0.6789661855583402
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Đùi gà Mỹ 15 ngàn/kg: Người Mỹ chê, người Việt ăn
+URL: http://vietnamnet.vn/vn/kinh-doanh/thi-truong/thit-ga-my-15-ngan-kg-thit-ga-brazil-un-un-nhap-ve-viet-nam-365264.html
+Date public: 4/5/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Ba năm dân Việt ăn hơn 400.000 tấn thịt gà ngoại nhập giá rẻ
+URL: http://dantri.com.vn//kinh-doanh/ba-nam-dan-viet-an-hon-400000-tan-thit-ga-ngoai-nhap-gia-re-2017040507474859.htm
+Date public: 4/5/2017
+----
+Cosine value: 0.7877379101821934
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Đùi gà Mỹ 15 ngàn/kg: Người Mỹ chê, người Việt ăn
+URL: http://vietnamnet.vn/vn/kinh-doanh/thi-truong/thit-ga-my-15-ngan-kg-thit-ga-brazil-un-un-nhap-ve-viet-nam-365264.html
+Date public: 4/5/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Ba năm dân Việt ăn hơn 400.000 tấn thịt gà ngoại nhập giá rẻ
+URL: http://dantri.com.vn//kinh-doanh/ba-nam-dan-viet-an-hon-400000-tan-thit-ga-ngoai-nhap-gia-re-2017040507474859.htm
+Date public: 4/5/2017
+----
+Cosine value: 0.7877379101821934
+
+
+Tên báo: zing
+Thể loại: pháp luật
+Tiêu đề: 
+Gia đình nạn nhân vụ chìm tàu trên sông Hàn xin giảm án cho lái tàu
+
+URL: http://news.zing.vn/gia-dinh-nan-nhan-vu-chim-tau-tren-song-han-xin-giam-an-cho-lai-tau-post734774.html
+Date public: 4/5/2017
+---------------
+Tên báo: zing
+Thể loại: pháp luật
+Tiêu đề: 
+Tàu chở 54 người lật trên sông Hàn vì quá tải
+
+URL: http://news.zing.vn/tau-cho-54-nguoi-lat-tren-song-han-vi-qua-tai-post733900.html
+Date public: 4/3/2017
+----
+Cosine value: 0.6789661855583402
+
+
+=================================
+Thu Apr 06 2017 00:59:21 GMT+0700 (SE Asia Standard Time)
+=================================
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Tạm giữ 5 tấn phân bón do nước ngoài sản xuất không giấy tờ
+URL: http://dantri.com.vn//kinh-doanh/tam-giu-5-tan-phan-bon-do-nuoc-ngoai-san-xuat-khong-giay-to-20170405155421785.htm
+Date public: 4/5/2017
+---------------
+Tên báo: thanhnien
+Thể loại: thời sự
+Tiêu đề: Vĩnh Long: Tạm giữ 5 tấn phân do nước ngoài sản xuất không chứng từ
+URL: http://thanhnien.vn/thoi-su/vinh-long-tam-giu-5-tan-phan-do-nuoc-ngoai-san-xuat-khong-chung-tu-822653.html
+Date public: 4/5/2017
+----
+Cosine value: 0.6919067493025194
+
+
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Đồng thuận lãi suất: 21 ngân hàng "nhóm họp"
+URL: http://dantri.com.vn//kinh-doanh/dong-thuan-lai-suat-21-ngan-hang-nhom-hop-20170405214444517.htm
+Date public: 4/5/2017
+---------------
+Tên báo: vietnamnet news
+Thể loại: công nghệ
+Tiêu đề: iPhone 8 sẽ dùng màn hình gì để đấu với Galaxy S8?
+URL: http://vietnamnet.vn/vn/cong-nghe/tin-cong-nghe/iphone-8-se-dung-man-hinh-gi-de-dau-voi-galaxy-s8-364831.html
+Date public: 4/3/2017
+----
+Cosine value: 0.6753115539184376
+
+
+Tên báo: dantri
+Thể loại: công nghệ
+Tiêu đề: YouTube chặn, gỡ 1173 clip xấu độc theo yêu cầu Bộ TT&TT
+URL: http://dantri.com.vn//suc-manh-so/youtube-chan-go-1173-clip-xau-doc-theo-yeu-cau-bo-tttt-2017040523514788.htm
+Date public: 4/5/2017
+---------------
+Tên báo: vietnamnet news
+Thể loại: công nghệ
+Tiêu đề: YouTube chặn, gỡ 1173 clip xấu độc theo yêu cầu Bộ TT&amp;TT
+URL: http://vietnamnet.vn/vn/cong-nghe/vien-thong/youtube-chan-go-1173-clip-xau-doc-theo-yeu-cau-bo-tt-tt-365302.html
+Date public: 4/5/2017
+----
+Cosine value: 0.978183855863494
+
+
+Tên báo: dantri
+Thể loại: thế giới
+Tiêu đề: Indonesia: Máy bay bị lật bổng vì dầu ăn
+URL: http://dantri.com.vn//the-gioi/indonesia-may-bay-bi-lat-bong-vi-dau-an-20170405205213766.htm
+Date public: 4/5/2017
+---------------
+Tên báo: dantri
+Thể loại: thế giới
+Tiêu đề: Máy bay bị lật bổng vì trượt dầu ăn
+URL: http://dantri.com.vn//the-gioi/may-bay-bi-lat-bong-vi-truot-dau-an-20170405205213766.htm
+Date public: 4/5/2017
+----
+Cosine value: 0.9828826178167438
+
+
+Tên báo: vnexpress
+Thể loại: pháp luật
+Tiêu đề: Thanh niên Lào đưa 5kg thuốc phiện vượt biên vào Việt Nam
+URL: http://vnexpress.net/tin-tuc/phap-luat/thanh-nien-lao-dua-5kg-thuoc-phien-vuot-bien-vao-viet-nam-3566207.html
+Date public: 4/5/2017
+---------------
+Tên báo: vnexpress
+Thể loại: pháp luật
+Tiêu đề: Thanh niên người Lào đưa 5kg thuốc phiện vượt biên vào Việt Nam
+URL: http://vnexpress.net/tin-tuc/phap-luat/thanh-nien-nguoi-lao-dua-5kg-thuoc-phien-vuot-bien-vao-viet-nam-3566207.html
+Date public: 4/5/2017
+----
+Cosine value: 1
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Đùi gà Mỹ 15 ngàn/kg: Người Mỹ chê, người Việt ăn
+URL: http://vietnamnet.vn/vn/kinh-doanh/thi-truong/thit-ga-my-15-ngan-kg-thit-ga-brazil-un-un-nhap-ve-viet-nam-365264.html
+Date public: 4/5/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Ba năm dân Việt ăn hơn 400.000 tấn thịt gà ngoại nhập giá rẻ
+URL: http://dantri.com.vn//kinh-doanh/ba-nam-dan-viet-an-hon-400000-tan-thit-ga-ngoai-nhap-gia-re-2017040507474859.htm
+Date public: 4/5/2017
+----
+Cosine value: 0.7877379101821934
+
+
+=================================
+Thu Apr 06 2017 01:41:16 GMT+0700 (SE Asia Standard Time)
+=================================
+=================================
+Thu Apr 06 2017 01:56:14 GMT+0700 (SE Asia Standard Time)
+=================================
+=================================
+Thu Apr 06 2017 21:27:03 GMT+0700 (SE Asia Standard Time)
+=================================
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: 55.000 tỷ đồng khởi động dự án cao tốc Bắc - Nam
+URL: http://dantri.com.vn//kinh-doanh/55000-ty-dong-khoi-dong-du-an-cao-toc-bac-nam-20170406131940531.htm
+Date public: 4/6/2017
+---------------
+Tên báo: vietnamnet news
+Thể loại: thời sự
+Tiêu đề: Thủ tướng: Nhà nước hỗ trợ 55.000 tỷ xây đường bộ cao tốc Bắc - Nam
+URL: http://vietnamnet.vn/vn/thoi-su/chinh-tri/thu-tuong-nha-nuoc-ho-tro-55-000-ty-xay-duong-bo-cao-toc-bac-nam-365306.html
+Date public: 4/5/2017
+----
+Cosine value: 0.7862842066607905
+
+
+Tên báo: zing
+Thể loại: sức khỏe
+Tiêu đề: 
+Tối tăm mặt mày sau 10 phút tiêm chủng
+
+URL: http://news.zing.vn/toi-tam-mat-may-sau-10-phut-tiem-chung-post734963.html
+Date public: 4/6/2017
+---------------
+Tên báo: dantri
+Thể loại: sức khỏe
+Tiêu đề: Tối tăm mặt mày sau 10 phút tiêm chủng
+URL: http://dantri.com.vn//suc-khoe/toi-tam-mat-may-sau-10-phut-tiem-chung-20170406122216653.htm
+Date public: 4/6/2017
+----
+Cosine value: 0.9372426630997956
+
+
+Tên báo: zing
+Thể loại: kinh doanh
+Tiêu đề: 
+7 đại gia chia nhau hơn 1.800 tỷ từ Nhật Bản
+
+URL: http://news.zing.vn/7-dai-gia-chia-nhau-hon-1800-ty-tu-nhat-ban-post734952.html
+Date public: 4/6/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: 7 đại gia Việt chia nhau hơn 1.800 tỷ đồng từ Nhật Bản
+URL: http://dantri.com.vn//kinh-doanh/7-dai-gia-viet-chia-nhau-hon-1800-ty-dong-tu-nhat-ban-20170406155917875.htm
+Date public: 4/6/2017
+----
+Cosine value: 0.9163064080587111
+
+
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Quốc lộ 1 lại tắc vì dân đưa tiền lẻ mua vé qua Trạm thu phí Bến Thủy
+
+URL: http://news.zing.vn/quoc-lo-1-lai-tac-vi-dan-dua-tien-le-mua-ve-qua-tram-thu-phi-ben-thuy-post735080.html
+Date public: 4/6/2017
+---------------
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Giảm 50% giá vé cho người dân hai đầu cầu Bến Thủy
+
+URL: http://news.zing.vn/giam-50-gia-ve-cho-nguoi-dan-hai-dau-cau-ben-thuy-post734197.html
+Date public: 4/4/2017
+----
+Cosine value: 0.6848589947535817
+
+
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Doanh nghiệp chôn ống ngầm xả thải ra sông Âm
+
+URL: http://news.zing.vn/doanh-nghiep-chon-ong-ngam-xa-thai-ra-song-am-post734939.html
+Date public: 4/6/2017
+---------------
+Tên báo: vnexpress
+Thể loại: thời sự
+Tiêu đề: Doanh nghiệp chôn ống ngầm xả thải bẩn ra sông Âm
+URL: http://vnexpress.net/tin-tuc/thoi-su/doanh-nghiep-chon-ong-ngam-xa-thai-ban-ra-song-am-3566193.html
+Date public: 4/5/2017
+----
+Cosine value: 0.7472783957485395
+
+
+Tên báo: vnexpress
+Thể loại: thời sự
+Tiêu đề: An ninh siết chặt 5 vòng, lễ Giỗ Tổ không còn 'vỡ trận'
+URL: http://vnexpress.net/photo/thoi-su/an-ninh-siet-chat-5-vong-le-gio-to-khong-con-vo-tran-3566376.html
+Date public: 4/6/2017
+---------------
+Tên báo: vnexpress
+Thể loại: thời sự
+Tiêu đề: Đền Hùng sẵn sàng cho ngày Quốc giỗ
+URL: http://vnexpress.net/photo/thoi-su/den-hung-san-sang-cho-ngay-quoc-gio-3566166.html
+Date public: 4/5/2017
+----
+Cosine value: 1
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: 7 đại gia Việt chia nhau hơn 1.800 tỷ từ Nhật Bản
+URL: http://vietnamnet.vn/vn/kinh-doanh/tai-chinh/7-dai-gia-chia-nhau-hon-1-8-ngan-ty-365258.html
+Date public: 4/6/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: 7 đại gia Việt chia nhau hơn 1.800 tỷ đồng từ Nhật Bản
+URL: http://dantri.com.vn//kinh-doanh/7-dai-gia-viet-chia-nhau-hon-1800-ty-dong-tu-nhat-ban-20170406155917875.htm
+Date public: 4/6/2017
+----
+Cosine value: 0.9851859561984142
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Ăn hoa quả 'quý tộc': Nhà đại gia tráng miệng 70 triệu/tháng
+URL: http://vietnamnet.vn/vn/kinh-doanh/thi-truong/trang-mieng-hoa-qua-quy-toc-nha-dai-gia-chi-70-trieu-thang-365206.html
+Date public: 4/6/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Ăn hoa quả 'quý tộc': Nhà đại gia tráng miệng 70 triệu/tháng
+URL: http://dantri.com.vn//kinh-doanh/an-hoa-qua-quy-toc-nha-dai-gia-trang-mieng-70-trieu-thang-20170406074715748.htm
+Date public: 4/6/2017
+----
+Cosine value: 0.985369314506497
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Thu 2 tỷ/tháng từ chợ facebook và chuyện tìm kim trong đống rơm
+URL: http://vietnamnet.vn/vn/kinh-doanh/tai-chinh/cho-facebook-va-cau-chuyen-tim-kim-trong-dong-rom-365028.html
+Date public: 4/6/2017
+---------------
+Tên báo: zing
+Thể loại: kinh doanh
+Tiêu đề: 
+Thu 2 tỷ một tháng từ chợ Facebook và chuyện tìm kim trong đống rơm
+
+URL: http://news.zing.vn/thu-2-ty-mot-thang-tu-cho-facebook-va-chuyen-tim-kim-trong-dong-rom-post735061.html
+Date public: 4/6/2017
+----
+Cosine value: 0.9138456341202734
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Vietnam Airlines- 3 năm liền giải thưởng Suất ăn xuất sắc nhất
+URL: http://vietnamnet.vn/vn/kinh-doanh/vietnam-airlines-3-nam-lien-giai-thuong-suat-an-xuat-sac-nhat-365380.html
+Date public: 4/6/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Công ty suất ăn hàng không Việt Nam đoạt giải xuất sắc nhất năm 2016
+URL: http://dantri.com.vn//kinh-doanh/cong-ty-suat-an-hang-khong-viet-nam-doat-giai-xuat-sac-nhat-nam-2016-20170405170151872.htm
+Date public: 4/5/2017
+----
+Cosine value: 0.7013564866174827
+
+
+Tên báo: vietnamnet news
+Thể loại: sức khỏe
+Tiêu đề: Mẹ hoảng hốt khi con gái 18 tháng tuổi có kinh nguyệt
+URL: http://vietnamnet.vn/vn/suc-khoe/suc-khoe-24h/me-hoang-hot-khi-con-gai-18-thang-tuoi-co-kinh-nguyet-365324.html
+Date public: 4/6/2017
+---------------
+Tên báo: dantri
+Thể loại: sức khỏe
+Tiêu đề: Trẻ lên 3 dậy thì, tưởng nhầm bị xâm hại
+URL: http://dantri.com.vn//suc-khoe/tre-len-3-day-thi-tuong-nham-bi-xam-hai-20170405203611527.htm
+Date public: 4/6/2017
+----
+Cosine value: 0.7383928902802436
+
+
+Tên báo: vietnamnet news
+Thể loại: thời sự
+Tiêu đề: Hàng trăm cán bộ nghỉ việc: ‘Lương tháng còn thua làm bảo vệ’
+URL: http://vietnamnet.vn/vn/thoi-su/cai-cach-tien-luong/hang-tram-can-bo-nghi-viec-luong-thang-con-thua-lam-bao-ve-365327.html
+Date public: 4/6/2017
+---------------
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Hàng trăm cán bộ nghỉ việc: 'Lương tháng còn thua làm bảo vệ'
+
+URL: http://news.zing.vn/hang-tram-can-bo-nghi-viec-luong-thang-con-thua-lam-bao-ve-post734942.html
+Date public: 4/6/2017
+----
+Cosine value: 0.8079714635779396
+
+
+Tên báo: vietnamnet news
+Thể loại: thể thao
+Tiêu đề: Kết quả bóng đá hôm nay 6/4
+URL: http://vietnamnet.vn/vn/the-thao/bong-da-quoc-te/ket-qua-truc-tuyen-ket-qua-bong-da-truc-tuyen-365213.html
+Date public: 4/6/2017
+---------------
+Tên báo: vietnamnet news
+Thể loại: thể thao
+Tiêu đề: Kết quả bóng đá hôm nay 4/4
+URL: http://vietnamnet.vn/vn/the-thao/bong-da-quoc-te/ket-qua-truc-tuyen-ket-qua-bong-da-truc-tuyen-364799.html
+Date public: 4/4/2017
+----
+Cosine value: 0.6842373209092798
+
+
+=================================
+Thu Apr 06 2017 23:26:58 GMT+0700 (SE Asia Standard Time)
+=================================
+Tên báo: zing
+Thể loại: thể thao
+Tiêu đề: 
+U20 Việt Nam thắng đậm đàn em U19
+
+URL: http://news.zing.vn/u20-viet-nam-thang-dam-dan-em-u19-post735101.html
+Date public: 4/6/2017
+---------------
+Tên báo: zing
+Thể loại: thể thao
+Tiêu đề: 
+Hai cầu thủ U20 Việt Nam có một cán bộ hỗ trợ
+
+URL: http://news.zing.vn/lich-thi-dau-u20-viet-nam-tai-u20-world-cup-post734728.html
+Date public: 4/5/2017
+----
+Cosine value: 0.638989531473479
+
+
+Tên báo: vnexpress
+Thể loại: pháp luật
+Tiêu đề: Chặn bắt xe khách chở một tấn thuốc nổ
+URL: http://vnexpress.net/tin-tuc/phap-luat/chan-bat-xe-khach-cho-mot-tan-thuoc-no-3566531.html
+Date public: 4/6/2017
+---------------
+Tên báo: vnexpress
+Thể loại: pháp luật
+Tiêu đề: CSGT chặn xe khách chở một tấn thuốc nổ
+URL: http://vnexpress.net/tin-tuc/phap-luat/csgt-chan-xe-khach-cho-mot-tan-thuoc-no-3566531.html
+Date public: 4/6/2017
+----
+Cosine value: 0.9825368687589093
+
+

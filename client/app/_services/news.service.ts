@@ -14,4 +14,11 @@ export class NewsService{
         });
         return this.http.get('/api/news', options).map(res => res.json());
     }
+
+    getNewsBySearch(searchparams:string){
+        let options = new RequestOptions({
+            search: new URLSearchParams('search_title='+searchparams)
+        });
+        return this.http.get('/api/news_search', options).map(res => res.json());
+    }
 }

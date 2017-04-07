@@ -1,0 +1,145 @@
+Tên báo: zing
+Thể loại: sức khỏe
+Tiêu đề: 
+Tối tăm mặt mày sau 10 phút tiêm chủng
+
+URL: http://news.zing.vn/toi-tam-mat-may-sau-10-phut-tiem-chung-post734963.html
+Date public: 4/6/2017
+---------------
+Tên báo: dantri
+Thể loại: sức khỏe
+Tiêu đề: Tối tăm mặt mày sau 10 phút tiêm chủng
+URL: http://dantri.com.vn//suc-khoe/toi-tam-mat-may-sau-10-phut-tiem-chung-20170406122216653.htm
+Date public: 4/6/2017
+----
+Cosine value: 0.9372426630997956
+
+
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Doanh nghiệp chôn ống ngầm xả thải ra sông Âm
+
+URL: http://news.zing.vn/doanh-nghiep-chon-ong-ngam-xa-thai-ra-song-am-post734939.html
+Date public: 4/6/2017
+---------------
+Tên báo: vnexpress
+Thể loại: thời sự
+Tiêu đề: Doanh nghiệp chôn ống ngầm xả thải bẩn ra sông Âm
+URL: http://vnexpress.net/tin-tuc/thoi-su/doanh-nghiep-chon-ong-ngam-xa-thai-ban-ra-song-am-3566193.html
+Date public: 4/5/2017
+----
+Cosine value: 0.7472783957485395
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: 7 đại gia Việt chia nhau hơn 1.800 tỷ từ Nhật Bản
+URL: http://vietnamnet.vn/vn/kinh-doanh/tai-chinh/7-dai-gia-chia-nhau-hon-1-8-ngan-ty-365258.html
+Date public: 4/6/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: 7 đại gia Việt chia nhau hơn 1.800 tỷ đồng từ Nhật Bản
+URL: http://dantri.com.vn//kinh-doanh/7-dai-gia-viet-chia-nhau-hon-1800-ty-dong-tu-nhat-ban-20170406155917875.htm
+Date public: 4/6/2017
+----
+Cosine value: 0.9851859561984142
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Ăn hoa quả 'quý tộc': Nhà đại gia tráng miệng 70 triệu/tháng
+URL: http://vietnamnet.vn/vn/kinh-doanh/thi-truong/trang-mieng-hoa-qua-quy-toc-nha-dai-gia-chi-70-trieu-thang-365206.html
+Date public: 4/6/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Ăn hoa quả 'quý tộc': Nhà đại gia tráng miệng 70 triệu/tháng
+URL: http://dantri.com.vn//kinh-doanh/an-hoa-qua-quy-toc-nha-dai-gia-trang-mieng-70-trieu-thang-20170406074715748.htm
+Date public: 4/6/2017
+----
+Cosine value: 0.985369314506497
+
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Thu 2 tỷ/tháng từ chợ facebook và chuyện tìm kim trong đống rơm
+URL: http://vietnamnet.vn/vn/kinh-doanh/tai-chinh/cho-facebook-va-cau-chuyen-tim-kim-trong-dong-rom-365028.html
+Date public: 4/6/2017
+---------------
+Tên báo: zing
+Thể loại: kinh doanh
+Tiêu đề: 
+Thu 2 tỷ một tháng từ chợ Facebook và chuyện tìm kim trong đống rơm
+
+URL: http://news.zing.vn/thu-2-ty-mot-thang-tu-cho-facebook-va-chuyen-tim-kim-trong-dong-rom-post735061.html
+Date public: 4/6/2017
+----
+Cosine value: 0.9138456341202734
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Vietnam Airlines- 3 năm liền giải thưởng Suất ăn xuất sắc nhất
+URL: http://vietnamnet.vn/vn/kinh-doanh/vietnam-airlines-3-nam-lien-giai-thuong-suat-an-xuat-sac-nhat-365380.html
+Date public: 4/6/2017
+---------------
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: Công ty suất ăn hàng không Việt Nam đoạt giải xuất sắc nhất năm 2016
+URL: http://dantri.com.vn//kinh-doanh/cong-ty-suat-an-hang-khong-viet-nam-doat-giai-xuat-sac-nhat-nam-2016-20170405170151872.htm
+Date public: 4/5/2017
+----
+Cosine value: 0.7013564866174827
+
+
+
+Tên báo: vietnamnet news
+Thể loại: sức khỏe
+Tiêu đề: Mẹ hoảng hốt khi con gái 18 tháng tuổi có kinh nguyệt
+URL: http://vietnamnet.vn/vn/suc-khoe/suc-khoe-24h/me-hoang-hot-khi-con-gai-18-thang-tuoi-co-kinh-nguyet-365324.html
+Date public: 4/6/2017
+---------------
+Tên báo: dantri
+Thể loại: sức khỏe
+Tiêu đề: Trẻ lên 3 dậy thì, tưởng nhầm bị xâm hại
+URL: http://dantri.com.vn//suc-khoe/tre-len-3-day-thi-tuong-nham-bi-xam-hai-20170405203611527.htm
+Date public: 4/6/2017
+----
+Cosine value: 0.7383928902802436
+
+
+Tên báo: vietnamnet news
+Thể loại: thời sự
+Tiêu đề: Hàng trăm cán bộ nghỉ việc: ‘Lương tháng còn thua làm bảo vệ’
+URL: http://vietnamnet.vn/vn/thoi-su/cai-cach-tien-luong/hang-tram-can-bo-nghi-viec-luong-thang-con-thua-lam-bao-ve-365327.html
+Date public: 4/6/2017
+---------------
+Tên báo: zing
+Thể loại: thời sự
+Tiêu đề: 
+Hàng trăm cán bộ nghỉ việc: 'Lương tháng còn thua làm bảo vệ'
+
+URL: http://news.zing.vn/hang-tram-can-bo-nghi-viec-luong-thang-con-thua-lam-bao-ve-post734942.html
+Date public: 4/6/2017
+----
+Cosine value: 0.8079714635779396
+
+
+
+Tên báo: vietnamnet news
+Thể loại: kinh doanh
+Tiêu đề: Thu 2 tỷ/tháng từ chợ facebook và chuyện tìm kim trong đống rơm
+URL: http://vietnamnet.vn/vn/kinh-doanh/tai-chinh/cho-facebook-va-cau-chuyen-tim-kim-trong-dong-rom-365028.html
+Date public: 4/6/2017
+---------------
+Tên báo: zing
+Thể loại: kinh doanh
+Tiêu đề: 
+Thu 2 tỷ một tháng từ chợ Facebook và chuyện tìm kim trong đống rơm
+
+URL: http://news.zing.vn/thu-2-ty-mot-thang-tu-cho-facebook-va-chuyen-tim-kim-trong-dong-rom-post735061.html
+Date public: 4/6/2017
+----
+Cosine value: 0.9138456341202734

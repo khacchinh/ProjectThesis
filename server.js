@@ -12,15 +12,9 @@ var users = require("./routes/users");
 var category = require("./routes/category");
 //send dictionary to client
 var getDictionary = require("./routes/getDictionary");
-//import class crawler
-var crawlernewsclass_1 = require("./crawler/crawlernewsclass");
-//import class similar cosine
-var processsimilarnew_1 = require("./crawler/processsimilarnew");
-var processnews_1 = require("./crawler/processnews");
 //mongo db
 var mongoose = require("mongoose");
 var crawlerData = require("./routes/crawlerData");
-var NewsItem_1 = require("./model/NewsItem");
 var app = express();
 app.use(compression());
 //set port
@@ -40,41 +34,11 @@ app.use('/api/', category);
 app.use('/', getDictionary);
 //use clawer
 app.use('/', crawlerData);
+/*
 //
 var is_loop_process = true;
-function doProcessNews() {
-    NewsItem_1.NewItem.getNewsAfterDay(2).then(function (msg) {
-        if (msg != "empty") {
-            processnews_1.ProcessNews.arOldNews = msg;
-        }
-        console.log('Crawler dữ liệu tin tức');
-        new crawlernewsclass_1.CrawlerNewsClass().getCrawlerData().then(function (msg) {
-            processnews_1.ProcessNews.getContent().then(function (msg) {
-                processnews_1.ProcessNews.exportFile();
-                console.log('- tách từ.....');
-                var child = require('child_process').spawn('java', ['-jar', 'WordSegment.jar']);
-                child.stdout.on('data', function (data) {
-                    if (data.toString().trim() == "ok") {
-                        new processsimilarnew_1.ProcessSimilarNew();
-                        console.log("- done!!");
-                        if (is_loop_process) {
-                            setInterval(doProcessNews, 1000 * 60 * 15);
-                            is_loop_process = false;
-                        }
-                    }
-                });
-                child.stderr.on("data", function (data) {
-                    console.log(data.toString());
-                });
-            });
-        });
-    });
-}
-//call class crawler
-doProcessNews();
-/*
-setInterval(function(){
-    NewItem.getNewsAfterDay(2).then(
+function doProcessNews(){
+    NewItem.getNewsAfterDay(20).then(
         (msg) => {
             if (msg != "empty"){
                 ProcessNews.arOldNews = msg;
@@ -82,6 +46,7 @@ setInterval(function(){
             console.log('Crawler dữ liệu tin tức')
             new CrawlerNewsClass().getCrawlerData().then(
                 function(msg: boolean){
+                    
                     ProcessNews.getContent().then(
                         (msg) => {
                             ProcessNews.exportFile();
@@ -93,6 +58,11 @@ setInterval(function(){
                                 if (data.toString().trim() == "ok"){
                                     new ProcessSimilarNew();
                                     console.log("- done!!");
+                                    if (is_loop_process){
+                                        setInterval(doProcessNews, 1000*60*15);
+                                        is_loop_process = false;
+                                    }
+
                                 }
                             });
 
@@ -105,35 +75,10 @@ setInterval(function(){
             )
         }
     )
-}, 1000*60*15);
-*/
-/*
-console.log('Crawler dữ liệu tin tức')
-new CrawlerNewsClass().getCrawlerData().then(
-    function(msg: boolean){
-        ProcessNews.getContent().then(
-            (msg) => {
-                
-                ProcessNews.exportFile();
-                console.log('- tách từ.....');
-                var child = require('child_process').spawn(
-                    'java', ['-jar', 'WordSegment.jar']
-                );
-                child.stdout.on('data', function(data) {
-                    if (data.toString().trim() == "ok"){
-                        new ProcessSimilarNew();
-                        console.log("- done!!");
-                        NewItem.getNearestNew("vnexpress", "thế giới");
-                    }
-                });
+}
 
-                child.stderr.on("data", function (data) {
-                    console.log(data.toString());
-                });
-            }
-        )
-    }
-)
+//call class crawler
+doProcessNews();
 */
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/my_database', function (err) {

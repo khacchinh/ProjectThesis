@@ -23,6 +23,9 @@ import { CategoryComponent } from './category/index';
 //single page item news
 import { SingleComponent } from './singlepage/index';
 
+//search
+import { SearchComponent } from './searchform/index';
+
 
 //header and footer
 import { HeaderComponent } from './header/index';
@@ -54,7 +57,8 @@ import { AlertComponent } from '../_directives/index';
     SingleComponent,
     HeaderComponent,
     FooterComponent,
-    RightBarComponent
+    RightBarComponent,
+    SearchComponent
   ],
   providers: [
     AlertService,

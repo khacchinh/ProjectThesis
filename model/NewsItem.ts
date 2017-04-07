@@ -132,7 +132,16 @@ export class NewItem{
 
     static getAllNewItembyCategory(category_name: String) : Promise<NewItem>{
         return new Promise<INewItem> ((resolve, reject) => {
-            NewItemModel.find({category: category_name}, (err, result) => {
+            NewItemModel.find({category: category_name}, null, {sort: '-date_public'}, (err, result) => {
+                if (err) reject(err);
+                resolve(result);
+            })
+        });
+    };
+
+    static getAllNewItemBySearch(search_title: string) : Promise<NewItem>{
+        return new Promise<INewItem> ((resolve, reject) => {
+            NewItemModel.find({title: new RegExp(search_title, "i")}, null, {sort: '-date_public'}, (err, result) => {
                 if (err) reject(err);
                 resolve(result);
             })
