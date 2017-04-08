@@ -5,6 +5,7 @@ var Crawler = require("crawler");
 var Collections = require("typescript-collections");
 var ProcessNews = (function () {
     function ProcessNews() {
+        this.count = 0;
     }
     ProcessNews.prototype.importNew = function (news) {
         if (news.title + '' == "undefined" || news.img + '' == "undefined" || news.url + '' == "undefined" || news.sumary + '' == "undefined" || news.category + '' == "undefined")
@@ -37,7 +38,9 @@ var ProcessNews = (function () {
                         count++;
                         var $ = res.$;
                         if (element.author == "vnexpress") {
-                            $("table").remove();
+                            $("a").remove();
+                            $("em").remove();
+                            $(".fck_detail").children("div").remove();
                             $(".fck_detail").children().last().remove();
                             $(".fck_detail").children('.Normal[style*="text-align:right;"]').remove();
                             var content = $(".fck_detail").text();
@@ -60,6 +63,7 @@ var ProcessNews = (function () {
                             $("table").remove();
                             $("#abody").children('div').children('article').remove();
                             $("#abody").children().last().remove();
+                            $("#abody").children('p[style*="text-align: right;"]').remove();
                             var content = $("#abody").text();
                             element.content = content.toString().trim();
                             $("time").children("span").remove();
@@ -68,41 +72,42 @@ var ProcessNews = (function () {
                             ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
                         }
                         else if (element.author == "vietnamnet news") {
+                            var content = "";
+                            $("div.inner-article").remove();
+                            $("#ArticleContent div").remove();
                             $("table").remove();
-                            $("br").remove();
-                            $("a").remove();
-                            $("#ArticleContent").children('div').remove();
-                            $("#ArticleContent").children().last().remove();
                             $("#ArticleContent").children().first().remove();
-                            var content = $("#ArticleContent").text();
+                            $("#ArticleContent").children().last().remove();
+                            $("#ArticleContent").children().last().remove();
+                            content = $("#ArticleContent").text();
                             element.content = content.toString().trim();
                             var date = $(".ArticleDateTime").children("span").text();
                             element.date_public = ProcessNews.getDate(date, element.author, element.category);
                             ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
                         }
                         else if (element.author == "zing") {
+                            $("table").remove();
+                            $(".the-article-body").children("div").remove();
+                            $(".the-article-body").children("figure").remove();
+                            $(".the-article-body").children("script").remove();
                             var content = $(".the-article-body").text();
-                            element.content = content;
                             var date = $('.the-article-publish').text();
+                            element.content = content;
                             element.date_public = ProcessNews.getDate(date, element.author, element.category);
                             ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
                         }
-                        /*
-                        else if (element.author == "tuoitre"){
-                            let content = "";
-                            try{
-                                content = $('div.fck').text();
-                                element.content = content.trim();
-                                let date = $('meta[name=pubdate]').attr("content").text();
-                                element.date_public = ProcessNews.getDate(date, element.author, element.category);
-                            }
-                            catch(e){
-                                element.content = "";
-                            }
-                            console.log(element.date_public);
+                        else if (element.author == "tintuc") {
+                            var content = "";
+                            var date = void 0;
+                            $("figure").remove();
+                            $("table").remove();
+                            $("#articleContent").children("div").remove();
+                            content = $("#articleContent").text();
+                            date = $(".publish-date").children().text();
+                            element.content = content;
+                            element.date_public = ProcessNews.getDate(date, element.author, element.category);
                             ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
                         }
-                        */
                         if (count == ProcessNews.tempArrNews.length)
                             resolve(true);
                     }
@@ -133,25 +138,35 @@ var ProcessNews = (function () {
     ProcessNews.getDate = function (date, author, category) {
         var key = author + "-" + category;
         date = date.trim().replace(/\xA0/g, ' ');
-        if (date == "")
-            return null;
         var arrTime = date.split(" ");
         var dateneed;
-        switch (author) {
-            case "vnexpress":
-            case "dantri":
-                dateneed = arrTime[2].split("/").reverse().join("-") + " " + arrTime[4] + ":00";
-                break;
-            case "thanhnien":
-                dateneed = arrTime[3].split("/").reverse().join("-") + " " + ProcessNews.convertTime12to24(arrTime[0] + " " + arrTime[1]);
-                break;
-            case "vietnamnet news":
-                dateneed = arrTime[0].split("/").reverse().join("-") + " " + arrTime[2];
-                break;
-            case "zing":
-                dateneed = arrTime[1].split("/").reverse().join("-") + " " + arrTime[0];
-                break;
+        if (date == "")
+            dateneed = null;
+        else {
+            switch (author) {
+                case "vnexpress":
+                case "dantri":
+                    dateneed = arrTime[2].split("/").reverse().join("-") + " " + arrTime[4] + ":00";
+                    break;
+                case "thanhnien":
+                    dateneed = arrTime[3].split("/").reverse().join("-") + " " + ProcessNews.convertTime12to24(arrTime[0] + " " + arrTime[1]);
+                    break;
+                case "vietnamnet news":
+                    dateneed = arrTime[0].split("/").reverse().join("-") + " " + arrTime[2];
+                    break;
+                case "zing":
+                    dateneed = arrTime[1].split("/").reverse().join("-") + " " + arrTime[0];
+                    break;
+                case "tintuc":
+                    if (arrTime.length <= 2)
+                        dateneed = null;
+                    else
+                        dateneed = arrTime[2].split("/").join("-") + "  " + arrTime[0] + ":00";
+                    break;
+            }
         }
+        if (dateneed == null)
+            return dateneed;
         dateneed = new Date(dateneed);
         if (ProcessNews.saveFlagTime.getValue(key)) {
             if (ProcessNews.saveFlagTime.getValue(key).getTime() > dateneed.getTime())

@@ -2,7 +2,7 @@ export class News{
     author: string;
     category: string;
     title: string;
-    arr_title_segment : Array<string>;
+    arr_content_segment : Array<string>;
     url: string;
     img: string;
     type_img: boolean;

@@ -1,0 +1,14 @@
+Tên báo: dantri
+Thể loại: kinh doanh
+Tiêu đề: 55.000 tỷ đồng khởi động dự án cao tốc Bắc - Nam
+URL: http://dantri.com.vn//kinh-doanh/55000-ty-dong-khoi-dong-du-an-cao-toc-bac-nam-20170406131940531.htm
+Date public: 4/6/2017
+---------------
+Tên báo: vietnamnet news
+Thể loại: thời sự
+Tiêu đề: Thủ tướng: Nhà nước hỗ trợ 55.000 tỷ xây đường bộ cao tốc Bắc - Nam
+URL: http://vietnamnet.vn/vn/thoi-su/chinh-tri/thu-tuong-nha-nuoc-ho-tro-55-000-ty-xay-duong-bo-cao-toc-bac-nam-365306.html
+Date public: 4/5/2017
+----
+Cosine value: 0.7862842066607905
+

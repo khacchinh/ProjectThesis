@@ -26,23 +26,23 @@ var ProcessSimilarNew = (function () {
         console.log('- load stop word');
         var stopword = fs.readFileSync(__dirname + '/tokenizer/data/stopword.txt');
         this.arrstopword = stopword.toString().split(/\r?\n/);
-        //load title segment
-        console.log('- load title segment');
-        var dataTitle = fs.readFileSync(__dirname + '/tokenizer/data/output.txt');
-        var arrDataTitle = dataTitle.toString().split("\n");
+        //load content segment
+        console.log('- load content segment');
+        var dataContent = fs.readFileSync(__dirname + '/tokenizer/data/output.txt');
+        var arrDataContent = dataContent.toString().split("\n");
         //process
-        console.log('- remove stop word and save title segment');
+        console.log('- remove stop word and save content segment');
         for (var i = 0; i < processnews_1.ProcessNews.arrNews.length; i++) {
-            var str_segment = arrDataTitle[i].replace(/[.,\/#!$%\^&\*;:{}=\-`~()'?‘’“”"…]/g, " ");
-            str_segment = str_segment.replace(/  +/g, ' ').toLowerCase();
-            processnews_1.ProcessNews.arrNews[i].content = str_segment;
-            this.funcDivideNews(processnews_1.ProcessNews.arrNews[i], str_segment);
+            var str_segment = arrDataContent[i].replace(/[.,\/#!$%\^&\*;:{}=\-`~()'?‘’“”"…]/g, " ");
+            str_segment = str_segment.replace(/\s+/g, ' ').toLowerCase();
+            processnews_1.ProcessNews.arrNews[i].content = str_segment.trim();
+            this.funcDivideNews(processnews_1.ProcessNews.arrNews[i]);
             if (i == processnews_1.ProcessNews.arrNews.length - 1) {
                 processnews_1.ProcessNews.arrNews.length = 0;
                 processnews_1.ProcessNews.arOldNews.length = 0;
                 processnews_1.ProcessNews.saveFlagTime = processnews_1.ProcessNews.arFlagTime;
                 //save flag into file
-                console.log('- save flag title in to file');
+                console.log('- save flag content in to file');
                 console.log('- save flag time in to file');
                 var flagTitle = "";
                 var flagTime = "";
@@ -60,34 +60,34 @@ var ProcessSimilarNew = (function () {
             }
         }
     };
-    ProcessSimilarNew.prototype.funcDivideNews = function (news, title_segment) {
-        if (news.category == 'thế giới' || news.category == 'thế giới') {
+    ProcessSimilarNew.prototype.funcDivideNews = function (news) {
+        if (news.category == 'thế giới' || news.category == 'tin the gioi') {
             news.category = 'thế giới';
-            this.funcImportNewByCategory(news, this.thoigioinews, title_segment);
+            this.funcImportNewByCategory(news, this.thoigioinews);
         }
         else if (news.category == 'kinh doanh' || news.category == 'tài chính' || news.category == 'kinh tế') {
             news.category = 'kinh doanh';
-            this.funcImportNewByCategory(news, this.kinhdoanhnews, title_segment);
+            this.funcImportNewByCategory(news, this.kinhdoanhnews);
         }
-        else if (news.category == 'thể thao' || news.category == 'bóng đá') {
+        else if (news.category == 'thể thao' || news.category == 'bóng đá' || news.category == 'the thao') {
             news.category = 'thể thao';
-            this.funcImportNewByCategory(news, this.thethaonews, title_segment);
+            this.funcImportNewByCategory(news, this.thethaonews);
         }
-        else if (news.category == 'số hóa' || news.category == 'công nghệ' || news.category == 'dân trí') {
+        else if (news.category == 'số hóa' || news.category == 'công nghệ' || news.category == 'dân trí' || news.category == 'tin cong nghe') {
             news.category = 'công nghệ';
-            this.funcImportNewByCategory(news, this.congnghenews, title_segment);
+            this.funcImportNewByCategory(news, this.congnghenews);
         }
-        else if (news.category === "sức khỏe" || news.category === "sức khoẻ" || news.category == 'sống khỏe') {
+        else if (news.category == "sức khỏe" || news.category == "suc khoe" || news.category == 'sống khỏe') {
             news.category = 'sức khỏe';
-            this.funcImportNewByCategory(news, this.suckhoenews, title_segment);
+            this.funcImportNewByCategory(news, this.suckhoenews);
         }
-        else if (news.category == 'pháp luật' || news.category == 'hình sự' || news.category == 'pháp luật') {
+        else if (news.category == 'pháp luật' || news.category == 'hình sự' || news.category == 'phap luat') {
             news.category = 'pháp luật';
-            this.funcImportNewByCategory(news, this.phapluatnews, title_segment);
+            this.funcImportNewByCategory(news, this.phapluatnews);
         }
         else if (news.category == 'thời sự' || news.category == 'tin nhanh' || news.category == 'chính trị') {
             news.category = 'thời sự';
-            this.funcImportNewByCategory(news, this.thoisunews, title_segment);
+            this.funcImportNewByCategory(news, this.thoisunews);
         }
     };
     /*
@@ -95,47 +95,25 @@ var ProcessSimilarNew = (function () {
     * author: KhacChinhDev
     *
     */
-    ProcessSimilarNew.prototype.funcImportNewByCategory = function (news, arrNew, title_segment) {
+    ProcessSimilarNew.prototype.funcImportNewByCategory = function (news, arrNew) {
         var _this = this;
         var count_same_author = 0;
         var similar = 0;
         if (arrNew.length == 0) {
-            news.arr_title_segment = this.funcArrayNonStopWord(title_segment);
             //check database if similar
             if (processnews_1.ProcessNews.arOldNews.length > 0) {
                 for (var i = 0; i < processnews_1.ProcessNews.arOldNews.length; i++) {
-                    //if (ProcessNews.arOldNews[i].category == news.category){
-                    processnews_1.ProcessNews.arOldNews[i].arr_title_segment = this.funcArrayNonStopWord(processnews_1.ProcessNews.arOldNews[i].content);
-                    similar = this.funcProcessCacularSimilar(title_segment, processnews_1.ProcessNews.arOldNews[i].arr_title_segment);
-                    if (similar > 0.6) {
-                        console.log("Tên báo: " + news.author);
-                        this.variable_new_similar += "Tên báo: " + news.author + "\n";
-                        console.log("Thể loại: " + news.category);
-                        this.variable_new_similar += "Thể loại: " + news.category + "\n";
-                        console.log("Tiêu đề: " + news.title);
-                        this.variable_new_similar += "Tiêu đề: " + news.title + "\n";
-                        this.variable_new_similar += "URL: " + news.url + "\n";
-                        this.variable_new_similar += "Date public: " + news.date_public.toLocaleDateString() + "\n";
-                        console.log("---------------");
-                        this.variable_new_similar += "---------------" + "\n";
-                        console.log("Tên báo: " + processnews_1.ProcessNews.arOldNews[i].author);
-                        this.variable_new_similar += "Tên báo: " + processnews_1.ProcessNews.arOldNews[i].author + "\n";
-                        console.log("Thể loại: " + processnews_1.ProcessNews.arOldNews[i].category);
-                        this.variable_new_similar += "Thể loại: " + processnews_1.ProcessNews.arOldNews[i].category + "\n";
-                        console.log("Tiêu đề: " + processnews_1.ProcessNews.arOldNews[i].title);
-                        this.variable_new_similar += "Tiêu đề: " + processnews_1.ProcessNews.arOldNews[i].title + "\n";
-                        this.variable_new_similar += "URL: " + processnews_1.ProcessNews.arOldNews[i].url + "\n";
-                        this.variable_new_similar += "Date public: " + processnews_1.ProcessNews.arOldNews[i].date_public.toLocaleDateString() + "\n";
-                        console.log("----");
-                        this.variable_new_similar += "----" + "\n";
-                        console.log("Cosine value: " + similar);
-                        this.variable_new_similar += "Cosine value: " + similar + "\n";
-                        console.log("\n\n");
-                        this.variable_new_similar += "\n\n";
-                        return;
+                    if (processnews_1.ProcessNews.arOldNews[i].category == news.category) {
+                        processnews_1.ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(processnews_1.ProcessNews.arOldNews[i].content);
+                        similar = this.funcProcessCacularSimilar(news.content, processnews_1.ProcessNews.arOldNews[i].arr_content_segment);
+                        if (similar > 0.6) {
+                            this.printResult(news, processnews_1.ProcessNews.arOldNews[i], similar);
+                            return;
+                        }
                     }
                 }
             }
+            news.arr_content_segment = this.funcArrayNonStopWord(news.content);
             arrNew.push(news);
             this.funcSaveNew(news);
             return;
@@ -147,73 +125,27 @@ var ProcessSimilarNew = (function () {
                 }
                 else {
                     //                    // call function cacular similar cosinse here
-                    similar = _this.funcProcessCacularSimilar(title_segment, old_news.arr_title_segment);
+                    similar = _this.funcProcessCacularSimilar(news.content, old_news.arr_content_segment);
                     //
                     if (similar > 0.6) {
                         //delete new of news is reduplicate
-                        console.log("Tên báo: " + news.author);
-                        _this.variable_new_similar += "Tên báo: " + news.author + "\n";
-                        console.log("Thể loại: " + news.category);
-                        _this.variable_new_similar += "Thể loại: " + news.category + "\n";
-                        console.log("Tiêu đề: " + news.title);
-                        _this.variable_new_similar += "Tiêu đề: " + news.title + "\n";
-                        _this.variable_new_similar += "URL: " + news.url + "\n";
-                        _this.variable_new_similar += "Date public: " + news.date_public.toLocaleDateString() + "\n";
-                        console.log("---------------");
-                        _this.variable_new_similar += "---------------" + "\n";
-                        console.log("Tên báo: " + old_news.author);
-                        _this.variable_new_similar += "Tên báo: " + old_news.author + "\n";
-                        console.log("Thể loại: " + old_news.category);
-                        _this.variable_new_similar += "Thể loại: " + old_news.category + "\n";
-                        console.log("Tiêu đề: " + old_news.title);
-                        _this.variable_new_similar += "Tiêu đề: " + old_news.title + "\n";
-                        _this.variable_new_similar += "URL: " + old_news.url + "\n";
-                        _this.variable_new_similar += "Date public: " + old_news.date_public.toLocaleDateString() + "\n";
-                        console.log("----");
-                        _this.variable_new_similar += "----" + "\n";
-                        console.log("Cosine value: " + similar);
-                        _this.variable_new_similar += "Cosine value: " + similar + "\n";
-                        console.log("\n\n");
-                        _this.variable_new_similar += "\n\n";
+                        _this.printResult(news, old_news, similar);
                         return;
                     }
                     count_same_author++;
                 }
             });
             if (count_same_author == arrNew.length) {
-                news.arr_title_segment = this.funcArrayNonStopWord(title_segment);
                 //check database if similar
                 if (processnews_1.ProcessNews.arOldNews.length > 0) {
                     for (var i = 0; i < processnews_1.ProcessNews.arOldNews.length; i++) {
-                        //  if (ProcessNews.arOldNews[i].category == news.category){
-                        processnews_1.ProcessNews.arOldNews[i].arr_title_segment = this.funcArrayNonStopWord(processnews_1.ProcessNews.arOldNews[i].content);
-                        similar = this.funcProcessCacularSimilar(title_segment, processnews_1.ProcessNews.arOldNews[i].arr_title_segment);
-                        if (similar > 0.6) {
-                            console.log("Tên báo: " + news.author);
-                            this.variable_new_similar += "Tên báo: " + news.author + "\n";
-                            console.log("Thể loại: " + news.category);
-                            this.variable_new_similar += "Thể loại: " + news.category + "\n";
-                            console.log("Tiêu đề: " + news.title);
-                            this.variable_new_similar += "Tiêu đề: " + news.title + "\n";
-                            this.variable_new_similar += "URL: " + news.url + "\n";
-                            this.variable_new_similar += "Date public: " + news.date_public.toLocaleDateString() + "\n";
-                            console.log("---------------");
-                            this.variable_new_similar += "---------------" + "\n";
-                            console.log("Tên báo: " + processnews_1.ProcessNews.arOldNews[i].author);
-                            this.variable_new_similar += "Tên báo: " + processnews_1.ProcessNews.arOldNews[i].author + "\n";
-                            console.log("Thể loại: " + processnews_1.ProcessNews.arOldNews[i].category);
-                            this.variable_new_similar += "Thể loại: " + processnews_1.ProcessNews.arOldNews[i].category + "\n";
-                            console.log("Tiêu đề: " + processnews_1.ProcessNews.arOldNews[i].title);
-                            this.variable_new_similar += "Tiêu đề: " + processnews_1.ProcessNews.arOldNews[i].title + "\n";
-                            this.variable_new_similar += "URL: " + processnews_1.ProcessNews.arOldNews[i].url + "\n";
-                            this.variable_new_similar += "Date public: " + processnews_1.ProcessNews.arOldNews[i].date_public.toLocaleDateString() + "\n";
-                            console.log("----");
-                            this.variable_new_similar += "----" + "\n";
-                            console.log("Cosine value: " + similar);
-                            this.variable_new_similar += "Cosine value: " + similar + "\n";
-                            console.log("\n\n");
-                            this.variable_new_similar += "\n\n";
-                            return;
+                        if (processnews_1.ProcessNews.arOldNews[i].category == news.category) {
+                            processnews_1.ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(processnews_1.ProcessNews.arOldNews[i].content);
+                            similar = this.funcProcessCacularSimilar(news.content, processnews_1.ProcessNews.arOldNews[i].arr_content_segment);
+                            if (similar > 0.6) {
+                                this.printResult(news, processnews_1.ProcessNews.arOldNews[i], similar);
+                                return;
+                            }
                         }
                     }
                 }
@@ -221,6 +153,7 @@ var ProcessSimilarNew = (function () {
                 *
                 * save to db
                 */
+                news.arr_content_segment = this.funcArrayNonStopWord(news.content);
                 arrNew.push(news);
                 this.funcSaveNew(news);
             }
@@ -241,34 +174,33 @@ var ProcessSimilarNew = (function () {
     * author: KhacChinhDev
     * return similar of two string
     */
-    ProcessSimilarNew.prototype.funcProcessCacularSimilar = function (title_segment_new, arr_title_segment_old) {
+    ProcessSimilarNew.prototype.funcProcessCacularSimilar = function (content_segment_new, arr_content_segment_old) {
         var _this = this;
-        var arr_title_segment_new = this.funcArrayNonStopWord(title_segment_new);
+        var arr_content_segment_new = this.funcArrayNonStopWord(content_segment_new);
         // array union between item new and item ola
-        var arr_union = arr_title_segment_new.concat(arr_title_segment_old);
-        var arr_union_unique = arr_union.filter(function (element, index) { return arr_union.indexOf(element) === index; });
+        var arr_union_unique = arr_content_segment_new.concat(arr_content_segment_old);
+        arr_union_unique = arr_union_unique.filter(function (element, index) { return arr_union_unique.indexOf(element) === index; });
         //create vector of item new
         var arr_vector_tfidf_item_new = Array();
         var arr_vector_orderword_item_new = Array();
-        arr_union_unique.forEach(function (element) {
-            //tf-idf
-            var tf_idf_word_new = _this.funcTfWord(arr_title_segment_new, element) *
-                _this.funcIdfWord(arr_title_segment_new, arr_title_segment_old, element);
-            arr_vector_tfidf_item_new.push(tf_idf_word_new);
-            //order word
-            var order_word_new = arr_title_segment_new.indexOf(element) >= 0 ? arr_title_segment_new.indexOf(element) + 1 : 0;
-            arr_vector_orderword_item_new.push(order_word_new);
-        });
-        //create vector of item old
         var arr_vector_tfidf_item_old = Array();
         var arr_vector_orderword_item_old = Array();
         arr_union_unique.forEach(function (element) {
-            //tf-idf
-            var tf_idf_word_old = _this.funcTfWord(arr_title_segment_old, element) *
-                _this.funcIdfWord(arr_title_segment_new, arr_title_segment_old, element);
+            //new
+            //tf-idf new
+            var tf_idf_word_new = _this.funcTfWord(arr_content_segment_new, element) *
+                _this.funcIdfWord(arr_content_segment_new, arr_content_segment_old, element);
+            arr_vector_tfidf_item_new.push(tf_idf_word_new);
+            //order word old
+            var order_word_new = arr_content_segment_new.indexOf(element) >= 0 ? arr_content_segment_new.indexOf(element) + 1 : 0;
+            arr_vector_orderword_item_new.push(order_word_new);
+            //old
+            //tf-idf new
+            var tf_idf_word_old = _this.funcTfWord(arr_content_segment_old, element) *
+                _this.funcIdfWord(arr_content_segment_new, arr_content_segment_old, element);
             arr_vector_tfidf_item_old.push(tf_idf_word_old);
-            //order word
-            var order_word_old = arr_title_segment_old.indexOf(element) >= 0 ? arr_title_segment_old.indexOf(element) + 1 : 0;
+            //order word old
+            var order_word_old = arr_content_segment_old.indexOf(element) >= 0 ? arr_content_segment_old.indexOf(element) + 1 : 0;
             arr_vector_orderword_item_old.push(order_word_old);
         });
         //value cosine
@@ -277,10 +209,10 @@ var ProcessSimilarNew = (function () {
         var value_orderword = this.funcOrderWord(arr_vector_orderword_item_new, arr_vector_orderword_item_old);
         /*
         if (value_cosine > 0.5) {
-            console.log(arr_title_segment_new.join(" "));
+            console.log(arr_content_segment_new.join(" "));
             console.log(arr_vector_tfidf_item_new.join("/"));
             console.log("\n");
-            console.log(arr_title_segment_old.join(" "));
+            console.log(arr_content_segment_old.join(" "));
             console.log(arr_vector_tfidf_item_old.join("/"));
             console.log("\n");
             console.log(arr_union_unique.join(" "));
@@ -361,6 +293,35 @@ var ProcessSimilarNew = (function () {
         });
         //load non stop word
         return arrNonSW;
+    };
+    // print result 
+    ProcessSimilarNew.prototype.printResult = function (news, old, similar) {
+        console.log("Tên báo: " + news.author);
+        this.variable_new_similar += "Tên báo: " + news.author + "\n";
+        console.log("Thể loại: " + news.category);
+        this.variable_new_similar += "Thể loại: " + news.category + "\n";
+        console.log("Tiêu đề: " + news.title);
+        this.variable_new_similar += "Tiêu đề: " + news.title + "\n";
+        this.variable_new_similar += "URL: " + news.url + "\n";
+        this.variable_new_similar += "Date public: " + news.date_public.toLocaleDateString() + "\n";
+        this.variable_new_similar += "Content: " + news.content + "\n";
+        console.log("---------------");
+        this.variable_new_similar += "---------------" + "\n";
+        console.log("Tên báo: " + old.author);
+        this.variable_new_similar += "Tên báo: " + old.author + "\n";
+        console.log("Thể loại: " + old.category);
+        this.variable_new_similar += "Thể loại: " + old.category + "\n";
+        console.log("Tiêu đề: " + old.title);
+        this.variable_new_similar += "Tiêu đề: " + old.title + "\n";
+        this.variable_new_similar += "URL: " + old.url + "\n";
+        this.variable_new_similar += "Date public: " + old.date_public.toLocaleDateString() + "\n";
+        this.variable_new_similar += "Content: " + old.content + "\n";
+        console.log("----");
+        this.variable_new_similar += "----" + "\n";
+        console.log("Cosine value: " + similar);
+        this.variable_new_similar += "Cosine value: " + similar + "\n";
+        console.log("\n\n");
+        this.variable_new_similar += "\n\n";
     };
     return ProcessSimilarNew;
 }());
