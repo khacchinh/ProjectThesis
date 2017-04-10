@@ -4,7 +4,8 @@ import { UserService, AlertService } from '../../_services/index';
 declare var $ : any;
 @Component({
   moduleId: module.id,
-  templateUrl: 'admin-user.component.html'
+  templateUrl: 'admin-user.component.html',
+  styleUrls: ['./admin-user.component.css']
 })
 export class AdminUserComponent {
 
@@ -18,12 +19,14 @@ export class AdminUserComponent {
   }
 
   delActive(user){
-    this.userService.deActiveUsers(user._id)
-        .subscribe(data=>{
-          $("."+user._id).text("0");
-          $("#"+user._id).attr('disabled',true);
-          this.alertService.success("Deactive success");
-        })
+    if (confirm("Are you sure??")){
+      this.userService.deActiveUsers(user._id)
+          .subscribe(data=>{
+            $("."+user._id).text("0");
+            $("#"+user._id).attr('disabled',true);
+            this.alertService.success("Deactive success");
+      })
+    }
   }
 
   btnDisabled(active){

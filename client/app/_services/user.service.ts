@@ -26,6 +26,11 @@ export class UserService {
             .map(res => res.json());
     }
 
+    checkExistUser(username : string){
+        return this.http.get('/api/accounts_exist/' + username)
+            .map(res => res.json());
+    }
+
     updateUsers(user: any) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');

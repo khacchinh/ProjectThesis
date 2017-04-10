@@ -32,88 +32,30 @@
 
                         <div class="col-md-6">
                             <div class="widget-title">
-                                <h3>Thời sự</h3>
-                            </div>
-
-                            <div class="featured-news">
-                                <img alt="" src="asset/img/politics.jpg" class="img-thumbnail"/>
-                                <a href="single.html"><h4>Up nominated one of the best movies to be created by disney</h4></a>
-                                <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis</p>
-                            </div>
-
-                            <div class="recent-news">
-                                <div class="row item-news">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div> 
-                                <div class="clear-fix"></div>
-
-                                
-                            </div>
-                        </div>
-
-                       <div class="col-md-6">
-                            <div class="widget-title">
                                 <h3>Thế giới</h3>
                             </div>
 
                             <div class="featured-news">
-                                <img alt="" src="asset/img/politics.jpg" class="img-thumbnail"/>
-                                <a href="single.html"><h4>Up nominated one of the best movies to be created by disney</h4></a>
+                                <img alt="" src="{{data?.thegioi && data?.thegioi[0].img}}" class="img-thumbnail"/>
+                                <a href="http://localhost:3000/#/site/single/{{data?.thegioi && data?.thegioi[0]._id}}"><h4>{{data?.thegioi && data?.thegioi[0].title}}</h4></a>
                                 <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis</p>
+                                <p>{{data?.thegioi && data?.thegioi[0].sumary}}</p>
                             </div>
 
-                            <div class="recent-news">
+
+                            <div class="recent-news" *ngFor="let item of data?.thegioi; let i=index">
+                                <ng-container *ngIf="i > 0">
                                 <div class="row item-news">
                                     <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                        <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
                                     </div>
                                     <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                        <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | {{item.comment.length}} comments</small></span>
                                     </div>
                                 </div> 
                                 <div class="clear-fix"></div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <br/>
-
-                    <div class="row">
-
-                        <div class="col-md-6">
-                            <div class="widget-title">
-                                <h3>Phát luật</h3>
-                            </div>
-
-                            <div class="featured-news">
-                                <img alt="" src="asset/img/politics.jpg" class="img-thumbnail"/>
-                                <a href="single.html"><h4>Up nominated one of the best movies to be created by disney</h4></a>
-                                <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis</p>
-                            </div>
-
-                            <div class="recent-news">
-                                <div class="row item-news">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div> 
-                                <div class="clear-fix"></div>
-
-                                
+                                </ng-container>
                             </div>
                         </div>
 
@@ -123,24 +65,26 @@
                             </div>
 
                             <div class="featured-news">
-                                <img alt="" src="asset/img/politics.jpg" class="img-thumbnail"/>
-                                <a href="single.html"><h4>Up nominated one of the best movies to be created by disney</h4></a>
+                                <img alt="" src="{{data?.kinhdoanh && data?.kinhdoanh[0].img}}" class="img-thumbnail"/>
+                                <a href="http://localhost:3000/#/site/single/{{data?.kinhdoanh && data?.kinhdoanh[0]._id}}"><h4>{{data?.kinhdoanh && data?.kinhdoanh[0].title}}</h4></a>
                                 <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis</p>
+                                <p>{{data?.kinhdoanh && data?.kinhdoanh[0].sumary}}</p>
                             </div>
 
-                            <div class="recent-news">
+
+                            <div class="recent-news" *ngFor="let item of data?.kinhdoanh; let i=index">
+                                <ng-container *ngIf="i > 0">
                                 <div class="row item-news">
                                     <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                        <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
                                     </div>
                                     <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                        <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | {{item.comment.length}} comments</small></span>
                                     </div>
                                 </div> 
                                 <div class="clear-fix"></div>
-
+                                </ng-container>
                             </div>
                         </div>
                     </div>
@@ -153,47 +97,28 @@
 
                         <div class="col-md-12">
                             <div class="col-md-6 img-thumbnail">
-                                <img src="asset/img/370x255-1.jpg" class="img-responsive"/>
+                                <img src="{{data?.congnghe && data?.congnghe[0].img}}" class="img-responsive"/>
                                 <div class="caption">
-                                    <h2><a href="single.html">Sport Title</a></h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit integer id nibh ac est.</p>
+                                    <h2><a href="http://localhost:3000/#/site/single/{{data?.congnghe && data?.congnghe[0]._id}}">{{data?.congnghe && data?.congnghe[0].title}}</a></h2>
+                                    <p>{{data?.congnghe && data?.congnghe[0].sumary}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="row item-news">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div> 
-                                <div class="clear-fix"></div>
 
-                                <div class="row item-news">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div> 
-                                <div class="clear-fix"></div>   
-
-                                <div class="row item-news">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div> 
-                                <div class="clear-fix"></div>
-
-                                
+                                <div *ngFor="let item of data?.congnghe; let i=index">
+                                    <ng-container *ngIf="i > 0">
+                                    <div class="row item-news">
+                                        <div class="col-sm-4">
+                                            <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
+                                            <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                        </div>
+                                    </div> 
+                                    <div class="clear-fix"></div>
+                                    </ng-container>
+                                </div>
 
                             </div>
                          </div>
@@ -204,29 +129,30 @@
 
                         <div class="col-md-6">
                             <div class="widget-title">
-                                <h3>Thể thao</h3>
+                                <h3>Pháp luật</h3>
                             </div>
 
                             <div class="featured-news">
-                                <img alt="" src="asset/img/politics.jpg" class="img-thumbnail"/>
-                                <a href="single.html"><h4>Up nominated one of the best movies to be created by disney</h4></a>
+                                <img alt="" src="{{data?.phapluat && data?.phapluat[0].img}}" class="img-thumbnail"/>
+                                <a href="http://localhost:3000/#/site/single/{{data?.phapluat && data?.phapluat[0]._id}}"><h4>{{data?.phapluat && data?.phapluat[0].title}}</h4></a>
                                 <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis</p>
+                                <p>{{data?.phapluat && data?.phapluat[0].sumary}}</p>
                             </div>
 
-                            <div class="recent-news">
+
+                            <div class="recent-news" *ngFor="let item of data?.phapluat; let i=index">
+                                <ng-container *ngIf="i > 0">
                                 <div class="row item-news">
                                     <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                        <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
                                     </div>
                                     <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                        <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | {{item.comment.length}} comments</small></span>
                                     </div>
                                 </div> 
                                 <div class="clear-fix"></div>
-
-                                
+                                </ng-container>
                             </div>
                         </div>
 
@@ -236,28 +162,65 @@
                             </div>
 
                             <div class="featured-news">
-                                <img alt="" src="asset/img/politics.jpg" class="img-thumbnail"/>
-                                <a href="single.html"><h4>Up nominated one of the best movies to be created by disney</h4></a>
+                                <img alt="" src="{{data?.suckhoe && data?.suckhoe[0].img}}" class="img-thumbnail"/>
+                                <a href="http://localhost:3000/#/site/single/{{data?.suckhoe && data?.suckhoe[0]._id}}"><h4>{{data?.suckhoe && data?.suckhoe[0].title}}</h4></a>
                                 <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis</p>
+                                <p>{{data?.suckhoe && data?.suckhoe[0].sumary}}</p>
                             </div>
 
-                            <div class="recent-news">
+
+                            <div class="recent-news" *ngFor="let item of data?.suckhoe; let i=index">
+                                <ng-container *ngIf="i > 0">
                                 <div class="row item-news">
                                     <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                        <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
                                     </div>
                                     <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                        <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
+                                        <span class="date"><small>Posted on July 02, 2011 | {{item.comment.length}} comments</small></span>
                                     </div>
                                 </div> 
                                 <div class="clear-fix"></div>
-
+                                </ng-container>
                             </div>
                         </div>
                     </div>
-
                     <br/>
+
+                    <div class="row">
+                        <div class="widget-title">
+                            <h3>Thể thao</h3>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="col-md-6 img-thumbnail">
+                                <img src="{{data?.thethao && data?.thethao[0].img}}" class="img-responsive"/>
+                                <div class="caption">
+                                    <h2><a href="http://localhost:3000/#/site/single/{{data?.thethao && data?.thethao[0]._id}}">{{data?.thethao && data?.thethao[0].title}}</a></h2>
+                                    <p>{{data?.thethao && data?.thethao[0].sumary}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div *ngFor="let item of data?.thethao; let i=index">
+                                    <ng-container *ngIf="i > 0">
+                                    <div class="row item-news">
+                                        <div class="col-sm-4">
+                                            <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
+                                            <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                        </div>
+                                    </div> 
+                                    <div class="clear-fix"></div>
+                                    </ng-container>
+                                </div>
+
+                            </div>
+                         </div>
+                    </div>
+                    <br>
+
                 <br/>
                 </div>

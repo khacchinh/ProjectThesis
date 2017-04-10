@@ -77,6 +77,25 @@ export class Users{
         });
     }
 
+    static checkExistUser(username: string) : Promise<any>{
+        var data;
+        return new Promise<any>((resolve, reject) => {
+            UserModel.findOne({username : username},(err, users) => {
+                if (err) reject(err);
+                if (users && users.username == username){
+                    data = {
+                        "isExist" : true
+                    }
+                } else {
+                    data = {
+                        "isExist" : false
+                    }
+                }
+                resolve(data);
+            })
+        })
+    }
+
     static updateUser(id: String, user: any) : Promise<Users>{
         return new Promise<Users> ((resolve, reject) => {
             UserModel.findById(id, function(err, upuser){

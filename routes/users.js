@@ -26,6 +26,12 @@ router.get('/accounts/:id', function (req, res, next) {
         res.json(msg);
     });
 });
+//get single user
+router.get('/accounts_exist/:username', function (req, res, next) {
+    Users_1.Users.checkExistUser(req.params.username).then(function (msg) {
+        res.json(msg);
+    });
+});
 //update user
 router.put('/accounts/:id', function (req, res, next) {
     var user = req.body;

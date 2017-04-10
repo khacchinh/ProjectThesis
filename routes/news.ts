@@ -18,9 +18,46 @@ router.get('/news', function(req, res, next){
     )
 });
 
+//get new hot
+router.get('/news_hot', function(req, res, next){
+    NewItem.getHotNew().then(
+        (msg) =>{
+            res.json(msg);
+        }
+    )
+});
+
+//get new popular
+router.get('/news_popular', function(req, res, next){
+    NewItem.getPopularNews().then(
+        (msg) =>{
+            res.json(msg);
+        }
+    )
+});
+
+//get new comment
+router.get('/news_comment', function(req, res, next){
+    NewItem.getCommentNews().then(
+        (msg) =>{
+            res.json(msg);
+        }
+    )
+});
+
 //search
 router.get('/news_search', function(req, res, next){
     NewItem.getAllNewItemBySearch(req.param('search_title')).then(
+        (msg) =>{
+            res.json(msg);
+        }
+    )
+});
+
+//search
+router.post('/news_search_params', function(req, res, next){
+    var params = req.body;
+    NewItem.getAllNewItemBySearchParams(params).then(
         (msg) =>{
             res.json(msg);
         }
@@ -34,6 +71,15 @@ router.get('/new_item', function(req, res, next){
             res.json(msg);
         }
     )
+});
+
+//delete news
+router.delete('/news_delete/:id', function(req, res, next){
+    NewItem.delNewsById(req.params.id).then(
+        (msg) => {
+            res.json(msg);
+        }
+    )      
 });
 
 router.put('/new_item/:id', (req, res, next) => {

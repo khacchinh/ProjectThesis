@@ -11,6 +11,10 @@ export class AdminUserEditComponent {
   private model: any = {};
   private userId : string;
   private user : any[];
+  private access = [
+      { value: 1, name: "Admin"},
+      { value: 0, name: "User"},
+  ]
   constructor(private userService : UserService, private alertService : AlertService, private route: ActivatedRoute){}
 
   ngOnInit(){

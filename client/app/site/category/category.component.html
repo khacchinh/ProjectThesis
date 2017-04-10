@@ -8,15 +8,15 @@
 
                     <div class="row">
                         <div class="col-md-5 img-thumbnail">
-                            <a [routerLink]="['../../single']"><img style="width: 305px; height: 250px;" alt="" src="{{itemHot?.img}}" /></a>
+                            <a href="http://localhost:3000/#/site/single/{{itemHot?._id}}"><img style="width: 305px; height: 250px;" alt="" src="{{itemHot?.img}}" /></a>
                         </div>
                         <div class="col-md-7">
-                            <a [routerLink]="['../../single']" style="font-size: 2em;">{{itemHot?.title}}</a><br>
+                            <a href="http://localhost:3000/#/site/single/{{itemHot?._id}}" style="font-size: 2em;">{{itemHot?.title}}</a><br>
                             <span class="date">{{convertDate(itemHot?.date_public)}} | {{itemHot?.author}} | 0 comments</span>
                             <p>
                                {{itemHot?.sumary}}
                             </p>
-                            <a [routerLink]="['../../single']">Continue reading</a>
+                            <a href="http://localhost:3000/#/site/single/{{itemHot?._id}}">Continue reading</a>
                         </div>
                     </div>
 

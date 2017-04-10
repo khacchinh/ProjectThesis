@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
- import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import { NewsService } from '../../_services/index';
 
 @Component({
     moduleId: module.id,
@@ -10,8 +11,19 @@ import { Component } from '@angular/core';
 export class RightBarComponent { 
     private paramsSearch:any;
     private router: Router;
-    constructor(router: Router){
+    private pupolarnews : any[];
+    private commentnews : any[];
+    constructor(router: Router, private newsService : NewsService){
         this.router = router;
+    }
+
+    ngOnInit(){
+        this.newsService.getNewsPopular().subscribe(news => {
+            this.pupolarnews = news;
+        });
+        this.newsService.getNewsComment().subscribe(news => {
+            this.commentnews = news;
+        })
     }
 
     performSeach(){

@@ -65,6 +65,10 @@ var _schema = new mongoose.Schema({
     },
     date_public: {
         type: Date
+    },
+    view_count: {
+        type: Number,
+        "default": 0
     }
 });
 //paginate
@@ -109,12 +113,20 @@ var NewItem = (function () {
         });
     };
     NewItem.getAllNewItembyCategory = function (category_name) {
+        if (category_name === void 0) { category_name = ""; }
         return new Promise(function (resolve, reject) {
-            NewItemModel.find({ category: category_name }, null, { sort: '-date_public' }, function (err, result) {
-                if (err)
-                    reject(err);
-                resolve(result);
-            });
+            if (category_name.trim() == "")
+                NewItemModel.find({}, null, { sort: '-date_public' }, function (err, result) {
+                    if (err)
+                        reject(err);
+                    resolve(result);
+                });
+            else
+                NewItemModel.find({ category: category_name }, null, { sort: '-date_public' }, function (err, result) {
+                    if (err)
+                        reject(err);
+                    resolve(result);
+                });
         });
     };
     ;
@@ -128,16 +140,87 @@ var NewItem = (function () {
         });
     };
     ;
-    /*
-        static getAllNewItembyCategoryWithPanigate(category_name: String, page_number : number, limit_number: number) : Promise<NewItem>{
-            return new Promise<INewItem> ((resolve, reject) => {
-                NewItemModel.paginate({category: category_name}, {page: 1, limit:10}, (err, result) => {
-                    if (err) reject(err);
-                    resolve(result);
-                })
+    NewItem.getAllNewItemBySearchParams = function (params) {
+        params.title = new RegExp(params.title, "i");
+        return new Promise(function (resolve, reject) {
+            NewItemModel.find(params, null, { sort: '-date_public' }, function (err, result) {
+                if (err)
+                    reject(err);
+                resolve(result);
             });
+        });
+    };
+    ;
+    NewItem.getPopularNews = function () {
+        return new Promise(function (resolve, reject) {
+            NewItemModel.find({}, null, { sort: '-view_count', limit: 10 }, function (err, result) {
+                if (err)
+                    reject(err);
+                resolve(result);
+            });
+        });
+    };
+    NewItem.getCommentNews = function () {
+        return new Promise(function (resolve, reject) {
+            NewItemModel.find({}, null, { sort: '-comment', limit: 10 }, function (err, result) {
+                if (err)
+                    reject(err);
+                resolve(result);
+            });
+        });
+    };
+    NewItem.delNewsById = function (id) {
+        return new Promise(function (resolve, reject) {
+            NewItemModel.remove({ _id: id }, function (err, news) {
+                if (err)
+                    reject(err);
+                resolve(news);
+            });
+        });
+    };
+    NewItem.getHotNew = function () {
+        var data = {
+            "thegioi": "",
+            "kinhdoanh": "",
+            "congnghe": "",
+            "suckhoe": "",
+            "phapluat": "",
+            "thethao": ""
         };
-    */
+        var cate_condition = ["thế giới", "kinh doanh", "công nghệ", "sức khỏe", "pháp luật", "thể thao"];
+        var count = 0;
+        return new Promise(function (resolve, reject) {
+            cate_condition.forEach(function (element) {
+                NewItemModel.find({ category: element }, null, { sort: '-date_public', limit: 5 }, function (err, result) {
+                    if (err)
+                        reject(err);
+                    switch (result[0].category) {
+                        case "thế giới":
+                            data.thegioi = result;
+                            break;
+                        case "kinh doanh":
+                            data.kinhdoanh = result;
+                            break;
+                        case "công nghệ":
+                            data.congnghe = result;
+                            break;
+                        case "sức khỏe":
+                            data.suckhoe = result;
+                            break;
+                        case "pháp luật":
+                            data.phapluat = result;
+                            break;
+                        case "thể thao":
+                            data.thethao = result;
+                            break;
+                    }
+                    count++;
+                    if (count == 6)
+                        resolve(data);
+                });
+            });
+        });
+    };
     NewItem.getSingleItembyID = function (id) {
         return new Promise(function (resolve, reject) {
             NewItemModel.findOne({ _id: id }, function (err, result) {
@@ -148,9 +231,38 @@ var NewItem = (function () {
                     callback: function (error, res, done) {
                         if (error)
                             reject(error);
+                        result.view_count++;
+                        result.save(function (err, item) { });
                         if (result.author == 'vnexpress') {
                             var $ = res.$;
                             result.content = $(".fck_detail").html();
+                            resolve(result);
+                        }
+                        else if (result.author == 'dantri') {
+                            var $ = res.$;
+                            $("#divNewsContent div.news-tag").remove();
+                            result.content = $("#divNewsContent").html();
+                            resolve(result);
+                        }
+                        else if (result.author == 'thanhnien') {
+                            var $ = res.$;
+                            result.content = $("#abody").html();
+                            resolve(result);
+                        }
+                        else if (result.author == 'vietnamnet news') {
+                            var $ = res.$;
+                            result.content = $("#ArticleContent").html();
+                            resolve(result);
+                        }
+                        else if (result.author == 'zing') {
+                            var $ = res.$;
+                            result.content = $(".the-article-body").html();
+                            resolve(result);
+                        }
+                        else if (result.author == 'tintuc') {
+                            var $ = res.$;
+                            $("#articleContent div#ads_end_content").remove();
+                            result.content = $("#articleContent").html();
                             resolve(result);
                         }
                     }

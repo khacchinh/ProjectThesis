@@ -92,9 +92,9 @@ export class ProcessNews{
                                 let content = "";
                                 $("div.inner-article").remove();
                                 $("#ArticleContent div").remove();
+                                $("#ArticleContent p iframe").remove();
                                 $("table").remove();
                                 $("#ArticleContent").children().first().remove();
-                                $("#ArticleContent").children().last().remove();
                                 $("#ArticleContent").children().last().remove();
                                 content = $("#ArticleContent").text();
                                 element.content = content.toString().trim();
@@ -104,7 +104,7 @@ export class ProcessNews{
                                 ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
                             }
                             else if (element.author == "zing"){
-                                $("table").remove();
+                                $(".the-article-body table").remove();
                                 $(".the-article-body").children("div").remove();
                                 $(".the-article-body").children("figure").remove();
                                 $(".the-article-body").children("script").remove();
@@ -119,7 +119,8 @@ export class ProcessNews{
                                 let date;
                                 $("figure").remove();
                                 $("table").remove();
-                                $("#articleContent").children("div").remove();
+                                $("#articleContent div").remove();
+                                $("#articleContent p[style*='text-align: center;']").remove();
                                 content = $("#articleContent").text();
                                 date = $(".publish-date").children().text();
                                 element.content = content;

@@ -13,15 +13,46 @@ router.get('/news', function (req, res, next) {
         res.json(msg);
     });
 });
+//get new hot
+router.get('/news_hot', function (req, res, next) {
+    NewsItem_1.NewItem.getHotNew().then(function (msg) {
+        res.json(msg);
+    });
+});
+//get new popular
+router.get('/news_popular', function (req, res, next) {
+    NewsItem_1.NewItem.getPopularNews().then(function (msg) {
+        res.json(msg);
+    });
+});
+//get new comment
+router.get('/news_comment', function (req, res, next) {
+    NewsItem_1.NewItem.getCommentNews().then(function (msg) {
+        res.json(msg);
+    });
+});
 //search
 router.get('/news_search', function (req, res, next) {
     NewsItem_1.NewItem.getAllNewItemBySearch(req.param('search_title')).then(function (msg) {
         res.json(msg);
     });
 });
+//search
+router.post('/news_search_params', function (req, res, next) {
+    var params = req.body;
+    NewsItem_1.NewItem.getAllNewItemBySearchParams(params).then(function (msg) {
+        res.json(msg);
+    });
+});
 //get all tasks
 router.get('/new_item', function (req, res, next) {
     NewsItem_1.NewItem.getSingleItembyID(req.param('id')).then(function (msg) {
+        res.json(msg);
+    });
+});
+//delete news
+router["delete"]('/news_delete/:id', function (req, res, next) {
+    NewsItem_1.NewItem.delNewsById(req.params.id).then(function (msg) {
         res.json(msg);
     });
 });

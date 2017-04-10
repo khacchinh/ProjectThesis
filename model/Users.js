@@ -67,6 +67,26 @@ var Users = (function () {
             });
         });
     };
+    Users.checkExistUser = function (username) {
+        var data;
+        return new Promise(function (resolve, reject) {
+            UserModel.findOne({ username: username }, function (err, users) {
+                if (err)
+                    reject(err);
+                if (users && users.username == username) {
+                    data = {
+                        "isExist": true
+                    };
+                }
+                else {
+                    data = {
+                        "isExist": false
+                    };
+                }
+                resolve(data);
+            });
+        });
+    };
     Users.updateUser = function (id, user) {
         return new Promise(function (resolve, reject) {
             UserModel.findById(id, function (err, upuser) {

@@ -17,6 +17,7 @@ interface INewItem extends mongoose.Document {
     active: number;
     created: Date;
     date_public: Date;
+    view_count: number;
 }
 
 /**
@@ -86,6 +87,10 @@ var _schema : mongoose.Schema = new mongoose.Schema({
     },
     date_public:{
         type: Date
+    },
+    view_count : {
+        type : Number,
+        default: 0
     }
 });
 //paginate
@@ -130,12 +135,18 @@ export class NewItem{
         });
     }
 
-    static getAllNewItembyCategory(category_name: String) : Promise<NewItem>{
+    static getAllNewItembyCategory(category_name: String = "") : Promise<NewItem>{
         return new Promise<INewItem> ((resolve, reject) => {
-            NewItemModel.find({category: category_name}, null, {sort: '-date_public'}, (err, result) => {
-                if (err) reject(err);
-                resolve(result);
-            })
+            if (category_name.trim() == "")
+                NewItemModel.find({}, null, {sort: '-date_public'}, (err, result) => {
+                    if (err) reject(err);
+                    resolve(result);
+                })
+            else
+                NewItemModel.find({category: category_name}, null, {sort: '-date_public'}, (err, result) => {
+                    if (err) reject(err);
+                    resolve(result);
+                })
         });
     };
 
@@ -147,17 +158,87 @@ export class NewItem{
             })
         });
     };
-    
-/*
-    static getAllNewItembyCategoryWithPanigate(category_name: String, page_number : number, limit_number: number) : Promise<NewItem>{
+
+    static getAllNewItemBySearchParams(params: any) : Promise<NewItem>{
+        params.title = new RegExp(params.title, "i");
         return new Promise<INewItem> ((resolve, reject) => {
-            NewItemModel.paginate({category: category_name}, {page: 1, limit:10}, (err, result) => {
+            NewItemModel.find(params, null, {sort: '-date_public'}, (err, result) => {
                 if (err) reject(err);
                 resolve(result);
             })
         });
     };
-*/  
+
+    static getPopularNews() : Promise<any>{
+        return new Promise<any> ((resolve, reject) => {
+            NewItemModel.find({}, null, {sort: '-view_count', limit: 10}, (err, result) => {
+                    if (err) reject(err);
+                    resolve(result)
+                })
+        })
+    }
+
+    static getCommentNews() : Promise<any>{
+        return new Promise<any> ((resolve, reject) => {
+            NewItemModel.find({}, null, {sort: '-comment', limit: 10}, (err, result) => {
+                    if (err) reject(err);
+                    resolve(result)
+            })
+        })
+    }
+
+    static delNewsById(id : string) : Promise<any>{
+        return new Promise<any>((resolve, reject) => {
+            NewItemModel.remove({_id: id},function(err, news){
+                if (err) reject(err)
+                resolve(news);
+            });
+        })
+    }
+
+    static getHotNew() : Promise<any> {
+        var data = {
+            "thegioi" : "",
+            "kinhdoanh" : "",
+            "congnghe" : "",
+            "suckhoe" : "",
+            "phapluat" : "",
+            "thethao" : "",
+        };
+        var cate_condition = ["thế giới", "kinh doanh", "công nghệ", "sức khỏe", "pháp luật", "thể thao"];
+        var count = 0;
+        return new Promise<any> ((resolve, reject) => {
+            cate_condition.forEach(element => {
+                NewItemModel.find({category: element}, null, {sort: '-date_public', limit: 5}, (err, result) => {
+                    if (err) reject(err);
+                    switch (result[0].category){
+                        case "thế giới":
+                            data.thegioi = result;
+                        break;
+                        case "kinh doanh":
+                            data.kinhdoanh = result;
+                        break;
+                        case "công nghệ":
+                            data.congnghe = result;
+                        break;
+                        case "sức khỏe":
+                            data.suckhoe = result;
+                        break;
+                        case "pháp luật":
+                            data.phapluat = result;
+                        break;
+                        case "thể thao":
+                            data.thethao = result;
+                        break;
+                    }
+                    count++;
+                    if (count == 6)
+                        resolve(data);
+                })
+            });
+        })
+    }
+
     static getSingleItembyID(id: string) : Promise<NewItem> {
         return new Promise<INewItem>((resolve, reject) => {
             NewItemModel.findOne({_id: id}, (err, result) => {
@@ -166,10 +247,38 @@ export class NewItem{
                     maxConnections: 1,
                     callback: (error, res, done) => {
                         if (error) reject(error);
-
+                        result.view_count++;
+                        result.save((err, item)=>{});
                         if (result.author == 'vnexpress'){
                             var $ = res.$;
                             result.content = $(".fck_detail").html();
+                            resolve(result);
+                        }
+                        else if (result.author == 'dantri'){
+                            var $ = res.$;
+                            $("#divNewsContent div.news-tag").remove();
+                            result.content = $("#divNewsContent").html();
+                            resolve(result);
+                        }
+                        else if (result.author == 'thanhnien'){
+                            var $ = res.$;
+                            result.content = $("#abody").html();
+                            resolve(result);
+                        }
+                        else if (result.author == 'vietnamnet news'){
+                            var $ = res.$;
+                            result.content = $("#ArticleContent").html();
+                            resolve(result);
+                        }
+                        else if (result.author == 'zing'){
+                            var $ = res.$;
+                            result.content = $(".the-article-body").html();
+                            resolve(result);
+                        }
+                        else if (result.author == 'tintuc'){
+                            var $ = res.$;
+                            $("#articleContent div#ads_end_content").remove();
+                            result.content = $("#articleContent").html();
                             resolve(result);
                         }
                     }

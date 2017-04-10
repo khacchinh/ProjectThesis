@@ -17,117 +17,36 @@
                     <div class="row">
                         <tabset [justified]="true">
                             <tab heading="Popular">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div>
-                                <div class="clear-fix"></div>
 
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                <div *ngFor="let item of pupolarnews;">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
+                                            <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
+                                    <div class="clear-fix"></div>
                                 </div>
-                                <div class="clear-fix"></div>
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div>
-                                <div class="clear-fix"></div>
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div>
-                                <div class="clear-fix"></div>
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div>
-                                <div class="clear-fix"></div>
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div>
-                                <div class="clear-fix"></div>
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div>
-                                <div class="clear-fix"></div>
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div>
-                                <div class="clear-fix"></div>
+                                
                             </tab>
 
                             <tab heading="Comments">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
-                                </div>
-                                <div class="clear-fix"></div>
 
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="single.html" ><img alt="" src="asset/img/hillary_clinton.jpg" class="img-thumbnail"/></a>
+                                <div *ngFor="let item of commentnews;">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
+                                            <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <a href="single.html"><p>Toy Story 3 One of the best movies (Video)</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                    </div>
+                                    <div class="clear-fix"></div>
                                 </div>
-                                <div class="clear-fix"></div>
                             </tab>
 
                             <tab heading="Tags">

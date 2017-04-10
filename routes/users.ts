@@ -37,6 +37,15 @@ router.get('/accounts/:id', function(req, res, next){
     )
 });
 
+//get single user
+router.get('/accounts_exist/:username', function(req, res, next){
+    Users.checkExistUser(req.params.username).then(
+        (msg) => {
+            res.json(msg);
+        }
+    )
+});
+
 //update user
 router.put('/accounts/:id', function(req, res, next){
     var user = req.body;

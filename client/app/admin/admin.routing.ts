@@ -5,6 +5,7 @@ import { AdminComponent }           from './admin.component';
 import { AdminDashboardComponent }  from './admin-dashboard/index';
 import { AdminUserComponent, AdminUserEditComponent, AdminUserAddComponent } from './admin-user/index';
 import { AdminCategoryComponent } from './admin-category/index';
+import { AdminNewsComponent } from './admin-news/index';
 
 import { AuthGuard }                from '../_guards/auth.guard';
 
@@ -18,7 +19,8 @@ const adminRoutes: Routes = [
       { path: 'account', component: AdminUserComponent},
       { path: 'account/:id', component: AdminUserEditComponent},
       { path: 'accountadd', component: AdminUserAddComponent},
-      { path: 'categorys', component: AdminCategoryComponent}
+      { path: 'categorys', component: AdminCategoryComponent},
+      { path: 'news-item', component: AdminNewsComponent}
     ]
   }
 ];
