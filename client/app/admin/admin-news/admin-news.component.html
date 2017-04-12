@@ -51,7 +51,7 @@
                                     </thead>
                                     <tbody>
                                        <tr *ngFor = "let item of pagedItems">
-                                            <td><a href="#">{{item.title}}</a></td>
+                                            <td><a [routerLink]="['../../site/single', item._id]">{{item.title}}</a></td>
                                             <td>{{item.author}}</td>
                                             <td>{{item.category}}</td>
                                             <td>{{item.date_public}}</td>

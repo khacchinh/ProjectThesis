@@ -261,7 +261,9 @@ var NewItem = (function () {
                         }
                         else if (result.author == 'tintuc') {
                             var $ = res.$;
+                            $("#articleContent .picked-relate").remove();
                             $("#articleContent div#ads_end_content").remove();
+                            $("#articleContent figure").removeClass("caption");
                             result.content = $("#articleContent").html();
                             resolve(result);
                         }

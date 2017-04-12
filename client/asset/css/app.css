@@ -29,3 +29,17 @@
 textarea{
     resize: none;
 }
+
+.col-sm-4 a .img-thumbnail{
+    padding: 2px;
+    height: 75px;
+    width: 100%;
+}
+
+.col-sm-8{
+    padding-left: 0px;
+}
+
+.col-sm-8 a p{
+    margin: 0px;
+}

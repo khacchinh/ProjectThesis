@@ -7,12 +7,12 @@
                         </ul>
                     </div>
 
-                    <div class="row">
+                    <div class="row news-main">
                         <div class="span8 single">
-                            <h2>{{new_item?.title}}</h2>
                             <span class="date">Posted on July 02, 2011 | 0 comments</span>
-                            <img alt="" src="{{new_item?.img}}" />
-                            <div [innerHTML]= contentHtml>
+                            <h2>{{new_item?.title}}</h2>
+                            <h4>{{new_item?.sumary}}</h4>
+                            <div class="news-content" [innerHTML]= contentHtml>
                             </div>
 
                         </div>
