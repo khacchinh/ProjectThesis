@@ -1,0 +1,67 @@
+                <div class="col-md-8">
+                    <div class="row">
+                        <ul class="breadcrumb col-md-11">
+                            <li><a href="#">News bookmark</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="row" style="margin-top: 10px" *ngFor = "let item of datauser; let _index = index;">
+                        <ng-container *ngIf="item?.types == 'bookmark'">
+                        <div class="row category-item">
+                            <div class="col-sm-2 category-item-img">
+                                <a [routerLink]="['../single', item.news._id]"><img alt="" src="{{item.news.img}}" class="img-thumbnail"/></a>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-sm-11">
+                                        <a [routerLink]="['../single', item.news._id]"><h4>{{item.news.title}}</h4> </a>
+                                    </div>
+                                    <div class="col-sm-1 cate-save-new" style="margin-top: 15px; padding-left: 0px;">
+                                        <a href="" (click)="removeNewsDataUser(item.news._id, 'bookmark', _index)"><i class="fa fa-times fa-fw"></i></a>
+                                    </div>
+                                </div>
+                                <span class="date">{{convertDate(item.news.date_public)}} | {{item.news.author}}</span>
+                                <p>
+                                    {{item.news.sumary}}
+                                </p>
+                            </div>
+                        </div> 
+                        <div class="clear-fix col-sm-11"></div>
+                        </ng-container>
+                    </div>
+
+                    <br><br>
+                    <div class="row">
+                        <ul class="breadcrumb col-md-11">
+                            <li><a href="#">News favorite</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="row" style="margin-top: 10px" *ngFor = "let item of datauser; let _index = index;">
+                        <ng-container *ngIf="item?.types == 'favorite'">
+                        <div class="row category-item">
+                            <div class="col-sm-2 category-item-img">
+                                <a [routerLink]="['../single', item.news._id]"><img alt="" src="{{item.news.img}}" class="img-thumbnail"/></a>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-sm-11">
+                                        <a [routerLink]="['../single', item.news._id]"><h4>{{item.news.title}}</h4> </a>
+                                    </div>
+                                    <div class="col-sm-1 cate-save-new" style="margin-top: 15px; padding-left: 0px;">
+                                        <a href="" (click)="removeNewsDataUser(item.news._id, 'favorite', _index)"><i class="fa fa-times fa-fw"></i></a>
+                                    </div>
+                                </div>
+                                <span class="date">{{convertDate(item.news.date_public)}} | {{item.news.author}}</span>
+                                <p>
+                                    {{item.news.sumary}}
+                                </p>
+                            </div>
+                        </div> 
+                        <div class="clear-fix col-sm-11"></div>
+                        </ng-container>
+                    </div>
+
+                    
+
+                </div>

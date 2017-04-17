@@ -14,12 +14,15 @@ export class AuthenticationService {
         headers.append('Content-Type', 'application/json');
         return this.http.post('/api/authen', JSON.stringify({ username: username, password: password, access: access }), {headers: headers})
             .map((response: Response) => {
-                let user = response.json();
+                let result = response.json();
+                let user = result.user;
+                
                 if (user.username == username && user.password == password) {
                     if (user.access == 1 && access == 1)
-                        localStorage.setItem('currentAdmin', JSON.stringify(user));
-                    else localStorage.setItem('currentUser', JSON.stringify(user));
+                        localStorage.setItem('currentAdmin', JSON.stringify(result));
+                    else localStorage.setItem('currentUser', JSON.stringify(result));
                 }
+                
             });
     }
 

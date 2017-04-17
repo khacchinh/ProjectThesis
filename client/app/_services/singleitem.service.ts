@@ -5,7 +5,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SingleItemService{
     constructor(private http:Http){
-        console.log('News Services Initialized....');
     }
 
     getSingleNewById(id:string){

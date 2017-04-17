@@ -2,11 +2,12 @@ import { Component , OnInit} from '@angular/core';
 import { NewsService, PagerService } from '../../_services/index';
 import { News } from '../../_models/news';
 
-import { ActivatedRoute } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
+declare var $ : any;
 @Component({
     moduleId: module.id,
-    templateUrl: 'category.component.html'
+    templateUrl: 'category.component.html',
+    styleUrls: ["./category.component.css"]
 })
 
 export class CategoryComponent implements OnInit {
@@ -20,7 +21,7 @@ export class CategoryComponent implements OnInit {
     private news : any[];
     private itemHot : News;
 
-    constructor(private newsService: NewsService, private route: ActivatedRoute, private pagerService : PagerService){
+    constructor(private newsService: NewsService, private route: ActivatedRoute, private pagerService : PagerService, private router: Router){
   
     }
 
@@ -41,6 +42,7 @@ export class CategoryComponent implements OnInit {
         })  
     }
 
+
     setPage(page: number) {
         if (page < 1 || page > this.pager.totalPages) {
             return;
@@ -56,6 +58,43 @@ export class CategoryComponent implements OnInit {
         return new Date(date).toString();
     }
 
+    saveBookmarkNewsUser(news : any){
+        var data = localStorage.getItem('currentUser');
+        if (data){
+            var parsedata = JSON.parse(data);
+            var datauser = {
+                "user" : parsedata.user._id,
+                "news" : news._id,
+                "types" : "bookmark"
+            }
+            this.newsService.addDataUserNews(datauser).subscribe( ar_data => {
+                if (ar_data){
+                    parsedata.datauser.push(datauser);
+                    localStorage.removeItem('currentUser');
+                    localStorage.setItem('currentUser', JSON.stringify(parsedata));
+                    alert("Save bookmark new success!!");
+                }
+                else alert("Fail to save new.");
+            });
+        } else if (confirm("Are you want to login?")){
+            this.router.navigate(['/site/login']);
+        }
+        return false;
+    }
 
-
+    checkIsBookmarkNews(newsId : string) : boolean{
+        var data = localStorage.getItem('currentUser');
+        var isBookmark = false;
+        if (data){
+            var parsedata = JSON.parse(data);
+            var datauser = parsedata.datauser;
+            datauser.forEach(element => {
+                if (element.news == newsId && element.types === "bookmark"){
+                    isBookmark = true;
+                    return true;
+                }
+            });
+        }
+        return isBookmark;
+    }
 }

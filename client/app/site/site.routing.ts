@@ -11,6 +11,7 @@ import { SingleComponent } from './singlepage/index';
 
 //search
 import { SearchComponent } from './searchform/index';
+import { DataUserComponent } from './datauser/index';
 
 //login page
 import { LoginComponent } from './login/login.component';
@@ -28,6 +29,7 @@ const siteRoutes: Routes = [
             { path: 'single/:id', component: SingleComponent },
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
+            { path: 'datauser', component: DataUserComponent },
             { path: 'search/:input', component: SearchComponent },
             { path: '', component: HomeComponent }
           ]

@@ -6,7 +6,6 @@ import { User } from '../_models/index';
 @Injectable()
 export class UserService {
     constructor(private http: Http) { 
-        console.log('Users Services Initialized....');
     }
 
     getAll() {
@@ -16,6 +15,18 @@ export class UserService {
 
     getUserById(id: string) {
        return this.http.get('/api/accounts/' + id)
+            .map(res => res.json());
+    }
+
+    getDataNewsUserByIdDetail(id: string) {
+       return this.http.get('/api/accounts/datauser/' + id)
+            .map(res => res.json());
+    }
+
+    removeDataUser(data : any) {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/accounts/removedatauser', JSON.stringify(data), {headers : headers})
             .map(res => res.json());
     }
 

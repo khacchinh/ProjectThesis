@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SingleItemService } from '../../_services/index';
-import { ActivatedRoute } from '@angular/router';
+import { SingleItemService, NewsService } from '../../_services/index';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare var $ : any;
 @Component({
@@ -18,7 +18,7 @@ export class SingleComponent {
     model: any = {};
 
 
-    constructor(private singleItemService: SingleItemService, private route: ActivatedRoute){
+    constructor(private singleItemService: SingleItemService, private newsService: NewsService, private route: ActivatedRoute, private router: Router){
         var user = localStorage.getItem('currentUser');
         if (user){
             this.user = JSON.parse(user);
@@ -57,6 +57,86 @@ export class SingleComponent {
         div.innerHTML = encodedString;
         return div.innerHTML; //with html
         //return text return div.textContent
+    }
+
+    saveBookmarkNewsUser(news : any){
+        var data = localStorage.getItem('currentUser');
+        if (data){
+            var parsedata = JSON.parse(data);
+            var datauser = {
+                "user" : parsedata.user._id,
+                "news" : news._id,
+                "types" : "bookmark"
+            }
+            this.newsService.addDataUserNews(datauser).subscribe( ar_data => {
+                if (ar_data){
+                    parsedata.datauser.push(datauser);
+                    localStorage.removeItem('currentUser');
+                    localStorage.setItem('currentUser', JSON.stringify(parsedata));
+                    alert("Save favorite new success!!");
+                }
+                else alert("Fail to save new.");
+            });
+        } else if (confirm("Are you want to login?")){
+            this.router.navigate(['/site/login']);
+        }
+        return false;
+    }
+
+    saveFavoriteNewsUser(news : any){
+        var data = localStorage.getItem('currentUser');
+        if (data){
+            var parsedata = JSON.parse(data);
+            var datauser = {
+                "user" : parsedata.user._id,
+                "news" : news._id,
+                "types" : "favorite"
+            }
+            this.newsService.addDataUserNews(datauser).subscribe( ar_data => {
+                if (ar_data){
+                    parsedata.datauser.push(datauser);
+                    localStorage.removeItem('currentUser');
+                    localStorage.setItem('currentUser', JSON.stringify(parsedata));
+                    alert("Save favorite new success!!");
+                }
+                else alert("Fail to save new.");
+            });
+        } else if (confirm("Are you want to login?")){
+            this.router.navigate(['/site/login']);
+        }
+        return false;
+    }
+
+    checkIsBookmarkNews(newsId : string) : boolean{
+        var data = localStorage.getItem('currentUser');
+        var isBookmark = false;
+        if (data){
+            var parsedata = JSON.parse(data);
+            var datauser = parsedata.datauser;
+            datauser.forEach(element => {
+                if (element.news == newsId && element.types === "bookmark"){
+                    isBookmark = true;
+                    return true;
+                }
+            });
+        }
+        return isBookmark;
+    }
+
+    checkIsFavoriteNews(newsId : string) : boolean{
+        var data = localStorage.getItem('currentUser');
+        var isBookmark = false;
+        if (data){
+            var parsedata = JSON.parse(data);
+            var datauser = parsedata.datauser;
+            datauser.forEach(element => {
+                if (element.news == newsId && element.types === "favorite"){
+                    isBookmark = true;
+                    return true;
+                }
+            });
+        }
+        return isBookmark;
     }
 
 }

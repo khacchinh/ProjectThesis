@@ -25,7 +25,7 @@ import { SingleComponent } from './singlepage/index';
 
 //search
 import { SearchComponent } from './searchform/index';
-
+import { DataUserComponent } from './datauser/index';
 
 //header and footer
 import { HeaderComponent } from './header/index';
@@ -58,7 +58,8 @@ import { AlertComponent } from '../_directives/index';
     HeaderComponent,
     FooterComponent,
     RightBarComponent,
-    SearchComponent
+    SearchComponent,
+    DataUserComponent
   ],
   providers: [
     AlertService,

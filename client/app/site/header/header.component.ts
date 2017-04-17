@@ -11,10 +11,11 @@ export class HeaderComponent {
     private isLogin = true;
     private user : any;
     constructor(private router: Router){
-        var user = localStorage.getItem('currentUser');
-        if (user){
+        var data = localStorage.getItem('currentUser');
+        var parsedata = JSON.parse(data);
+        if (parsedata){
             this.isLogin = false;
-            this.user = JSON.parse(user);
+            this.user = parsedata.user;
         }
     }
 
@@ -22,5 +23,6 @@ export class HeaderComponent {
         event.preventDefault();
         this.isLogin = true;
         this.router.navigate(['/site/login']);
+        return false;
     }
 }

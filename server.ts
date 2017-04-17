@@ -14,6 +14,8 @@ import * as tasks from './routes/tasks';
 import * as news from './routes/news';
 import * as users from './routes/users';
 import * as category from './routes/category';
+import * as author from './routes/author';
+import * as datanewsuser from './routes/datanewsuser';
 
 //send dictionary to client
 import * as getDictionary from './routes/getDictionary';
@@ -53,7 +55,8 @@ app.use('/api/', tasks);
 app.use('/api/', news);
 app.use('/api/', users);
 app.use('/api/', category);
-
+app.use('/api/', author);
+app.use('/api/', datanewsuser);
 //call function send dictionary
 app.use('/', getDictionary);
 
@@ -64,7 +67,7 @@ app.use('/', crawlerData);
 //
 var is_loop_process = true;
 function doProcessNews(){
-    NewItem.getNewsAfterDay(20).then(
+    NewItem.getNewsAfterDay(4).then(
         (msg) => {
             if (msg != "empty"){
                 ProcessNews.arOldNews = msg;
@@ -105,7 +108,7 @@ function doProcessNews(){
 
 //call class crawler
 //doProcessNews();
-/*
+
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/my_database', function(err){
     if (err) 
@@ -117,10 +120,10 @@ mongoose.connect('mongodb://localhost/my_database', function(err){
         });
     }
 });
-*/
 
 
 
+/*
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/test_db_news', function(err){
     if (err) 
@@ -132,6 +135,6 @@ mongoose.connect('mongodb://localhost/test_db_news', function(err){
         });
     }
 });
-
+*/
 
 

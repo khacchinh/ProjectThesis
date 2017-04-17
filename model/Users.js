@@ -1,5 +1,6 @@
 "use strict";
 var mongoose = require('mongoose');
+var DataNewsUser_1 = require("./DataNewsUser");
 /**
  * MongooseSchema
  * @type {"mongoose".Schema}
@@ -45,7 +46,13 @@ var Users = (function () {
             UserModel.findOne(arFilter, function (err, result) {
                 if (err)
                     reject(err);
-                resolve(result);
+                DataNewsUser_1.DataNewsUser.getDataNewsUserById(result._id).then(function (datauser) {
+                    var data = {
+                        "user": result,
+                        "datauser": datauser
+                    };
+                    resolve(data);
+                });
             });
         });
     };

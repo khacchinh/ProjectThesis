@@ -1,0 +1,50 @@
+﻿        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Manager Author</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <alert></alert>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            List users
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Code name</th>
+                                            <th>Name</th>
+                                            <th>Url</th>
+                                            <th>Active</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr *ngFor = "let item of allAuthor">
+                                            <td>{{item.codename}}</td>
+                                            <td>{{item.name}}</td>
+                                            <td><a href="{{item.url}}">{{item.url}}</a></td>
+                                            <td class="{{item._id}}">{{item.active}}</td>
+                                            <td>
+                                                <button type="button" id = "on_{{item._id}}" class="btn btn-primary" (click)="onActive(item)" [disabled] = "btnOnDisabled(item.active)"><i class="fa fa-gear fa-fw"></i></button>
+                                                <button type="button" id = "de_{{item._id}}" class="btn btn-danger" (click)="delActive(item)" [disabled] = "btnDeDisabled(item.active)"><i class="fa fa-times fa-fw"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>

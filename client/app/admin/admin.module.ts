@@ -8,12 +8,13 @@ import { AdminHeaderComponent }  from './admin-header/index';
 import { AdminFooterComponent }  from './admin-footer/index';
 import { AdminUserComponent, AdminUserEditComponent, AdminUserAddComponent } from './admin-user/index';
 import { AdminCategoryComponent } from './admin-category/index';
+import { AdminAuthorComponent } from './admin-author/index';
 import { AdminNewsComponent } from './admin-news/index';
 import { AdminAlertComponent } from './alert.component';
 import { AdminRoutingModule }       from './admin.routing';
 
 //import service
-import { UserService, CategoryService, NewsService, PagerService } from '../_services/index';
+import { UserService, CategoryService, NewsService, PagerService, AuthorService } from '../_services/index';
 
 @NgModule({
   imports: [
@@ -31,13 +32,15 @@ import { UserService, CategoryService, NewsService, PagerService } from '../_ser
     AdminAlertComponent,
     AdminUserEditComponent,
     AdminUserAddComponent,
-    AdminNewsComponent
+    AdminNewsComponent,
+    AdminAuthorComponent
   ],
   providers: [
     UserService,
     CategoryService,
     NewsService,
-    PagerService
+    PagerService,
+    AuthorService
   ]
 })
 export class AdminModule {}

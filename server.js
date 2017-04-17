@@ -10,6 +10,8 @@ var tasks = require("./routes/tasks");
 var news = require("./routes/news");
 var users = require("./routes/users");
 var category = require("./routes/category");
+var author = require("./routes/author");
+var datanewsuser = require("./routes/datanewsuser");
 //send dictionary to client
 var getDictionary = require("./routes/getDictionary");
 //import class crawler
@@ -36,6 +38,8 @@ app.use('/api/', tasks);
 app.use('/api/', news);
 app.use('/api/', users);
 app.use('/api/', category);
+app.use('/api/', author);
+app.use('/api/', datanewsuser);
 //call function send dictionary
 app.use('/', getDictionary);
 //use clawer
@@ -43,7 +47,7 @@ app.use('/', crawlerData);
 //
 var is_loop_process = true;
 function doProcessNews() {
-    NewsItem_1.NewItem.getNewsAfterDay(20).then(function (msg) {
+    NewsItem_1.NewItem.getNewsAfterDay(4).then(function (msg) {
         if (msg != "empty") {
             processnews_1.ProcessNews.arOldNews = msg;
         }
@@ -72,27 +76,27 @@ function doProcessNews() {
 }
 //call class crawler
 //doProcessNews();
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/my_database', function (err) {
+    if (err)
+        console.log("Can\'t connect to db!!");
+    else {
+        console.log("Connect to db:  mongodb://localhost/my_database");
+        app.listen(app.get('port'), function () {
+            console.log('Server started on port ' + app.get('port'));
+        });
+    }
+});
 /*
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/my_database', function(err){
+mongoose.connect('mongodb://localhost/test_db_news', function(err){
     if (err)
         console.log("Can\'t connect to db!!");
     else{
-        console.log("Connect to db:  mongodb://localhost/my_database");
+        console.log("Connect to db:  mongodb://localhost/test_db_news");
         app.listen(app.get('port'), function(){
             console.log('Server started on port ' + app.get('port'));
         });
     }
 });
 */
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/test_db_news', function (err) {
-    if (err)
-        console.log("Can\'t connect to db!!");
-    else {
-        console.log("Connect to db:  mongodb://localhost/test_db_news");
-        app.listen(app.get('port'), function () {
-            console.log('Server started on port ' + app.get('port'));
-        });
-    }
-});

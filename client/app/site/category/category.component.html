@@ -8,10 +8,18 @@
 
                     <div class="row">
                         <div class="col-md-5 img-thumbnail">
-                            <a href="http://localhost:3000/#/site/single/{{itemHot?._id}}"><img style="width: 305px; height: 250px;" alt="" src="{{itemHot?.img}}" /></a>
+                            <a href="http://localhost:3000/#/site/single/{{itemHot?._id}}"><img style="width: 100%; height: 250px;" alt="" src="{{itemHot?.img}}" /></a>
                         </div>
                         <div class="col-md-7">
-                            <a href="http://localhost:3000/#/site/single/{{itemHot?._id}}" style="font-size: 2em;">{{itemHot?.title}}</a><br>
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <a href="http://localhost:3000/#/site/single/{{itemHot?._id}}" style="font-size: 2em;">{{itemHot?.title}}</a>
+                                </div>
+                                <div class="col-sm-1 cate-save-new" style="margin-top: 15px; padding-left: 0px;">
+                                    <a href="" *ngIf="!checkIsBookmarkNews(itemHot?._id)" (click)="saveBookmarkNewsUser(itemHot)"><i class="fa fa-bookmark-o fa-fw"></i></a>
+                                    <i class="fa fa-bookmark fa-fw" *ngIf="checkIsBookmarkNews(itemHot?._id)"></i>
+                                </div>
+                            </div>
                             <span class="date">{{convertDate(itemHot?.date_public)}} | {{itemHot?.author}} | 0 comments</span>
                             <p>
                                {{itemHot?.sumary}}
@@ -26,7 +34,15 @@
                                 <a [routerLink]="['../../single', newitem._id]"><img alt="" src="{{newitem.img}}" class="img-thumbnail"/></a>
                             </div>
                             <div class="col-sm-9">
-                                <a [routerLink]="['../../single', newitem._id]"><h4>{{newitem.title}}</h4></a>
+                                <div class="row">
+                                    <div class="col-sm-11">
+                                        <a [routerLink]="['../../single', newitem._id]"><h4>{{newitem.title}}</h4> </a>
+                                    </div>
+                                    <div class="col-sm-1 cate-save-new">
+                                        <a href="" *ngIf="!checkIsBookmarkNews(newitem._id)" (click)="saveBookmarkNewsUser(newitem)"><i class="fa fa-bookmark-o fa-fw"></i></a>
+                                        <i class="fa fa-bookmark fa-fw" *ngIf="checkIsBookmarkNews(newitem._id)"></i>
+                                    </div>
+                                </div>
                                 <span class="date">{{convertDate(newitem.date_public)}} | {{newitem.author}}</span>
                                 <p>
                                     {{newitem.sumary}}

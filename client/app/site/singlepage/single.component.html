@@ -9,7 +9,13 @@
 
                     <div class="row news-main">
                         <div class="span8 single">
-                            <span class="date">Posted on July 02, 2011 | 0 comments</span>
+                            <span class="date">Posted on July 02, 2011 | 0 comments</span><br>
+                            <div class="row social">
+                                <a href="" *ngIf="!checkIsFavoriteNews(new_item?._id)" (click)="saveFavoriteNewsUser(new_item)"><i class="fa fa-heart-o fa-fw"></i></a>
+                                <i class="fa fa-heart fa-fw" *ngIf="checkIsFavoriteNews(new_item?._id)"></i>
+                                <a href="" *ngIf="!checkIsBookmarkNews(new_item?._id)" (click)="saveBookmarkNewsUser(new_item)"><i class="fa fa-bookmark-o fa-fw"></i></a>
+                                <i class="fa fa-bookmark fa-fw" *ngIf="checkIsBookmarkNews(new_item?._id)"></i>
+                            </div>
                             <h2>{{new_item?.title}}</h2>
                             <h4>{{new_item?.sumary}}</h4>
                             <div class="news-content" [innerHTML]= contentHtml>
@@ -20,14 +26,7 @@
                     <hr/>
 
                     <div class="row">
-                        <div class="col-sm-6">
-                            <h4 class="col-sm-12">About the Author</h4>
-                            <p>
-                                <img alt="" src="http://placehold.it/80x100" class="img-thumbnail col-sm-5" style="margin-right: 5px;"/>
-                                <strong>Demouser</strong>, fusce eleifend odio vitae mi fringilla at euismod nisi imperdiet. Etiam pellentesque, magna eget lobortis placerat, leo leo consequat ante, non iaculis turpis augue ligula. Nunc blandit tincidunt consequat.
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <h4>Related Posts</h4>
                             <ul class="nav navbar">
                                 <li>

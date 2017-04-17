@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+import { DataNewsUser } from './DataNewsUser';
 
 interface IUser extends mongoose.Document { 
     username: string;
@@ -44,17 +45,21 @@ var _schema : mongoose.Schema = new mongoose.Schema({
 var UserModel = mongoose.model<IUser>('users', _schema);
 
 export class Users{
-
-
-    static findUserLogin(user: any) : Promise<Users>{
-        return new Promise<Users> ((resolve, reject) => {
+    static findUserLogin(user: any) : Promise<any>{
+        return new Promise<any> ((resolve, reject) => {
             var arFilter;
             if (user.access == 1)
                 arFilter = {username: user.username, password: user.password, access: user.access, active : 1}
             else arFilter = {username: user.username, password: user.password, active : 1}
             UserModel.findOne(arFilter, (err, result) => {
                 if (err) reject(err);
-                resolve(result);
+                DataNewsUser.getDataNewsUserById(result._id).then(datauser => {
+                    var data = {
+                        "user" : result,
+                        "datauser" : datauser
+                    }
+                    resolve(data);
+                })
             })
         });
     }

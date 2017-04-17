@@ -98,6 +98,8 @@ var _schema : mongoose.Schema = new mongoose.Schema({
 
 var NewItemModel = mongoose.model<INewItem>('newitems', _schema);
 
+import { Author } from '../model/Author';
+
 export class NewItem{
 
     /**
@@ -137,16 +139,23 @@ export class NewItem{
 
     static getAllNewItembyCategory(category_name: String = "") : Promise<NewItem>{
         return new Promise<INewItem> ((resolve, reject) => {
-            if (category_name.trim() == "")
-                NewItemModel.find({}, null, {sort: '-date_public'}, (err, result) => {
-                    if (err) reject(err);
-                    resolve(result);
-                })
-            else
-                NewItemModel.find({category: category_name}, null, {sort: '-date_public'}, (err, result) => {
-                    if (err) reject(err);
-                    resolve(result);
-                })
+            Author.getAllAuthorActive().then( msg => {
+                var data  = [];
+                var i = 0;
+                msg.forEach(element => {
+                  data.push(element.codename);
+                });
+                if (category_name.trim() == "")
+                    NewItemModel.find({author : data}, null, {sort: '-date_public'}, (err, result) => {
+                        if (err) reject(err);
+                        resolve(result);
+                    })
+                else
+                    NewItemModel.find({category: category_name, author : data}, null, {sort: '-date_public'}, (err, result) => {
+                        if (err) reject(err);
+                        resolve(result);
+                    })
+            })
         });
     };
 
@@ -208,34 +217,41 @@ export class NewItem{
         var cate_condition = ["thế giới", "kinh doanh", "công nghệ", "sức khỏe", "pháp luật", "thể thao"];
         var count = 0;
         return new Promise<any> ((resolve, reject) => {
-            cate_condition.forEach(element => {
-                NewItemModel.find({category: element}, null, {sort: '-date_public', limit: 5}, (err, result) => {
-                    if (err) reject(err);
-                    switch (result[0].category){
-                        case "thế giới":
-                            data.thegioi = result;
-                        break;
-                        case "kinh doanh":
-                            data.kinhdoanh = result;
-                        break;
-                        case "công nghệ":
-                            data.congnghe = result;
-                        break;
-                        case "sức khỏe":
-                            data.suckhoe = result;
-                        break;
-                        case "pháp luật":
-                            data.phapluat = result;
-                        break;
-                        case "thể thao":
-                            data.thethao = result;
-                        break;
-                    }
-                    count++;
-                    if (count == 6)
-                        resolve(data);
-                })
-            });
+            Author.getAllAuthorActive().then( msg => {
+                var ar_author  = [];
+                var i = 0;
+                msg.forEach(element => {
+                  ar_author.push(element.codename);
+                });
+                cate_condition.forEach(element => {
+                    NewItemModel.find({category: element, author: ar_author}, null, {sort: '-date_public', limit: 5}, (err, result) => {
+                        if (err) reject(err);
+                        switch (result[0].category){
+                            case "thế giới":
+                                data.thegioi = result;
+                            break;
+                            case "kinh doanh":
+                                data.kinhdoanh = result;
+                            break;
+                            case "công nghệ":
+                                data.congnghe = result;
+                            break;
+                            case "sức khỏe":
+                                data.suckhoe = result;
+                            break;
+                            case "pháp luật":
+                                data.phapluat = result;
+                            break;
+                            case "thể thao":
+                                data.thethao = result;
+                            break;
+                        }
+                        count++;
+                        if (count == 6)
+                            resolve(data);
+                    })
+                });
+            })
         })
     }
 

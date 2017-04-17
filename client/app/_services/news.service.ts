@@ -5,7 +5,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class NewsService{
     constructor(private http:Http){
-        console.log('News Services Initialized....');
     }
 
     getNewsByCategory(category_name:string){
@@ -43,5 +42,16 @@ export class NewsService{
     deNewsbyId(id : string){
         return this.http.delete('/api/news_delete/' + id)
             .map(res => res.json());
+    }
+
+    addDataUserNews(data : any){
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/adddatausernews', JSON.stringify(data), {headers : headers})
+            .map(res => res.json());
+    }
+
+    getDataNewsUserById(id : string){
+        return this.http.get('/api/datauserid/' + id).map(res => res.json());
     }
 }

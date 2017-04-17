@@ -74,6 +74,7 @@ var _schema = new mongoose.Schema({
 //paginate
 //_schema.plugin(mongoosePaginate);
 var NewItemModel = mongoose.model('newitems', _schema);
+var Author_1 = require("../model/Author");
 var NewItem = (function () {
     function NewItem() {
     }
@@ -115,18 +116,25 @@ var NewItem = (function () {
     NewItem.getAllNewItembyCategory = function (category_name) {
         if (category_name === void 0) { category_name = ""; }
         return new Promise(function (resolve, reject) {
-            if (category_name.trim() == "")
-                NewItemModel.find({}, null, { sort: '-date_public' }, function (err, result) {
-                    if (err)
-                        reject(err);
-                    resolve(result);
+            Author_1.Author.getAllAuthorActive().then(function (msg) {
+                var data = [];
+                var i = 0;
+                msg.forEach(function (element) {
+                    data.push(element.codename);
                 });
-            else
-                NewItemModel.find({ category: category_name }, null, { sort: '-date_public' }, function (err, result) {
-                    if (err)
-                        reject(err);
-                    resolve(result);
-                });
+                if (category_name.trim() == "")
+                    NewItemModel.find({ author: data }, null, { sort: '-date_public' }, function (err, result) {
+                        if (err)
+                            reject(err);
+                        resolve(result);
+                    });
+                else
+                    NewItemModel.find({ category: category_name, author: data }, null, { sort: '-date_public' }, function (err, result) {
+                        if (err)
+                            reject(err);
+                        resolve(result);
+                    });
+            });
         });
     };
     ;
@@ -190,33 +198,40 @@ var NewItem = (function () {
         var cate_condition = ["thế giới", "kinh doanh", "công nghệ", "sức khỏe", "pháp luật", "thể thao"];
         var count = 0;
         return new Promise(function (resolve, reject) {
-            cate_condition.forEach(function (element) {
-                NewItemModel.find({ category: element }, null, { sort: '-date_public', limit: 5 }, function (err, result) {
-                    if (err)
-                        reject(err);
-                    switch (result[0].category) {
-                        case "thế giới":
-                            data.thegioi = result;
-                            break;
-                        case "kinh doanh":
-                            data.kinhdoanh = result;
-                            break;
-                        case "công nghệ":
-                            data.congnghe = result;
-                            break;
-                        case "sức khỏe":
-                            data.suckhoe = result;
-                            break;
-                        case "pháp luật":
-                            data.phapluat = result;
-                            break;
-                        case "thể thao":
-                            data.thethao = result;
-                            break;
-                    }
-                    count++;
-                    if (count == 6)
-                        resolve(data);
+            Author_1.Author.getAllAuthorActive().then(function (msg) {
+                var ar_author = [];
+                var i = 0;
+                msg.forEach(function (element) {
+                    ar_author.push(element.codename);
+                });
+                cate_condition.forEach(function (element) {
+                    NewItemModel.find({ category: element, author: ar_author }, null, { sort: '-date_public', limit: 5 }, function (err, result) {
+                        if (err)
+                            reject(err);
+                        switch (result[0].category) {
+                            case "thế giới":
+                                data.thegioi = result;
+                                break;
+                            case "kinh doanh":
+                                data.kinhdoanh = result;
+                                break;
+                            case "công nghệ":
+                                data.congnghe = result;
+                                break;
+                            case "sức khỏe":
+                                data.suckhoe = result;
+                                break;
+                            case "pháp luật":
+                                data.phapluat = result;
+                                break;
+                            case "thể thao":
+                                data.thethao = result;
+                                break;
+                        }
+                        count++;
+                        if (count == 6)
+                            resolve(data);
+                    });
                 });
             });
         });

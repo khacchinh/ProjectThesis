@@ -5,3 +5,16 @@
 .news-content{
     margin-top: 30px;
 }
+
+.span8.single {
+    padding-right: 20px;
+}
+
+.row.social{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.span8.single h2{
+    margin-top: 7px;
+}

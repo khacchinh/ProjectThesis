@@ -9,8 +9,9 @@
                                 <li><a [routerLink]="['./register']">Register</a></li>
                             </ul>
                             <ul class="nav navbar-nav" style="float: right;" *ngIf="!isLogin">
+                                <li><a [routerLink] = "['./datauser']">Data user</a></li>
                                 <li><a>{{user?.name}}</a></li>
-                                <li><button (click)="logout($event)">Logout</button></li>
+                                <li><a (click)="logout($event)">Logout</a></li>
                             </ul>
                         </div>           
                 </div>
