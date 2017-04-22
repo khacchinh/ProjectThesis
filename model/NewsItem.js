@@ -69,6 +69,9 @@ var _schema = new mongoose.Schema({
     view_count: {
         type: Number,
         "default": 0
+    },
+    tags: {
+        type: String
     }
 });
 //paginate
@@ -97,6 +100,7 @@ var NewItem = (function () {
             news_item.sumary = news.sumary;
             news_item.date_public = news.date_public;
             news_item.content = news.content;
+            news_item.tags = news.tags;
             news_item.save(function (err, newitem) {
                 if (err)
                     reject(err);
@@ -325,6 +329,21 @@ var NewItem = (function () {
                     reject(err);
                 if (news.length > 0)
                     resolve(news);
+                else
+                    resolve("empty");
+            });
+        });
+    };
+    NewItem.getNewsRelative = function (category_name, tags) {
+        return new Promise(function (resolve, reject) {
+            var date = new Date();
+            date.setDate(date.getDate() - 7);
+            NewItemModel.find({ cateogry: category_name, date_public: { $gte: date } }, 'title tags', function (err, news) {
+                if (err)
+                    reject(err);
+                if (news.length > 0) {
+                    console.log(news);
+                }
                 else
                     resolve("empty");
             });

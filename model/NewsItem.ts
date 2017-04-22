@@ -18,6 +18,7 @@ interface INewItem extends mongoose.Document {
     created: Date;
     date_public: Date;
     view_count: number;
+    tags : string;
 }
 
 /**
@@ -91,6 +92,9 @@ var _schema : mongoose.Schema = new mongoose.Schema({
     view_count : {
         type : Number,
         default: 0
+    },
+    tags : {
+        type : String
     }
 });
 //paginate
@@ -122,6 +126,7 @@ export class NewItem{
             news_item.sumary = news.sumary;
             news_item.date_public = news.date_public;
             news_item.content = news.content;
+            news_item.tags = news.tags;
             news_item.save((err, newitem) =>{
                 if (err) reject(err)
                 resolve(newitem);
@@ -344,5 +349,21 @@ export class NewItem{
                 else resolve("empty");
             })
         });
+    }   
+
+    static getNewsRelative(category_name: String, tags : String) : Promise<any> {
+        return new Promise<any> ((resolve, reject) => {
+            var date = new Date();
+            date.setDate(date.getDate() - 7);
+
+            NewItemModel.find({cateogry : category_name, date_public : {$gte: date}},'title tags', (err, news) => {
+                if (err) reject(err);
+                if (news.length > 0){
+                    console.log(news);
+                }
+                else resolve("empty");
+            })
+        })
     }
+    
 }

@@ -10,4 +10,5 @@ export class News{
     sumary: string;
     date_public: Date;
     content: string;
+    tags : string;
 }

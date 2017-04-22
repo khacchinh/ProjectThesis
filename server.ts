@@ -67,7 +67,7 @@ app.use('/', crawlerData);
 //
 var is_loop_process = true;
 function doProcessNews(){
-    NewItem.getNewsAfterDay(4).then(
+    NewItem.getNewsAfterDay(3).then(
         (msg) => {
             if (msg != "empty"){
                 ProcessNews.arOldNews = msg;
@@ -123,6 +123,7 @@ mongoose.connect('mongodb://localhost/my_database', function(err){
 
 
 
+
 /*
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/test_db_news', function(err){
@@ -136,5 +137,6 @@ mongoose.connect('mongodb://localhost/test_db_news', function(err){
     }
 });
 */
+
 
 
