@@ -20,4 +20,11 @@ export class SingleItemService{
         return this.http.put('/api/new_item/'+id, JSON.stringify(comment), {headers : headers})
             .map(res => res.json());
     }
+
+    getNewsRelative(tags : any){
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/new_relative', JSON.stringify(tags), {headers : headers})
+            .map(res => res.json());
+    }
 }

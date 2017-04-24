@@ -334,20 +334,63 @@ var NewItem = (function () {
             });
         });
     };
-    NewItem.getNewsRelative = function (category_name, tags) {
+    NewItem.getNewsRelative = function (data) {
+        var __this = this;
         return new Promise(function (resolve, reject) {
-            var date = new Date();
-            date.setDate(date.getDate() - 7);
-            NewItemModel.find({ cateogry: category_name, date_public: { $gte: date } }, 'title tags', function (err, news) {
-                if (err)
-                    reject(err);
-                if (news.length > 0) {
-                    console.log(news);
-                }
-                else
-                    resolve("empty");
-            });
+            if (typeof data.tags !== 'undefined') {
+                var result = [];
+                var date = new Date();
+                date.setDate(date.getDate() - 7);
+                NewItemModel.find({ category: data.category, date_public: { $gte: date } }, 'title tags', function (err, news) {
+                    if (err)
+                        reject(err);
+                    if (news.length > 0) {
+                        news.forEach(function (element) {
+                            if (typeof element.tags !== 'undefined' && element.title.trim() != data.title.trim() && element._id != data._id) {
+                                var ar_news_tags = data.tags.split(",");
+                                var ar_element_tags = element.tags.split(",");
+                                var arr_union_unique = ar_news_tags.concat(ar_element_tags);
+                                arr_union_unique = arr_union_unique.filter(function (element, index) { return arr_union_unique.indexOf(element) === index; });
+                                var ar_vector_news_tags = Array();
+                                var ar_vector_element_tags = Array();
+                                arr_union_unique.forEach(function (element_word) {
+                                    if (element_word !== '') {
+                                        var value = __this.funcCheckWordInArr(element_word, ar_news_tags) == true ? 1 : 0;
+                                        ar_vector_news_tags.push(value);
+                                        value = __this.funcCheckWordInArr(element_word, ar_element_tags) == true ? 1 : 0;
+                                        ar_vector_element_tags.push(value);
+                                    }
+                                });
+                                var cosin = __this.funcCosineSimilar(ar_vector_news_tags, ar_vector_element_tags);
+                                element.cosin = cosin;
+                                if (cosin > 0.5) {
+                                    result.push(element);
+                                }
+                            }
+                        });
+                        resolve(result);
+                    }
+                    else
+                        resolve("empty");
+                });
+            }
+            else
+                resolve("empty");
         });
+    };
+    NewItem.funcCheckWordInArr = function (word, arr) {
+        if (arr.indexOf(word) > -1)
+            return true;
+        return false;
+    };
+    NewItem.funcCosineSimilar = function (vector_new, vector_old) {
+        var value_new_old = 0, value_new = 0, value_old = 0;
+        for (var i = 0; i < vector_new.length; i++) {
+            value_new_old += vector_new[i] * vector_old[i];
+            value_new += vector_new[i] * vector_new[i];
+            value_old += vector_old[i] * vector_old[i];
+        }
+        return value_new_old / (Math.sqrt(value_new) * Math.sqrt(value_old));
     };
     return NewItem;
 }());

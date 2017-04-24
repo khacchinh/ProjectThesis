@@ -15,6 +15,7 @@ export class SingleComponent {
     private contentHtml : any;
     private user : any;
     private comments_new : any[];
+    private relative_new : any[];
     model: any = {};
 
 
@@ -34,6 +35,16 @@ export class SingleComponent {
                 this.new_item =  new_item;
                 this.comments_new =  new_item.comment;
                 this.contentHtml = this.decodeEntities(this.new_item.content);
+                var tags = {
+                    "category" : new_item.category,
+                    "tags" : new_item.tags,
+                    "title" : new_item.title,
+                    "_id" : new_item._id
+                }
+                this.singleItemService.getNewsRelative(tags).subscribe( data => {
+                    if (data != "empty")
+                        this.relative_new = data;
+                })
             });
         })  
     }

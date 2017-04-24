@@ -143,3 +143,37 @@ URL: http://news.zing.vn/thu-2-ty-mot-thang-tu-cho-facebook-va-chuyen-tim-kim-tr
 Date public: 4/6/2017
 ----
 Cosine value: 0.9138456341202734
+
+
+// giống nhau, khác câu chữ
+Tên báo: dantri
+Thể loại: pháp luật
+Tiêu đề: Bé gái 9 tuổi bị hiếp dâm, sát hại khi trên đường đi học về
+URL: http://dantri.com.vn//phap-luat/be-gai-9-tuoi-bi-hiep-dam-sat-hai-khi-tren-duong-di-hoc-ve-2017042216082041.htm
+Date public: 4/22/2017
+Content: sáng 22 4 đại_tá dương_anh_kiệt trưởng phòng_cảnh sát hình_sự công_an tỉnh đồng_tháp cho_biết cơ_quan điều_tra đang làm rõ vụ_án cướp tài_sản hiếp_dâm trẻ_em và giết người xảy_ra trên địa_bàn xã thường_thới_tiền huyện hồng_ngự bước_đầu cơ_quan điều_tra đã khoanh_vùng xác_định nghi phạm gây án và đang củng_cố chứng_cứ để bắt_giữ thông_tin ban_đầu ngày 20 4 bé gái 9 tuổi bị mất_tích trên đường đi học về từ_trường đến nhà gia_đình tìm_kiếm đến trưa hôm_sau thì phát_hiện thi_thể bé gái tại ao nước gần nhà khi phát_hiện bé gái trong tình_trạng không mặc quần_áo vùng kín bị xâm_hại và có vết siết trên cổ theo gia_đình ngày thường cháu bé có đeo đôi bông_tai vàng khoảng 3 phân vàng khi tìm thấy thi_thể nạn_nhân đôi bông_tai cũng không còn
+---------------
+Tên báo: zing
+Thể loại: pháp luật
+Tiêu đề: Bé gái 9 tuổi nghi bị giết, cưỡng bức ở miền Tây
+URL: http://news.zing.vn/be-gai-9-tuoi-nghi-bi-giet-cuong-buc-o-mien-tay-post739949.html
+Date public: 4/22/2017
+Content: sáng 22 4 đại_tá dương_anh_kiệt trưởng_phòng cảnh_sát hình_sự công_an tỉnh đồng_tháp cho_biết cơ_quan điều_tra đang làm rõ vụ_án cướp tài_sản hiếp_dâm trẻ_em và giết người xảy_ra tại xã thường_thới_tiền huyện hồng_ngự thông_tin ban_đầu ngày 20 4 bé thuý 9 tuổi đã đổi tên học_sinh lớp 2 bị mất_tích trên đường đi học về nhà gia_đình đã tìm_kiếm suốt đêm nhưng không thấy đến trưa hôm_sau người_dân phát_hiện thi_thể bé gái trong ao nước gần nhà khi phát_hiện nạn_nhân trong tình_trạng không mặc quần_áo trên cổ cháu bé có dấu_tích bị siết cổ vùng kín có dấu_hiệu bị xâm_hại theo gia_đình ngày thường cháu bé có đeo đôi bông_tai vàng khoảng 3 phân vàng khi tìm thấy thi_thể đôi bông_tai trên cũng không còn cơ_quan điều_tra đã xác_định nghi phạm và đang củng_cố chứng_cứ đại_tá kiệt nói
+----
+Cosine value: 0.7348692027450872
+
+Tên báo: zing
+Thể loại: pháp luật
+Tiêu đề: Bắt khẩn cấp nghi phạm dâm ô bé gái 6 tuổi
+URL: http://news.zing.vn/bat-khan-cap-nghi-pham-dam-o-be-gai-6-tuoi-post739828.html
+Date public: 4/21/2017
+Content: ngày 21 4 cơ_quan cảnh_sát điều_tra công_an tp hạ_long tỉnh quảng_ninh đã tạm giữ hình_sự doãn_ngọc_trung 33 tuổi trú tại phường hà_lầm tp hạ_long để tiếp_tục điều_tra về hành_vi dâm_ô với trẻ_em trước đó khoảng 16h30 ngày 20 4 phòng_cảnh sát điều_tra tội_phạm về trật_tự xã_hội công_an tỉnh quảng_ninh nhận được tin báo của công_an tp hạ_long với nội_dung cháu lan đã thay_đổi tên nạn_nhân 6 tuổi trú tại phường hà_lầm bị doãn_ngọc_trung xâm_hại tình_dục phòng_cảnh sát điều_tra tội_phạm về trật_tự xã_hội đã thành_lập tổ công_tác phối_hợp với công_an tp hạ_long khám_nghiệm hiện_trường ghi lời khai đấu_tranh với đối_tượng bước_đầu đã làm rõ hành_vi dâm_ô đối_với trẻ_em của doãn_ngọc_trung qua đấu_tranh nghi phạm trung thừa_nhận hành_vi dâm_ô của mình hiện người đàn_ông 33 tuổi này đang bị tạm giữ hình_sự tại cơ_quan công_an để làm rõ vụ_việc
+---------------
+Tên báo: vietnamnet news
+Thể loại: pháp luật
+Tiêu đề: Bắt khẩn cấp đối tượng dâm ô với bé gái 6 tuổi
+URL: http://vietnamnet.vn/vn/phap-luat/bat-khan-cap-doi-tuong-dam-o-voi-be-gai-6-tuoi-o-quang-ninh-368020.html
+Date public: 4/21/2017
+Content: ngày 21 4 cơ_quan cảnh_sát điều_tra công_an tp hạ_long tỉnh quảng_ninh đã tạm giữ hình_sự doãn_ngọc_trung sn 1984 trú tại tổ 3 khu 2 phường hà_lầm tp hạ_long để tiếp_tục điều_tra về hành_vi dâm_ô với trẻ_em trước đó khoảng 16h30 ngày 20 4 phòng_cảnh sát điều_tra tội_phạm về trật_tự xã_hội công_an tỉnh quảng_ninh nhận được tin báo của công_an tp hạ_long với nội_dung gia_đình cháu t sinh năm 2011 trú tại phường hà_lầm trình_báo về việc cháu t bị doãn_ngọc_trung xâm_hại tình_dục phòng_cảnh sát điều_tra tội_phạm về trật_tự xã_hội đã thành_lập tổ công_tác phối_hợp với công_an tp hạ_long khám_nghiệm hiện_trường ghi lời khai đấu_tranh với đối_tượng kết_quả đã làm rõ hành_vi dâm_ô đối_với trẻ_em của doãn_ngọc_trung qua đấu_tranh đối_tượng trung đã thú_nhận hành_vi dâm_ô của mình hiện_trung đang bị tạm giữ hình_sự tại cơ_quan công_an để làm rõ vụ_việc
+----
+Cosine value: 0.7357871247554453

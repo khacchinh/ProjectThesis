@@ -63,4 +63,10 @@ router.put('/new_item/:id', function (req, res, next) {
         res.json(msg);
     });
 });
+router.post('/new_relative', function (req, res, next) {
+    var data = req.body;
+    NewsItem_1.NewItem.getNewsRelative(data).then(function (msg) {
+        res.json(msg);
+    });
+});
 module.exports = router;

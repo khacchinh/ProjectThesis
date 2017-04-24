@@ -92,5 +92,14 @@ router.put('/new_item/:id', (req, res, next) => {
     )
 });
 
+router.post('/new_relative', (req, res, next) => {
+    var data = req.body;
+    NewItem.getNewsRelative(data).then(
+        (msg) => {
+            res.json(msg);
+        }
+    )
+});
+
 
 module.exports = router;

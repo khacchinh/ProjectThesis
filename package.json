@@ -1,7 +1,7 @@
 {
-  "name": "mean2project",
+  "name": "ThesisIS",
   "version": "1.0.0",
-  "description": "Setup MongoDB + Express + NodeJs + Angular2",
+  "description": "Setup by KhacChinhDev",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

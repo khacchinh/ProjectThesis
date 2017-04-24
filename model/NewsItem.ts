@@ -351,19 +351,66 @@ export class NewItem{
         });
     }   
 
-    static getNewsRelative(category_name: String, tags : String) : Promise<any> {
+    static getNewsRelative(data : any) : Promise<any> {
+        var __this = this;
         return new Promise<any> ((resolve, reject) => {
-            var date = new Date();
-            date.setDate(date.getDate() - 7);
+            if (typeof data.tags !== 'undefined'){
+                var result = [];
+                var date = new Date();
+                date.setDate(date.getDate() - 7);
 
-            NewItemModel.find({cateogry : category_name, date_public : {$gte: date}},'title tags', (err, news) => {
-                if (err) reject(err);
-                if (news.length > 0){
-                    console.log(news);
-                }
-                else resolve("empty");
-            })
+                NewItemModel.find({category : data.category, date_public : {$gte: date}},'title tags', (err, news) => {
+                    if (err) reject(err);
+                    if (news.length > 0){
+                        news.forEach(element => {
+                            if (typeof element.tags !== 'undefined' && element.title.trim() != data.title.trim() && element._id != data._id){
+                                var ar_news_tags = data.tags.split(",");
+                                var ar_element_tags = element.tags.split(",");
+                                var arr_union_unique = ar_news_tags.concat(ar_element_tags);
+                                arr_union_unique = arr_union_unique.filter((element, index) => arr_union_unique.indexOf(element) === index);
+
+                                var ar_vector_news_tags = Array<number>();
+                                var ar_vector_element_tags = Array<number>();
+                                arr_union_unique.forEach(element_word => {
+                                    if (element_word !== ''){
+                                        var value = __this.funcCheckWordInArr(element_word, ar_news_tags) == true ? 1 : 0;
+                                        ar_vector_news_tags.push(value);
+
+                                        value = __this.funcCheckWordInArr(element_word, ar_element_tags) == true ? 1 : 0;
+                                        ar_vector_element_tags.push(value);
+                                    }
+                                });
+                                var cosin = __this.funcCosineSimilar(ar_vector_news_tags, ar_vector_element_tags);
+                                element.cosin = cosin;
+                                if (cosin > 0.5 ){
+                                    result.push(element);
+                                }
+                            }
+                        });
+                        resolve(result);
+                    }
+                    else resolve("empty");
+                })
+            } else
+            resolve("empty");
         })
+    }
+
+    static funcCheckWordInArr(word : string, arr : Array<string>) : boolean {
+        if (arr.indexOf(word) > -1)
+            return true;
+        return false;
+    }
+
+    static funcCosineSimilar(vector_new : Array<number>, vector_old : Array<number>) : number{
+        var value_new_old = 0, value_new = 0, value_old = 0;
+        for (var i =0; i< vector_new.length; i++){
+            value_new_old += vector_new[i]*vector_old[i];
+            value_new += vector_new[i]*vector_new[i];
+            value_old += vector_old[i]*vector_old[i];
+        }
+
+        return value_new_old / (Math.sqrt(value_new) * Math.sqrt(value_old));
     }
     
 }

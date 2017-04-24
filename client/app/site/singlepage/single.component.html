@@ -29,14 +29,8 @@
                         <div class="col-sm-12">
                             <h4>Related Posts</h4>
                             <ul class="nav navbar">
-                                <li>
-                                    <a href="blog.html">Odio vitae mi fringilla at euismod nisi imperdiet</a>
-                                </li>
-                                <li>
-                                    <a href="blog.html">Odio vitae mi fringilla at euismod nisi imperdiet</a>
-                                </li>
-                                <li>
-                                    <a href="blog.html">Odio vitae mi fringilla at euismod nisi imperdiet</a>
+                                <li *ngFor = "let item of relative_new">
+                                    <a href="blog.html">{{item.title}}</a>
                                 </li>
                             </ul>
                         </div>
