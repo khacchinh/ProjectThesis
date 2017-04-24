@@ -30,7 +30,7 @@
                             <h4>Related Posts</h4>
                             <ul class="nav navbar">
                                 <li *ngFor = "let item of relative_new">
-                                    <a href="blog.html">{{item.title}}</a>
+                                    <a [routerLink]="['../', item._id]">{{item.title}}</a>
                                 </li>
                             </ul>
                         </div>

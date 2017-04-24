@@ -44,6 +44,7 @@ export class SingleComponent {
                 this.singleItemService.getNewsRelative(tags).subscribe( data => {
                     if (data != "empty")
                         this.relative_new = data;
+                    else this.relative_new = [];
                 })
             });
         })  

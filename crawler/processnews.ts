@@ -222,7 +222,7 @@ export class ProcessNews{
                 case "tintuc":
                     if (arrTime.length <= 2)
                         dateneed = null;
-                    else dateneed = arrTime[2].split("/").join("-") + "  " + arrTime[0] + ":00"
+                    else dateneed = arrTime[2].split("/").reverse().join("-") + "  " + arrTime[0] + ":00"
                 break;
             }
         }

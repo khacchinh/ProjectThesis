@@ -107,8 +107,9 @@ function doProcessNews(){
 }
 
 //call class crawler
-//doProcessNews();
+doProcessNews();
 
+/*
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/my_database', function(err){
     if (err) 
@@ -120,11 +121,11 @@ mongoose.connect('mongodb://localhost/my_database', function(err){
         });
     }
 });
-
+*/
     
 
 
-/*
+
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/test_db_news', function(err){
     if (err) 
@@ -136,7 +137,7 @@ mongoose.connect('mongodb://localhost/test_db_news', function(err){
         });
     }
 });
-*/
+
 
 
 

@@ -363,11 +363,20 @@ var NewItem = (function () {
                                 });
                                 var cosin = __this.funcCosineSimilar(ar_vector_news_tags, ar_vector_element_tags);
                                 element.cosin = cosin;
-                                if (cosin > 0.5) {
-                                    result.push(element);
+                                if (cosin > 0.1) {
+                                    var item_result = {
+                                        "_id": element._id,
+                                        "title": element.title,
+                                        "tags": element.tags,
+                                        "cosin": cosin
+                                    };
+                                    result.push(item_result);
                                 }
                             }
                         });
+                        result.sort(__this.dynamicSort("-cosin"));
+                        if (result.length > 5)
+                            result.length = 5;
                         resolve(result);
                     }
                     else
@@ -391,6 +400,17 @@ var NewItem = (function () {
             value_old += vector_old[i] * vector_old[i];
         }
         return value_new_old / (Math.sqrt(value_new) * Math.sqrt(value_old));
+    };
+    NewItem.dynamicSort = function (property) {
+        var sortOrder = 1;
+        if (property[0] === "-") {
+            sortOrder = -1;
+            property = property.substr(1);
+        }
+        return function (a, b) {
+            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+            return result * sortOrder;
+        };
     };
     return NewItem;
 }());
