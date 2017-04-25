@@ -265,6 +265,7 @@ var NewItem = (function () {
                         }
                         else if (result.author == 'thanhnien') {
                             var $ = res.$;
+                            $("#abody").children('div').children('article').remove();
                             result.content = $("#abody").html();
                             resolve(result);
                         }
@@ -275,6 +276,7 @@ var NewItem = (function () {
                         }
                         else if (result.author == 'zing') {
                             var $ = res.$;
+                            $(".the-article-body").children("table.article").remove();
                             result.content = $(".the-article-body").html();
                             resolve(result);
                         }

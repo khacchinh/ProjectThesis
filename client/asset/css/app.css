@@ -53,3 +53,45 @@ textarea{
     background-color: transparent;
     text-decoration: underline;
 }
+
+/*img zing*/
+td.pic img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* video zing */
+video{
+    width: 100%;
+}
+figure.video{
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    margin: 14px 0 20px;
+    position: relative;
+    font-family: Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.VCSortableInPreviewMode[type="Photo"] {
+    display: block;
+    margin: 10px 21px !important;
+    background-color: #eee;
+    font-size: 13px;
+    font-family: "tahoma";
+}
+
+.VCSortableInPreviewMode[type="Photo"] div img{
+    width: 100%;
+}
+
+.VCSortableInPreviewMode[type=Photo] .PhotoCMS_Caption {
+    padding: 5px;
+    text-align: center;
+}
+
+article.story.clearfix {
+    display: none;
+}

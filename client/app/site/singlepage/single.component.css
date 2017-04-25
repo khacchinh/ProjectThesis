@@ -8,6 +8,7 @@
 
 .span8.single {
     padding-right: 20px;
+    overflow-x: auto;
 }
 
 .row.social{
@@ -18,3 +19,4 @@
 .span8.single h2{
     margin-top: 7px;
 }
+
