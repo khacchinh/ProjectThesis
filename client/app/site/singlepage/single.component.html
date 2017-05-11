@@ -9,7 +9,7 @@
 
                     <div class="row news-main">
                         <div class="span8 single">
-                            <span class="date">Posted on July 02, 2011 | 0 comments</span><br>
+                            <span class="date">{{convertDate(new_item?.date_public)}} | {{new_item?.view_count}} views | {{new_item?.comment.length}} comments</span><br>
                             <div class="row social">
                                 <a href="" *ngIf="!checkIsFavoriteNews(new_item?._id)" (click)="saveFavoriteNewsUser(new_item)"><i class="fa fa-heart-o fa-fw"></i></a>
                                 <i class="fa fa-heart fa-fw" *ngIf="checkIsFavoriteNews(new_item?._id)"></i>
@@ -23,16 +23,33 @@
 
                         </div>
                     </div>
-                    <hr/>
+
+                     <div class="row">
+                        <div class="col-sm-12">
+                            <p>Nguồn: {{new_item?.author}}</p>
+                            <p>Địa chỉ: <a [href] = "new_item?.url">{{new_item?.url}}</a></p>
+                        </div>
+                    </div>
+                    <hr>
 
                     <div class="row">
                         <div class="col-sm-12">
+                            <div class="post-taglist">
+                                <a class="post-tag" >Tags</a>
+                                <a class="post-tag" href="#" *ngFor = "let item of tags">
+                                   {{item}}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
                             <h4>Related Posts</h4>
+                            <ng-container *ngIf = "relative_new?.length > 0">
                             <ul class="nav navbar">
                                 <li *ngFor = "let item of relative_new">
                                     <a [routerLink]="['../', item._id]">{{item.title}}</a>
                                 </li>
                             </ul>
+                            </ng-container>
                         </div>
                     </div>
                     <hr>

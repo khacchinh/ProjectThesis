@@ -235,7 +235,7 @@ export class CrawlerNewsClass{
                                 processNews.importNew(news);
                             });
                         }   
-                        //crawler news Zing.mp3
+                        //crawler news Zing
                         else if ($('meta[name=author]').attr("content") == 'ZING.VN'){
                             var author :any = "zing";
                             var category = $('#mainContent_ctl00_Breadcumb1_hlTitle').text().trim();
@@ -250,7 +250,7 @@ export class CrawlerNewsClass{
                                 news.title = data.children("header").children(".title").children("a").text();
                                 news.title = news.title.trim();
                                 news.url = "http://news.zing.vn" + data.children("header").children(".title").children("a").attr('href');
-                                news.sumary = data.children("header").children(".sumary").text();
+                                news.sumary = data.children("header").children(".summary").text();
                                 news.img = data.children(".cover").children().children().attr('src');
                                 
                                 if (i == 0)
@@ -268,7 +268,7 @@ export class CrawlerNewsClass{
                                 if (__this.checkExistTitle(news.author, news.category, news.title))
                                     return false;
                                 news.url = "http://news.zing.vn" + data.children("header").children(".title").children("a").attr('href');
-                                news.sumary = data.children("header").children(".sumary").text();
+                                news.sumary = data.children("header").children(".summary").text();
                                 news.img = data.children(".cover").children().children().attr('src');
                                 processNews.importNew(news);
                             })

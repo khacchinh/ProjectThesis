@@ -2,29 +2,52 @@
                 <!-- Start Main Content -->
                 <div class="col-md-8">
         
-                    <carousel>
-                        <slide>
-                            <img src="asset/img/1.jpg" alt="First slide">
-                            <div class="carousel-caption">
-                            <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                            </div>
-                        </slide>
-                        <slide>
-                            <img src="asset/img/2.jpg" alt="Second slide">
-                            <div class="carousel-caption">
-                            <h3>Second slide label</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </slide>
-                        <slide>
-                            <img src="asset/img/3.jpg" alt="Third slide">
-                            <div class="carousel-caption">
-                            <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                            </div>
-                        </slide>
-                    </carousel>
+                    <div id="myCarousel" class="carousel slide col-md-12 img-thumbnail" data-ride="carousel">
+                        
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+
+                            <ng-container *ngFor="let news of news_home; let i=index">
+                                <ng-container *ngIf = "i==0">
+                                <div class="item active">
+                                    <img class="img-home" src="{{news.img}}">
+                                    <div class="carousel-caption">
+                                    <a  href="http://localhost:3000/#/site/single/{{news._id}}" target="_blank"><h4>{{news.title}}</h4></a>
+                                    <p>{{news.sumary}} 
+                                    <a class="label label-primary" href="http://localhost:3000/#/site/single/{{news._id}}" target="_blank">
+                                    Read more ></a></p>
+                                    </div>            
+                                </div><!-- End Item -->
+                                </ng-container>
+                                <ng-container *ngIf = "i!=0">
+                                <div class="item">
+                                    <img class="img-home" src="{{news.img}}">
+                                    <div class="carousel-caption">
+                                    <a  href="http://localhost:3000/#/site/single/{{news._id}}" target="_blank"><h4>{{news.title}}</h4></a>
+                                    <p>{{news.sumary}} 
+                                    <a class="label label-primary" href="http://localhost:3000/#/site/single/{{news._id}}" target="_blank">
+                                    Read more ></a></p>
+                                    </div>            
+                                </div><!-- End Item -->
+                                </ng-container>
+                            </ng-container>
+            
+                            
+                        </div><!-- End Carousel Inner -->
+                                    
+                        <ul class="list-group col-md-3 carousel-indicators">
+                            
+                            <ng-container *ngFor="let news of news_home; let i=index">
+                                <ng-container *ngIf = "i==0">
+                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                </ng-container>
+                                <ng-container *ngIf = "i!=0">
+                                    <li data-target="#myCarousel" attr.data-slide-to="{{i}}"></li>
+                                </ng-container>
+                            </ng-container>
+
+                        </ul>
+                    </div><!-- End Carousel -->
 
                     <hr/>
 
@@ -36,22 +59,22 @@
                             </div>
 
                             <div class="featured-news">
-                                <img alt="" src="{{data?.thegioi && data?.thegioi[0].img}}" class="img-thumbnail"/>
-                                <a href="http://localhost:3000/#/site/single/{{data?.thegioi && data?.thegioi[0]._id}}"><h4>{{data?.thegioi && data?.thegioi[0].title}}</h4></a>
-                                <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                <p>{{data?.thegioi && data?.thegioi[0].sumary}}</p>
+                                <img alt="" src="{{data?.thegioi && data?.thegioi[1].img}}" class="img-thumbnail"/>
+                                <a href="http://localhost:3000/#/site/single/{{data?.thegioi && data?.thegioi[1]._id}}"><h4>{{data?.thegioi && data?.thegioi[1].title}}</h4></a>
+                                <span class="date"><small>{{convertDate(data?.thegioi[1].date_public)}} | {{data?.thegioi[1].comment.length}} comments</small></span>
+                                <p>{{data?.thegioi && data?.thegioi[1].sumary}}</p>
                             </div>
 
 
                             <div class="recent-news" *ngFor="let item of data?.thegioi; let i=index">
-                                <ng-container *ngIf="i > 0">
+                                <ng-container *ngIf="i > 1">
                                 <div class="row item-news">
                                     <div class="col-sm-4">
                                         <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
                                     </div>
                                     <div class="col-sm-8">
                                         <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | {{item.comment.length}} comments</small></span>
+                                        <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} comments</small></span>
                                     </div>
                                 </div> 
                                 <div class="clear-fix"></div>
@@ -65,22 +88,22 @@
                             </div>
 
                             <div class="featured-news">
-                                <img alt="" src="{{data?.kinhdoanh && data?.kinhdoanh[0].img}}" class="img-thumbnail"/>
-                                <a href="http://localhost:3000/#/site/single/{{data?.kinhdoanh && data?.kinhdoanh[0]._id}}"><h4>{{data?.kinhdoanh && data?.kinhdoanh[0].title}}</h4></a>
-                                <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                <p>{{data?.kinhdoanh && data?.kinhdoanh[0].sumary}}</p>
+                                <img alt="" src="{{data?.kinhdoanh && data?.kinhdoanh[1].img}}" class="img-thumbnail"/>
+                                <a href="http://localhost:3000/#/site/single/{{data?.kinhdoanh && data?.kinhdoanh[1]._id}}"><h4>{{data?.kinhdoanh && data?.kinhdoanh[1].title}}</h4></a>
+                                <span class="date"><small>{{convertDate(data?.kinhdoanh[1].date_public)}} | {{data?.kinhdoanh[1].comment.length}} comments</small></span>
+                                <p>{{data?.kinhdoanh && data?.kinhdoanh[1].sumary}}</p>
                             </div>
 
 
                             <div class="recent-news" *ngFor="let item of data?.kinhdoanh; let i=index">
-                                <ng-container *ngIf="i > 0">
+                                <ng-container *ngIf="i > 1">
                                 <div class="row item-news">
                                     <div class="col-sm-4">
                                         <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
                                     </div>
                                     <div class="col-sm-8">
                                         <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | {{item.comment.length}} comments</small></span>
+                                        <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} comments</small></span>
                                     </div>
                                 </div> 
                                 <div class="clear-fix"></div>
@@ -97,23 +120,23 @@
 
                         <div class="col-md-12">
                             <div class="col-md-6 img-thumbnail">
-                                <img src="{{data?.congnghe && data?.congnghe[0].img}}" class="img-responsive"/>
-                                <div class="caption">
-                                    <h2><a href="http://localhost:3000/#/site/single/{{data?.congnghe && data?.congnghe[0]._id}}">{{data?.congnghe && data?.congnghe[0].title}}</a></h2>
-                                    <p>{{data?.congnghe && data?.congnghe[0].sumary}}</p>
+                                <img src="{{data?.congnghe && data?.congnghe[1].img}}" class="img-responsive"/>
+                                <div class="caption-home">
+                                    <h2><a href="http://localhost:3000/#/site/single/{{data?.congnghe && data?.congnghe[1]._id}}">{{data?.congnghe && data?.congnghe[1].title}}</a></h2>
+                                    <p>{{data?.congnghe && data?.congnghe[1].sumary}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
 
                                 <div *ngFor="let item of data?.congnghe; let i=index">
-                                    <ng-container *ngIf="i > 0">
+                                    <ng-container *ngIf="i > 1">
                                     <div class="row item-news">
                                         <div class="col-sm-4">
                                             <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
                                         </div>
                                         <div class="col-sm-8">
                                             <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                            <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                            <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} comments</small></span>
                                         </div>
                                     </div> 
                                     <div class="clear-fix"></div>
@@ -133,22 +156,22 @@
                             </div>
 
                             <div class="featured-news">
-                                <img alt="" src="{{data?.phapluat && data?.phapluat[0].img}}" class="img-thumbnail"/>
-                                <a href="http://localhost:3000/#/site/single/{{data?.phapluat && data?.phapluat[0]._id}}"><h4>{{data?.phapluat && data?.phapluat[0].title}}</h4></a>
-                                <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                <p>{{data?.phapluat && data?.phapluat[0].sumary}}</p>
+                                <img alt="" src="{{data?.phapluat && data?.phapluat[1].img}}" class="img-thumbnail"/>
+                                <a href="http://localhost:3000/#/site/single/{{data?.phapluat && data?.phapluat[1]._id}}"><h4>{{data?.phapluat && data?.phapluat[1].title}}</h4></a>
+                                <span class="date"><small>{{convertDate(data?.phapluat[1].date_public)}} | {{data?.phapluat[1].comment.length}} comments</small></span>
+                                <p>{{data?.phapluat && data?.phapluat[1].sumary}}</p>
                             </div>
 
 
                             <div class="recent-news" *ngFor="let item of data?.phapluat; let i=index">
-                                <ng-container *ngIf="i > 0">
+                                <ng-container *ngIf="i > 1">
                                 <div class="row item-news">
                                     <div class="col-sm-4">
                                         <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
                                     </div>
                                     <div class="col-sm-8">
                                         <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | {{item.comment.length}} comments</small></span>
+                                        <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} comments</small></span>
                                     </div>
                                 </div> 
                                 <div class="clear-fix"></div>
@@ -162,22 +185,22 @@
                             </div>
 
                             <div class="featured-news">
-                                <img alt="" src="{{data?.suckhoe && data?.suckhoe[0].img}}" class="img-thumbnail"/>
-                                <a href="http://localhost:3000/#/site/single/{{data?.suckhoe && data?.suckhoe[0]._id}}"><h4>{{data?.suckhoe && data?.suckhoe[0].title}}</h4></a>
-                                <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
-                                <p>{{data?.suckhoe && data?.suckhoe[0].sumary}}</p>
+                                <img alt="" src="{{data?.suckhoe && data?.suckhoe[1].img}}" class="img-thumbnail"/>
+                                <a href="http://localhost:3000/#/site/single/{{data?.suckhoe && data?.suckhoe[1]._id}}"><h4>{{data?.suckhoe && data?.suckhoe[1].title}}</h4></a>
+                                <span class="date"><small>{{convertDate(data?.suckhoe[1].date_public)}} | {{data?.suckhoe[1].comment.length}} comments</small></span>
+                                <p>{{data?.suckhoe && data?.suckhoe[1].sumary}}</p>
                             </div>
 
 
                             <div class="recent-news" *ngFor="let item of data?.suckhoe; let i=index">
-                                <ng-container *ngIf="i > 0">
+                                <ng-container *ngIf="i > 1">
                                 <div class="row item-news">
                                     <div class="col-sm-4">
                                         <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
                                     </div>
                                     <div class="col-sm-8">
                                         <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                        <span class="date"><small>Posted on July 02, 2011 | {{item.comment.length}} comments</small></span>
+                                        <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} comments</small></span>
                                     </div>
                                 </div> 
                                 <div class="clear-fix"></div>
@@ -194,23 +217,23 @@
 
                         <div class="col-md-12">
                             <div class="col-md-6 img-thumbnail">
-                                <img src="{{data?.thethao && data?.thethao[0].img}}" class="img-responsive"/>
-                                <div class="caption">
-                                    <h2><a href="http://localhost:3000/#/site/single/{{data?.thethao && data?.thethao[0]._id}}">{{data?.thethao && data?.thethao[0].title}}</a></h2>
-                                    <p>{{data?.thethao && data?.thethao[0].sumary}}</p>
+                                <img src="{{data?.thethao && data?.thethao[1].img}}" class="img-responsive"/>
+                                <div class="caption-home">
+                                    <h2><a href="http://localhost:3000/#/site/single/{{data?.thethao && data?.thethao[1]._id}}">{{data?.thethao && data?.thethao[1].title}}</a></h2>
+                                    <p>{{data?.thethao && data?.thethao[1].sumary}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
 
                                 <div *ngFor="let item of data?.thethao; let i=index">
-                                    <ng-container *ngIf="i > 0">
+                                    <ng-container *ngIf="i > 1">
                                     <div class="row item-news">
                                         <div class="col-sm-4">
                                             <a [routerLink]="['./single', item._id]" ><img alt="" src="{{item.img}}" class="img-thumbnail"/></a>
                                         </div>
                                         <div class="col-sm-8">
                                             <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                            <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                            <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} comments</small></span>
                                         </div>
                                     </div> 
                                     <div class="clear-fix"></div>

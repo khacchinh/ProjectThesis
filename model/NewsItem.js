@@ -209,7 +209,7 @@ var NewItem = (function () {
                     ar_author.push(element.codename);
                 });
                 cate_condition.forEach(function (element) {
-                    NewItemModel.find({ category: element, author: ar_author }, null, { sort: '-date_public', limit: 5 }, function (err, result) {
+                    NewItemModel.find({ category: element, author: ar_author }, null, { sort: '-date_public', limit: 6 }, function (err, result) {
                         if (err)
                             reject(err);
                         switch (result[0].category) {
@@ -285,7 +285,7 @@ var NewItem = (function () {
                             $("#articleContent .picked-relate").remove();
                             $("#articleContent div#ads_end_content").remove();
                             $("#articleContent figure").removeClass("caption");
-                            result.content = $("#articleContent").html();
+                            result.content = $("#articleContent").html() + $("#articleWriter").html();
                             resolve(result);
                         }
                     }

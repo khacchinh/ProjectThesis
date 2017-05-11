@@ -22,11 +22,9 @@ export class DataUserComponent implements OnInit {
         var data = localStorage.getItem('currentUser');
         if (data){
             var parsedata = JSON.parse(data);
-            console.log(parsedata);
             this.user = parsedata.user;
             this.usersSevice.getDataNewsUserByIdDetail(this.user._id).subscribe( data => {
                 this.datauser = data;
-                console.log(data);
             })
         } else {
             this.router.navigate(['/site/login']);
@@ -45,15 +43,12 @@ export class DataUserComponent implements OnInit {
         }
         this.usersSevice.removeDataUser(data).subscribe(result => {
             if (result){
-                delete this.datauser[index];
+                this.datauser.splice(index, 1);
                 var data = localStorage.getItem('currentUser');
                 var parsedata = JSON.parse(data);
-                delete parsedata.datauser[index];
-                parsedata.datauser.length -= 1; 
+                parsedata.datauser.splice(index, 1);
                 localStorage.removeItem('currentUser');
                 localStorage.setItem('currentUser', JSON.stringify(parsedata));
-                console.log(index);
-                console.log(parsedata);
                 alert('success');
             }
         });

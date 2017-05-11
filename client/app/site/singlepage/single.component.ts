@@ -16,13 +16,15 @@ export class SingleComponent {
     private user : any;
     private comments_new : any[];
     private relative_new : any[];
+    private tags : any[];
     model: any = {};
 
 
     constructor(private singleItemService: SingleItemService, private newsService: NewsService, private route: ActivatedRoute, private router: Router){
-        var user = localStorage.getItem('currentUser');
-        if (user){
-            this.user = JSON.parse(user);
+        var data = localStorage.getItem('currentUser');
+        if (data){
+            var parsedata = JSON.parse(data);
+            this.user = parsedata.user;
             this.model.name = this.user.name;
         }
     }
@@ -35,6 +37,9 @@ export class SingleComponent {
                 this.new_item =  new_item;
                 this.comments_new =  new_item.comment;
                 this.contentHtml = this.decodeEntities(this.new_item.content);
+                this.tags = new_item.tags.split(",");
+                if (this.tags[this.tags.length-1] == "")
+                    this.tags.length -= 1;
                 var tags = {
                     "category" : new_item.category,
                     "tags" : new_item.tags,
@@ -85,7 +90,7 @@ export class SingleComponent {
                     parsedata.datauser.push(datauser);
                     localStorage.removeItem('currentUser');
                     localStorage.setItem('currentUser', JSON.stringify(parsedata));
-                    alert("Save favorite new success!!");
+                    alert("Save bookmark new success!!");
                 }
                 else alert("Fail to save new.");
             });
@@ -149,6 +154,10 @@ export class SingleComponent {
             });
         }
         return isBookmark;
+    }
+
+    convertDate(date:any) : string{
+        return new Date(date).toLocaleString();
     }
 
 }

@@ -229,7 +229,7 @@ export class NewItem{
                   ar_author.push(element.codename);
                 });
                 cate_condition.forEach(element => {
-                    NewItemModel.find({category: element, author: ar_author}, null, {sort: '-date_public', limit: 5}, (err, result) => {
+                    NewItemModel.find({category: element, author: ar_author}, null, {sort: '-date_public', limit: 6}, (err, result) => {
                         if (err) reject(err);
                         switch (result[0].category){
                             case "thế giới":
@@ -303,7 +303,7 @@ export class NewItem{
                             $("#articleContent .picked-relate").remove();
                             $("#articleContent div#ads_end_content").remove();
                             $("#articleContent figure").removeClass("caption");
-                            result.content = $("#articleContent").html();
+                            result.content = $("#articleContent").html() +  $("#articleWriter").html();
                             resolve(result);
                         }
                     }

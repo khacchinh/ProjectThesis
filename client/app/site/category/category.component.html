@@ -8,7 +8,7 @@
 
                     <div class="row">
                         <div class="col-md-5 img-thumbnail">
-                            <a href="http://localhost:3000/#/site/single/{{itemHot?._id}}"><img style="width: 100%; height: 250px;" alt="" src="{{itemHot?.img}}" /></a>
+                            <a href="http://localhost:3000/#/site/single/{{itemHot?._id}}"><img style="width: 100%; height: 250px;" alt="{{itemHot?.title}}" src="{{itemHot?.img}}" /></a>
                         </div>
                         <div class="col-md-7">
                             <div class="row">
@@ -20,7 +20,7 @@
                                     <i class="fa fa-bookmark fa-fw" *ngIf="checkIsBookmarkNews(itemHot?._id)"></i>
                                 </div>
                             </div>
-                            <span class="date">{{convertDate(itemHot?.date_public)}} | {{itemHot?.author}} | 0 comments</span>
+                            <span class="date">{{convertDate(itemHot?.date_public)}} | {{itemHot?.author}} | {{itemHot?.comment.length}} comments</span>
                             <p>
                                {{itemHot?.sumary}}
                             </p>
@@ -31,7 +31,7 @@
                     <div class="row" style="margin-top: 10px" *ngFor = "let newitem of pagedItems">
                         <div class="row category-item">
                             <div class="col-sm-2 category-item-img">
-                                <a [routerLink]="['../../single', newitem._id]"><img alt="" src="{{newitem.img}}" class="img-thumbnail"/></a>
+                                <a [routerLink]="['../../single', newitem._id]"><img src="{{newitem.img}}" alt="{{newitem.title}}" class="img-thumbnail"/></a>
                             </div>
                             <div class="col-sm-9">
                                 <div class="row">
@@ -43,9 +43,14 @@
                                         <i class="fa fa-bookmark fa-fw" *ngIf="checkIsBookmarkNews(newitem._id)"></i>
                                     </div>
                                 </div>
-                                <span class="date">{{convertDate(newitem.date_public)}} | {{newitem.author}}</span>
+                                <span class="date">{{convertDate(newitem.date_public)}} | {{newitem.author}} | {{newitem.comment.length}} comments</span>
                                 <p>
-                                    {{newitem.sumary}}
+                                    <ng-container *ngIf="newitem.sumary != ''">
+                                        {{newitem.sumary}}
+                                    </ng-container>
+                                    <ng-container *ngIf="newitem.sumary == ''">
+                                        {{newitem.title}}
+                                    </ng-container>
                                 </p>
                             </div>
                         </div> 
@@ -76,7 +81,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <pre class="card card-block card-header">Page: {{bigCurrentPage}} / {{numPages}}</pre>
+                        <pre class="card card-block card-header">Page: {{pager.currentPage}} / {{pager.totalPages}}</pre>
                     </div>
 
                 </div>

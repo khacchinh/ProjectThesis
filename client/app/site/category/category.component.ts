@@ -30,13 +30,16 @@ export class CategoryComponent implements OnInit {
             this.category = params['cate'];
             this.newsService.getNewsByCategory(this.category)
                 .subscribe(news => {
-                    for (var i = 0; i< news.length; i++){
+                    var i = 0;
+                    while  (i< news.length){
                         if (news[i].type_img){
                             this.itemHot = news[i];
                             break;
                         }
+                        i++;
                     }
                     this.news = news;
+                    this.news.splice(i, 1);
                     this.setPage(1);
             });
         })  
@@ -55,10 +58,11 @@ export class CategoryComponent implements OnInit {
     }
 
     convertDate(date:any) : string{
-        return new Date(date).toString();
+        return new Date(date).toLocaleString();
     }
 
     saveBookmarkNewsUser(news : any){
+        
         var data = localStorage.getItem('currentUser');
         if (data){
             var parsedata = JSON.parse(data);
@@ -79,6 +83,7 @@ export class CategoryComponent implements OnInit {
         } else if (confirm("Are you want to login?")){
             this.router.navigate(['/site/login']);
         }
+        
         return false;
     }
 

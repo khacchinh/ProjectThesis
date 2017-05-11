@@ -215,7 +215,7 @@ var CrawlerNewsClass = (function () {
                                 news.title = data.children("header").children(".title").children("a").text();
                                 news.title = news.title.trim();
                                 news.url = "http://news.zing.vn" + data.children("header").children(".title").children("a").attr('href');
-                                news.sumary = data.children("header").children(".sumary").text();
+                                news.sumary = data.children("header").children(".summary").text();
                                 news.img = data.children(".cover").children().children().attr('src');
                                 if (i == 0)
                                     news.type_img = true;
@@ -231,7 +231,7 @@ var CrawlerNewsClass = (function () {
                                 if (__this.checkExistTitle(news.author, news.category, news.title))
                                     return false;
                                 news.url = "http://news.zing.vn" + data.children("header").children(".title").children("a").attr('href');
-                                news.sumary = data.children("header").children(".sumary").text();
+                                news.sumary = data.children("header").children(".summary").text();
                                 news.img = data.children(".cover").children().children().attr('src');
                                 processNews.importNew(news);
                             });

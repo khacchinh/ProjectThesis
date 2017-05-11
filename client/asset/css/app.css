@@ -14,12 +14,27 @@
 .caption {
         width:90%;
         bottom: .3rem;
-        position: absolute;
 }
 
 .caption p {
         color: #fff;
         -webkit-font-smoothing: antialiased;
+}
+
+.caption-home {
+        width:90%;
+        bottom: .3rem;
+        position: absolute;
+}
+
+.caption-home p {
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+}
+
+.img-home{
+    width: 760px;
+    height: 400px;
 }
 
 .category-item-img{
@@ -94,4 +109,57 @@ figure.video{
 
 article.story.clearfix {
     display: none;
+}
+
+p strong, strong{
+    float: right;
+    margin-right: 10px;
+}
+
+figure {
+    vertical-align: middle;
+    text-align: center;
+    margin: 7px auto;
+}
+
+.carousel-inner>.item>img{
+    height: 400px;
+}
+
+/*slide*/
+#myCarousel {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#myCarousel .carousel-caption {
+    left:0;
+    right:0;
+	bottom:0;
+	text-align:left;
+	padding:10px;
+	background:rgba(0,0,0,0.6);
+	text-shadow:none;
+}
+
+#myCarousel .list-group{
+	position:absolute;
+	top:5px;
+	right:0px;  
+}
+
+#myCarousel .list-group-item {
+	border-radius:2px;
+	cursor:pointer;
+}
+
+#myCarousel .list-group .active {
+	background-color:#337ab7;	
+}
+
+@media (min-width: 992px) { 
+	#myCarousel {}
+}
+@media (max-width: 991px) { 
+	.carousel-caption p,
+	#myCarousel .list-group {display:none;} 
 }

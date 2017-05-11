@@ -106,7 +106,7 @@ var ProcessSimilarNew = (function () {
                     if (processnews_1.ProcessNews.arOldNews[i].category == news.category) {
                         processnews_1.ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(processnews_1.ProcessNews.arOldNews[i].content);
                         similar = this.funcProcessCacularSimilar(news.content, processnews_1.ProcessNews.arOldNews[i].arr_content_segment);
-                        if (similar > 0.6) {
+                        if (similar > 0.7) {
                             this.printResult(news, processnews_1.ProcessNews.arOldNews[i], similar);
                             return;
                         }
@@ -127,7 +127,7 @@ var ProcessSimilarNew = (function () {
                     //                    // call function cacular similar cosinse here
                     similar = _this.funcProcessCacularSimilar(news.content, old_news.arr_content_segment);
                     //
-                    if (similar > 0.6) {
+                    if (similar > 0.7) {
                         //delete new of news is reduplicate
                         _this.printResult(news, old_news, similar);
                         return;
@@ -142,7 +142,7 @@ var ProcessSimilarNew = (function () {
                         if (processnews_1.ProcessNews.arOldNews[i].category == news.category) {
                             processnews_1.ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(processnews_1.ProcessNews.arOldNews[i].content);
                             similar = this.funcProcessCacularSimilar(news.content, processnews_1.ProcessNews.arOldNews[i].arr_content_segment);
-                            if (similar > 0.6) {
+                            if (similar > 0.7) {
                                 this.printResult(news, processnews_1.ProcessNews.arOldNews[i], similar);
                                 return;
                             }
@@ -162,7 +162,6 @@ var ProcessSimilarNew = (function () {
     /*
     * save new to db
     * author: KhacChinhDev
-    *
     */
     ProcessSimilarNew.prototype.funcSaveNew = function (news) {
         NewsItem_1.NewItem.saveNewItem(news).then(function (msg) {

@@ -116,7 +116,7 @@ export class ProcessSimilarNew{
                     if (ProcessNews.arOldNews[i].category == news.category){
                         ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(ProcessNews.arOldNews[i].content);
                         similar = this.funcProcessCacularSimilar(news.content, ProcessNews.arOldNews[i].arr_content_segment);
-                        if (similar > 0.6){
+                        if (similar > 0.7){
                             this.printResult(news, ProcessNews.arOldNews[i], similar);
                             return;
                         }                                 
@@ -140,7 +140,7 @@ export class ProcessSimilarNew{
                     //                    // call function cacular similar cosinse here
                     similar = this.funcProcessCacularSimilar(news.content, old_news.arr_content_segment);
                     //
-                    if (similar > 0.6){  
+                    if (similar > 0.7){  
                          //delete new of news is reduplicate
                         this.printResult(news, old_news, similar);
                         return; 
@@ -155,7 +155,7 @@ export class ProcessSimilarNew{
                         if (ProcessNews.arOldNews[i].category == news.category){
                             ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(ProcessNews.arOldNews[i].content);
                             similar = this.funcProcessCacularSimilar(news.content, ProcessNews.arOldNews[i].arr_content_segment);
-                            if (similar > 0.6){
+                            if (similar > 0.7){
                                 this.printResult(news, ProcessNews.arOldNews[i], similar);
                                 return;
                             }                                 
@@ -177,7 +177,6 @@ export class ProcessSimilarNew{
     /*
     * save new to db
     * author: KhacChinhDev
-    * 
     */
     funcSaveNew(news : News){
         NewItem.saveNewItem(news).then(

@@ -52,115 +52,145 @@ export class ProcessNews{
                             count++;
                             var $ = res.$;
                             if (element.author == "vnexpress"){
-                        
-                                $("a").not( ".tag_item" ).remove();
-                                $("em").remove();
-                                $(".fck_detail").children("div").remove();
-                                $(".fck_detail").children().last().remove();
-                                $(".fck_detail").children('.Normal[style*="text-align:right;"]').remove();
-                                
-                                let tags = "";
-                                $(".tag_item").each(function(i, element){
-                                    var data = $(this);
-                                    tags += data.attr('title') + ",";
-                                })
-                                let content = $(".fck_detail").text();
-                                let date = $(".block_timer_share").children().first().text(); 
-                                element.date_public = ProcessNews.getDate(date, element.author, element.category);
-                                element.content = content.toString().trim();
-                                element.tags = tags;
+                                try {
+                                    $("a").not( ".tag_item" ).remove();
+                                    $("em").remove();
+                                    $(".fck_detail").children("div").remove();
+                                    $(".fck_detail").children().last().remove();
+                                    $(".fck_detail").children('.Normal[style*="text-align:right;"]').remove();
+                                    
+                                    let tags = "";
+                                    $(".tag_item").each(function(i, element){
+                                        var data = $(this);
+                                        tags += data.attr('title') + ",";
+                                    })
+                                    let content = $(".fck_detail").text();
+                                    let date = $(".block_timer_share").children().first().text(); 
+                                    element.date_public = ProcessNews.getDate(date, element.author, element.category);
+                                    element.content = content.toString().trim();
+                                    element.tags = tags;
 
-                                ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
-                                
+                                    ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                                }
+                                catch(Error){
+                                    console.log(Error.message);
+                                }
                             } 
                             else if (element.author == "dantri"){
-                                let tags = $(".news-tags-item").text();
-                                $("#divNewsContent").children().last().remove();
-                                $("#divNewsContent").children('p[style*="text-align: right;"]').remove();
-                                $("#divNewsContent").children('div').remove();
+                                try {
+                                    let tags = $(".news-tags-item").text();
+                                    $("#divNewsContent").children().last().remove();
+                                    $("#divNewsContent").children('p[style*="text-align: right;"]').remove();
+                                    $("#divNewsContent").children('div').remove();
 
-                                let content = $("#divNewsContent").text();
-                                let date = $(".box26").children("span").text();
-                                element.content = content.toString().trim();
-                                element.date_public = ProcessNews.getDate(date, element.author, element.category);
-                                element.tags = tags;
+                                    let content = $("#divNewsContent").text();
+                                    let date = $(".box26").children("span").text();
+                                    element.content = content.toString().trim();
+                                    element.date_public = ProcessNews.getDate(date, element.author, element.category);
+                                    element.tags = tags;
 
-                                ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                                    ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                                }
+                                catch(Error){
+                                    console.log(Error.message);
+                                }
+
                             }
                             else if (element.author == "thanhnien"){
-                                $("table").remove();
-                                $("#abody").children('div').children('article').remove();
-                                $("#abody").children().last().remove();
-                                $("#abody").children('p[style*="text-align: right;"]').remove();
-                                $("time").children("span").remove();
-                                $(".tags").children().first().remove();
-                                let content = $("#abody").text();
-                                let date = $("time").text();
-                                let tags = '';
-                                $(".tags").children().each(function(i, element){
-                                    var data = $(this);
-                                    tags += data.text().trim() + ",";
-                                })
-                                element.content = content.toString().trim();
-                                element.date_public = ProcessNews.getDate(date, element.author, element.category);
-                                element.tags = tags;
+                                try {
+                                    $("table").remove();
+                                    $("#abody").children('div').children('article').remove();
+                                    $("#abody").children().last().remove();
+                                    $("#abody").children('p[style*="text-align: right;"]').remove();
+                                    $("time").children("span").remove();
+                                    $(".tags").children().first().remove();
+                                    let content = $("#abody").text();
+                                    let date = $("time").text();
+                                    let tags = '';
+                                    $(".tags").children().each(function(i, element){
+                                        var data = $(this);
+                                        tags += data.text().trim() + ",";
+                                    })
+                                    element.content = content.toString().trim();
+                                    element.date_public = ProcessNews.getDate(date, element.author, element.category);
+                                    element.tags = tags;
 
-                                ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                                    ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                                }
+                                catch(Error){
+                                    console.log(Error.message);
+                                }
                             }
                             else if (element.author == "vietnamnet news"){
-                                $("div.inner-article").remove();
-                                $("#ArticleContent div").remove();
-                                $("#ArticleContent p iframe").remove();
-                                $("table").remove();
-                                $("#ArticleContent").children().first().remove();
-                                $("#ArticleContent").children().last().remove();
-                                $(".tagBoxContent").children().children().first().remove();
-                                let date = $(".ArticleDateTime").children("span").text();
-                                let content = $("#ArticleContent").text();
-                                let tags = "";
-                                $(".tagBoxContent").children().children().each(function(i, element){
-                                    var data = $(this);
-                                    tags += data.text().trim() + ",";
-                                })
-                                element.tags = tags;
-                                element.content = content.toString().trim();
-                                element.date_public = ProcessNews.getDate(date, element.author, element.category);
+                                try {
+                                    $("div.inner-article").remove();
+                                    $("#ArticleContent div").remove();
+                                    $("#ArticleContent p iframe").remove();
+                                    $("table").remove();
+                                    $("#ArticleContent").children().first().remove();
+                                    $("#ArticleContent").children().last().remove();
+                                    $(".tagBoxContent").children().children().first().remove();
+                                    let date = $(".ArticleDateTime").children("span").text();
+                                    let content = $("#ArticleContent").text();
+                                    let tags = "";
+                                    $(".tagBoxContent").children().children().each(function(i, element){
+                                        var data = $(this);
+                                        tags += data.text().trim() + ",";
+                                    })
+                                    element.tags = tags;
+                                    element.content = content.toString().trim();
+                                    element.date_public = ProcessNews.getDate(date, element.author, element.category);
 
-                                ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                                    ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                                }
+                                catch(Error){
+                                    console.log(Error.message);
+                                }
                             }
                             else if (element.author == "zing"){
-                                $(".the-article-body table").remove();
-                                $(".the-article-body").children("div").remove();
-                                $(".the-article-body").children("figure").remove();
-                                $(".the-article-body").children("script").remove();
-                                let content = $(".the-article-body").text();
-                                let date = $('.the-article-publish').text();
-                                let tags = "";
-                                $(".the-article-tags").children().each(function(i, element){
-                                    var data = $(this);
-                                    tags += data.text().trim() + ",";
-                                })
-                                element.tags = tags;
-                                element.content = content;
-                                element.date_public = ProcessNews.getDate(date, element.author, element.category);
-                                ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                                try {
+                                    $(".the-article-body table").remove();
+                                    $(".the-article-body").children("div").remove();
+                                    $(".the-article-body").children("figure").remove();
+                                    $(".the-article-body").children("script").remove();
+                                    let content = $(".the-article-body").text();
+                                    let date = $('.the-article-publish').text();
+                                    let tags = "";
+                                    $(".the-article-tags").children().each(function(i, element){
+                                        var data = $(this);
+                                        tags += data.text().trim() + ",";
+                                    })
+                                    element.tags = tags;
+                                    element.content = content;
+                                    element.date_public = ProcessNews.getDate(date, element.author, element.category);
+                                    ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                                }
+                                catch(Error){
+                                    console.log(Error.message);
+                                }
                             }
                             else if (element.author == "tintuc"){
-                                $("figure").remove();
-                                $("table").remove();
-                                $("#articleContent div").remove();
-                                $("#articleContent p[style*='text-align: center;']").remove();
-                                $(".article-tags").children().children().first().remove();
-                                let content = $("#articleContent").text();
-                                let date = $(".publish-date").children().text();
-                                let tags = "";
-                                $(".article-tags").children().children().each(function(i, element){
-                                    var data = $(this);
-                                    tags += data.text().trim() + ",";
-                                })
-                                element.content = content;
-                                element.date_public = ProcessNews.getDate(date, element.author, element.category);
-                                ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                                try {
+                                    $("figure").remove();
+                                    $("table").remove();
+                                    $("#articleContent div").remove();
+                                    $("#articleContent p[style*='text-align: center;']").remove();
+                                    $(".article-tags").children().children().first().remove();
+                                    let content = $("#articleContent").text();
+                                    let date = $(".publish-date").children().text();
+                                    let tags = "";
+                                    $(".article-tags").children().children().each(function(i, element){
+                                        var data = $(this);
+                                        tags += data.text().trim() + ",";
+                                    })
+                                    element.tags = tags;
+                                    element.content = content;
+                                    element.date_public = ProcessNews.getDate(date, element.author, element.category);
+                                    ProcessNews.saveFlagNewsItem(element.author, element.category, element.title, element.date_public);
+                                }
+                                catch(Error){
+                                    console.log(Error.message);
+                                }
                             }
                             
                             if (count == ProcessNews.tempArrNews.length)
