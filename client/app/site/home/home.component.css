@@ -39,7 +39,9 @@ h2 a:hover{
 }
 
 .featured-news {
-    height: 410px;
+    height: autho;
+    overflow: hidden;
+    min-height: 385px;
 }
 
 .featured-news .img-thumbnail{

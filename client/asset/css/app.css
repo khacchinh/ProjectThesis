@@ -112,7 +112,7 @@ article.story.clearfix {
 }
 
 p strong, strong{
-    float: right;
+    /* float: right; */
     margin-right: 10px;
 }
 
@@ -156,6 +156,33 @@ figure {
 	background-color:#337ab7;	
 }
 
+button.btn.col-sm-2 {
+    padding: 6px 0px;
+}
+
+form.class-form {
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 22px;
+}
+
+.featured-news a {
+    color: black;
+}
+
+.featured-news a:hover {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.col-sm-8 a {
+    color: black;
+}
+
+.col-sm-8 a:hover {
+    color: #337ab7;
+    text-decoration: none;
+}
 @media (min-width: 992px) { 
 	#myCarousel {}
 }

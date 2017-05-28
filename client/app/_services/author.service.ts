@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { AppConfig } from '../app.config';
 
 @Injectable()
 export class AuthorService {
-    constructor(private http: Http) { 
+    constructor(private http: Http, private config: AppConfig) { 
     }
 
     getAll() {
-       return this.http.get('/api/author')
+       return this.http.get(this.config.apiUrl + '/api/author')
             .map(res => res.json());
     }
 
@@ -21,12 +22,12 @@ export class AuthorService {
     }
 
     deActiveAuthor(id: string){
-        return this.http.put('/api/authordeactive/' + id, JSON.stringify({}))
+        return this.http.put(this.config.apiUrl + '/api/authordeactive/' + id, JSON.stringify({}))
             .map(res => res.json());
     }
 
     onActiveAuthor(id: string){
-        return this.http.put('/api/authoronactive/' + id, JSON.stringify({}))
+        return this.http.put(this.config.apiUrl + '/api/authoronactive/' + id, JSON.stringify({}))
             .map(res => res.json());
     }
 

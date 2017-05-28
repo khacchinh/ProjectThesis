@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as path from 'path';
 import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
 
 //use compression
 import * as compression from 'compression';
@@ -40,7 +41,7 @@ var app : express.Application = express();
 app.use(compression());
 
 //set port
-app.set('port', (process.env.PORT || 3000 ));
+app.set('port', (process.env.PORT || 4000 ));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.use(express.static(path.join(__dirname, 'asset')));
 
 //set routes
+app.use(cors());
 app.use('/', index);
 app.use('/api/', tasks);
 app.use('/api/', news);
@@ -107,7 +109,7 @@ function doProcessNews(){
 }
 
 //call class crawler
-// doProcessNews();
+//doProcessNews();
 
 
 mongoose.Promise = global.Promise;

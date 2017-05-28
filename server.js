@@ -2,6 +2,7 @@
 var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
+var cors = require("cors");
 //use compression
 var compression = require("compression");
 //import routes for app
@@ -26,13 +27,14 @@ var NewsItem_1 = require("./model/NewsItem");
 var app = express();
 app.use(compression());
 //set port
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 4000));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // Set Static folder
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(express.static(path.join(__dirname, 'asset')));
 //set routes
+app.use(cors());
 app.use('/', index);
 app.use('/api/', tasks);
 app.use('/api/', news);
@@ -75,7 +77,7 @@ function doProcessNews() {
     });
 }
 //call class crawler
-// doProcessNews();
+//doProcessNews();
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/my_database', function (err) {
     if (err)

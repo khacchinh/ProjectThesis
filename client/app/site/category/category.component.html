@@ -1,7 +1,7 @@
                 <div class="col-md-8">
                     <div class="row">
                         <ul class="breadcrumb col-md-11">
-                            <li><a href="#">Home</a> <span>/</span></li>
+                            <li><a href="#">Trang chủ</a></li>
                             <li class="active">{{itemHot?.category}}</li>
                         </ul>
                     </div>
@@ -24,7 +24,7 @@
                             <p>
                                {{itemHot?.sumary}}
                             </p>
-                            <a href="http://localhost:3000/#/site/single/{{itemHot?._id}}">Continue reading</a>
+                            <a href="http://localhost:3000/#/site/single/{{itemHot?._id}}">Đọc tiếp</a>
                         </div>
                     </div>
 
@@ -65,23 +65,22 @@
                             <!-- pager -->
                             <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
                                 <li [ngClass]="{disabled:pager.currentPage === 1}">
-                                    <a (click)="setPage(1)">First</a>
+                                    <a (click)="setPage(1)">Đầu</a>
                                 </li>
                                 <li [ngClass]="{disabled:pager.currentPage === 1}">
-                                    <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                                    <a (click)="setPage(pager.currentPage - 1)">Sau</a>
                                 </li>
                                 <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
                                     <a (click)="setPage(page)">{{page}}</a>
                                 </li>
                                 <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                                    <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                                    <a (click)="setPage(pager.currentPage + 1)">Tiếp theo</a>
                                 </li>
                                 <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                                    <a (click)="setPage(pager.totalPages)">Last</a>
+                                    <a (click)="setPage(pager.totalPages)">Cuối</a>
                                 </li>
                             </ul>
                         </div>
-                        <pre class="card card-block card-header">Page: {{pager.currentPage}} / {{pager.totalPages}}</pre>
                     </div>
 
                 </div>

@@ -19,6 +19,7 @@ var index_3 = require("./loginadmin/index");
 var not_found_component_1 = require("./not-found.component");
 var app_routing_1 = require("./app.routing");
 var index_4 = require("./_services/index");
+var app_config_1 = require("./app.config");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -42,6 +43,7 @@ AppModule = __decorate([
             index_2.AuthGuard,
             index_4.AlertService,
             index_4.AuthenticationService,
+            app_config_1.AppConfig,
             // providers used to create fake backend
             index_1.fakeBackendProvider,
             testing_1.MockBackend,

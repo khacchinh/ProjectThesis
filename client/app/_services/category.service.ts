@@ -1,14 +1,15 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { AppConfig } from '../app.config';
 
 @Injectable()
 export class CategoryService {
-    constructor(private http: Http) { 
+    constructor(private http: Http, private config: AppConfig) { 
     }
 
     getAll() {
-       return this.http.get('/api/categorys')
+       return this.http.get(this.config.apiUrl + '/api/categorys')
             .map(res => res.json());
     }
 

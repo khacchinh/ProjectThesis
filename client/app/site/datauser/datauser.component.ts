@@ -32,7 +32,7 @@ export class DataUserComponent implements OnInit {
     }
 
     convertDate(date:any) : string{
-        return new Date(date).toString();
+        return new Date(date).toLocaleString();
     }
 
     removeNewsDataUser(news_id : string, types : string, index : number){

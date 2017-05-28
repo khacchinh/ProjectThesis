@@ -77,7 +77,7 @@ var ProcessSimilarNew = (function () {
             news.category = 'công nghệ';
             this.funcImportNewByCategory(news, this.congnghenews);
         }
-        else if (news.category == "sức khỏe" || news.category == "suc khoe" || news.category == 'sống khỏe') {
+        else if (news.category == "sức khỏe" || news.category == "suc khoe" || news.category == 'sống khỏe' || news.category == "sức khoẻ") {
             news.category = 'sức khỏe';
             this.funcImportNewByCategory(news, this.suckhoenews);
         }

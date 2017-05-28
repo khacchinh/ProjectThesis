@@ -12,10 +12,10 @@
                                 <div class="item active">
                                     <img class="img-home" src="{{news.img}}">
                                     <div class="carousel-caption">
-                                    <a  href="http://localhost:3000/#/site/single/{{news._id}}" target="_blank"><h4>{{news.title}}</h4></a>
+                                    <a  href="http://localhost:3000/#/site/single/{{news._id}}" ><h4>{{news.title}}</h4></a>
                                     <p>{{news.sumary}} 
-                                    <a class="label label-primary" href="http://localhost:3000/#/site/single/{{news._id}}" target="_blank">
-                                    Read more ></a></p>
+                                    <a class="label label-primary" href="http://localhost:3000/#/site/single/{{news._id}}" >
+                                    Đọc tiếp ></a></p>
                                     </div>            
                                 </div><!-- End Item -->
                                 </ng-container>
@@ -23,10 +23,10 @@
                                 <div class="item">
                                     <img class="img-home" src="{{news.img}}">
                                     <div class="carousel-caption">
-                                    <a  href="http://localhost:3000/#/site/single/{{news._id}}" target="_blank"><h4>{{news.title}}</h4></a>
+                                    <a  href="http://localhost:3000/#/site/single/{{news._id}}" ><h4>{{news.title}}</h4></a>
                                     <p>{{news.sumary}} 
-                                    <a class="label label-primary" href="http://localhost:3000/#/site/single/{{news._id}}" target="_blank">
-                                    Read more ></a></p>
+                                    <a class="label label-primary" href="http://localhost:3000/#/site/single/{{news._id}}" >
+                                    Đọc tiếp ></a></p>
                                     </div>            
                                 </div><!-- End Item -->
                                 </ng-container>
@@ -62,7 +62,12 @@
                                 <img alt="" src="{{data?.thegioi && data?.thegioi[1].img}}" class="img-thumbnail"/>
                                 <a href="http://localhost:3000/#/site/single/{{data?.thegioi && data?.thegioi[1]._id}}"><h4>{{data?.thegioi && data?.thegioi[1].title}}</h4></a>
                                 <span class="date"><small>{{convertDate(data?.thegioi[1].date_public)}} | {{data?.thegioi[1].comment.length}} comments</small></span>
-                                <p>{{data?.thegioi && data?.thegioi[1].sumary}}</p>
+                                <ng-container *ngIf="data?.thegioi && data?.thegioi[1].sumary != ''">
+                                        <p>{{data?.thegioi && data?.thegioi[1].sumary}}</p>
+                                </ng-container>
+                                <ng-container *ngIf="data?.thegioi && data?.thegioi[1].sumary == ''">
+                                        <p>{{data?.thegioi && data?.thegioi[1].title}}</p>
+                                </ng-container>
                             </div>
 
 
@@ -91,7 +96,12 @@
                                 <img alt="" src="{{data?.kinhdoanh && data?.kinhdoanh[1].img}}" class="img-thumbnail"/>
                                 <a href="http://localhost:3000/#/site/single/{{data?.kinhdoanh && data?.kinhdoanh[1]._id}}"><h4>{{data?.kinhdoanh && data?.kinhdoanh[1].title}}</h4></a>
                                 <span class="date"><small>{{convertDate(data?.kinhdoanh[1].date_public)}} | {{data?.kinhdoanh[1].comment.length}} comments</small></span>
-                                <p>{{data?.kinhdoanh && data?.kinhdoanh[1].sumary}}</p>
+                                <ng-container *ngIf="data?.kinhdoanh && data?.kinhdoanh[1].sumary != ''">
+                                        <p>{{data?.kinhdoanh && data?.kinhdoanh[1].sumary}}</p>
+                                </ng-container>
+                                <ng-container *ngIf="data?.kinhdoanh && data?.kinhdoanh[1].sumary == ''">
+                                        <p>{{data?.kinhdoanh && data?.kinhdoanh[1].title}}</p>
+                                </ng-container>
                             </div>
 
 
@@ -123,7 +133,12 @@
                                 <img src="{{data?.congnghe && data?.congnghe[1].img}}" class="img-responsive"/>
                                 <div class="caption-home">
                                     <h2><a href="http://localhost:3000/#/site/single/{{data?.congnghe && data?.congnghe[1]._id}}">{{data?.congnghe && data?.congnghe[1].title}}</a></h2>
-                                    <p>{{data?.congnghe && data?.congnghe[1].sumary}}</p>
+                                    <ng-container *ngIf="data?.congnghe && data?.congnghe[1].sumary != ''">
+                                        <p>{{data?.congnghe && data?.congnghe[1].sumary}}</p>
+                                    </ng-container>
+                                    <ng-container *ngIf="data?.congnghe && data?.congnghe[1].sumary == ''">
+                                        <p>{{data?.congnghe && data?.congnghe[1].title}}</p>
+                                    </ng-container>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -159,7 +174,12 @@
                                 <img alt="" src="{{data?.phapluat && data?.phapluat[1].img}}" class="img-thumbnail"/>
                                 <a href="http://localhost:3000/#/site/single/{{data?.phapluat && data?.phapluat[1]._id}}"><h4>{{data?.phapluat && data?.phapluat[1].title}}</h4></a>
                                 <span class="date"><small>{{convertDate(data?.phapluat[1].date_public)}} | {{data?.phapluat[1].comment.length}} comments</small></span>
-                                <p>{{data?.phapluat && data?.phapluat[1].sumary}}</p>
+                                <ng-container *ngIf="data?.phapluat && data?.phapluat[1].sumary != ''">
+                                    <p>{{data?.phapluat && data?.phapluat[1].sumary}}</p>
+                                </ng-container>
+                                <ng-container *ngIf="data?.phapluat && data?.phapluat[1].sumary == ''">
+                                    <p>{{data?.phapluat && data?.phapluat[1].title}}</p>
+                                </ng-container>
                             </div>
 
 
@@ -188,7 +208,12 @@
                                 <img alt="" src="{{data?.suckhoe && data?.suckhoe[1].img}}" class="img-thumbnail"/>
                                 <a href="http://localhost:3000/#/site/single/{{data?.suckhoe && data?.suckhoe[1]._id}}"><h4>{{data?.suckhoe && data?.suckhoe[1].title}}</h4></a>
                                 <span class="date"><small>{{convertDate(data?.suckhoe[1].date_public)}} | {{data?.suckhoe[1].comment.length}} comments</small></span>
-                                <p>{{data?.suckhoe && data?.suckhoe[1].sumary}}</p>
+                                <ng-container *ngIf="data?.suckhoe && data?.suckhoe[1].sumary != ''">
+                                    <p>{{data?.suckhoe && data?.suckhoe[1].sumary}}</p>
+                                </ng-container>
+                                <ng-container *ngIf="data?.suckhoe && data?.suckhoe[1].sumary == ''">
+                                    <p>{{data?.suckhoe && data?.suckhoe[1].title}}</p>
+                                </ng-container>
                             </div>
 
 
@@ -220,7 +245,12 @@
                                 <img src="{{data?.thethao && data?.thethao[1].img}}" class="img-responsive"/>
                                 <div class="caption-home">
                                     <h2><a href="http://localhost:3000/#/site/single/{{data?.thethao && data?.thethao[1]._id}}">{{data?.thethao && data?.thethao[1].title}}</a></h2>
-                                    <p>{{data?.thethao && data?.thethao[1].sumary}}</p>
+                                    <ng-container *ngIf="data?.thethao && data?.thethao[1].sumary != ''">
+                                        <p>{{data?.thethao && data?.thethao[1].sumary}}</p>
+                                    </ng-container>
+                                    <ng-container *ngIf="data?.thethao && data?.thethao[1].sumary == ''">
+                                        <p>{{data?.thethao && data?.thethao[1].title}}</p>
+                                    </ng-container>
                                 </div>
                             </div>
                             <div class="col-md-6">

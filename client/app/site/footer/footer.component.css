@@ -1,0 +1,36 @@
+footer{
+	margin-top: 10px;
+}
+
+footer .footer-line {
+    border-top: 2px solid black;
+    opacity: 0.05;
+    height: 0px;
+    margin-bottom: 5px;
+}
+
+footer .col-md-8{
+	text-align: center;
+}
+
+.col-md-8 ul{
+	list-style-type: none;
+	display: block;
+}
+
+.col-md-8 ul li{
+	display: inline-block;
+	margin-left: 10px;
+}
+
+footer .col-md-4{
+	text-align: center;
+}
+
+.col-md-4 a{
+	text-decoration: none;
+}
+
+.col-md-4 a:hover{
+	cursor: pointer;
+}

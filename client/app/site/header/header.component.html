@@ -5,13 +5,13 @@
                         </div>      
                         <div class="row-md-col6">
                             <ul class="nav navbar-nav" style="float: right;" *ngIf="isLogin">
-                                <li><a [routerLink]="['./login']">Login</a></li>
-                                <li><a [routerLink]="['./register']">Register</a></li>
+                                <li><a [routerLink]="['./login']">Đăng nhập</a></li>
+                                <li><a [routerLink]="['./register']">Đăng ký</a></li>
                             </ul>
                             <ul class="nav navbar-nav" style="float: right;" *ngIf="!isLogin">
-                                <li><a [routerLink] = "['./datauser']">Data user</a></li>
+                                <li><a [routerLink] = "['./datauser']">Lịch sử người dùng</a></li>
                                 <li><a>{{user?.name}}</a></li>
-                                <li><a (click)="logout($event)">Logout</a></li>
+                                <li><a (click)="logout($event)">Đăng xuất</a></li>
                             </ul>
                         </div>           
                 </div>
@@ -20,9 +20,9 @@
                 <div class="row-md-col12">
                     <div class="span4 logo">
                         <a href="index.html">
-                            <h1 class="logo-title">KhacChinhDev News</h1>
+                            <h1 class="logo-title">KHÓA LUẬN TỐT NGHIỆP 2O17 - HTTT2013</h1>
                         </a>
-                        <span class="slogan">Project Thesis UIT</span>
+                        <span class="slogan">Công cụ chọn lọc tin tức hiệu quả</span>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a routerLink="./" routerLinkActive="active" >Home</a></li>
+                            <li class="active"><a routerLink="./" routerLinkActive="active" >Trang chủ</a></li>
                             <li><a [routerLink] = "['./category', 'thế giới']" >Thế giới</a></li>
                             <li><a [routerLink] = "['./category', 'kinh doanh']" >Kinh doanh</a></li>
                             <li><a [routerLink] = "['./category', 'pháp luật']" >Pháp luật</a></li>

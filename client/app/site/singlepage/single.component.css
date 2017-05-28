@@ -48,3 +48,29 @@
 a.post-tag:hover{
     background-color: transparent;
 }
+
+.main-comment {
+    max-height: 400px;
+}
+
+.child-comment {
+    padding: 5px;
+}
+
+.child-comment p{
+    margin-left: 10px;
+}
+
+.form-group.last {
+    float: right;
+}
+
+.row.comment {
+    padding-left: 16px;
+}
+
+.line-comment{
+    border-bottom: 1px solid gray;
+    opacity: 0.1;
+    height: 0px;
+}

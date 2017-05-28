@@ -2,74 +2,30 @@
 
 
 <footer id="footer">
-    
+    <div class="row footer-line"></div>
     <div class="row">
-        <!--
-        <div class="col-sm-3">
-            <h4>About Us</h4><br/>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. 
-        </div>
-
-        <div class="col-sm-3">
-            <h4>Latest Tweets</h4>
-            <br/>
-            <div class="item-tweet">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, <a href="#">http://t.co/xie8fDjd</a> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                <br/>
-                <span class="tweet-date">about 7 hours ago</span>
-            </div>
-            <div class="item-tweet">
-                Security Release available for download now - <a href="#">http://t.co/xie8fDjd</a> 
-                <br/>
-                <span class="tweet-date">about 7 hours ago</span>
-            </div>
-            <div class="item-tweet">
-                Lorem ipsum dolor sit amet, <a href="#">http://t.co/xie8fDjd</a> consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                <br/>
-                <span class="tweet-date">about 7 hours ago</span>
-            </div>
-        </div>
-
-        <div class="col-sm-3">
-            <h4>Random Photos</h4>
-            <br/>
-            <ul class="">
-                <li class="img-thumbnail ">
-                    <a href="galleries.html"><img alt="" src="asset/img/70x70-1.jpg" /></a>
-                </li>       
-                <li class="img-thumbnail ">
-                    <a href="galleries.html"><img alt="" src="asset/img/70x70-1.jpg" /></a>
-                </li>       
-                <li class="img-thumbnail ">
-                    <a href="galleries.html"><img alt="" src="asset/img/70x70-1.jpg" /></a>
-                </li>        
-                <li class="img-thumbnail ">
-                    <a href="galleries.html"><img alt="" src="asset/img/70x70-1.jpg" /></a>
-                </li>  
-                <li class="img-thumbnail ">
-                    <a href="galleries.html"><img alt="" src="asset/img/70x70-1.jpg" /></a>
-                </li>  
-                <li class="img-thumbnail ">
-                    <a href="galleries.html"><img alt="" src="asset/img/70x70-1.jpg" /></a>
-                </li>  
+        <div class="col-md-8">
+            <ul>
+                <li><a routerLink="./" routerLinkActive="active" >Trang chủ</a></li>
+                <li><a [routerLink] = "['./category', 'thế giới']" >Thế giới</a></li>
+                <li><a [routerLink] = "['./category', 'kinh doanh']" >Kinh doanh</a></li>
+                <li><a [routerLink] = "['./category', 'pháp luật']" >Pháp luật</a></li>
+                <li><a [routerLink] = "['./category', 'thể thao']" >Thể thao</a></li>
+                <li><a [routerLink] = "['./category', 'công nghệ']" >Công nghệ</a></li>
+                <li><a [routerLink] = "['./category', 'sức khỏe']" >Sức khỏe</a></li>
             </ul>
         </div>
-        -->
-        <div class="col-sm-12">
-            <h4>Contact Info</h4>
-            <h1>KhacChinhDev</h1>
-            <p>
-                UIT<br/>
-                HTTT 2013<br/>
-                Đông Hòa, Dĩ An, Bình Dương
-            </p>
-            <iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=London@51.508129,-0.128005&ie=UTF8&z=12&t=m&iwloc=near&output=embed"></iframe><br>
+        <div class="col-md-4">
+            <a id="btn-top" (click) = "onGoTop()"> Về đầu trang</a>
         </div>
     </div>
+    <div class="row footer-line"></div>
 
-    <div class="row">
+    <div class="row" style="margin-bottom: 20px;">
         <h5 class="copyright">Khóa luận tốt nghiệp 2016-2017</h5>
-        <p class="powered-by">Powered by : <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>, developed by <a href="https://github.com/khacchinh">KhacChinhDev</a></p>
+        <p class="powered-by">Sinh viên thực hiện : <br>
+            <a style="margin-left: 20px" href="https://github.com/khacchinh">13520079 Huỳnh Khắc Chinh</a><br>
+            <a style="margin-left: 20px" href="#">13520281 Nguyễn Thị Ngọc Hoa</a>
+        </p>
     </div>
 </footer>

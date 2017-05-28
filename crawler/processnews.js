@@ -8,7 +8,7 @@ var ProcessNews = (function () {
         this.count = 0;
     }
     ProcessNews.prototype.importNew = function (news) {
-        if (news.title + '' == "undefined" || news.img + '' == "undefined" || news.url + '' == "undefined" || news.sumary + '' == "undefined" || news.category + '' == "undefined")
+        if (typeof news.title === "undefined" || typeof news.img === "undefined" || typeof news.url === "undefined" || typeof news.sumary === "undefined" || typeof news.category === "undefined")
             return;
         if (this.checkExistNews(news.title))
             return;

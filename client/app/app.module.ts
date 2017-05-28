@@ -15,7 +15,7 @@ import { PageNotFoundComponent }   from './not-found.component';
 import { AppRoutingModule }        from './app.routing';
 
 import { AlertService, AuthenticationService } from './_services/index';
-
+import { AppConfig } from './app.config';
 
 
 
@@ -36,6 +36,7 @@ import { AlertService, AuthenticationService } from './_services/index';
         AuthGuard,
         AlertService,
         AuthenticationService,
+        AppConfig,
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,

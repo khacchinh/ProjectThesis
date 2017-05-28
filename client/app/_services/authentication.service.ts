@@ -4,15 +4,16 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
 import { User } from '../_models/user';
+import { AppConfig } from '../app.config';
 
 @Injectable()
 export class AuthenticationService {
-    constructor(private http: Http) { }
+    constructor(private http: Http, private config: AppConfig) { }
 
     login(username: string, password: string, access: number = 0) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/authen', JSON.stringify({ username: username, password: password, access: access }), {headers: headers})
+        return this.http.post(this.config.apiUrl + '/api/authen', JSON.stringify({ username: username, password: password, access: access }), {headers: headers})
             .map((response: Response) => {
                 let result = response.json();
                 let user = result.user;

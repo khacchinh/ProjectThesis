@@ -354,7 +354,6 @@ export class CrawlerNewsClass{
                 'http://news.zing.vn/suc-khoe.html',
                 'http://tintuc.vn/suc-khoe',
                 
-                
                 //pháp luật
                 'http://vnexpress.net/tin-tuc/phap-luat',
                 'http://dantri.com.vn/phap-luat.htm',
