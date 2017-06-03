@@ -4,11 +4,11 @@
                         <div class="row-md-col6">
                         </div>      
                         <div class="row-md-col6">
-                            <ul class="nav navbar-nav" style="float: right;" *ngIf="isLogin">
+                            <ul class="nav navbar-nav top-menu-mobile" style="float: right;" *ngIf="isLogin">
                                 <li><a [routerLink]="['./login']">Đăng nhập</a></li>
                                 <li><a [routerLink]="['./register']">Đăng ký</a></li>
                             </ul>
-                            <ul class="nav navbar-nav" style="float: right;" *ngIf="!isLogin">
+                            <ul class="nav navbar-nav top-menu-mobile" style="float: right;" *ngIf="!isLogin">
                                 <li><a [routerLink] = "['./datauser']">Lịch sử người dùng</a></li>
                                 <li><a>{{user?.name}}</a></li>
                                 <li><a (click)="logout($event)">Đăng xuất</a></li>
@@ -32,16 +32,26 @@
             <!-- Start Main Navigation -->
             <div class="row">
                 <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a routerLink="./" routerLinkActive="active" >Trang chủ</a></li>
-                            <li><a [routerLink] = "['./category', 'thế giới']" >Thế giới</a></li>
-                            <li><a [routerLink] = "['./category', 'kinh doanh']" >Kinh doanh</a></li>
-                            <li><a [routerLink] = "['./category', 'pháp luật']" >Pháp luật</a></li>
-                            <li><a [routerLink] = "['./category', 'thể thao']" >Thể thao</a></li>
-                            <li><a [routerLink] = "['./category', 'công nghệ']" >Công nghệ</a></li>
-                            <li><a [routerLink] = "['./category', 'sức khỏe']" >Sức khỏe</a></li>
-                        </ul>
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a routerLink="./" routerLinkActive="active" class="navbar-brand" href="#">Trang chủ</a>
+                        </div>
+                        <div id="navbar" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a [routerLink] = "['./category', 'thế giới']" >Thế giới</a></li>
+                                <li><a [routerLink] = "['./category', 'kinh doanh']" >Kinh doanh</a></li>
+                                <li><a [routerLink] = "['./category', 'pháp luật']" >Pháp luật</a></li>
+                                <li><a [routerLink] = "['./category', 'thể thao']" >Thể thao</a></li>
+                                <li><a [routerLink] = "['./category', 'công nghệ']" >Công nghệ</a></li>
+                                <li><a [routerLink] = "['./category', 'sức khỏe']" >Sức khỏe</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </nav>
             </div>

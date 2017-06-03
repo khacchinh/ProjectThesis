@@ -77,7 +77,7 @@ function doProcessNews() {
     });
 }
 //call class crawler
-//doProcessNews();
+doProcessNews();
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/my_database', function (err) {
     if (err)

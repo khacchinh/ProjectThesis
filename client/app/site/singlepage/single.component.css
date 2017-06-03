@@ -74,3 +74,7 @@ a.post-tag:hover{
     opacity: 0.1;
     height: 0px;
 }
+
+hr{
+    margin: 0px;
+}

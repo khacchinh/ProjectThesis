@@ -109,7 +109,7 @@ function doProcessNews(){
 }
 
 //call class crawler
-//doProcessNews();
+doProcessNews();
 
 
 mongoose.Promise = global.Promise;

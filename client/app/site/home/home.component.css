@@ -25,12 +25,8 @@
 
 h2 a{
     font-size: 0.7em;
-    color: red;
+    color: darkgrey;
     text-decoration: none;
-}
-
-h2 a:hover{
-    text-decoration: underline;
 }
 
 .row.item-news {
@@ -47,5 +43,28 @@ h2 a:hover{
 .featured-news .img-thumbnail{
     width: 100%;
     height: 220px;
+}
+
+.carousel-caption a {
+    color: blanchedalmond;
+}
+
+.carousel-caption a:hover {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.carousel-caption .label.label-primary{
+    background-color: white;
+    color: black;
+}
+
+.carousel-caption .label.label-primary:hover, h2 a:hover{
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.widget-title.single {
+    margin-left: 12px;
 }
 

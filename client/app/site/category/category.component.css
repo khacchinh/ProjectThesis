@@ -6,11 +6,11 @@
     margin-top: 0px;
 }
 
-.col-sm-11 a{
+.col-sm-11 a, .col-md-7 a{
     color: black;
 }
 
-.col-sm-11 a:hover{
+.col-sm-11 a:hover, .col-md-7 a:hover{
     color: #337ab7;
     text-decoration: none;
 }

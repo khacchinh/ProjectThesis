@@ -6,7 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'searchform.component.html'
+    templateUrl: 'searchform.component.html',
+    styleUrls: ["./searchform.component.css"]
 })
 
 export class SearchComponent implements OnInit {

@@ -34,3 +34,11 @@ footer .col-md-4{
 .col-md-4 a:hover{
 	cursor: pointer;
 }
+
+.row.footer-line.strong-line {
+    opacity: 0.3 ! important;
+}
+
+.menu-footer li a, #btn-top, .copyright, .powered-by a{
+	color: gray;
+}

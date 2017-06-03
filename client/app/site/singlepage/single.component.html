@@ -2,7 +2,7 @@
 
                     <div class="row">
                         <ul class="breadcrumb col-md-11">
-                            <li><a href="#">Home</a></li>
+                            <li>Trang chủ</li>
                             <li class="active">{{new_item?.category}}</li>
                         </ul>
                     </div>
@@ -24,58 +24,56 @@
                         </div>
                     </div>
 
-                     <div class="row">
-                        <div class="col-sm-12">
-                            <p>Nguồn: {{new_item?.author}}</p>
-                            <p>Địa chỉ: <a [href] = "new_item?.url">{{new_item?.url}}</a></p>
-                        </div>
+                    <div class="row">
+                        <p>Nguồn: {{new_item?.author}}</p>
+                        <p>Địa chỉ: <a [href] = "new_item?.url">{{new_item?.url}}</a></p>
                     </div>
-                    <hr>
+
+                    <hr style="margin-bottom: 8px;">
 
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div class="post-taglist">
-                                <a class="post-tag" >Tags</a>
-                                <a class="post-tag" href="#" *ngFor = "let item of tags">
+                        <div class="post-taglist">
+                            <a class="post-tag" >Tags</a>
+                            <a class="post-tag" href="#" *ngFor = "let item of tags">
                                    {{item}}
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <h4>Tin liên quan</h4>
-                            <ng-container *ngIf = "relative_new?.length > 0">
-                            <ul class="nav navbar">
-                                <li *ngFor = "let item of relative_new">
-                                    <a [routerLink]="['../', item._id]">{{item.title}}</a>
-                                </li>
-                            </ul>
-                            </ng-container>
+                            </a>
                         </div>
                     </div>
+                    <div class="row">
+                        <h4>Tin liên quan</h4>
+                        <ng-container *ngIf = "relative_new?.length > 0">
+                        <ul class="nav navbar">
+                            <li *ngFor = "let item of relative_new">
+                                <a [routerLink]="['../', item._id]">{{item.title}}</a>
+                            </li>
+                        </ul>
+                        </ng-container>
+                    </div>
+
                     <hr>
                     <div class="row">
-                        <div class="col-sm-12">
-                            <h4>Bình luận</h4>
-                            <form name="form" (ngSubmit)="f.form.valid && comment()" #f="ngForm" method="#" novalidate>
-                                <fieldset>
-                                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
-                                        <label for="name">Tên người dùng</label>
-                                        <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" readonly required />
-                                        <div *ngIf="f.submitted && !name.valid" class="help-block">Login for comment</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="textarea">Bình luận</label>
-                                        <textarea rows="3" class="form-control" name = "comments" [(ngModel)]="model.comments" #comments="ngModel" required  placeholder="your message" ></textarea>
-                                        <div *ngIf="f.submitted && !comments.valid" class="help-block">Comment is required</div>
-                                    </div>
-                                   <div class="form-group last">
-                                        <button [disabled]="loading" class="btn btn-primary">Gửi bình luận</button>
-                                        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
+                        <h4>Bình luận</h4>
+                        <form name="form" (ngSubmit)="f.form.valid && comment()" #f="ngForm" method="#" novalidate>
+                            <fieldset>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+                                    <label for="name">Tên người dùng</label>
+                                    <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" readonly required />
+                                    <div *ngIf="f.submitted && !name.valid" class="help-block">Login for comment</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="textarea">Bình luận</label>
+                                    <textarea rows="3" class="form-control" name = "comments" [(ngModel)]="model.comments" #comments="ngModel" required  placeholder="your message" ></textarea>
+                                    <div *ngIf="f.submitted && !comments.valid" class="help-block">Comment is required</div>
+                                </div>
+                                <div class="form-group last">
+                                    <button [disabled]="loading" class="btn btn-primary">Gửi bình luận</button>
+                                    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                                </div>
+                            </fieldset>
+                        </form>
                     </div>
+
+                    <ng-container *ngIf = "comments_new?.length > 0">
                     <hr>
                     <div class="row comment">
                         <h4>Danh sách bình luận</h4>
@@ -87,4 +85,5 @@
                             </div>
                         </div>
                     </div>
+                    </ng-container>
                 </div>
