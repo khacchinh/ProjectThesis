@@ -30,11 +30,10 @@
 
                     <div class="row" style="margin-top: 10px" *ngFor = "let newitem of pagedItems">
                         <div class="row category-item">
-                            <div class="col-sm-2 category-item-img">
+                            <div class="col category-item-img">
                                 <a [routerLink]="['../../single', newitem._id]"><img src="{{newitem.img}}" alt="{{newitem.title}}" class="img-thumbnail"/></a>
                             </div>
-                            <div class="col-sm-9">
-                                <div class="row">
+                            <div class="col-sm-2">
                                     <div class="col-sm-11">
                                         <a [routerLink]="['../../single', newitem._id]"><h4>{{newitem.title}}</h4> </a>
                                     </div>
@@ -43,6 +42,7 @@
                                         <i class="fa fa-bookmark fa-fw" *ngIf="checkIsBookmarkNews(newitem._id)"></i>
                                     </div>
                                 </div>
+                            <div class="col-sm-9">
                                 <span class="date">{{convertDate(newitem.date_public)}} | {{newitem.author}} | {{newitem.comment.length}} comments</span>
                                 <p>
                                     <ng-container *ngIf="newitem.sumary != ''">

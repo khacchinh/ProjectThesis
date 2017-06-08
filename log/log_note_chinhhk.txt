@@ -88,4 +88,7 @@ db.newitems.find({"date_public" : {$gte: new Date("date before 2 day")}});
 db.newitems.find({""}).sort({date_public: -1}).limit(1)
 
 
+//sử dụng express-Jwt hàm unless nhận tham số :params
+/^\/climates\/server_name\/.*/
+
 

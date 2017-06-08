@@ -68,3 +68,25 @@ h2 a{
     margin-left: 12px;
 }
 
+@media screen and (max-width: 480px){
+    .col-sm-4 {
+        width: 36%;
+        float: left;
+    }
+
+    .col-md-6.img-thumbnail {
+        width: 100% ! important;
+    }
+
+    .col-sm-8 {
+        padding-left: 0px;
+        float: right;
+        width: 64%;
+    }
+
+    .row.item-news {
+        height: auto ! important;
+        margin-bottom: 9px;
+    }
+}
+

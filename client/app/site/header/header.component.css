@@ -1,0 +1,23 @@
+.nav.navbar-nav li a, .span4.logo a{
+    color: gray;
+}
+
+.nav.navbar-nav li a:hover, .span4.logo a:hover{
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.container{
+    border-bottom: 5px solid gray;
+}
+
+@media screen and (max-width: 600px){
+    .top-menu-mobile{
+        display: block;
+        margin-right: 5px;
+    }
+
+    .top-menu-mobile li{
+        display: inline-block;
+    }
+}

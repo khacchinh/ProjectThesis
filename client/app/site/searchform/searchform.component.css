@@ -1,0 +1,8 @@
+.col-sm-9 a{
+    color: black;
+}
+
+.col-sm-9 a:hover{
+    color: #337ab7;
+    text-decoration: none;
+}

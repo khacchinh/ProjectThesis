@@ -5,7 +5,8 @@ import { NewsService } from '../../_services/index';
 @Component({
     moduleId: module.id,
     selector: 'app-rightbar',
-    templateUrl: 'rightbar.component.html'
+    templateUrl: 'rightbar.component.html',
+    styleUrls: ["./rightbar.component.css"]
 })
 
 export class RightBarComponent { 
