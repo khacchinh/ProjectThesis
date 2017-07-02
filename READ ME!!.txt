@@ -1,0 +1,23 @@
+Cách chạy project:
+    - Xóa folder node_modules trong thư mục ProjectThesis
+    - Xóa folder node_modules trong thư mục ProjectThesis/client
+    - Trong thư mục ProjectThesis install  thư viện run câu lệnh:
+        ++ npm install
+        ++ npm install compression
+        ++ npm run crawler
+    - Trong thư mục ProjectThesis/client install thư viện run câu lệnh:
+        ++ npm install
+        ++ npm install typings --global
+        ++ npm install bootstrap@3
+        ++ npm install --save @ng-bootstrap/ng-bootstrap
+
+    - Run project
+        ++ Trong thư mục ProjectThesis mở trên 2 cmd chạy 2 câu lệnh song song:
+            +++ npm run backend-compile
+            +++ npm run start
+        ++ Trong thư mục ProjectThesis/client chạy câu lệnh:
+            +++ npm run start
+
+
+Lưu ý: nếu cài các thư viện trên mà vẫn xảy ra lỗi khi run trong thư mục ProjectThesis/client thì vào đường dẫn ProjectThesis/client/tsconfig 
+ở "target": "es5" => "target": "es6"

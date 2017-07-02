@@ -61,7 +61,7 @@
                             <div class="featured-news">
                                 <img alt="" src="{{data?.thegioi && data?.thegioi[1].img}}" class="img-thumbnail"/>
                                 <a href="http://localhost:3000/#/site/single/{{data?.thegioi && data?.thegioi[1]._id}}"><h4>{{data?.thegioi && data?.thegioi[1].title}}</h4></a>
-                                <span class="date"><small>{{convertDate(data?.thegioi[1].date_public)}} | {{data?.thegioi[1].comment.length}} comments</small></span>
+                                <span class="date"><small>{{convertDate(data?.thegioi[1].date_public)}} | {{data?.thegioi[1].comment.length}} bình luận</small></span>
                                 <ng-container *ngIf="data?.thegioi && data?.thegioi[1].sumary != ''">
                                         <p>{{data?.thegioi && data?.thegioi[1].sumary}}</p>
                                 </ng-container>
@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                        <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} comments</small></span>
+                                        <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} bình luận</small></span>
                                     </div>
                                 </div> 
                                 <div class="clear-fix"></div>
@@ -95,7 +95,7 @@
                             <div class="featured-news">
                                 <img alt="" src="{{data?.kinhdoanh && data?.kinhdoanh[1].img}}" class="img-thumbnail"/>
                                 <a href="http://localhost:3000/#/site/single/{{data?.kinhdoanh && data?.kinhdoanh[1]._id}}"><h4>{{data?.kinhdoanh && data?.kinhdoanh[1].title}}</h4></a>
-                                <span class="date"><small>{{convertDate(data?.kinhdoanh[1].date_public)}} | {{data?.kinhdoanh[1].comment.length}} comments</small></span>
+                                <span class="date"><small>{{convertDate(data?.kinhdoanh[1].date_public)}} | {{data?.kinhdoanh[1].comment.length}} bình luận</small></span>
                                 <ng-container *ngIf="data?.kinhdoanh && data?.kinhdoanh[1].sumary != ''">
                                         <p>{{data?.kinhdoanh && data?.kinhdoanh[1].sumary}}</p>
                                 </ng-container>
@@ -113,7 +113,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                        <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} comments</small></span>
+                                        <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} bình luận</small></span>
                                     </div>
                                 </div> 
                                 <div class="clear-fix"></div>
@@ -151,7 +151,7 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                            <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} comments</small></span>
+                                            <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} bình luận</small></span>
                                         </div>
                                     </div> 
                                     <div class="clear-fix"></div>
@@ -173,7 +173,7 @@
                             <div class="featured-news">
                                 <img alt="" src="{{data?.phapluat && data?.phapluat[1].img}}" class="img-thumbnail"/>
                                 <a href="http://localhost:3000/#/site/single/{{data?.phapluat && data?.phapluat[1]._id}}"><h4>{{data?.phapluat && data?.phapluat[1].title}}</h4></a>
-                                <span class="date"><small>{{convertDate(data?.phapluat[1].date_public)}} | {{data?.phapluat[1].comment.length}} comments</small></span>
+                                <span class="date"><small>{{convertDate(data?.phapluat[1].date_public)}} | {{data?.phapluat[1].comment.length}} bình luận</small></span>
                                 <ng-container *ngIf="data?.phapluat && data?.phapluat[1].sumary != ''">
                                     <p>{{data?.phapluat && data?.phapluat[1].sumary}}</p>
                                 </ng-container>
@@ -191,7 +191,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                        <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} comments</small></span>
+                                        <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} bình luận</small></span>
                                     </div>
                                 </div> 
                                 <div class="clear-fix"></div>
@@ -207,7 +207,7 @@
                             <div class="featured-news">
                                 <img alt="" src="{{data?.suckhoe && data?.suckhoe[1].img}}" class="img-thumbnail"/>
                                 <a href="http://localhost:3000/#/site/single/{{data?.suckhoe && data?.suckhoe[1]._id}}"><h4>{{data?.suckhoe && data?.suckhoe[1].title}}</h4></a>
-                                <span class="date"><small>{{convertDate(data?.suckhoe[1].date_public)}} | {{data?.suckhoe[1].comment.length}} comments</small></span>
+                                <span class="date"><small>{{convertDate(data?.suckhoe[1].date_public)}} | {{data?.suckhoe[1].comment.length}} bình luận</small></span>
                                 <ng-container *ngIf="data?.suckhoe && data?.suckhoe[1].sumary != ''">
                                     <p>{{data?.suckhoe && data?.suckhoe[1].sumary}}</p>
                                 </ng-container>
@@ -225,7 +225,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                        <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} comments</small></span>
+                                        <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} bình luận</small></span>
                                     </div>
                                 </div> 
                                 <div class="clear-fix"></div>
@@ -263,7 +263,7 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                            <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} comments</small></span>
+                                            <span class="date"><small>{{convertDate(item.date_public)}} | {{item.comment.length}} bình luận</small></span>
                                         </div>
                                     </div> 
                                     <div class="clear-fix"></div>

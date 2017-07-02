@@ -20,7 +20,7 @@
                                     <i class="fa fa-bookmark fa-fw" *ngIf="checkIsBookmarkNews(itemHot?._id)"></i>
                                 </div>
                             </div>
-                            <span class="date">{{convertDate(itemHot?.date_public)}} | {{itemHot?.author}} | {{itemHot?.comment.length}} comments</span>
+                            <span class="date">{{convertDate(itemHot?.date_public)}} | {{itemHot?.author}} </span>
                             <p>
                                {{itemHot?.sumary}}
                             </p>
@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
                             <div class="col-sm-9">
-                                <span class="date">{{convertDate(newitem.date_public)}} | {{newitem.author}} | {{newitem.comment.length}} comments</span>
+                                <span class="date">{{convertDate(newitem.date_public)}} | {{newitem.author}} </span>
                                 <p>
                                     <ng-container *ngIf="newitem.sumary != ''">
                                         {{newitem.sumary}}

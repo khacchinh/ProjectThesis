@@ -27,6 +27,10 @@ export class RightBarComponent {
         })
     }
 
+    convertDate(date:any) : string{
+        return new Date(date).toLocaleString();
+    }
+
     performSeach(){
         if (typeof this.paramsSearch =='undefined' || this.paramsSearch == "")
             alert("Input text search");

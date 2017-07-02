@@ -192,7 +192,6 @@ export class ProcessNews{
                                     console.log(Error.message);
                                 }
                             }
-                            
                             if (count == ProcessNews.tempArrNews.length)
                                 resolve(true);
                         }

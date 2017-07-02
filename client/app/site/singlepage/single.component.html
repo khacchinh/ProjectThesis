@@ -9,7 +9,7 @@
 
                     <div class="row news-main">
                         <div class="span8 single">
-                            <span class="date">{{convertDate(new_item?.date_public)}} | {{new_item?.view_count}} views | {{new_item?.comment.length}} comments</span><br>
+                            <span class="date">{{convertDate(new_item?.date_public)}} | {{new_item?.view_count}} lượt xem | {{new_item?.comment.length}} bình luận</span><br>
                             <div class="row social">
                                 <a href="" *ngIf="!checkIsFavoriteNews(new_item?._id)" (click)="saveFavoriteNewsUser(new_item)"><i class="fa fa-heart-o fa-fw"></i></a>
                                 <i class="fa fa-heart fa-fw" *ngIf="checkIsFavoriteNews(new_item?._id)"></i>
@@ -60,9 +60,9 @@
                                     <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" readonly required />
                                     <div *ngIf="f.submitted && !name.valid" class="help-block">Login for comment</div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !comments.valid }">
                                     <label for="textarea">Bình luận</label>
-                                    <textarea rows="3" class="form-control" name = "comments" [(ngModel)]="model.comments" #comments="ngModel" required  placeholder="your message" ></textarea>
+                                    <textarea rows="3" class="form-control" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" name = "comments" [(ngModel)]="model.comments" #comments="ngModel" required  placeholder="your message" ></textarea>
                                     <div *ngIf="f.submitted && !comments.valid" class="help-block">Comment is required</div>
                                 </div>
                                 <div class="form-group last">

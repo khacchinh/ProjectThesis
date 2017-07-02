@@ -18,6 +18,7 @@ export class SingleComponent {
     private relative_new : any[];
     private tags : any[];
     model: any = {};
+    loading = false;
 
 
     constructor(private singleItemService: SingleItemService, private newsService: NewsService, private route: ActivatedRoute, private router: Router){
@@ -60,12 +61,12 @@ export class SingleComponent {
             content : this.model.comments,
             userid : this.user.name
         }
-
+        this.loading = false;
         this.singleItemService.saveCommentForNewItem(this.new_item._id, com)
             .subscribe( data => {
                 this.new_item = data;
                 this.comments_new = data.comment;
-                this.model.comments = '';
+                this.loading = false;
         });
     }
 

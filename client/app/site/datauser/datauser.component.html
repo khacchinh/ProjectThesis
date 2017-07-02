@@ -1,11 +1,11 @@
                 <div class="col-md-8">
                     <div class="row">
                         <ul class="breadcrumb col-md-11">
-                            <li><p>News bookmark</p></li>
+                            <li><p>Tin tức đã lưu</p></li>
                         </ul>
                     </div>
 
-                    <div class="row" style="margin-top: 10px" *ngFor = "let item of datauser; let _index = index;">
+                    <div class="row"  *ngFor = "let item of datauser; let _index = index;" >
                         <ng-container *ngIf="item?.types == 'bookmark'">
                         <div class="row category-item">
                             <div class="col-sm-2 category-item-img">
@@ -26,18 +26,18 @@
                                 </p>
                             </div>
                         </div> 
-                        <div class="clear-fix col-sm-11"></div>
+                        <div style="margin-bottom: 10px" class="clear-fix col-sm-11"></div>
                         </ng-container>
                     </div>
 
                     <br><br>
                     <div class="row">
                         <ul class="breadcrumb col-md-11">
-                            <li><p>News favorite</p></li>
+                            <li><p>Tin tức yêu thích</p></li>
                         </ul>
                     </div>
 
-                    <div class="row" style="margin-top: 10px" *ngFor = "let item of datauser; let _index = index;">
+                    <div class="row" *ngFor = "let item of datauser; let _index = index;">
                         <ng-container *ngIf="item?.types == 'favorite'">
                         <div class="row category-item">
                             <div class="col-sm-2 category-item-img">
@@ -58,7 +58,7 @@
                                 </p>
                             </div>
                         </div> 
-                        <div class="clear-fix col-sm-11"></div>
+                        <div style="margin-bottom: 10px" class="clear-fix col-sm-11"></div>
                         </ng-container>
                     </div>
 

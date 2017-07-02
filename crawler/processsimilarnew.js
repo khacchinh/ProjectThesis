@@ -4,6 +4,7 @@ var processnews_1 = require("./processnews");
 var NewsItem_1 = require("../model/NewsItem");
 var path = require("path");
 var ProcessSimilarNew = (function () {
+    //end count
     function ProcessSimilarNew() {
         this.thoigioinews = new Array();
         this.kinhdoanhnews = new Array();
@@ -14,6 +15,13 @@ var ProcessSimilarNew = (function () {
         this.thoisunews = new Array();
         this.arrstopword = new Array();
         this.variable_new_similar = "";
+        //count author
+        this.cvnexpress = 0;
+        this.cdantri = 0;
+        this.cthanhnien = 0;
+        this.cvietnamnet = 0;
+        this.czing = 0;
+        this.ctintuc = 0;
         console.log("Length new: " + processnews_1.ProcessNews.arrNews.length);
         this.variable_new_similar += "=================================" + "\n";
         this.variable_new_similar += new Date() + "\n";
@@ -57,10 +65,39 @@ var ProcessSimilarNew = (function () {
                 fs.writeFileSync(path.join(__dirname + '/tokenizer/data/flagTime.txt'), flagTime);
                 console.log('- write similar news');
                 fs.appendFileSync(path.join(__dirname + '/tokenizer/data/log_news_similar.txt'), this.variable_new_similar);
+                //print count
+                console.log("VnExpress: " + this.cvnexpress);
+                console.log("Dantri: " + this.cdantri);
+                console.log("Thanhnien: " + this.cthanhnien);
+                console.log("VietnamNet: " + this.cvietnamnet);
+                console.log("Zing: " + this.czing);
+                console.log("Tintuc: " + this.ctintuc);
             }
         }
     };
     ProcessSimilarNew.prototype.funcDivideNews = function (news) {
+        //count
+        switch (news.author) {
+            case 'vnexpress':
+                this.cvnexpress += 1;
+                break;
+            case 'dantri':
+                this.cdantri += 1;
+                break;
+            case 'thanhnien':
+                this.cthanhnien += 1;
+                break;
+            case 'vietnamnet news':
+                this.cvietnamnet += 1;
+                break;
+            case 'zing':
+                this.czing += 1;
+                break;
+            case 'tintuc':
+                this.ctintuc += 1;
+                break;
+        }
+        //end count
         if (news.category == 'thế giới' || news.category == 'tin the gioi') {
             news.category = 'thế giới';
             this.funcImportNewByCategory(news, this.thoigioinews);
@@ -103,7 +140,7 @@ var ProcessSimilarNew = (function () {
             //check database if similar
             if (processnews_1.ProcessNews.arOldNews.length > 0) {
                 for (var i = 0; i < processnews_1.ProcessNews.arOldNews.length; i++) {
-                    if (processnews_1.ProcessNews.arOldNews[i].category == news.category) {
+                    if (processnews_1.ProcessNews.arOldNews[i].category === news.category) {
                         processnews_1.ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(processnews_1.ProcessNews.arOldNews[i].content);
                         similar = this.funcProcessCacularSimilar(news.content, processnews_1.ProcessNews.arOldNews[i].arr_content_segment);
                         if (similar > 0.7) {
@@ -120,26 +157,21 @@ var ProcessSimilarNew = (function () {
         }
         else {
             arrNew.forEach(function (old_news) {
-                if (news.author == old_news.author) {
-                    count_same_author++;
+                // call function cacular similar cosinse here
+                similar = _this.funcProcessCacularSimilar(news.content, old_news.arr_content_segment);
+                //
+                if (similar > 0.7) {
+                    //delete new of news is reduplicate
+                    _this.printResult(news, old_news, similar);
+                    return;
                 }
-                else {
-                    //                    // call function cacular similar cosinse here
-                    similar = _this.funcProcessCacularSimilar(news.content, old_news.arr_content_segment);
-                    //
-                    if (similar > 0.7) {
-                        //delete new of news is reduplicate
-                        _this.printResult(news, old_news, similar);
-                        return;
-                    }
-                    count_same_author++;
-                }
+                count_same_author++;
             });
             if (count_same_author == arrNew.length) {
                 //check database if similar
                 if (processnews_1.ProcessNews.arOldNews.length > 0) {
                     for (var i = 0; i < processnews_1.ProcessNews.arOldNews.length; i++) {
-                        if (processnews_1.ProcessNews.arOldNews[i].category == news.category) {
+                        if (processnews_1.ProcessNews.arOldNews[i].category === news.category) {
                             processnews_1.ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(processnews_1.ProcessNews.arOldNews[i].content);
                             similar = this.funcProcessCacularSimilar(news.content, processnews_1.ProcessNews.arOldNews[i].arr_content_segment);
                             if (similar > 0.7) {

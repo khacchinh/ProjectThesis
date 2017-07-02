@@ -28,7 +28,7 @@ var CrawlerNewsClass = (function () {
         //  }
     }
     CrawlerNewsClass.prototype.checkExistTitle = function (author, category, title) {
-        if (title + '' == "undefined")
+        if (typeof title === "undefined")
             return false;
         var key = author.toLowerCase() + "-" + category.toLowerCase();
         if (processnews_1.ProcessNews.arFlagTitle.getValue(key) && processnews_1.ProcessNews.arFlagTitle.getValue(key).trim().toLowerCase() == title.trim().toLowerCase()) {
@@ -61,25 +61,25 @@ var CrawlerNewsClass = (function () {
                             news.category = category;
                             //new hot
                             news.title = $(".box_hot_news").children("h1").text().trim();
-                            if (__this.checkExistTitle(news.author, news.category, news.title))
-                                return false;
-                            news.url = $(".box_hot_news").children("h1").children("a").attr('href');
-                            news.img = $(".box_hot_news").children().first().children().children().attr('src');
-                            news.type_img = true;
-                            news.sumary = $(".box_hot_news").children("h4").text().trim();
-                            processNews.importNew(news);
+                            if (!__this.checkExistTitle(news.author, news.category, news.title)) {
+                                news.url = $(".box_hot_news").children("h1").children("a").attr('href');
+                                news.img = $(".box_hot_news").children().first().children().children().attr('src');
+                                news.type_img = true;
+                                news.sumary = $(".box_hot_news").children("h4").text().trim();
+                                processNews.importNew(news);
+                            }
                             $(".list_news ").children().each(function (i, element) {
                                 var data = $(this);
                                 news = new News_1.News();
                                 news.author = author;
                                 news.category = category;
                                 news.title = data.children().children().first().text().trim();
-                                if (__this.checkExistTitle(news.author, news.category, news.title))
-                                    return false;
-                                news.url = data.children().children('.thumb').children().attr('href');
-                                news.img = data.children().children('.thumb').children().children().attr('src');
-                                news.sumary = data.children().children('.news_lead').text().trim();
-                                processNews.importNew(news);
+                                if (!__this.checkExistTitle(news.author, news.category, news.title)) {
+                                    news.url = data.children().children('.thumb').children().attr('href');
+                                    news.img = data.children().children('.thumb').children().children().attr('src');
+                                    news.sumary = data.children().children('.news_lead').text().trim();
+                                    processNews.importNew(news);
+                                }
                             });
                         }
                         else if ($('meta[name=author]').attr("content") == 'VCCorp.vn') {
@@ -91,14 +91,14 @@ var CrawlerNewsClass = (function () {
                             news.category = category;
                             //new hot
                             news.title = $('.fl.wid470').children().children().first().attr('title');
-                            if (__this.checkExistTitle(news.author, news.category, news.title))
-                                return false;
-                            news.type_img = true;
-                            news.url = 'http://dantri.com.vn/' + $('.fl.wid470').children().children().first().attr('href');
-                            news.img = $('.fl.wid470').children().children().first().children().attr('src');
-                            $('.fl.wid470').children().children(".mr1").children("div").children("a").empty();
-                            news.sumary = $('.fl.wid470').children().children(".mr1").children("div").text().trim();
-                            processNews.importNew(news);
+                            if (!__this.checkExistTitle(news.author, news.category, news.title)) {
+                                news.type_img = true;
+                                news.url = 'http://dantri.com.vn/' + $('.fl.wid470').children().children().first().attr('href');
+                                news.img = $('.fl.wid470').children().children().first().children().attr('src');
+                                $('.fl.wid470').children().children(".mr1").children("div").children("a").empty();
+                                news.sumary = $('.fl.wid470').children().children(".mr1").children("div").text().trim();
+                                processNews.importNew(news);
+                            }
                             $("#listcheckepl").children().each(function (i, element) {
                                 var data = $(this);
                                 var temp = data.children().first().attr('title') + '';
@@ -107,13 +107,13 @@ var CrawlerNewsClass = (function () {
                                     news.author = author_1;
                                     news.category = category;
                                     news.title = temp;
-                                    if (__this.checkExistTitle(news.author, news.category, news.title))
-                                        return false;
-                                    news.url = 'http://dantri.com.vn/' + data.children().first().attr('href');
-                                    news.img = data.children().first().children().attr('src');
-                                    data.children().last().children("div").children("a").empty();
-                                    news.sumary = data.children().last().children("div").text().trim();
-                                    processNews.importNew(news);
+                                    if (!__this.checkExistTitle(news.author, news.category, news.title)) {
+                                        news.url = 'http://dantri.com.vn/' + data.children().first().attr('href');
+                                        news.img = data.children().first().children().attr('src');
+                                        data.children().last().children("div").children("a").empty();
+                                        news.sumary = data.children().last().children("div").text().trim();
+                                        processNews.importNew(news);
+                                    }
                                 }
                             });
                         }
@@ -125,13 +125,13 @@ var CrawlerNewsClass = (function () {
                             news.category = category;
                             //new hot
                             news.title = $('.TopArticle').children().first().children().attr('title');
-                            if (__this.checkExistTitle(news.author, news.category, news.title))
-                                return false;
-                            news.type_img = true;
-                            news.url = 'http://vietnamnet.vn' + $('.TopArticle').children().first().children().attr('href');
-                            news.img = $('.TopArticle').children().first().children().children().attr('src');
-                            news.sumary = $('.TopArticle').children().last().text().trim();
-                            processNews.importNew(news);
+                            if (!__this.checkExistTitle(news.author, news.category, news.title)) {
+                                news.type_img = true;
+                                news.url = 'http://vietnamnet.vn' + $('.TopArticle').children().first().children().attr('href');
+                                news.img = $('.TopArticle').children().first().children().children().attr('src');
+                                news.sumary = $('.TopArticle').children().last().text().trim();
+                                processNews.importNew(news);
+                            }
                             //new hot
                             $('.ListHeight.m-t-10').children().each(function (i, element) {
                                 var data = $(this);
@@ -139,12 +139,12 @@ var CrawlerNewsClass = (function () {
                                 news.author = author;
                                 news.category = category;
                                 news.title = data.children().first().attr('title');
-                                if (__this.checkExistTitle(news.author, news.category, news.title))
-                                    return false;
-                                news.url = 'http://vietnamnet.vn' + data.children().first().attr('href');
-                                news.img = data.children().first().children().attr('src');
-                                news.sumary = data.children().first().attr('title');
-                                processNews.importNew(news);
+                                if (!__this.checkExistTitle(news.author, news.category, news.title)) {
+                                    news.url = 'http://vietnamnet.vn' + data.children().first().attr('href');
+                                    news.img = data.children().first().children().attr('src');
+                                    news.sumary = data.children().first().attr('title');
+                                    processNews.importNew(news);
+                                }
                             });
                             $('.ListArticle').children().each(function (i, element) {
                                 var data = $(this);
@@ -152,12 +152,12 @@ var CrawlerNewsClass = (function () {
                                 news.author = author;
                                 news.category = category;
                                 news.title = data.children().first().attr('title');
-                                if (__this.checkExistTitle(news.author, news.category, news.title))
-                                    return false;
-                                news.url = 'http://vietnamnet.vn' + data.children().first().attr('href');
-                                news.img = data.children().first().children().attr('src');
-                                news.sumary = data.children().last().text().trim();
-                                processNews.importNew(news);
+                                if (!__this.checkExistTitle(news.author, news.category, news.title)) {
+                                    news.url = 'http://vietnamnet.vn' + data.children().first().attr('href');
+                                    news.img = data.children().first().children().attr('src');
+                                    news.sumary = data.children().last().text().trim();
+                                    processNews.importNew(news);
+                                }
                             });
                         }
                         else if ($(".logo").first().text() == "Thanh Niên") {
@@ -168,13 +168,13 @@ var CrawlerNewsClass = (function () {
                             news.category = category;
                             //new hot
                             news.title = $('.subcate-highlight-ctn.clearfix').children().children().first().children().attr('title');
-                            if (__this.checkExistTitle(news.author, news.category, news.title))
-                                return false;
-                            news.type_img = true;
-                            news.url = 'http://thanhnien.vn' + $('.subcate-highlight-ctn.clearfix').children().children().first().children().attr('href');
-                            news.img = $('.subcate-highlight-ctn.clearfix').children().children().first().children().children().attr('src');
-                            news.sumary = $('.subcate-highlight-ctn.clearfix').children().children().first().children().attr('title');
-                            processNews.importNew(news);
+                            if (!__this.checkExistTitle(news.author, news.category, news.title)) {
+                                news.type_img = true;
+                                news.url = 'http://thanhnien.vn' + $('.subcate-highlight-ctn.clearfix').children().children().first().children().attr('href');
+                                news.img = $('.subcate-highlight-ctn.clearfix').children().children().first().children().children().attr('src');
+                                news.sumary = $('.subcate-highlight-ctn.clearfix').children().children().first().children().attr('title');
+                                processNews.importNew(news);
+                            }
                             //new hot
                             $('.subcate-highlight.clearfix').children('article').each(function (i, element) {
                                 var data = $(this);
@@ -182,12 +182,12 @@ var CrawlerNewsClass = (function () {
                                 news.author = author;
                                 news.category = category;
                                 news.title = data.children().first().children().attr('title');
-                                if (__this.checkExistTitle(news.author, news.category, news.title))
-                                    return false;
-                                news.url = 'http://thanhnien.vn' + data.children().first().children().attr('href');
-                                news.img = data.children().first().children().children().attr('src');
-                                news.sumary = data.children().last().text().trim();
-                                processNews.importNew(news);
+                                if (!__this.checkExistTitle(news.author, news.category, news.title)) {
+                                    news.url = 'http://thanhnien.vn' + data.children().first().children().attr('href');
+                                    news.img = data.children().first().children().children().attr('src');
+                                    news.sumary = data.children().last().text().trim();
+                                    processNews.importNew(news);
+                                }
                             });
                             $('.cate-list').children().each(function (i, element) {
                                 var data = $(this);
@@ -195,12 +195,12 @@ var CrawlerNewsClass = (function () {
                                 news.author = author;
                                 news.category = category;
                                 news.title = data.children("figure").children().attr('title');
-                                if (__this.checkExistTitle(news.author, news.category, news.title))
-                                    return false;
-                                news.url = 'http://thanhnien.vn' + data.children("figure").children().attr('href');
-                                news.img = data.children("figure").children().children().attr('src');
-                                news.sumary = data.children().last().text().trim();
-                                processNews.importNew(news);
+                                if (!__this.checkExistTitle(news.author, news.category, news.title)) {
+                                    news.url = 'http://thanhnien.vn' + data.children("figure").children().attr('href');
+                                    news.img = data.children("figure").children().children().attr('src');
+                                    news.sumary = data.children().last().text().trim();
+                                    processNews.importNew(news);
+                                }
                             });
                         }
                         else if ($('meta[name=author]').attr("content") == 'ZING.VN') {
@@ -228,12 +228,12 @@ var CrawlerNewsClass = (function () {
                                 news.category = category;
                                 news.title = data.children("header").children(".title").children("a").text();
                                 news.title = news.title.trim();
-                                if (__this.checkExistTitle(news.author, news.category, news.title))
-                                    return false;
-                                news.url = "http://news.zing.vn" + data.children("header").children(".title").children("a").attr('href');
-                                news.sumary = data.children("header").children(".summary").text();
-                                news.img = data.children(".cover").children().children().attr('src');
-                                processNews.importNew(news);
+                                if (!__this.checkExistTitle(news.author, news.category, news.title)) {
+                                    news.url = "http://news.zing.vn" + data.children("header").children(".title").children("a").attr('href');
+                                    news.sumary = data.children("header").children(".summary").text();
+                                    news.img = data.children(".cover").children().children().attr('src');
+                                    processNews.importNew(news);
+                                }
                             });
                         }
                         else {

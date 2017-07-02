@@ -51,6 +51,8 @@ a.post-tag:hover{
 
 .main-comment {
     max-height: 400px;
+    overflow: auto;
+    margin-bottom: 13px;
 }
 
 .child-comment {

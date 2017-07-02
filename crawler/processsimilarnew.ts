@@ -17,6 +17,15 @@ export class ProcessSimilarNew{
     private arrstopword = new Array<string>();
     private variable_new_similar = "";
 
+    //count author
+    private cvnexpress : any = 0;
+    private cdantri : any = 0;
+    private cthanhnien : any = 0;
+    private cvietnamnet : any = 0;
+    private czing : any = 0;
+    private ctintuc : any = 0;
+    //end count
+
     constructor(){
         console.log("Length new: " + ProcessNews.arrNews.length);
         this.variable_new_similar += "=================================" + "\n";
@@ -66,11 +75,45 @@ export class ProcessSimilarNew{
 
                 console.log('- write similar news');
                 fs.appendFileSync(path.join(__dirname + '/tokenizer/data/log_news_similar.txt'), this.variable_new_similar); 
+
+
+                //print count
+                console.log("VnExpress: " + this.cvnexpress);
+                console.log("Dantri: " + this.cdantri);
+                console.log("Thanhnien: " + this.cthanhnien);
+                console.log("VietnamNet: " + this.cvietnamnet);
+                console.log("Zing: " + this.czing);
+                console.log("Tintuc: " + this.ctintuc);
+                //end print
             }
         }
     }
 
     funcDivideNews(news: News){
+        //count
+        switch (news.author){
+            case 'vnexpress':
+                this.cvnexpress += 1;
+                break;
+            case 'dantri':
+                this.cdantri += 1;
+                break;
+            case 'thanhnien':
+                this.cthanhnien += 1;
+                break;
+            case 'vietnamnet news':
+                this.cvietnamnet += 1;
+                break;
+            case 'zing':
+                this.czing += 1;
+                break;
+            case 'tintuc':
+                this.ctintuc += 1;
+                break;
+        }
+        //end count
+
+
         if (news.category == 'thế giới' || news.category == 'tin the gioi'){
             news.category = 'thế giới'
             this.funcImportNewByCategory(news, this.thoigioinews);
@@ -113,7 +156,7 @@ export class ProcessSimilarNew{
             //check database if similar
             if (ProcessNews.arOldNews.length > 0) {
                 for (var i = 0; i < ProcessNews.arOldNews.length; i++){
-                    if (ProcessNews.arOldNews[i].category == news.category){
+                    if (ProcessNews.arOldNews[i].category === news.category){
                         ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(ProcessNews.arOldNews[i].content);
                         similar = this.funcProcessCacularSimilar(news.content, ProcessNews.arOldNews[i].arr_content_segment);
                         if (similar > 0.7){
@@ -131,28 +174,22 @@ export class ProcessSimilarNew{
         }
         else{
             arrNew.forEach(old_news => {
-                if (news.author == old_news.author){
-                    count_same_author++;
-                }
-                    //cacular similar here
-                else{
-                   
-                    //                    // call function cacular similar cosinse here
-                    similar = this.funcProcessCacularSimilar(news.content, old_news.arr_content_segment);
+                // call function cacular similar cosinse here
+                similar = this.funcProcessCacularSimilar(news.content, old_news.arr_content_segment);
                     //
-                    if (similar > 0.7){  
+                if (similar > 0.7){  
                          //delete new of news is reduplicate
-                        this.printResult(news, old_news, similar);
-                        return; 
-                    }
-                    count_same_author++;
+                    this.printResult(news, old_news, similar);
+                    return; 
                 }
+                count_same_author++;
+
             });
             if (count_same_author == arrNew.length){
                 //check database if similar
                 if (ProcessNews.arOldNews.length > 0) {
                     for (var i = 0; i < ProcessNews.arOldNews.length; i++){
-                        if (ProcessNews.arOldNews[i].category == news.category){
+                        if (ProcessNews.arOldNews[i].category === news.category){
                             ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(ProcessNews.arOldNews[i].content);
                             similar = this.funcProcessCacularSimilar(news.content, ProcessNews.arOldNews[i].arr_content_segment);
                             if (similar > 0.7){

@@ -46,13 +46,17 @@ var Users = (function () {
             UserModel.findOne(arFilter, function (err, result) {
                 if (err)
                     reject(err);
-                DataNewsUser_1.DataNewsUser.getDataNewsUserById(result._id).then(function (datauser) {
-                    var data = {
-                        "user": result,
-                        "datauser": datauser
-                    };
-                    resolve(data);
-                });
+                if (result) {
+                    DataNewsUser_1.DataNewsUser.getDataNewsUserById(result._id).then(function (datauser) {
+                        var data = {
+                            "user": result,
+                            "datauser": datauser
+                        };
+                        resolve(data);
+                    });
+                }
+                else
+                    resolve();
             });
         });
     };

@@ -53,13 +53,16 @@ export class Users{
             else arFilter = {username: user.username, password: user.password, active : 1}
             UserModel.findOne(arFilter, (err, result) => {
                 if (err) reject(err);
-                DataNewsUser.getDataNewsUserById(result._id).then(datauser => {
-                    var data = {
-                        "user" : result,
-                        "datauser" : datauser
-                    }
-                    resolve(data);
-                })
+                if (result){
+                    DataNewsUser.getDataNewsUserById(result._id).then(datauser => {
+                        var data = {
+                            "user" : result,
+                            "datauser" : datauser
+                        }
+                        resolve(data);
+                    })
+                }
+                else resolve();
             })
         });
     }

@@ -76,8 +76,8 @@ function doProcessNews() {
         });
     });
 }
+doProcessNews();
 //call class crawler
-//doProcessNews();
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/my_database', function (err) {
     if (err)
@@ -89,16 +89,13 @@ mongoose.connect('mongodb://localhost/my_database', function (err) {
         });
     }
 });
-/*
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/test_db_news', function(err){
-    if (err)
-        console.log("Can\'t connect to db!!");
-    else{
-        console.log("Connect to db:  mongodb://localhost/test_db_news");
-        app.listen(app.get('port'), function(){
-            console.log('Server started on port ' + app.get('port'));
-        });
-    }
-});
-*/
+// mongoose.connect('mongodb://localhost/test_db_news', function(err){
+//     if (err) 
+//         console.log("Can\'t connect to db!!");
+//     else{
+//         console.log("Connect to db:  mongodb://localhost/test_db_news");
+//         app.listen(app.get('port'), function(){
+//             console.log('Server started on port ' + app.get('port'));
+//         });
+//     }
+// });

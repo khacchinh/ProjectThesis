@@ -16,7 +16,7 @@
 
                     <div class="row">
                         <tabset [justified]="true">
-                            <tab heading="Popular">
+                            <tab heading="Xem nhiều">
 
                                 <div *ngFor="let item of pupolarnews;">
                                     <div class="row">
@@ -25,7 +25,7 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                            <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                            <span class="date"><small> {{convertDate(item.date_public)}} | {{item.view_count}} lượt xem</small></span>
                                         </div>
                                     </div>
                                     <div class="clear-fix"></div>
@@ -33,7 +33,7 @@
                                 
                             </tab>
 
-                            <tab heading="Comments">
+                            <tab heading="Bình luận nhiều">
 
                                 <div *ngFor="let item of commentnews;">
                                     <div class="row">
@@ -42,16 +42,17 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <a [routerLink]="['./single', item._id]"><p>{{item.title}}</p></a>
-                                            <span class="date"><small>Posted on July 02, 2011 | 0 comments</small></span>
+                                            <span class="date"><small> {{convertDate(item.date_public)}} | {{item.length}} bình luận</small></span>
                                         </div>
                                     </div>
                                     <div class="clear-fix"></div>
                                 </div>
                             </tab>
-
+                            <!-->    
                             <tab heading="Tags">
                                 
                             </tab>
+                            <-->
                         </tabset>
                     </div>
                     <br/>

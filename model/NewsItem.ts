@@ -185,7 +185,7 @@ export class NewItem{
 
     static getPopularNews() : Promise<any>{
         return new Promise<any> ((resolve, reject) => {
-            NewItemModel.find({}, null, {sort: '-view_count', limit: 10}, (err, result) => {
+            NewItemModel.find({}, null, {sort: '-view_count', limit: 15}, (err, result) => {
                     if (err) reject(err);
                     resolve(result)
                 })
@@ -194,10 +194,34 @@ export class NewItem{
 
     static getCommentNews() : Promise<any>{
         return new Promise<any> ((resolve, reject) => {
-            NewItemModel.find({}, null, {sort: '-comment', limit: 10}, (err, result) => {
+            // NewItemModel.find({}, null, {sort: '-comment', limit: 15}, (err, result) => {
+            //         if (err) reject(err);
+            //         resolve(result)
+            // })
+            NewItemModel.aggregate(
+                [
+                    { "$project": {
+                        "_id": 1,
+                        "title": 1,
+                        "date_public": 1,
+                        "sumary": 1,
+                        "img": 1,
+                        "url": 1,
+                        "author": 1,
+                        "active": 1,
+                        "created": 1,
+                        "category": 1,
+                        "tags": 1,
+                        "length": { "$size": "$comment" }
+                    }},
+                    { "$sort": { "length": -1 } },
+                    { "$limit": 15 }
+                ],
+                (err,results) => {
                     if (err) reject(err);
-                    resolve(result)
-            })
+                        resolve(results)
+                }
+            )
         })
     }
 
