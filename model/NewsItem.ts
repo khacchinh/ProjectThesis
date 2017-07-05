@@ -313,6 +313,7 @@ export class NewItem{
                         }
                         else if (result.author == 'vietnamnet news'){
                             var $ = res.$;
+                            $("div.inner-article").remove();
                             result.content = $("#ArticleContent").html();
                             resolve(result);
                         }

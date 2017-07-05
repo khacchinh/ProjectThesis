@@ -52,12 +52,13 @@ function doProcessNews() {
     NewsItem_1.NewItem.getNewsAfterDay(3).then(function (msg) {
         if (msg != "empty") {
             processnews_1.ProcessNews.arOldNews = msg;
+            console.log("\n\nLength news old: " + processnews_1.ProcessNews.arOldNews.length);
         }
-        console.log('Crawler dữ liệu tin tức');
+        console.log('Crawler news');
         new crawlernewsclass_1.CrawlerNewsClass().getCrawlerData().then(function (msg) {
             processnews_1.ProcessNews.getContent().then(function (msg) {
                 processnews_1.ProcessNews.exportFile();
-                console.log('- tách từ.....');
+                console.log('- segmenting');
                 var child = require('child_process').spawn('java', ['-jar', 'WordSegment.jar']);
                 child.stdout.on('data', function (data) {
                     if (data.toString().trim() == "ok") {

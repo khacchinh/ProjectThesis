@@ -181,9 +181,7 @@ var ProcessNews = (function () {
         return p;
     };
     ProcessNews.exportFile = function () {
-        console.log('Tiền xử lý: ');
-        console.log('- loại bỏ dấu câu');
-        console.log(ProcessNews.tempArrNews.length);
+        console.log('Number news crawler staged 1: ' + ProcessNews.tempArrNews.length);
         var dataTitle = '';
         ProcessNews.tempArrNews.forEach(function (element, index) {
             element.content = element.content + '';
@@ -192,6 +190,8 @@ var ProcessNews = (function () {
                 dataTitle += element.content.replace(/[\n\t\r]/g, " ") + "\n";
             }
         });
+        console.log('Number news crawler staged 2: ' + ProcessNews.arrNews.length);
+        console.log('Preprocess: ');
         ProcessNews.tempArrNews.length = 0; //clear all element array
         fs.writeFileSync(path.join(__dirname + '/tokenizer/data/input.txt'), dataTitle);
     };

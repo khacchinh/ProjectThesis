@@ -9,9 +9,9 @@
                                 <li><a [routerLink]="['./register']">Đăng ký</a></li>
                             </ul>
                             <ul class="nav navbar-nav top-menu-mobile" style="float: right;" *ngIf="!isLogin">
+                                <li><a>Xin chào: <strong>{{user?.name}}</strong></a></li>
                                 <li><a [routerLink] = "['./datauser']">Lịch sử người dùng</a></li>
-                                <li><a>{{user?.name}}</a></li>
-                                <li><a (click)="logout($event)">Đăng xuất</a></li>
+                                <li><a style="cursor: pointer;" (click)="logout($event)">Đăng xuất</a></li>
                             </ul>
                         </div>           
                 </div>

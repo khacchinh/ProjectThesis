@@ -6,7 +6,6 @@ var processnews_1 = require("./processnews");
 //var bmm = new BMMWordSegment();
 var CrawlerNewsClass = (function () {
     function CrawlerNewsClass() {
-        console.log("Length old: " + processnews_1.ProcessNews.arOldNews.length);
         //get flag title and date into variable
         // if (ProcessNews.arFlagTitle.size() > 0){
         processnews_1.ProcessNews.arFlagTitle.clear();

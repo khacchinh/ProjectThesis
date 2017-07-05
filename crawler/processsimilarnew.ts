@@ -27,7 +27,6 @@ export class ProcessSimilarNew{
     //end count
 
     constructor(){
-        console.log("Length new: " + ProcessNews.arrNews.length);
         this.variable_new_similar += "=================================" + "\n";
         this.variable_new_similar += new Date() + "\n";
         this.variable_new_similar += "=================================" + "\n";
@@ -46,7 +45,8 @@ export class ProcessSimilarNew{
         var arrDataContent = dataContent.toString().split("\n");
 
         //process
-        console.log('- remove stop word and save content segment');
+        console.log('- remove stop word and process remove similar new');
+        console.log('- processing remove similar new');
         for (var i = 0; i < ProcessNews.arrNews.length; i++){
             var str_segment = arrDataContent[i].replace(/[.,\/#!$%\^&\*;:{}=\-`~()'?‘’“”"…]/g," ");
             str_segment = str_segment.replace( /\s+/g, ' ' ).toLowerCase();
@@ -59,7 +59,7 @@ export class ProcessSimilarNew{
                 ProcessNews.saveFlagTime = ProcessNews.arFlagTime;
 
                 //save flag into file
-                console.log('- save flag content in to file');
+                console.log('- save flag title in to file');
                 console.log('- save flag time in to file');
                 var flagTitle = "";
                 var flagTime = "";
@@ -73,17 +73,17 @@ export class ProcessSimilarNew{
                 fs.writeFileSync(path.join(__dirname + '/tokenizer/data/flagTitle.txt'), flagTitle);
                 fs.writeFileSync(path.join(__dirname + '/tokenizer/data/flagTime.txt'), flagTime); 
 
-                console.log('- write similar news');
+                console.log('- write log similar news');
                 fs.appendFileSync(path.join(__dirname + '/tokenizer/data/log_news_similar.txt'), this.variable_new_similar); 
 
 
                 //print count
-                console.log("VnExpress: " + this.cvnexpress);
-                console.log("Dantri: " + this.cdantri);
-                console.log("Thanhnien: " + this.cthanhnien);
-                console.log("VietnamNet: " + this.cvietnamnet);
-                console.log("Zing: " + this.czing);
-                console.log("Tintuc: " + this.ctintuc);
+                // console.log("VnExpress: " + this.cvnexpress);
+                // console.log("Dantri: " + this.cdantri);
+                // console.log("Thanhnien: " + this.cthanhnien);
+                // console.log("VietnamNet: " + this.cvietnamnet);
+                // console.log("Zing: " + this.czing);
+                // console.log("Tintuc: " + this.ctintuc);
                 //end print
             }
         }

@@ -11,7 +11,6 @@ import { NewItem }  from '../model/NewsItem';
 export class CrawlerNewsClass{
 
     constructor(){
-        console.log("Length old: " + ProcessNews.arOldNews.length);
         //get flag title and date into variable
        // if (ProcessNews.arFlagTitle.size() > 0){
             ProcessNews.arFlagTitle.clear();

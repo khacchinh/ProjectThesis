@@ -22,7 +22,6 @@ var ProcessSimilarNew = (function () {
         this.cvietnamnet = 0;
         this.czing = 0;
         this.ctintuc = 0;
-        console.log("Length new: " + processnews_1.ProcessNews.arrNews.length);
         this.variable_new_similar += "=================================" + "\n";
         this.variable_new_similar += new Date() + "\n";
         this.variable_new_similar += "=================================" + "\n";
@@ -39,7 +38,8 @@ var ProcessSimilarNew = (function () {
         var dataContent = fs.readFileSync(__dirname + '/tokenizer/data/output.txt');
         var arrDataContent = dataContent.toString().split("\n");
         //process
-        console.log('- remove stop word and save content segment');
+        console.log('- remove stop word and process remove similar new');
+        console.log('- processing remove similar new');
         for (var i = 0; i < processnews_1.ProcessNews.arrNews.length; i++) {
             var str_segment = arrDataContent[i].replace(/[.,\/#!$%\^&\*;:{}=\-`~()'?‘’“”"…]/g, " ");
             str_segment = str_segment.replace(/\s+/g, ' ').toLowerCase();
@@ -50,7 +50,7 @@ var ProcessSimilarNew = (function () {
                 processnews_1.ProcessNews.arOldNews.length = 0;
                 processnews_1.ProcessNews.saveFlagTime = processnews_1.ProcessNews.arFlagTime;
                 //save flag into file
-                console.log('- save flag content in to file');
+                console.log('- save flag title in to file');
                 console.log('- save flag time in to file');
                 var flagTitle = "";
                 var flagTime = "";
@@ -63,15 +63,8 @@ var ProcessSimilarNew = (function () {
                 });
                 fs.writeFileSync(path.join(__dirname + '/tokenizer/data/flagTitle.txt'), flagTitle);
                 fs.writeFileSync(path.join(__dirname + '/tokenizer/data/flagTime.txt'), flagTime);
-                console.log('- write similar news');
+                console.log('- write log similar news');
                 fs.appendFileSync(path.join(__dirname + '/tokenizer/data/log_news_similar.txt'), this.variable_new_similar);
-                //print count
-                console.log("VnExpress: " + this.cvnexpress);
-                console.log("Dantri: " + this.cdantri);
-                console.log("Thanhnien: " + this.cthanhnien);
-                console.log("VietnamNet: " + this.cvietnamnet);
-                console.log("Zing: " + this.czing);
-                console.log("Tintuc: " + this.ctintuc);
             }
         }
     };

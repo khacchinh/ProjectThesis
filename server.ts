@@ -73,14 +73,15 @@ function doProcessNews(){
         (msg) => {
             if (msg != "empty"){
                 ProcessNews.arOldNews = msg;
+                console.log("\n\nLength news old: " + ProcessNews.arOldNews.length)
             }
-            console.log('Crawler dữ liệu tin tức')
+            console.log('Crawler news')
             new CrawlerNewsClass().getCrawlerData().then(
                 function(msg: boolean){
                     ProcessNews.getContent().then(
                         (msg) => {
                             ProcessNews.exportFile();
-                            console.log('- tách từ.....');
+                            console.log('- segmenting');
                             var child = require('child_process').spawn(
                                 'java', ['-jar', 'WordSegment.jar']
                             );

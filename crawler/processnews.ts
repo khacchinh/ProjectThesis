@@ -203,9 +203,7 @@ export class ProcessNews{
     }
 
     static exportFile(){
-        console.log('Tiền xử lý: ')
-        console.log('- loại bỏ dấu câu')
-        console.log(ProcessNews.tempArrNews.length);
+        console.log('Number news crawler staged 1: ' + ProcessNews.tempArrNews.length);
         var dataTitle = '';
         ProcessNews.tempArrNews.forEach( (element, index) => {
             element.content = element.content +'';
@@ -214,6 +212,8 @@ export class ProcessNews{
                 dataTitle += element.content.replace(/[\n\t\r]/g, " ") + "\n";
             }
         });
+        console.log('Number news crawler staged 2: ' + ProcessNews.arrNews.length);
+        console.log('Preprocess: ');
         ProcessNews.tempArrNews.length = 0; //clear all element array
         fs.writeFileSync(path.join(__dirname + '/tokenizer/data/input.txt'), dataTitle); 
     }
