@@ -299,6 +299,7 @@ export class CrawlerNewsClass{
                         }    
                          
                     }
+                    
                     if (count == 35){
                         resolve(true);
                     }

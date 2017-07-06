@@ -136,6 +136,7 @@ var ProcessSimilarNew = (function () {
                     if (processnews_1.ProcessNews.arOldNews[i].category === news.category) {
                         processnews_1.ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(processnews_1.ProcessNews.arOldNews[i].content);
                         similar = this.funcProcessCacularSimilar(news.content, processnews_1.ProcessNews.arOldNews[i].arr_content_segment);
+                        similar = this.round(similar, 4);
                         if (similar > 0.7) {
                             this.printResult(news, processnews_1.ProcessNews.arOldNews[i], similar);
                             return;
@@ -152,6 +153,7 @@ var ProcessSimilarNew = (function () {
             arrNew.forEach(function (old_news) {
                 // call function cacular similar cosinse here
                 similar = _this.funcProcessCacularSimilar(news.content, old_news.arr_content_segment);
+                similar = _this.round(similar, 4);
                 //
                 if (similar > 0.7) {
                     //delete new of news is reduplicate
@@ -167,6 +169,7 @@ var ProcessSimilarNew = (function () {
                         if (processnews_1.ProcessNews.arOldNews[i].category === news.category) {
                             processnews_1.ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(processnews_1.ProcessNews.arOldNews[i].content);
                             similar = this.funcProcessCacularSimilar(news.content, processnews_1.ProcessNews.arOldNews[i].arr_content_segment);
+                            similar = this.round(similar, 4);
                             if (similar > 0.7) {
                                 this.printResult(news, processnews_1.ProcessNews.arOldNews[i], similar);
                                 return;
@@ -346,6 +349,10 @@ var ProcessSimilarNew = (function () {
         this.variable_new_similar += "Cosine value: " + similar + "\n";
         console.log("\n\n");
         this.variable_new_similar += "\n\n";
+    };
+    ProcessSimilarNew.prototype.round = function (value, precision) {
+        var multiplier = Math.pow(10, precision || 0);
+        return Math.round(value * multiplier) / multiplier;
     };
     return ProcessSimilarNew;
 }());

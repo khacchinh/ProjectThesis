@@ -51,6 +51,7 @@ export class ProcessNews{
                             if (error) reject(false);
                             count++;
                             var $ = res.$;
+                            
                             if (element.author == "vnexpress"){
                                 try {
                                     $("a").not( ".tag_item" ).remove();

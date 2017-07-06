@@ -159,6 +159,7 @@ export class ProcessSimilarNew{
                     if (ProcessNews.arOldNews[i].category === news.category){
                         ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(ProcessNews.arOldNews[i].content);
                         similar = this.funcProcessCacularSimilar(news.content, ProcessNews.arOldNews[i].arr_content_segment);
+                        similar = this.round(similar, 4);
                         if (similar > 0.7){
                             this.printResult(news, ProcessNews.arOldNews[i], similar);
                             return;
@@ -176,6 +177,7 @@ export class ProcessSimilarNew{
             arrNew.forEach(old_news => {
                 // call function cacular similar cosinse here
                 similar = this.funcProcessCacularSimilar(news.content, old_news.arr_content_segment);
+                similar = this.round(similar, 4);
                     //
                 if (similar > 0.7){  
                          //delete new of news is reduplicate
@@ -192,6 +194,7 @@ export class ProcessSimilarNew{
                         if (ProcessNews.arOldNews[i].category === news.category){
                             ProcessNews.arOldNews[i].arr_content_segment = this.funcArrayNonStopWord(ProcessNews.arOldNews[i].content);
                             similar = this.funcProcessCacularSimilar(news.content, ProcessNews.arOldNews[i].arr_content_segment);
+                            similar = this.round(similar, 4);
                             if (similar > 0.7){
                                 this.printResult(news, ProcessNews.arOldNews[i], similar);
                                 return;
@@ -392,5 +395,10 @@ export class ProcessSimilarNew{
         this.variable_new_similar += "Cosine value: " + similar + "\n";
         console.log("\n\n");
         this.variable_new_similar += "\n\n";
+    }
+
+    round(value, precision) {
+        var multiplier = Math.pow(10, precision || 0);
+        return Math.round(value * multiplier) / multiplier;
     }
 }
