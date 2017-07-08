@@ -24,7 +24,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row author">
                         <p>Nguồn: {{new_item?.author}}</p>
                         <p>Địa chỉ: <a [href] = "new_item?.url">{{new_item?.url}}</a></p>
                     </div>
@@ -53,7 +53,7 @@
                     <hr>
                     <div class="row">
                         <h4>Bình luận</h4>
-                        <form name="form" (ngSubmit)="f.form.valid && comment()" #f="ngForm" method="#" novalidate>
+                        <form name="form" id="form-comments" (ngSubmit)="f.form.valid && comment()" #f="ngForm" method="#" novalidate>
                             <fieldset>
                                 <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
                                     <label for="name">Tên người dùng</label>

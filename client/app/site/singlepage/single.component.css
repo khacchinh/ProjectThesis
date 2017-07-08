@@ -80,3 +80,11 @@ a.post-tag:hover{
 hr{
     margin: 0px;
 }
+
+#form-comments{
+    width: 95%;
+}
+
+.author{
+    width: 95%;
+}

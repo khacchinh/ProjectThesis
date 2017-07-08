@@ -175,17 +175,18 @@ export class ProcessSimilarNew{
         }
         else{
             arrNew.forEach(old_news => {
-                // call function cacular similar cosinse here
-                similar = this.funcProcessCacularSimilar(news.content, old_news.arr_content_segment);
-                similar = this.round(similar, 4);
-                    //
-                if (similar > 0.7){  
-                         //delete new of news is reduplicate
-                    this.printResult(news, old_news, similar);
-                    return; 
+                if (news.author == old_news.author)
+                    count_same_author++;
+                else {
+                    similar = this.funcProcessCacularSimilar(news.content, old_news.arr_content_segment);
+                    similar = this.round(similar, 4);
+                    if (similar > 0.7){  
+                             //delete new of news is reduplicate
+                        this.printResult(news, old_news, similar);
+                        return; 
+                    }
+                    count_same_author++;
                 }
-                count_same_author++;
-
             });
             if (count_same_author == arrNew.length){
                 //check database if similar
